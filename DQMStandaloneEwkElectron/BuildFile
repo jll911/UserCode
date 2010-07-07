@@ -1,0 +1,25 @@
+# $Id: BuildFile,v 1.5 2010/04/14 09:28:05 jleonard Exp $
+<use name=DQMServices/Core>
+<use name=FWCore/Framework>
+<use name=FWCore/ServiceRegistry>
+<use name=DataFormats/MuonReco>
+<use name=DataFormats/EgammaCandidates>
+<use name=DataFormats/EgammaReco>
+<use name=DataFormats/TauReco>
+<use name=DataFormats/JetReco>
+<use name=DataFormats/METReco>
+<use name=DataFormats/VertexReco>
+<use name=DataFormats/TrackerRecHit2D>
+<use name=HLTrigger/HLTcore>
+<use name=L1Trigger/GlobalTriggerAnalyzer>
+<use name=Geometry/Records>
+<use name=Geometry/TrackerGeometryBuilder>
+<use name=Geometry/TrackerTopology>
+<use name=JetMETCorrections/Objects>
+<use name=CommonTools/UtilAlgos>
+<use name=PhysicsTools/CandUtils>
+<use name=RecoEcal/EgammaCoreTools>
+<use name=root>
+<export>
+  <lib name=1>
+</export>

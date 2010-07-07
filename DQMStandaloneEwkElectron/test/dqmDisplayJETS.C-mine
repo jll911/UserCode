@@ -1,0 +1,355 @@
+//////////////////////////////////////////
+//
+//  Macro to take plots from output of
+//  standalone electron DQM and display 
+//  them in a nice format
+//
+//////////////////////////////////////////
+
+
+#include "TCanvas.h"
+#include "TFile.h"
+#include "TH1F.h"
+#include "TROOT.h"
+#include "TString.h"
+
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+TFile * inFile;
+TFile * outFile;
+
+enum { ETA_ALL, ETA_BELOW_THREE, ETA_OVER_THREE };
+
+TString canvases[5] = { "COMMON", "ONLY", "ENERGY", "ENERGYFRACTION", "MULTIPLICITIES" };
+TString jetCollections[5] = { "PF", "CALO", "PFCORR", "CALOCORR", "GEN" };
+TString whereEta[3] = { "ALLETA", "ETABELOW3", "ETAOVER3" };
+TString which[2] = { "ALL", "HIGHEST" };
+TString when[2] = { "BEFORE", "AFTER" };
+
+void createCommonCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter );
+void createCaloCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter );
+void createPfEnergyCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter );
+void createPfEnergyFractionCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter );
+void createPfMultiplicityCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter );
+void addPlot(TString jetCollection, TString variable, unsigned int etaRegion, TString numJets, TString beforeAfter, TString title);
+
+void dqmDisplayJETS(TString inputFilename)
+{
+    TString outputFilename = "DisplayJETS-" + inputFilename;
+    
+    // input
+    inFile = TFile::Open(inputFilename);
+
+    // output
+    outFile = new TFile(outputFilename,"RECREATE");
+
+    gROOT->SetBatch( true );
+    
+
+    
+
+    for ( unsigned int eta = 0; eta < 3; ++eta )
+    {
+        for ( unsigned int w = 0; w < 2; ++w )
+        {
+            for ( unsigned int q = 0; q < 2; ++q )
+            {
+                for ( unsigned int j = 0; j < 5; ++j ) // loop over jets
+                    createCommonCanvas(jetCollections[j], eta, which[w], when[q]);
+                
+                createCaloCanvas("CALO", eta, which[w], when[q]);
+                createCaloCanvas("CALOCORR", eta, which[w], when[q]);
+                createPfEnergyCanvas("PF", eta, which[w], when[q]);
+                createPfEnergyCanvas("PFCORR", eta, which[w], when[q]);
+                createPfEnergyFractionCanvas("PF", eta, which[w], when[q]);
+                createPfEnergyFractionCanvas("PFCORR", eta, which[w], when[q]);
+                createPfMultiplicityCanvas("PF", eta, which[w], when[q]);
+                createPfMultiplicityCanvas("PFCORR", eta, which[w], when[q]);
+            }
+        }
+    }
+    
+    outFile->Write(); 
+    outFile->Close(); 
+    inFile->Close();
+    
+    for ( unsigned int i = 0; i < 5; ++i ) // loop over canvases
+    {
+        for ( unsigned int j = 0; j < 5; ++j ) // loop over jets
+        {
+            for ( unsigned int eta = 0; eta < 3; ++eta )
+            {
+                for ( unsigned int w = 0; w < 2; ++w )
+                {
+                    for ( unsigned int q = 0; q < 2; ++q )
+                    {
+                        TString label = "JET_" + jetCollections[j] + "_" + canvases[i] + "_" + whereEta[eta] + "_" + which[w] + "_" + when[q] ;
+                        TCanvas * c1 = (TCanvas*) gROOT->FindObject(label);
+                        if ( c1 ) delete c1;    
+                    }
+                }
+            }
+        }
+    }
+    
+    delete inFile;
+    delete outFile;
+
+    gROOT->SetBatch( false );
+
+}
+
+void
+createCommonCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter )
+{
+  //    if ( not ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    if ( ! ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    {
+        cerr << "ERROR: Invalid eta region requested! Requested: " << jetCollection << "_COMMON_" << etaRegion << "_" << numJets << "_" << beforeAfter << endl;
+        return;
+    }
+    
+    TString label = "JET_"+jetCollection+"_COMMON_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter;
+    
+    //    if ( not inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    if ( ! inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    {
+        cerr << "ERROR: Could not create canvas for " << label << endl;
+        return;
+    }
+    
+    cout << label  << endl;
+
+    TCanvas* canvas = new TCanvas(label,label, 1200, 800);
+    canvas->Divide(3,2);
+    
+    canvas->cd(1);
+    addPlot(jetCollection, "ENERGY", etaRegion, numJets, beforeAfter, "energy");
+    
+    canvas->cd(2);
+    addPlot(jetCollection, "ET", etaRegion, numJets, beforeAfter, "E_{T}");
+    
+    canvas->cd(3);
+    addPlot(jetCollection, "PT", etaRegion, numJets, beforeAfter, "P_{T}");
+    
+    canvas->cd(4);
+    addPlot(jetCollection, "ETA", etaRegion, numJets, beforeAfter, "#eta");
+    
+    canvas->cd(5);
+    addPlot(jetCollection, "PHI", etaRegion, numJets, beforeAfter, "#phi");   
+    
+    outFile->WriteTObject(canvas);
+}
+
+
+
+
+void 
+createCaloCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter )
+{
+  //    if ( not ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    if ( ! ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    {
+        cerr << "ERROR: Invalid eta region requested! Requested: " << jetCollection << "_ONLY_" << etaRegion << "_" << numJets << "_" << beforeAfter << endl;
+        return;
+    }
+    
+    TString label = "JET_"+jetCollection+"_ONLY_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter;
+    
+    //    if ( not inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    if ( ! inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    {
+        cerr << "ERROR: Could not create canvas for " << label << endl;
+        return;
+    }
+    
+    cout << label  << endl;
+
+    TCanvas* canvas = new TCanvas(label,label, 1200, 800);
+    canvas->Divide(3,2);
+    
+    canvas->cd(1);
+    addPlot(jetCollection, "N60", etaRegion, numJets, beforeAfter, "N60");
+    
+    canvas->cd(2);
+    addPlot(jetCollection, "N90", etaRegion, numJets, beforeAfter, "N90");
+    
+    canvas->cd(3);
+    addPlot(jetCollection, "TOTALEMENERGY", etaRegion, numJets, beforeAfter, "Total EM Energy");
+    
+    canvas->cd(4);
+    addPlot(jetCollection, "TOTALHADENERGY", etaRegion, numJets, beforeAfter, "Total Hadronic Energy");
+    
+    canvas->cd(5);
+    addPlot(jetCollection, "EMENERGYFRACTION", etaRegion, numJets, beforeAfter, "EM Energy Fraction");    
+       
+    outFile->WriteTObject(canvas);    
+}
+
+
+
+
+
+void 
+createPfEnergyCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter )
+{
+  //    if ( not ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+  if ( ! ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    {
+        cerr << "ERROR: Invalid eta region requested! Requested: " << jetCollection << "_ENERGY_" << etaRegion << "_" << numJets << "_" << beforeAfter << endl;
+        return;
+    }
+    
+    TString label = "JET_"+jetCollection+"_ENERGY_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter;
+    
+    //    if ( not inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    if ( ! inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    {
+        cerr << "ERROR: Could not create canvas for " << label << endl;
+        return;
+    }
+    
+    cout << label  << endl;
+
+    TCanvas* canvas = new TCanvas(label,label, 1200, 800);
+    canvas->Divide(3,2);
+    
+    canvas->cd(1);
+    addPlot(jetCollection, "CHARGEDHADRONENERGY", etaRegion, numJets, beforeAfter, "Charged Hadron Energy");
+    
+    canvas->cd(2);
+    addPlot(jetCollection, "NEUTRALHADRONENERGY", etaRegion, numJets, beforeAfter, "Neutral Hadron Energy");
+    
+    canvas->cd(3);
+    addPlot(jetCollection, "CHARGEDMUENERGY", etaRegion, numJets, beforeAfter, "Charged #mu Energy");
+    
+    canvas->cd(4);
+    addPlot(jetCollection, "CHARGEDEMENERGY", etaRegion, numJets, beforeAfter, "Charged EM Energy");
+    
+    canvas->cd(5);
+    addPlot(jetCollection, "NEUTRALEMENERGY", etaRegion, numJets, beforeAfter, "Neutral EM Energy");
+    
+    outFile->WriteTObject(canvas);
+}
+
+
+
+
+
+void 
+createPfEnergyFractionCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter )
+{
+  //    if ( not ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    if ( ! ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    {
+        cerr << "ERROR: Invalid eta region requested! Requested: " << jetCollection << "_ENERGYFRACTION_" << etaRegion << "_" << numJets << "_" << beforeAfter << endl;
+        return;
+    }
+    
+    TString label = "JET_"+jetCollection+"_ENERGYFRACTION_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter;
+    
+    //    if ( not inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    if ( ! inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    {
+        cerr << "ERROR: Could not create canvas for " << label << endl;
+        return;
+    }
+    
+    cout << label  << endl;
+
+    TCanvas* canvas = new TCanvas(label,label, 1200, 800);
+    canvas->Divide(3,2);
+    
+    canvas->cd(1);
+    addPlot(jetCollection, "CHARGEDHADRONENERGYFRACTION", etaRegion, numJets, beforeAfter, "Charged Hadron Energy Fraction");
+    
+    canvas->cd(2);
+    addPlot(jetCollection, "NEUTRALHADRONENERGYFRACTION", etaRegion, numJets, beforeAfter, "Neutral Hadron Energy Fraction");
+    
+    canvas->cd(3);
+    addPlot(jetCollection, "CHARGEDMUENERGYFRACTION", etaRegion, numJets, beforeAfter, "Charged #mu Energy Fraction");
+    
+    canvas->cd(4);
+    addPlot(jetCollection, "CHARGEDEMENERGYFRACTION", etaRegion, numJets, beforeAfter, "Charged EM Energy Fraction");
+    
+    canvas->cd(5);
+    addPlot(jetCollection, "NEUTRALEMENERGYFRACTION", etaRegion, numJets, beforeAfter, "Neutral EM Energy Fraction");
+    
+    outFile->WriteTObject(canvas);
+}
+
+
+
+
+
+
+void 
+createPfMultiplicityCanvas(TString jetCollection, unsigned int etaRegion, TString numJets, TString beforeAfter )
+{
+  //    if ( not ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    if ( ! ( etaRegion == ETA_BELOW_THREE || etaRegion == ETA_OVER_THREE || etaRegion == ETA_ALL ) )
+    {
+        cerr << "ERROR: Invalid eta region requested! Requested: " << jetCollection << "_MULTIPLICITIES_" << etaRegion << "_" << numJets << "_" << beforeAfter << endl;
+        return;
+    }
+    
+    TString label = "JET_"+jetCollection+"_MULTIPLICITIES_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter;
+    
+    //    if ( not inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    if ( ! inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_ENERGY_ETABELOW3_"+numJets+"_"+beforeAfter) )
+    {
+        cerr << "ERROR: Could not create canvas for " << label << endl;
+        return;
+    }
+    
+    cout << label  << endl;
+
+    TCanvas* canvas = new TCanvas(label,label, 800, 800);
+    canvas->Divide(2,2);
+    
+    canvas->cd(1);
+    addPlot(jetCollection, "CHARGEDMULTIPLICITY", etaRegion, numJets, beforeAfter, "Charged Multiplicity");
+    
+    canvas->cd(2);
+    addPlot(jetCollection, "NEUTRALMULTIPLICITY", etaRegion, numJets, beforeAfter, "Neutral Multiplicity");
+    
+    canvas->cd(3);
+    addPlot(jetCollection, "MUONMULTIPLICITY", etaRegion, numJets, beforeAfter, "#mu multiplicity");
+      
+    outFile->WriteTObject(canvas);
+}
+
+
+
+void
+addPlot(TString jetCollection, TString variable, unsigned int etaRegion, TString numJets, TString beforeAfter, TString title)
+{
+    if ( etaRegion == ETA_ALL )
+    {
+//         dynamic_cast<TH1F*>(inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_ETABELOW3_" + numJets + "_" + beforeAfter) )->SetTitle(jetCollection + " " + title);
+//         inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_ETABELOW3_"+numJets+"_"+beforeAfter)->Draw();
+//         inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_ETAOVER3_"+numJets+"_"+beforeAfter)->Draw("same");
+      TH1F* dummy = dynamic_cast<TH1F*>(inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_ETABELOW3_" + numJets + "_" + beforeAfter) );
+      dummy->SetTitle(jetCollection + " " + title);
+      dummy->Draw();
+      inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_ETAOVER3_"+numJets+"_"+beforeAfter)->Draw("same");
+    }
+    else
+    {
+        if ( etaRegion == ETA_BELOW_THREE )
+            title += " (|#eta| < 3)";
+        else
+            title += " (|#eta| > 3)";
+        
+	//        dynamic_cast<TH1F*>(inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter))->SetTitle(jetCollection + " " + title);
+        TH1F* dummy = dynamic_cast<TH1F*>(inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter));
+	dummy->SetTitle(jetCollection + " " + title);
+        inFile->Get("ewkElecStandaloneDQM/JET_"+jetCollection+"_" + variable + "_"+whereEta[etaRegion]+"_"+numJets+"_"+beforeAfter)->Draw();    
+    }
+}
+
+
+

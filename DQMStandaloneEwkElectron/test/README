@@ -1,0 +1,70 @@
+CURRENT AS OF 12 MAY 2010.  
+
+Recipe for running a small test job, just to check for code compilation and runtime errors and quick output check.  
+
+    * ssh lxplus5
+    * scramv1 project CMSSW CMSSW_3_5_4 (this is just the CMSSW version I'm using at the moment, you can use a newer version)
+    * cd CMSSW_3_5_4/src
+    * cmsenv
+    * cvs co UserCode/DQMStandaloneEwkElectron
+    * scramv1 b
+    * cd test/
+    * cmsRun ewkElecStandaloneDQM-test_cfg.py (this runs over some December data, filenames can be changed)
+
+Recipe for running this code with CRAB over full datasets, assuming you already have a CMSSW area and checked-out and compiled code.  Datasets can be found in https://cmsweb.cern.ch/dbs_discovery/, global tags (if need to be changed) can be found at https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideFrontierConditions.  
+
+    * ssh lxplus5
+    * source /afs/cern.ch/cms/LCG/LCG-2/UI/cms_ui_env.sh
+    * cd CMSSW_3_5_4/src; cmsenv
+    * source /afs/cern.ch/cms/ccs/wm/scripts/Crab/crab.sh
+    * cd UserCode/DQMStandaloneEwkElectron/test/
+    * edit runreg.cfg to create properly-datestamped json file
+    * python runregparse.py
+    * if necessary, edit *CRAB_cfg.py files for global tag (only changes once in a while)
+    * edit all three crab-*.cfg files for date of json file and output folder
+    * rfmkdir /castor/cern.ch/user/j/joeschmoe/folder/ for each output folder in CASTOR 
+    * rfchmod 775 /castor/cern.ch/user/j/joeschmoe/folder/ for each output folder in CASTOR (necessary for CRAB to be able to write to these folders)
+    * crab -cfg crab-*.cfg -create -submit for each crab-*.cfg
+
+    * modify test/getCastorFiles.sh to point to your own CASTOR area
+    * when all jobs finished, go to scratch space on your machine and do /path/to/getCastorFiles.sh nameOfOutputFolder (this copies the files to ./nameOfOutputFolder) for each output folder
+    * wait for a while . . . . .
+    * when all files done copying, do hadd nameOfMergedFile.root nameOfOutputFolder for each output folder
+    * put the two merged data files in a dummy directory and do another hadd to make them one final merged file
+    * from test/ directory do makeElecDqmPlots.sh ....../full/path/to/data/file ....../full/path/to/MC/file (paths must be relative to current directory, meaning you need to use ../../../../ etc to get to the scratch space)
+    * when done running, plots are in folder with today's date
+
+    * to check for boson candidates, do crab -c <crab_generated_job_folder> -getoutput (this can fill up disk space, make sure you have a decent amount)
+    * then go into <crab_generated_job_folder>/res/ and do grep CAND * 
+
+
+
+Sample crab.cfg file (crab-ewkElecStandaloneDQM-2010GoodCollsApr20v1-12may10.cfg) indicating necessary or potential changes:
+
+---------------------------------------------------------------------------------------
+[CRAB]
+jobtype                  = cmssw
+#scheduler                = glite
+scheduler                = glidein
+use_server               = 1
+
+[CMSSW]
+datasetpath              = /MinimumBias/Commissioning10-Apr20Skim_GOODCOLL-v1/RAW-RECO  ################### edit if necessary to change dataset
+pset                     = /afs/cern.ch/user/j/jleonard/scratch0/CMSSW_3_5_4/src/UserCode/DQMStandaloneEwkElectron/test/ewkElecStandaloneDQM-2010DataRereco-CRAB_cfg.py  ############### edit to path of _cfg.py file in your area
+#total_number_of_events   = -1
+#events_per_job           = 100000
+output_file              = ewkElecStandaloneDQM-2010Data.root
+lumi_mask                = jsonls12may10.txt    ##################### edit this line to your own json file
+total_number_of_lumis    = -1
+lumis_per_job            = 20
+
+[USER]
+copy_data                = 1
+storage_element          = srm-cms.cern.ch
+storage_path             = /srm/managerv2?SFN=/castor/cern.ch
+user_remote_dir          = /user/j/jleonard/ewkElecStandaloneDQM-2010GoodCollsApr20v1-12may10/  ################# edit to your own castor area and foldername
+
+[GRID]
+#ce_black_list            = T2_UK_London_Brunel
+ce_white_list            = T2_US_Wisconsin
+------------------------------------------------------------------------------------------------
