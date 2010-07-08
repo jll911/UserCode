@@ -1,0 +1,4 @@
+<use name=UserCode/DQMStandaloneEwkElectron>
+<library file=*.cc name=DQMStandaloneEwkElectronPlugins>
+ <flags EDM_PLUGIN=1>
+</library>

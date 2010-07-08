@@ -1,0 +1,9 @@
+ {
+   gStyle->SetCanvasColor(0);
+   gStyle->SetHistLineWidth(2);
+   gStyle->SetOptStat(0);//111111);
+   gStyle->SetTitleYOffset(1.5);
+   G__loadfile("setTDRStyle.h");
+   setTDRStyle();
+   gStyle->SetPalette(1,0);
+}
