@@ -68,3 +68,15 @@ user_remote_dir          = /user/j/jleonard/ewkElecStandaloneDQM-2010GoodCollsAp
 #ce_black_list            = T2_UK_London_Brunel
 ce_white_list            = T2_US_Wisconsin
 ------------------------------------------------------------------------------------------------
+
+
+For running analysis macro on output tree file: load ROOT, then load and compile macro with
+
+.L myMacro.C+
+
+Then can run with
+
+myMacro m(args)
+m.Loop()
+m.~myMacro() // if necessary
+
