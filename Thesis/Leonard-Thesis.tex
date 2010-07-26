@@ -1,0 +1,265 @@
+%  ========================================================================
+%  Copyright (c) 2006-2007 The University of Washington
+%
+%  Licensed under the Apache License, Version 2.0 (the "License");
+%  you may not use this file except in compliance with the License.
+%  You may obtain a copy of the License at
+%
+%      http://www.apache.org/licenses/LICENSE-2.0
+%
+%  Unless required by applicable law or agreed to in writing, software
+%  distributed under the License is distributed on an "AS IS" BASIS,
+%  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%  See the License for the specific language governing permissions and
+%  limitations under the License.
+%  ========================================================================
+
+
+%    Printed in twoside style now that that's allowed 
+\documentclass [11pt, twoside] {uwthesis}
+
+\usepackage{graphicx}  % Used for figure
+\usepackage{rotating}    % Provides sidewaysfigure
+\usepackage{amsfonts} % Provides \mathcal
+\usepackage{amsmath} % Provides \text
+\usepackage{xspace}    % Provides \xspace
+
+% The following line would print the thesis in a postscript font 
+% \usepackage{newcent}
+
+%\setcounter{tocdepth}{1}  % Print the chapter and sections to the toc
+\setcounter{tocdepth}{3}  
+ 
+
+% ==========   Local defs and mods
+
+\include{commonDefinitions}
+
+\begin{document}
+ 
+% ==========   Preliminary pages
+%
+
+\prelimpages
+ 
+%%
+%% ----- title page
+%%
+%%\Title{Direct Photon Plus Jet Events at $\sqrt{s}=$7 TeV\\
+%%  using the Compact Muon Solenoid\\
+%%  at the Large Hadron Collider}
+%\Title{Blah}
+%\Author{Jessica L. Leonard}
+%\Year{2011}
+%\Program{Physics}
+%\Degree{Doctor of Philosophy\\(PHYSICS)}
+%% \titlepage  
+
+%% --- sample stuff only -----
+%% unusual footnote not found in a real thesis
+%\Degreetext{A dissertation submitted in partial fulfillment of\\
+%  the requirements for the degree of}
+%\titlepage
+%\setcounter{footnote}{0}
+%% --- end-of-sample-stuff ---
+ 
+%%
+%% ----- signature page
+%%
+
+%\Chair{Susan Coppersmith}{Professor}{Physics}
+
+%\Signature{Wesley Smith}
+%\Signature{Sridhara Dasu}
+%\Signature{foo}
+%\Signature{bar}
+%\Signature{Unknown}
+%\signaturepage
+
+
+%% ========== Abstract
+%\setcounter{page}{-1}
+%\abstract{%
+%%The Large Hadron Collider outside Geneva, Switzerland collides protons at a 
+%%center of mass energy of 7 TeV, which began in the spring of 2010. One of several detectors there is the Compact Muon Solenoid (CMS), which was designed to be a "general purpose" detector for the detection of many kinds of particles to aid both in the understanding of physics within the "Standard Model" as well as new physics.\\
+%%Among the products of proton collisions are jets and photons.  Jets are cone-like deposits of energy in the detector which arise from the hadronization of a quark or gluon. Photons which arise directly from the scattering of quarks or gluons are direct photons and are useful for new physics searches, measurement of the protons gluon parton distribution function, as well as for calibration of the jet energy scale.\\
+%%This dissertation describes studies of events where the final state includes one high-energy direct photon and one jet.
+%blah
+%}
+ 
+%
+% ----- contents & etc.
+%
+\tableofcontents
+\listoffigures
+\listoftables
+ 
+%
+% ----- glossary 
+%
+%\chapter*{Glossary}      % starred form omits the `chapter x'
+%\addcontentsline{toc}{chapter}{Glossary}
+%\thispagestyle{plain}
+%
+%\begin{glossary}
+
+%\item[ce] Compute Elements are networked computers used for running software in parallel.
+%\item[cms] the Compact Muon Solenoid detects particles which result from the collision of protons.
+%\item[ecal] an Electromagnetic Calorimeter detects energy from photons and electrons.
+%\item[gct] the Global Calorimeter Trigger.
+%\item[hcal] a Hadronic Calorimeter detects the energy from hadrons such as protons and neutrons.
+%\item[lhc] the Large Hadron Collider is a particle accelerator which collides protons north of Geneva, Switzerland.
+%\item[osg] the Open Science Grid is a worldwide grid of technological resources which facilitates distributed computing for scientific research.
+%\item[rct] the Regional Calorimeter Trigger.
+%\item[se] Storage Elements are servers that based on Storage Resource Manager
+%\item[tev]  a Tera-Electron Volt is $10^{12}$ electron volts and is approximately equivalent to 1,000 proton masses.
+%%\item[tevatron]  the Tevatron is a particle accelerator which collides protons west of Chicago, Illinois.
+%\item[vo] A Virtual Organization a set of individuals or institutions that use a common computer grid to solve problems and have a set of resource-sharing rules and conditions.
+
+%\end{glossary}
+ 
+%
+% ----- acknowledgments
+%
+%\acknowledgments{% \vskip2pc
+%  % {\narrower\noindent
+%  The author wishes to express sincere appreciation to
+%  Sridhara Dasu.
+%  % \par}
+%}
+%
+% end of the preliminary pages
+ 
+ 
+ 
+%
+% ==========      Text pages
+%
+
+\textpages
+
+
+
+% ========== Chapters
+
+%\include{introduction}
+
+%\include{otherExperiments}
+
+%\include{experiment}
+
+%\include{eventReconstruction}
+
+%\include{eventSelection}
+
+%\include{computing}
+
+%\include{monteCarlo}
+
+%\include{conclusion}
+
+
+%\chapter{}
+%\section{}
+
+\chapter{Overview}
+\section{Measurement of Cross Section}
+%xsec(Z) = n(Zee) / ( L * BR(Zee) * eff ) 
+\[
+\sigma_{Z} \times \textrm{BR}_{Z \rightarrow ee} = \frac{ n_{Z \rightarrow ee} }{  \mathcal{L} \times \epsilon }
+\]
+where 
+\[
+\epsilon = \epsilon_{acc} \times \epsilon_{trig} \times \epsilon_{reco} \times \epsilon_{sel}
+\]
+\chapter{Theory Introduction}
+\section{Standard Model}
+\section{Electroweak Physics}
+\subsection{Z Production}
+\chapter{Experimental Setup}
+\section{CERN}
+\section{LHC}
+\section{CMS}
+\subsection{Detection of Particle Interactions}
+\subsection{Coordinate System}
+\subsection{Magnet}
+\subsection{Luminosity}
+\subsection{Calorimeters}
+\subsubsection{ECAL}
+\subsubsection{HCAL}
+\subsection{Muon Systems}
+\subsection{Tracker}
+\subsection{Pixels}
+\subsection{Trigger}
+\subsubsection{Level-1 Trigger}
+\subsubsection{High-Level Trigger}
+\chapter{Event Simulation}
+\section{Monte Carlo Generation}
+\section{Detector Simulation}
+\subsection{Level-1 Trigger Emulator}
+\chapter{Event Reconstruction}
+\section{Detector Object Reconstruction}
+\subsection{Calorimeter Clustering}
+\subsection{Pixel Hits}
+\subsection{Track Reconstruction}
+\section{Electron Reconstruction}
+\subsection{ECAL-driven Electron Reconstruction}
+\subsubsection{Superclusters}
+\subsubsection{Pixel- and Track-matching}
+\subsection{Tracker-driven Electron Reconstruction}
+\subsection{Electron Energy Scale and Resolution}
+\chapter{Event Selection}
+\section{Online}
+\subsection{Electron Trigger}
+\subsubsection{Electron Algorithms}
+Figures: Trigger Electron/Photon Pt, eta, phi spectra for L1 and HLT
+\subsubsection{Trigger Performance}
+Figures: L1 and HLT trigger Pt resolution plots using offline reference
+
+Figures: Trigger electron/photon efficiency turn on using offline reconstructed electrons and MC
+\subsection{Trigger Eras}
+\section{Offline}
+\subsection{Electron Selection}
+\subsubsection{Conversion Rejection Variables}
+\subsubsection{Electron Identification Variables}
+Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID
+\subsubsection{Electron Isolation Variables}
+Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation
+\subsubsection{Electron Selection Performance}
+Figures: Reco PT resolution plots using MC reference for Z MC
+\subsection{Z Event Selection}
+\subsubsection{Acceptance for Z Events}
+\subsubsection{Efficiency of Selection for Zee Events}
+Figures: Efficiency table and supporting plots
+\subsubsection{Distribution of Kinematic Variables}
+\chapter{Analysis Method}
+\section{Comparison of Monte Carlo and Data}
+Figures: Electron-positron invariant mass for trigger objects/ID only/ID+isolation
+\section{Background Subtraction}
+Figures: Background subtracted yield versus eta with a MZ mass window - comparison to MC
+
+Figures: Background subtracted Z PT distribution with a MZ mass window - comparison to MC
+\section{Estimation of Systematic Uncertainties}
+\chapter{Results}
+\section{Cross Section Measurement}
+Figures: Cross section calculation and comparison to theory
+\section{Comparison to Previous Experiments}
+\chapter{Summary and Conclusions}
+
+
+
+
+% ==========   Bibliography
+% \nocite{*}   % nocite{*} causes all items in the database to be included in the references, regardless of whether or not they are cited in the paper
+\bibliographystyle{plain}
+\bibliography{uwthesis}
+
+% ==========   Appendices
+%
+\appendix
+\raggedbottom\sloppy
+  
+%\chapter{Extra}
+
+
+\end{document}
