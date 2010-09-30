@@ -1,0 +1,37 @@
+<use name=DQMServices/Core>
+<use name=FWCore/Framework>
+<use name=FWCore/ServiceRegistry>
+<use name=DataFormats/MuonReco>
+<use name=DataFormats/EgammaCandidates>
+<use name=DataFormats/EgammaReco>
+<use name=DataFormats/TauReco>
+<use name=DataFormats/JetReco>
+<use name=DataFormats/METReco>
+<use name=DataFormats/VertexReco>
+<use name=DataFormats/TrackerRecHit2D>
+<use name=HLTrigger/HLTcore>
+<use name=L1Trigger/GlobalTriggerAnalyzer>
+<use name=Geometry/Records>
+<use name=Geometry/TrackerGeometryBuilder>
+<use name=Geometry/TrackerTopology>
+<use name=JetMETCorrections/Objects>
+<use name=CommonTools/UtilAlgos>
+<use name=PhysicsTools/CandUtils>
+<use name=RecoEcal/EgammaCoreTools>
+<use name=root>
+<use name=FWCore/PluginManager>
+<use name=FWCore/ParameterSet>
+<use name=Geometry/CaloGeometry>
+<use name=Geometry/CaloTopology>
+<use name=DataFormats/Math>
+<use name=clhep>
+<use name=RecoEgamma/EgammaTools>
+<use name=MagneticField/Records>
+<use name=MagneticField/Engine>
+<flags EDM_PLUGIN=1>
+<export>
+  <lib name=UserCodeTrigTree>
+  <use name=FWCore/Framework>
+  <use name=FWCore/PluginManager>
+  <use name=FWCore/ParameterSet>
+</export>                                                                                          
