@@ -104,6 +104,16 @@ Figures: HLT trigger electron/photon efficiency turn on using offline reconstruc
 
 \section{Offline}
 \subsection{Electron Selection}
+Starts out with full set of objects reconstructed as electrons.  
+NOT necessarily real electrons, but energy deposits consistent with those from electrons at a low-level.  
+(talk about def of GSF electron etc so know what kinds of cuts have already been applied)
+Further conditions are applied to select the electron objects most likely to be real electrons from a Z.  
+First electrons are matched to trigger objects passing an egamma trigger with a Level-1 threshold of 5 GeV.  
+A 20-GeV cut on the supercluster transverse energy is applied.  
+Next comes a set of cuts designed to reject electrons from photon conversions.  
+Then come cuts to distinguish real electrons from other energy deposits which may mimic electrons, 
+and finally are cuts to make sure the electron is isolated, i.e. not part of a jet (which would not be coming from a Z).  
+
 \subsubsection{Matching Offline-Reconstructed Objects to Trigger Objects}
 Figures: \DR for L1 and HLT trigger object matching, Fig. \ref{fig:TriggerObjectSelectionDeltaR}
 
@@ -116,19 +126,59 @@ Figures: \DR for L1 and HLT trigger object matching, Fig. \ref{fig:TriggerObject
  \end{figure}
 
 
-\subsubsection{Conversion Rejection Variables}
-Figures: Conversion rejection variables before respective cuts, Fig. \ref{fig:ConvRejVars}
+\subsubsection{Conversion Rejection}
+The conversion rejection step of the electron selection aims to eliminate photons that have converted into electron pairs.  
+Several variables have been chosen to distinguish between conversions and prompt electrons, focusing on the track properties.  
+Since prompt electrons are expected to hit the first layer of the tracker, 
+any electron-associated track that is missing initial hits can be rejected as a conversion that occurred within the tracker.  
+The looser requirements of the 95 percent efficient working point allow an electron to have one missing hit;
+tighter working points require zero missing hits.  
+Fig. \ref{fig:MissHitsConvRejVars} shows the number of missing hits for each electron.  
+In addition, the conversion rejection algorithm searches for candidate electron-pair partner tracks, 
+i.e. track pairs that appear to come from the same point.  
+Every electron track is compared to all opposite-charge tracks within a dR cone of 0.3, and two values are calculated: 
+a measure of the difference in the angles in the r-z plane between the two tracks (dCotTheta, Fig. \ref{fig:DCotConvRejVars}), 
+and the distance of closest approach between the two tracks in the x-y plane (dist, Fig. \ref{fig:DistConvRejVars}).  
+Electron pairs from conversions are expected to have low values for both quantities, 
+since both electron tracks begin at the point of conversion and initially have the same direction as the converting photon.  
+The WP95 requirements apply a threshold at 0.02 for both quantities.  
+If an electron track corresponds to a track pair having values below that threshold for both variables, 
+it is assumed to be a conversion and is rejected.  
+
+%Figures: Conversion rejection variables before respective cuts, Fig. \ref{fig:ConvRejVars}
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
+%    \includegraphics[width=180pt, angle=90]{missHitsSeq-14sep10.pdf}
+    \includegraphics[width=180pt, angle=90]{missHitsSeq.pdf}
   \end{center}
-  \caption[Conversion rejection variables before respective cuts]{Conversion rejection variables before respective cuts.}
-  \label{fig:ConvRejVars}
+  \caption[Missing hits conversion rejection variables after previous cuts]{Missing hits conversion rejection variables after previous cuts.}
+  \label{fig:MissHitsConvRejVars}
+ \end{figure}
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=180pt, angle=90]{dCotThetaSeq-14sep10.pdf}
+    \includegraphics[width=180pt, angle=90]{dCotThetaSeq.pdf}
+  \end{center}
+  \caption[DCotTheta conversion rejection variables after previous cuts]{DCotTheta conversion rejection variables after previous cuts.}
+  \label{fig:DCotConvRejVars}
+ \end{figure}
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=180pt, angle=90]{distSeq-14sep10.pdf}
+    \includegraphics[width=180pt, angle=90]{distSeq.pdf}
+  \end{center}
+%  \caption[Conversion rejection variables before respective cuts]{Conversion rejection variables before respective cuts.}
+  \caption[Dist conversion rejection variables after previous cuts]{Dist conversion rejection variables after previous cuts.}
+  \label{fig:DistConvRejVars}
  \end{figure}
 
 
-\subsubsection{Electron Identification Variables}
+\subsubsection{Electron Identification}
+Several variables to differentiate genuine electrons from other particles that may mimic electron behavior.  
+
 Figures: Electron ID variables before respective cuts, Fig. \ref{fig:ElecIdVars}
 
  \begin{figure}[htb]
@@ -152,7 +202,10 @@ Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID, Fig. \ref{
  \end{figure}
 
 
-\subsubsection{Electron Isolation Variables}
+\subsubsection{Electron Isolation}
+Conditions to require that electrons found are isolation, i.e. not contained in a jet with other particles.  
+We want (``prompt''?) electrons that come directly from the Z, not from some other interaction with lots of other end products packaged along with the electron.  
+
 Figures: Electron isolation variables before respective cuts, Fig. \ref{fig:ElecIsoVars}
 
  \begin{figure}[htb]
@@ -191,6 +244,21 @@ Figures: Reco PT resolution plots using MC reference for Z MC, Fig. \ref{fig:Rec
 \subsection{\Zee Event Selection}
 \subsubsection{Acceptance for \Zee Events}
 \subsubsection{Efficiency of Selection for \Zee Events}
+Tag and Probe:  The tag and probe method is used to determine the efficiency of a given set of electron selection steps.  
+In this method, a set of data events is identified which appear to be good Z->ee candidate events.  
+One of the electrons in each of these events must pass 
+all selection cuts and essentially be identified as a golden electron; 
+%some stringent
+this is the tag.  
+%The other electron must 
+%pass some less stringent criteria
+%be identified at least as a supercluster; 
+The criteria applied to the other electron are looser: it is not required to pass the selection cuts being tested.  
+This is the probe electron.  
+The event's status as a Z candidate is determined by enforcing a mass window cut on the invariant mass of the tag-probe system 
+(this is sufficient(enough?) to select events in which both legs are real electrons -- REFERENCE??).  
+The selection efficiency is then given by the fraction of probe electrons that pass the requirement being tested.  
+
 Figures: Efficiency table and supporting plots
 
 \subsubsection{Distribution of Z Kinematic Variables}

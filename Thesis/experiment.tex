@@ -4,9 +4,12 @@ International laboratory in Europe, founded 1959?, maybe little significant hist
 
 \section{LHC}
 All the good stats on the LHC: circumference, (place,) dipole design, magnets, magnetic field.  Design energy and luminosity.  
+And pictures!  diagram of LHC, diagram of magnets?  just going through prelim diagrams here!
 
 \section{CMS}
-Important stats on CMS: height, weight, etc.  
+Important stats on CMS: height, weight, etc.  diagram of detector.  
+
+Current status on detector, data-taking, event display -- here? or after everything explained?  
 
 Figure: Event display, Fig. \ref{fig:EventDisplay}
 
@@ -19,8 +22,13 @@ Figure: Event display, Fig. \ref{fig:EventDisplay}
  \end{figure}
 
 \subsection{Detection of Particle Interactions}
+
 \subsection{Coordinate System}
+
+
 \subsection{Magnet}
+Stats about the magnet!
+
 \subsection{Luminosity}
 Figure: Luminosity plot, Fig. \ref{fig:LuminosityVsTime}
 
@@ -39,7 +47,26 @@ Figure: Luminosity plot, Fig. \ref{fig:LuminosityVsTime}
 \subsection{Tracker}
 \subsection{Pixels}
 \subsection{Trigger}
+CMS trigger identifies potentially interesting events to save.  
+Hardware-based Level-1 Trigger reduces event rate by 
+factor of X to Y Hz, computer farm High-Level Trigger reduces rate further to Z Hz.  
+
+Picture: Overall diagram of trigger
 \subsubsection{Level-1 Trigger}
 General L1 information, specific electron algorithms in online selection section.  
+
+L1 uses FPGA-based algorithms to roughly reconstruct and identify possibly interesting physics objects.  
+Parallel chains handle muon and calorimetric (?) objects.  
+Subsections on that?  Need to talk about the muon parts, as well as the multi-level calo part.  
+The L1 Global Trigger combines information from both chains and makes a single decision based on the trigger menu implemented.  
+(Ooh boy, go back to RT2010 stuff!)  
+
 \subsubsection{High-Level Trigger}
 General HLT information, specific electron algorithms in online selection section.  
+
+HLT uses version of the standard offline physics-object reconstruction algorithms (BEFORE THIS SECTION?????) 
+optimized for fast performance.  
+Rate at this stage lower, so more time can be afforded to spend on decision, 
+more detailed reconstruction can be done.  
+
+
