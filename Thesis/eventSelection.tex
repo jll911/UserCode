@@ -4,9 +4,27 @@
 %\subsection{Electron Trigger}
 %\subsubsection{Electron Algorithms}
 %\subsubsection{Trigger Performance}
+Since the LHC began taking data the event rate has changed by orders of magnitude,  
+%In order to keep up with the changing rate, 
+and the trigger menus have evolved accordingly to deal with the changes.  
+Initially, the collision rate was so low that minimum bias triggers ran unprescaled.  
+However, it soon increased to the point where the minimum bias trigger rate became too high
+and had to be prescaled, and photon triggers were used instead.  
+Eventually the photon trigger rate at the desired threshold also became too high,
+necessitating the extra constraints of the electron trigger at the same threshold.  
+The rate for that trigger also increased, so to avoid prescaling the rate or increasing the threshold,
+tighter selection criteria were applied to the objects that fired the trigger.  
+These criteria are looser than those applied in the course of analysis and so are not expected
+to seriously affect the trigger efficiency.  
+
+
+%% TALK ABOUT SOMEWHERE PREVIOUSLY: TRIGGER MENUS + PRESCALES, MINIMUM BIAS
+
 \subsection{Level-1 Trigger}
-\subsubsection{Description of Algorithm}
-Description of algorithm.  
+%\subsubsection{Description of Algorithm}
+%Description of algorithm, along with diagrams.  
+%The electron-reconstruction algorithm for the Level-1 trigger is implemented in the Regional Calorimeter Trigger (see detector section).
+
 \subsubsection{Performance}
 Distributions, resolutions, efficiencies of Level-1 electron/photon objects.  
 
@@ -101,20 +119,303 @@ Figures: HLT trigger electron/photon efficiency turn on using offline reconstruc
 
 
 
-
+\clearpage
 \section{Offline}
 \subsection{Electron Selection}
-Starts out with full set of objects reconstructed as electrons.  
-NOT necessarily real electrons, but energy deposits consistent with those from electrons at a low-level.  
-(talk about def of GSF electron etc so know what kinds of cuts have already been applied)
-Further conditions are applied to select the electron objects most likely to be real electrons from a Z.  
+The electron selection starts with the full set of objects reconstructed as electrons, 
+i.e. ECAL energy deposits with nearby tracks.  
+The objects in this collection are not necessarily real electrons 
+%but energy deposits consistent with those from electrons at a low-level.  
+but are consistent with the electron signature at a low level.  
+%(talk about def of GSF electron etc so know what kinds of cuts have already been applied)   % to be done in eventReconstruction!
+In order to select the reconstructed objects most likely to be real electrons from a Z, 
+sets of further conditions are applied.  
 First electrons are matched to trigger objects passing an egamma trigger with a Level-1 threshold of 5 GeV.  
-A 20-GeV cut on the supercluster transverse energy is applied.  
-Next comes a set of cuts designed to reject electrons from photon conversions.  
-Then come cuts to distinguish real electrons from other energy deposits which may mimic electrons, 
-and finally are cuts to make sure the electron is isolated, i.e. not part of a jet (which would not be coming from a Z).  
+A 20-GeV cut on the supercluster transverse energy is applied,
+followed by a set of cuts designed to reject electrons from photon conversions.  
+Another set of cuts aims to distinguish real electrons from other energy deposits which may mimic electrons, 
+and finally a set of cuts to make sure the electron is isolated, i.e. not part of a jet unrelated to the Z.  
+
+%All the different wp's for different purposes and efficiencies.  WP95 looser than trigger cuts by the end!  put other reasons too for wp80
+The collaboration (or egamma group) created several different electron selections of varying tightness of cuts,
+based on a given efficiency of the cuts (ref to iterative algo stuff).  
+A tighter selection in general results in a purer sample of true electrons, but throws away many more
+real electrons than a looser selection.  
+These ``working points'' have target efficiencies ranging from 95\%-efficient at the loosest (WP95) to 60\% at the tightest (WP60).  
+For early data-taking the WP95 and WP80 selections were chosen as the baseline selections for the Zee and Wenu analyses, respectively.
+As more data accumulated, it became clear that WP80 provided better performance than WP95 for the Zee analysis, as well.  
+A deciding factor in the switch was the fact that the evolving trigger paths eventually used selections that were
+tighter than those used in the offline (WP95) analysis.  
+This analysis uses the WP80 set of cuts for the complete dataset.  
+
+\subsubsection{Conversion Rejection}
+The conversion rejection step of the electron selection aims to eliminate photons that have converted into electron pairs.  
+Several variables have been chosen to distinguish between conversions and prompt electrons, focusing on the track properties.  
+Since prompt electrons are expected to hit the first layer of the tracker, 
+any electron-associated track that is missing initial hits can be rejected as a conversion that occurred within the tracker.  
+The looser requirements of the 95 percent efficient working point allow an electron to have one missing hit;
+tighter working points such as WP80 require zero missing hits.  
+Fig. \ref{fig:MissHitsConvRejVars} shows the number of missing hits for each electron.  
+In addition, the conversion rejection algorithm searches for candidate electron-pair partner tracks, 
+i.e. track pairs that appear to come from the same point.  
+Every electron track is compared to all opposite-charge tracks within a dR cone of 0.3, and two values are calculated: 
+a measure of the difference in the angles in the r-z plane between the two tracks (\dCotTheta, Fig. \ref{fig:DCotConvRejVars}), 
+and the distance of closest approach between the two tracks in the x-y plane ($dist$, Fig. \ref{fig:DistConvRejVars}).  
+Electron pairs from conversions are expected to have low values for both quantities, 
+since both electron tracks begin at the point of conversion and initially have the same direction as the converting photon.  
+The WP80 requirements apply a threshold at 0.02 for both quantities.  
+%The 95-percent efficient working point is looser than the other working points in that it does not apply cuts on these quantities.  
+%The other working points reject electrons having a value of less than 0.02 for both.  
+%If an electron track corresponds to a track pair having values below that threshold for both variables, 
+%it is assumed to be a conversion and is rejected.  
+
+%Figures: Conversion rejection variables before respective cuts, Fig. \ref{fig:ConvRejVars}
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=180pt, angle=90]{missHitsSeq-14sep10.pdf}
+    \includegraphics[width=180pt, angle=90]{Figures/missHitsSeq.pdf}
+  \end{center}
+  \caption[Missing hits conversion rejection variables after previous cuts]{Missing hits conversion rejection variables after previous cuts.}
+  \label{fig:MissHitsConvRejVars}
+ \end{figure}
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=180pt, angle=90]{dCotThetaSeq-14sep10.pdf}
+    \includegraphics[width=180pt, angle=90]{Figures/dCotThetaSeq.pdf}
+  \end{center}
+  \caption[DCotTheta conversion rejection variables after previous cuts]{DCotTheta conversion rejection variables after previous cuts.}
+  \label{fig:DCotConvRejVars}
+ \end{figure}
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=180pt, angle=90]{distSeq-14sep10.pdf}
+    \includegraphics[width=180pt, angle=90]{Figures/distSeq.pdf}
+  \end{center}
+%  \caption[Conversion rejection variables before respective cuts]{Conversion rejection variables before respective cuts.}
+  \caption[Dist conversion rejection variables after previous cuts]{Dist conversion rejection variables after previous cuts.}
+  \label{fig:DistConvRejVars}
+ \end{figure}
+
+
+\subsubsection{Electron Identification}
+Several ``electron identification'' variables are used to differentiate genuine electrons 
+from other particles or conditions that may mimic electron behavior.  
+Since an electron is reconstructed from a supercluster matched to a track, it is desired that the match is a good one.
+The quality of matching can be estimated by looking at measures of the distance between the two components.
+The position in $ \eta $ and $ \phi $ of the supercluster is compared with 
+the $ \eta $ and $ \phi $ position of the track extrapolated back to the vertex, 
+with the differences being labeled \detain and \dphiin, respectively.  
+It is expected that a supercluster and track from the same electron will be close together, 
+so upper limits on these quantities are defined as in Table \ref{TableEidCuts}.  
+Distributions of electron \detain and \dphiin, plotted after the previous selection step (conversion rejection),
+are shown in the figure-subfigure.  
+
+An electron is also expected to deposit most of its energy in the electromagnetic portion of the calorimeter.  
+A large hadronic energy deposit is more likely to come from a jet, 
+so a limit on the ratio of the energy deposit in the electromagnetic calorimeter 
+to that in the hadronic calorimeter, $ H/E $, is applied (values given in the table).  
+In addition, the electron's energy deposit is expected to be narrow relative to that of a jet.
+A measure of the width in the $ \eta $ direction is therefore calculated 
+using the energies and positions of the individual ECAL crystals, \sieie,
+and this quantity is required to be below the thresholds listed in Table \ref{TableEidCuts}.  
+(The $ \phi $ direction is not examined because bremsstrahlung from the electron 
+can cause a significant spread of the energy in $ \phi $.)  
+
+%
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{WP80 electron identification cuts.}
+    \label{TableEidCuts}
+    \begin{tabular}[]{ | l | c | c | }
+      \hline
+      Cut variable & Barrel & Endcap  \\ \hline \hline
+      \sieie & 0.01 & 0.03  \\ \hline
+      \dphiin & 0.06 & 0.03  \\ \hline
+      \detain & 0.004 & 0.007 \\ \hline
+      $ H/E $ & 0.04 & 0.025  \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+%
+
+%Figures: Electron ID variables after previous cuts, Fig. \ref{fig:ElecIdVars}
+Figures: Electron ID variables after previous cuts, 
+%Fig. \ref{fig:dEtaInBarrelElecIdVars}
+%Fig. \ref{fig:dEtaInEndcapElecIdVars}
+Fig. \ref{fig:dEtaInElecIdVars}
+%Fig. \ref{fig:dPhiInBarrelElecIdVars}
+%Fig. \ref{fig:dPhiInEndcapElecIdVars}
+Fig. \ref{fig:dPhiInElecIdVars}
+%Fig. \ref{fig:hOeBarrelElecIdVars}
+%Fig. \ref{fig:hOeEndcapElecIdVars}
+Fig. \ref{fig:hOeElecIdVars}
+%Fig. \ref{fig:sieieBarrelElecIdVars}
+%Fig. \ref{fig:sieieEndcapElecIdVars}
+Fig. \ref{fig:sieieElecIdVars}
+
+ \begin{figure}[htb]
+   \centering
+%  \begin{center}
+   \subfloat[Barrel]{\label{fig:dEtaInBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dEtaInBarrelSeq.pdf}}
+%    \includegraphics[width=180pt, angle=90]{Figures/dEtaInBarrelSeq.pdf}
+%  \end{center}
+%  \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts for the barrel.}
+%  \label{fig:dEtaInBarrelElecIdVars}
+% \end{figure}
+
+% \begin{figure}[htb]
+%  \begin{center}
+   \subfloat[Endcap]{\label{fig:dEtaInEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dEtaInEndcapSeq.pdf}}
+%    \includegraphics[width=180pt, angle=90]{Figures/dEtaInEndcapSeq.pdf}
+%  \end{center}
+%  \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts for the endcap.}
+  \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts.}
+%  \label{fig:dEtaInEndcapElecIdVars}
+\label{fig:dEtaInElecIdVars}
+ \end{figure}
+
+
+
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[Barrel]{\label{fig:dPhiInBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dPhiInBarrelSeq.pdf}}
+%  \end{center}
+%  \caption[deltaPhiIn electron ID variables after previous cuts]{deltaPhiIn electron ID variables after previous cuts for the barrel.}
+%  \label{fig:dPhiInBarrelElecIdVars}
+% \end{figure}
+
+% \begin{figure}[htb]
+%  \begin{center}
+    \subfloat[Endcap]{\label{fig:dPhiInEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dPhiInEndcapSeq.pdf}}
+  \end{center}
+%  \caption[deltaPhiIn electron ID variables after previous cuts]{deltaPhiIn electron ID variables after previous cuts for the endcap.}
+  \caption[deltaPhiIn electron ID variables after previous cuts]{deltaPhiIn electron ID variables after previous cuts.}
+%  \label{fig:dPhiInEndcapElecIdVars}
+  \label{fig:dPhiInElecIdVars}
+ \end{figure}
+
+
+
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[Barrel]{\label{fig:hOeBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/hOeBarrelSeq.pdf}}
+%  \end{center}
+%  \caption[hOe electron ID variables after previous cuts]{hOe electron ID variables after previous cuts for the barrel.}
+%  \label{fig:hOeBarrelElecIdVars}
+% \end{figure}
+
+% \begin{figure}[htb]
+%  \begin{center}
+    \subfloat[Endcap]{\label{fig:hOeEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/hOeEndcapSeq.pdf}}
+  \end{center}
+  \caption[hOe electron ID variables after previous cuts]{hOe electron ID variables after previous cuts.}
+  \label{fig:hOeElecIdVars}
+ \end{figure}
+
+
+
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[Barrel]{\label{fig:sieieBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/sigIeIeBarrelSeq.pdf}}
+%  \end{center}
+%  \caption[sieie electron ID variables after previous cuts]{sieie electron ID variables after previous cuts for the barrel.}
+%  \label{fig:sieieBarrelElecIdVars}
+% \end{figure}
+
+% \begin{figure}[htb]
+%  \begin{center}
+    \subfloat[Endcap]{\label{fig:sieieEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/sigIeIeEndcapSeq.pdf}}
+  \end{center}
+  \caption[sieie electron ID variables after previous cuts]{sieie electron ID variables after previous cuts.}
+  \label{fig:sieieElecIdVars}
+ \end{figure}
+
+
+
+Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID, Fig. \ref{fig:RecoSpectraAfterEid}
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=180pt, angle=90]{CMS-BW.pdf}
+  \end{center}
+  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID]{Reconstructed electron/photon Pt, eta, phi spectra after ID.}
+  \label{fig:RecoSpectraAfterEid}
+ \end{figure}
+
+
+\subsubsection{Electron Isolation}
+
+It is expected that the products of a Z decay will not come out in the vicinity of many other particles, 
+since the Z decay products are not part of a jet.
+We want to select those real electrons that are most likely to be prompt decay products,
+not those that come from some interaction with lots of other end products.  
+Therefore we apply a set of cuts requiring little detector activity in the area immediately surrounding the reconstructed electron.  
+The so-called isolation cuts look at the energy deposits in the electromagnetic and hadronic calorimeters separately,
+as well as the total \pt of neighboring tracks, within specified \DR cones around the electron-associated deposit/track.  
+These energies are divided by the \pt of the electron itself to arrive at a relative value,
+which allows for higher-energy particles that may deposit more energy in the surrounding area.  
+The thresholds for each of the three types of isolation is set separately for barrel and endcap, 
+as given in Table \ref{TableEisoCuts}.  
+
+%Conditions to require that electrons found are isolated, i.e. not contained in a jet with other particles.  
+%We want (``prompt''?) electrons that come directly from the Z, 
+%not from some other interaction with lots of other end products packaged along with the electron.  
+
+%Table of iso values
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Thresholds for WP80 relative isolation.}
+    \label{TableEisoCuts}
+    \begin{tabular}[]{ | l | c | c | }
+      \hline
+      Cut variable & Barrel & Endcap  \\ \hline \hline
+      ECAL & 0.07 & 0.05  \\ \hline
+      HCAL & 0.10 & 0.025  \\ \hline
+      Track & 0.09 & 0.04 \\ %\hline
+%      $ H/E $ & 0.04 & 0.025  \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+Figures: Electron isolation variables before respective cuts, Fig. \ref{fig:ElecIsoVars}
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=80pt, angle=90]{CMS-BW.pdf}
+  \end{center}
+  \caption[Electron isolation variables before respective cuts]{Electron isolation variables before respective cuts.}
+  \label{fig:ElecIsoVars}
+ \end{figure}
+
+
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=80pt, angle=90]{CMS-BW.pdf}
+  \end{center}
+  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation]{Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation.}
+  \label{fig:RecoSpectraAfterEidEiso}
+ \end{figure}
+
+Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation, Fig. \ref{fig:RecoSpectraAfterEidEiso}
+
 
 \subsubsection{Matching Offline-Reconstructed Objects to Trigger Objects}
+In order to ensure that the offline-reconstructed objects being examined were also reconstructed by the trigger, 
+each offline object is compared with the list of trigger objects firing a given path.  
+If the offline object lies close enough to a trigger object (measured by \DR), 
+it is considered to have passed the trigger.  
+All electrons used in this analysis are required to be trigger-matched in this way.  
+%According to distribution of \DR between offline and trigger objects shown in Fig. \ref{fig:TriggerObjectSelectionDeltaR}, 
+%the threshold was chosen to be NUMBER.
+
 Figures: \DR for L1 and HLT trigger object matching, Fig. \ref{fig:TriggerObjectSelectionDeltaR}
 
  \begin{figure}[htb]
@@ -126,115 +427,12 @@ Figures: \DR for L1 and HLT trigger object matching, Fig. \ref{fig:TriggerObject
  \end{figure}
 
 
-\subsubsection{Conversion Rejection}
-The conversion rejection step of the electron selection aims to eliminate photons that have converted into electron pairs.  
-Several variables have been chosen to distinguish between conversions and prompt electrons, focusing on the track properties.  
-Since prompt electrons are expected to hit the first layer of the tracker, 
-any electron-associated track that is missing initial hits can be rejected as a conversion that occurred within the tracker.  
-The looser requirements of the 95 percent efficient working point allow an electron to have one missing hit;
-tighter working points require zero missing hits.  
-Fig. \ref{fig:MissHitsConvRejVars} shows the number of missing hits for each electron.  
-In addition, the conversion rejection algorithm searches for candidate electron-pair partner tracks, 
-i.e. track pairs that appear to come from the same point.  
-Every electron track is compared to all opposite-charge tracks within a dR cone of 0.3, and two values are calculated: 
-a measure of the difference in the angles in the r-z plane between the two tracks (dCotTheta, Fig. \ref{fig:DCotConvRejVars}), 
-and the distance of closest approach between the two tracks in the x-y plane (dist, Fig. \ref{fig:DistConvRejVars}).  
-Electron pairs from conversions are expected to have low values for both quantities, 
-since both electron tracks begin at the point of conversion and initially have the same direction as the converting photon.  
-The WP95 requirements apply a threshold at 0.02 for both quantities.  
-If an electron track corresponds to a track pair having values below that threshold for both variables, 
-it is assumed to be a conversion and is rejected.  
-
-%Figures: Conversion rejection variables before respective cuts, Fig. \ref{fig:ConvRejVars}
-
- \begin{figure}[htb]
-  \begin{center}
-%    \includegraphics[width=180pt, angle=90]{missHitsSeq-14sep10.pdf}
-    \includegraphics[width=180pt, angle=90]{missHitsSeq.pdf}
-  \end{center}
-  \caption[Missing hits conversion rejection variables after previous cuts]{Missing hits conversion rejection variables after previous cuts.}
-  \label{fig:MissHitsConvRejVars}
- \end{figure}
-
- \begin{figure}[htb]
-  \begin{center}
-%    \includegraphics[width=180pt, angle=90]{dCotThetaSeq-14sep10.pdf}
-    \includegraphics[width=180pt, angle=90]{dCotThetaSeq.pdf}
-  \end{center}
-  \caption[DCotTheta conversion rejection variables after previous cuts]{DCotTheta conversion rejection variables after previous cuts.}
-  \label{fig:DCotConvRejVars}
- \end{figure}
-
- \begin{figure}[htb]
-  \begin{center}
-%    \includegraphics[width=180pt, angle=90]{distSeq-14sep10.pdf}
-    \includegraphics[width=180pt, angle=90]{distSeq.pdf}
-  \end{center}
-%  \caption[Conversion rejection variables before respective cuts]{Conversion rejection variables before respective cuts.}
-  \caption[Dist conversion rejection variables after previous cuts]{Dist conversion rejection variables after previous cuts.}
-  \label{fig:DistConvRejVars}
- \end{figure}
-
-
-\subsubsection{Electron Identification}
-Several variables to differentiate genuine electrons from other particles that may mimic electron behavior.  
-
-Figures: Electron ID variables before respective cuts, Fig. \ref{fig:ElecIdVars}
-
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Electron ID variables before respective cuts]{Electron ID variables before respective cuts.}
-  \label{fig:ElecIdVars}
- \end{figure}
-
-
-
-Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID, Fig. \ref{fig:RecoSpectraAfterEid}
-
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID]{Reconstructed electron/photon Pt, eta, phi spectra after ID.}
-  \label{fig:RecoSpectraAfterEid}
- \end{figure}
-
-
-\subsubsection{Electron Isolation}
-Conditions to require that electrons found are isolation, i.e. not contained in a jet with other particles.  
-We want (``prompt''?) electrons that come directly from the Z, not from some other interaction with lots of other end products packaged along with the electron.  
-
-Figures: Electron isolation variables before respective cuts, Fig. \ref{fig:ElecIsoVars}
-
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Electron isolation variables before respective cuts]{Electron isolation variables before respective cuts.}
-  \label{fig:ElecIsoVars}
- \end{figure}
-
-
-
-Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation, Fig. \ref{fig:RecoSpectraAfterEidEiso}
-
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation]{Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation.}
-  \label{fig:RecoSpectraAfterEidEiso}
- \end{figure}
-
-
 \subsubsection{Electron Selection Performance} %wesley comment
 Figures: Reco PT resolution plots using MC reference for Z MC, Fig. \ref{fig:RecoPtResolution}
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
+    \includegraphics[width=80pt, angle=90]{CMS-BW.pdf}
   \end{center}
   \caption[Reco PT resolution plots using MC reference for Z MC]{Reco PT resolution plots using MC reference for Z MC.}
   \label{fig:RecoPtResolution}
@@ -256,9 +454,31 @@ this is the tag.
 The criteria applied to the other electron are looser: it is not required to pass the selection cuts being tested.  
 This is the probe electron.  
 The event's status as a Z candidate is determined by enforcing a mass window cut on the invariant mass of the tag-probe system 
-(this is sufficient(enough?) to select events in which both legs are real electrons -- REFERENCE??).  
-The selection efficiency is then given by the fraction of probe electrons that pass the requirement being tested.  
+(this is sufficient(enough?) to select a high-purity sample of events in which both legs are real electrons -- REFERENCE??).  
+The naive selection efficiency is then given by the fraction of probe electrons that pass the requirement being tested.  
+
+However, a more sophisticated analysis of the efficiency can be performed by fitting the invariant mass spectra of the
+tag-probe pairs for both passing and failing probes to a lineshape representing both the signal and the background.  
+Then the distribution of passing probes can be represented as the signal lineshape multiplied by the efficiency and the
+total number of signal events added to the background lineshape multiplied by the number of passing background events.  
+The failing probe distribution can be represented in the analogous way, using (1-efficiency) instead.  
+From this pair of fits the total number of events as well as the efficiency can be extracted simultaneously.  
 
 Figures: Efficiency table and supporting plots
 
 \subsubsection{Distribution of Z Kinematic Variables}
+
+Fig. \ref{fig:Zquantities} shows the distributions of the kinematic variables for the reconstructed Z candidates 
+in the data compared with those expected from Monte Carlo simulation.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=360pt, angle=90]{Figures/Zquantities-21sep10.pdf}
+  \end{center}
+  \caption[Kinematic quantities of Z candidates after full selection]{Kinematic quantities of Z candidates after full selection.}
+  \label{fig:Zquantities}
+ \end{figure}
+
+
+
+\clearpage
