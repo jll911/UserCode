@@ -1,13 +1,370 @@
 \chapter{Event Reconstruction}
+a little on daq, event building here
+
+Only dealing with parts of event relevant to \Zee analysis.  
+
+%\section{Beam Spot Reconstruction?} %need this?
+%maybe include just to talk about primary vertex correction
+
+\section{Beam Spot Reconstruction}
+
+\section{(Primary) Vertex Reconstruction} % ? probably
+possibly cms note 2006/026 (reference in kf paper)
+
 \section{Detector Object Reconstruction}
+This is for the basic objects only. 
+BUT, basic object reconstruction is so integrated with 
+physics object reconstruction, maybe combine them?
+
 \subsection{Calorimeter Clustering}
-\subsection{Pixel Hits}
+reconstruction of position of energy deposits, 
+rechits and that stuff: digitization, calibration?
+
+
+
+ALSOOOOO need to talk about spikes and spike removal
+(since that's now automatic, but also wasn't previously. 
+then talk about in event selection, because that was 
+a criterion...? no, because it's not a criterion for 
+e.g. newest datasets)
+
+%\subsection{Pixel Hits} % need?
+
 \subsection{Track Reconstruction}
+A track is a sequence of hits in the tracker, 
+reconstructed to trace the trajectory of a passing 
+particle.  
+The Kalman Filter algorithm used by default for CMS tracks, 
+but not good at catching abrupt changes in 
+electron trajectory due to bremsstrahlung.  
+Therefore, GSF algorithm used for electrons -- 
+able to find those hits in unexpected directions.  
+
+\subsubsection{Kalman Filter}
+% CMS Note 2006/041
+% CMS Note 2006/026 for seeding
+The Kalman Filter (KF) tracking method is seeded 
+by pairs of hits in the pixel detector.  
+The seeding algorithm first searches for a hit 
+in one of the outer layers of the pixel detector.  
+If a hit is found, another hit is sought in a 
+layer closer to the interaction point, 
+looking in an $\eta$-$\phi$ window around 
+the original hit.  
+Only two out of the three pixel layers are 
+required to have hits 
+in order to maintain a high efficiency.  
+Once a track seed is found, 
+further hits are sought in each successive tracking layer. 
+The Kalman filter method is used to predict possible 
+locations for hits in the next layer based on 
+the currently-known track parameters.% and their 
+%uncertainties.  
+Hits in that area are then sought and included 
+in the track, combining each hit with the 
+predicted location for that layer and weighting 
+each value depending on the value's uncertainty.  
+If there are multiple candidate hits in the next layer, 
+a possible trajectory is calculated for each hit, 
+along with a trajectory accounting for the case 
+in which the hit in that layer was lost.  
+This procedure is repeated for each layer: 
+each of the calculated trajectories for a given layer 
+is matched to hits in the next layer, 
+for which new trajectories are calculated.  
+To prevent the number of necessary calculations 
+from growing too large, 
+the number of possible trajectories at each step 
+is capped at five.  
+%(BUT HOW DETERMINED WHICH ONES???)
+%at each layer
+In the case of multiple possible trajectories 
+for a given fully-reconstructed track, 
+defined by two trajectories sharing more than 
+half of each of their hits,
+the track candidate with fewer hits 
+(or, in the case of the same number of hits, 
+the track with the worse fit)
+is discarded.  
+
+\subsubsection{Gaussian Sum Filter}
+% CMS Note 2005/001
+
+The Kalman Filter track-fitting does not accurately 
+account for the behavior of particles in a material, 
+specifically energy lost in the material 
+and changes in direction due to radiation.  
+The KF description is in particular inadequate 
+for electrons, which 
+readily interact with matter in these ways.  
+%are prone to these interactions with matter.  
+The Gaussian Sum Filter (GSF) algorithm was 
+therefore developed:
+essentially a Kalman Filter 
+with a more sophisticated energy loss modeling.   
+Instead of approximating the energy loss 
+(which is non-Gaussian)
+with a Gaussian distribution, 
+which KF implicitly does, 
+the GSF method models it as a 
+weighted sum of Gaussian distributions.  
+This greatly improves the performance 
+of the track-fitting for electrons.  
+%PICTURE? trk-gsf-QoverP.png shows charge-to-momentum
+% ratio for KF and GSF -- but figure out 
+% WHAT Q/P ACTUALLY TELLS YOU
+
 \section{Electron Reconstruction}
-\subsection{ECAL-driven Electron Reconstruction}
+% https://twiki.cern.ch/twiki/bin/view/CMS/ElectronRecoPrinciples
+% https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideEcalRecoClustering
+%here's where we start talking about electrons
+%CMS Note 2006/040
+As an electron 
+%from an interaction 
+passes through the CMS detector, 
+it leaves a signature pattern in the subdetectors.  
+Characteristically, electrons produce a track 
+in the tracker system, 
+as well as an energy deposit in the 
+electromagnetic calorimeter.  
+Therefore an electron is reconstructed 
+by matching tracks and energy clusters 
+that appear to have been made by the same particle.  
+There are currently two approaches used to 
+initiate electron reconstruction: 
+the ``ECAL-driven'' method and 
+the ``tracker-driven'' method, 
+named according to which subdetector's 
+information initiates the reconstruction.  
+%one starts with ECAL information 
+%while the other begins with information from 
+%the tracker.  
+Each method produces a collection of 
+basic electron candidate objects, 
+each consisting of a calorimeter cluster 
+and hits in the first few layers of the tracker.  
+These collections are then combined into one 
+and used as seeds to reconstruct the electron tracks, 
+producing fully-reconstructed electrons.  
+%how many electrons are one vs other vs both?
+
+\subsection{ECAL-driven Electron Seeding}
+
+The ECAL-driven electron reconstruction method 
+starts with an energy deposit in the ECAL 
+and searches for a matching track.  
+
+
 \subsubsection{Superclusters}
-\subsubsection{Pixel- and Track-matching}
-\subsection{Tracker-driven Electron Reconstruction}
+%Hybrid and multi5x5 (hybrid doesn't start with basic clusters, 
+%so probably combine detector object and physics object sections)
+
+The calorimeter energy deposit used in the electron 
+reconstruction is called a supercluster: 
+a cluster of clusters.  
+A single electron or photon deposits most of its energy 
+in a 5x5 square of ECAL crystals.  
+However, an electron passing through the tracker material 
+in a strong magnetic field produces 
+bremsstrahlung and electrons from converted photons, 
+causing the original electron's energy to 
+have spread out in $\phi$ once it reaches the calorimeter.  
+The process of creating a supercluster gathers these 
+energy deposits to form the initial energy of the electron.  
+
+% need pretty picture!
+
+The electron reconstruction currently uses two different 
+superclustering methods, 
+the ``hybrid'' supercluster method in the barrel, 
+and the ``multi5x5'' clustering method in the endcap.  
+The hybrid algorithm forms superclusters 
+and basic clusters from the same energy deposit 
+information, 
+while the multi5x5 algorithm first forms 
+a single collection of basic clusters, 
+which are then separately combined into superclusters.  
+
+%Hybrid
+%``hybridSuperClusters''
+%hybrid: (dynamic phi road turned OFF)
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterProducers/python/hybridSuperClusters_cfi.py?revision=1.10&view=markup
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterProducers/src/HybridClusterProducer.cc?revision=1.32&view=markup
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterAlgos/src/HybridClusterAlgo.cc?revision=1.61&view=markup
+
+
+The hybrid algorithm starts with a list of all 
+ECAL crystals with an energy greater than a threshold; 
+these crystals are considered seeds.  
+Beginning with the highest seed crystal, 
+the area around each seed is searched for 
+energy deposits in steps of one crystal in $\phi$.
+For each $\phi$ step, a ``domino'' of crystals is 
+formed in $\eta$: 
+one crystal to each side of the central crystal, 
+or, if the energy sum of those three crystals is 
+greater than a threshold, 
+two crystals to each side of the central crystal, 
+for a total of five crystals per domino.  
+The process is done for a given number of $\phi$ 
+steps in both the positive and negative directions 
+(currently 17 steps).  
+As other seeds are encountered in this process, 
+they are removed from the list of available seeds.  
+Each domino with a higher energy than its two neighbors 
+is considered as the seed for a basic cluster, 
+and the collection of dominos formed by the search 
+process is the basis for the supercluster.  
+The basic clusters are formed by summing the 
+energy of each local-maximum domino with 
+those of its neighboring lower-energy dominos, 
+excluding dominos that have already been used.  
+The supercluster is then formed by summing the energies 
+of the constituent basic clusters, 
+with its seed considered to be the highest-energy 
+basic cluster 
+and its position given by the energy-weighted positions 
+of the constituent clusters.  
+%PICTURE
+
+%Multi5x5:
+%``multi5x5SuperClustersWithPreshower''
+
+%https://twiki.cern.ch/twiki/bin/view/CMS/ECALDPGClusterization  also talks about supercluster energy corrections
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterProducers/python/multi5x5SuperClusters_cfi.py?revision=1.2&view=markup
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterProducers/src/Multi5x5ClusterProducer.cc?revision=1.5&view=markup
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterAlgos/src/Multi5x5ClusterAlgo.cc?revision=1.9&view=markup
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterProducers/src/Multi5x5SuperClusterProducer.cc?revision=1.2&view=markup
+%http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterAlgos/src/Multi5x5BremRecoveryClusterAlgo.cc?revision=1.8&view=markup SCORE
+
+The multi5x5 algorithm first creates a collection 
+of basic clusters from seeds, 
+which are ECAL crystals with an energy higher than 
+a given threshold.  
+If a seed represents a local maximum, 
+then its energy deposit is combined with those 
+from the crystals in the surrounding 5x5 square 
+to form a basic cluster, 
+ignoring any crystals that have already been 
+used to form the central 3x3 part of another cluster.  
+The basic clusters are then used as seeds for the 
+superclustering algorithm.  
+For each seed cluster with energy higher than a threshold, 
+the energies of any other clusters within an $\eta$-$\phi$ 
+window of the seed (longer in $\phi$ than in $\eta$)
+are combined with its own energy to create the supercluster, 
+leaving out clusters that have already been used to 
+form another supercluster. 
+The position of the supercluster is given by the 
+energy-weighted position of the individual clusters.  
+
+%also preshower cluster info in endcap... how?
+%what kind of energy corrections done? 
+%or is that for energy scale section?
+%at least SC corrections are in dpg clusterization twiki
+
+\subsubsection{Pixel Hit-matching}
+
+To reconstruct the full electron, 
+the supercluster must be matched with a track.  
+% where exactly to split ecal-driven and tracker-driven?
+This is done by extrapolating the probable position of 
+tracker hits from the supercluster's position.%, 
+%given the supercluster energy.  
+Given the supercluster energy and the fact that a 
+non-radiating electron would have hit the calorimeter 
+at the energy-weighted center of the supercluster's 
+energy spread, 
+the electron's initial (pre-radiation) trajectory 
+through the tracker can be calculated.  
+The reconstruction algorithm then looks for a matching 
+hit in the first pixel detector layer 
+within a $\phi$-$z$ window of this position.  
+If a hit is found, another hit is sought in the second 
+pixel layer within a different $\phi$-$z$ window.  
+%This set of pixel hits is the seed(??)
+%PICTURE
+
+\subsection{Tracker-driven Electron Seeding}
+% AN 2008/032 michele pioppi
+In the tracker-driven electron seeding method, 
+electron-finding is seeded by tracks, 
+which are followed out to the 
+ECAL to search for calorimeter clusters 
+associated with each track.  
+This method was developed to better deal with 
+low-\pT electrons, for which the energy deposits 
+from bremsstrahlung may be too widely separated 
+to be matched,  
+and non-isolated electrons within jets, 
+whose energy deposits are not necessarily 
+distinguishable from those of surrounding hadrons.  
+For these electrons the calorimeter cluster-based 
+seeding does not perform as well as for 
+isolated, high-\pT electrons.  
+
+The tracker-driven electron seeding method 
+takes as input the default collection 
+of tracks, obtained by an iterative usage 
+of the KF algorithm.  
+The method first tries to follow each track 
+all the way to the calorimeter and search 
+for nearby energy clusters.  
+All clusters with an acceptable E/p ratio 
+with respect to the track are tested, 
+and the cluster closest in $\eta$-$\phi$ 
+space to the track is the one chosen. 
+ 
+Out of the tracks that were not 
+well associated to any energy cluster, 
+a preselection is applied to select 
+those tracks that may have resulted from 
+radiating electrons, 
+which would not have been found 
+by the cluster-matching method.  
+If the track was not matched because it had 
+too few tracker hits and could not be traced 
+to the calorimeter, 
+or if the KF algorithm did not fit the 
+track well enough because of possible 
+bremsstrahlung, the tracks are passed 
+on to the next step of the selection.  
+A reduced GSF track-fitting algorithm 
+is then run on these tracks, 
+in an attempt to recover the 
+bremsstrahlung-induced changes in track direction. 
+This reduced version of the GSF algorithm runs 
+must faster than that with the default parameters, 
+but the performance is slightly reduced.  
+Finally, a multi-variate analysis using 
+boosted decision trees 
+is performed on these candidates.  
+The MVA is trained on a sample of electrons from 
+bbbar events, which are primarily non-isolated, 
+and a sample of \Zee events, 
+which provides high-\pT electrons.  
+%List of MVA variables?: ...
+The output of the MVA is a number indicating 
+the likelihood of the object being an electron.   
+Those whose MVA output is greater than a threshold 
+are considered electron candidates. 
+These candidates are then combined with those 
+previously identified from the cluster-matching 
+to produce the final collection of 
+tracker-driven electron seeds.  
+
+\subsection{Electron Track Reconstruction}
+
+The full collection of electron seeds, 
+both ECAL- and tracker-driven, 
+are used as the basis for reconstructing 
+the electron track and hence 
+completing the electron reconstruction.  
+
+GSF vs default KF
+
+%\subsection{Z Reconstruction}
+
 \subsection{Electron Energy Scale and Resolution}
 
 \clearpage
