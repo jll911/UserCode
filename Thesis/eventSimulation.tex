@@ -1,7 +1,26 @@
 \chapter{Event Simulation}
+somewhere have the pretty picture from 
+matt mc tutorial on how generators/geant/etc 
+fit in with everything else (reco, whatever)
+
+points of event simulation: 
+compare with data (desciption of current understanding as is) 
+design detectors
 
 \section{Monte Carlo Event Generation}
+put why called ``monte carlo''
+multiple types: shower vs matrix element?
 \subsection{some explanation of the black box}
+modular structure here?  that pretty picture showing all the 
+different steps to an interaction that need to be 
+simulated. 
+all those steps can be done by separate packages, 
+which is the philosophy.  (pythia manual)
+pdfs ->
+hard scatter (underlying event, multiple interactions in parallel) ->
+[parton] shower (both isr and fsr, incl QED) ->
+hadronization (not directly applicable to my process, but applicable for bg's) -> 
+decay resonances -> interactions with detector material ...
 \subsection{Monte Carlo Generators}
 \subsubsection{PYTHIA}
 \subsubsection{POWHEG}

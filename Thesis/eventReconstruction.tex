@@ -1,32 +1,88 @@
 \chapter{Event Reconstruction}
-a little on daq, event building here
+%a little on daq, event building here?
 
-Only dealing with parts of event relevant to \Zee analysis.  
+%Only dealing with parts of event relevant to \Zee analysis.  
 
-%\section{Beam Spot Reconstruction?} %need this?
-%maybe include just to talk about primary vertex correction
-
-\section{Beam Spot Reconstruction}
-
-\section{(Primary) Vertex Reconstruction} % ? probably
-possibly cms note 2006/026 (reference in kf paper)
+The information from the detector for any given event 
+gets read out over millions of channels 
+from the many different subdetectors.  
+These signals must be combined to provide 
+meaningful physics information 
+%that can be analyzed
+about the interaction that took place 
+within the detector, 
+namely the measurable quantities 
+(like direction and energy) 
+of the outgoing decay products.  
 
 \section{Detector Object Reconstruction}
-This is for the basic objects only. 
-BUT, basic object reconstruction is so integrated with 
-physics object reconstruction, maybe combine them?
+%This is for the basic objects only. 
+%BUT, basic object reconstruction is so integrated with 
+%physics object reconstruction, maybe combine them?
 
-\subsection{Calorimeter Clustering}
-reconstruction of position of energy deposits, 
-rechits and that stuff: digitization, calibration?
+The first step of the particle reconstruction 
+involves translating the information from each 
+detector channel, 
+such as position and electronics signal, 
+into useful quantities such as position in 
+$\eta$-$\phi$ space and energy or momentum.  
+This is done by algorithms 
+mapping each individual 
+detector cell to its $\eta$-$\phi$ placement 
+and calculating its energy, 
+which necessarily takes into account 
+the position of each cell.  
+The second step involves 
+connecting information from different channels 
+to build up a more complex picture of 
+the particles that passed through the detector.  
 
+\subsection{Electromagnetic Calorimeter Reconstruction}
+%\subsection{Electromagnetic Calorimeter Clustering}
+%reconstruction of position of energy deposits, 
+%rechits and that stuff: digitization, calibration?
+% where to go for this stuff?? well, reco principles or
+% ecal local reco to start...
 
+The information coming directly from the ECAL 
+is read out in terms of each cell's electronics response.  
+The ECAL reconstruction algorithms translate this into 
+an energy value, which is then calibrated 
+according to the the cell energy as well as its 
+$\eta$-position.  
+The algorithms also calculate quantities 
+relevant to the quality of the deposit, 
+in particular whether or not the deposit happened 
+at a time consistent with the LHC 
+bunch collisions, i.e. if it was ``out of time''.  
+This information is especially useful in 
+identifying apparent energy deposits that have 
+been found to come from the electronics themselves; 
+these fake deposits were discovered during 
+commissioning and are known as ``ECAL spikes''.  
+Since the spikes can imitate energy deposits from 
+actual decay products, 
+they must be removed from the information used 
+to reconstruct electrons and other particles.  
+They can be distinguished from real particle deposits 
+due to their timing 
+as well as the fact that the surrounding crystals 
+have no trace of a deposit.  
+Therefore, if a high-energy deposit has no or 
+very little energy in its neighboring crystals, 
+or if its timing is not consistent with a bunch 
+crossing, 
+it is considered a spike and taken out of the 
+reconstruction.  
 
-ALSOOOOO need to talk about spikes and spike removal
-(since that's now automatic, but also wasn't previously. 
-then talk about in event selection, because that was 
-a criterion...? no, because it's not a criterion for 
-e.g. newest datasets)
+%\subsubsection{ECAL Spike Removal}
+%ALSOOOOO need to talk about spikes and spike removal
+%(since that's now automatic, but also wasn't previously. 
+%then talk about in event selection, because that was 
+%a criterion...? no, because it's not a criterion for 
+%e.g. newest datasets)
+% HAVEN'T FOUND REFERENCE FOR WHAT'S INCLUDED IN RECO
+% except for, like, swiss cross and out of time, is that enough?
 
 %\subsection{Pixel Hits} % need?
 
@@ -151,9 +207,11 @@ producing fully-reconstructed electrons.
 \subsection{ECAL-driven Electron Seeding}
 
 The ECAL-driven electron reconstruction method 
-starts with an energy deposit in the ECAL 
-and searches for a matching track.  
-
+starts with an energy deposit (or ``supercluster'') 
+in the ECAL 
+and searches for hits in the 
+pixel system that matches the 
+position of the calorimeter deposit.  
 
 \subsubsection{Superclusters}
 %Hybrid and multi5x5 (hybrid doesn't start with basic clusters, 
@@ -163,7 +221,8 @@ The calorimeter energy deposit used in the electron
 reconstruction is called a supercluster: 
 a cluster of clusters.  
 A single electron or photon deposits most of its energy 
-in a 5x5 square of ECAL crystals.  
+in a 5x5 square of ECAL crystals, 
+as shown in Fig. \ref{fig:BasicCluster}.  
 However, an electron passing through the tracker material 
 in a strong magnetic field produces 
 bremsstrahlung and electrons from converted photons, 
@@ -171,6 +230,15 @@ causing the original electron's energy to
 have spread out in $\phi$ once it reaches the calorimeter.  
 The process of creating a supercluster gathers these 
 energy deposits to form the initial energy of the electron.  
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/elec-BasicCluster-opaque.png}
+    \includegraphics{Figures/elec-BasicCluster-opaque.png}
+  \end{center}
+  \caption[Typical energy distribution in a basic cluster]{Typical energy distribution in a basic cluster.}
+  \label{fig:BasicCluster}
+ \end{figure}
 
 % need pretty picture!
 
@@ -269,21 +337,36 @@ To reconstruct the full electron,
 the supercluster must be matched with a track.  
 % where exactly to split ecal-driven and tracker-driven?
 This is done by extrapolating the probable position of 
-tracker hits from the supercluster's position.%, 
+tracker hits from the supercluster's position, 
 %given the supercluster energy.  
+as illustrated in Fig. \ref{fig:PixMatch}.  
 Given the supercluster energy and the fact that a 
 non-radiating electron would have hit the calorimeter 
 at the energy-weighted center of the supercluster's 
 energy spread, 
 the electron's initial (pre-radiation) trajectory 
-through the tracker can be calculated.  
+through the tracker can be calculated 
+for both the positive and negative electron 
+charge cases.  
 The reconstruction algorithm then looks for a matching 
 hit in the first pixel detector layer 
-within a $\phi$-$z$ window of this position.  
+within a $\phi$-$z$ window of this position 
+for each charge case.  
 If a hit is found, another hit is sought in the second 
-pixel layer within a different $\phi$-$z$ window.  
+pixel layer within a different $\phi$-$z$ window 
+of the hit in the first layer.  
 %This set of pixel hits is the seed(??)
-%PICTURE
+
+%PICTURE from my old talk or something!  
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/elec-pixmatch.png}
+    \includegraphics{Figures/elec-pixmatch.png}
+  \end{center}
+  \caption[Schematic of pixel-hit search algorithm in electron-seeding]{Schematic of pixel-hit search algorithm in electron-seeding. For both the positive and negative electron charge cases, a possible trajectory is extrapolated back from the calorimeter deposit given the deposit's energy. A hit is sought along either trajectory in either the inner or middle pixel layer within a window ($\Delta\phi_1$). If a hit is found, a second hit is sought along that trajectory in the next pixel layer(s) ($\Delta\phi_2$).}
+  \label{fig:PixMatch}
+ \end{figure}
 
 \subsection{Tracker-driven Electron Seeding}
 % AN 2008/032 michele pioppi
@@ -360,11 +443,129 @@ both ECAL- and tracker-driven,
 are used as the basis for reconstructing 
 the electron track and hence 
 completing the electron reconstruction.  
+As mentioned previously, 
+the electron reconstruction uses the 
+GSF algorithm to reconstruct tracks.  
+The electron kinematics are 
+assigned to be a weighted combination 
+of those of the constituent supercluster 
+and track, 
+and the final electron collection 
+is saved for further analysis.  
 
-GSF vs default KF
+%%%%%%%\subsection{Z Reconstruction}
 
-%\subsection{Z Reconstruction}
+%\subsection{Electron Energy Scale and Resolution} %???
 
-\subsection{Electron Energy Scale and Resolution}
+%\subsection{Electron Isolation Variables} %???? here, or in electron selection????
+%\subsection{Electron Identification Variables} %???? again, here????
+
+\section{Beam Spot Reconstruction}
+%maybe include just to talk about primary vertex correction
+% https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFindingBeamSpot
+% cms note 2007/021
+The region where the beams overlap and protons may interact, 
+the ``luminous region'', is called the beam spot.  
+The beam spot location can be used as an estimate 
+for the initial position of tracks measured in the detector, 
+and is therefore useful in track-seeding.  
+Its position %and width %how? necessary?
+%in all three dimensions %how is it done for z?
+can be determined from measurements of tracks in the 
+general track collection.  
+%This is done by applying a fit to the distance of 
+%the tracks' closest approach to the nominal beam spot (0,0,0), 
+%plotted as a function
+This is done by making a distribution of each track's distance of 
+closest approach to the nominal beam spot (0,0,0) 
+as a function of the track's $\phi$ angle at its 
+closest approach.  
+If the beam spot is far from (0,0,0), 
+the distribution looks sinusoidal.  
+This distribution is then fit with a sine curve 
+parametrized in the beam spot's actual 
+$x$- and $y$-positions, 
+and these values are extracted.  
+
+\section{Primary Vertex Reconstruction} % ? probably
+% few twikis with some info (most don't have much):
+% https://twiki.cern.ch/twiki/bin/view/MCSPublic/WorkBookVertexReco
+% https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideVertexReco
+% https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookOfflinePrimaryVertexFinding
+% http://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideOfflinePrimaryVertexProduction has like the most info
+% possibly cms note 2006/026 section 7 (reference in kf paper) using pixels for pv reco
+% also cms note 2006/029, section 3.1 - vertex finding
+
+Since protons may collide anywhere within the region of 
+beam overlap, 
+the main interaction in a given event may not necessarily 
+happen at the exact center of the detector.  
+In particular, there may be a significant displacement 
+in the $z$-direction.  
+Determining the location of the main interaction, 
+also called the primary vertex, 
+is an integral part of reconstructing the event.  
+For example, an electron may leave a deposit in 
+a given calorimeter cell that has a fixed $\eta$ position 
+relative to the nominal interaction point, 
+the very center of the detector (0,0,0).  
+However, if the interaction producing the electron 
+actually takes place at a different point, 
+the electron's actual $\eta$ position will be 
+different relative to the interaction.  
+Therefore the position of the primary vertex 
+should be taken into account when calculating $\eta$.  
+
+% GENERAL PROCESS FOR VERTICES, BUT PV SIMPLE CASE!(?)
+%The process of reconstructing the primary vertex consists 
+%of two steps: vertex-finding and vertex-fitting.  
+%In the first step primary vertex candidates 
+%are created from the tracks in the event, 
+%matching each track to the interaction 
+%that likely produced it.  
+%In the second, 
+%the resulting vertices are fit and examined 
+%to determine various parameters, 
+%like the goodness of the fit to the vertex.  
+%BLAH, fix if actually need
+%ACTUALLY, PV reco does some fitting anyhow, 
+%looks like it's already in ``pv-finding'' algo
+%as described in that cms note
+
+The process of the reconstructing the primary vertex 
+involves creating primary vertex candidates
+from the tracks in the event,
+matching each track to the interaction
+that likely produced it.
+This is done by grouping the tracks according 
+to their $z$-position at the point at which they pass 
+most closely to the beam spot.  
+The tracks are required to pass relatively close 
+to the beamline, 
+and they are also required to have a \pt greater 
+than some threshold (with a default of 1.5 GeV).  
+Tracks within a small distance (default 1 mm) of each other 
+at the beam spot are considered to have come from 
+the same vertex, 
+and the primary vertex candidates are formed from these 
+groups of tracks.  
+At this point a fit is applied to each primary vertex candidate, 
+and tracks found to be incompatible with the candidate are discarded 
+until all tracks meet a given compatibility level.  
+Finally, vertices that are incompatible with the position 
+of the beam spot are discarded.  
+(A second algorithm uses the beam spot as constraint on the 
+position of the vertex fit itself, 
+but this algorithm was not fully commissioned at the time 
+of this study.)  
+If no reconstructed primary vertex candidates are found in 
+an event, 
+a ``fake'' primary vertex is added at the position 
+of the beam spot.  
+Since more than one interaction per event is possible 
+but generally only one is of interest (the ``primary'' interaction), 
+multiple candidates are ordered according to transverse energy of 
+their constituent tracks, 
+and the highest of these is taken to be the primary vertex.  
 
 \clearpage

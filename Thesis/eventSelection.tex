@@ -1,10 +1,40 @@
 \chapter{Event Selection}
+Most analyses, including this one, are only interested in particle 
+interactions that happen relatively rarely during proton collisions.  
+Therefore, methods have been developed to sort through all the 
+events and select the interesting ones for further study.  
+This selection takes place both ``online'', in real time as the 
+detector is running, and ``offline'', after the selected data has 
+been stored.  
+%The selection done online is primarily for the purpose of reducing 
+%the volume of data enough to store it
+The online selection serves primarily for reducing the 
+volume of data enough to feasibly store it, and so it is done centrally. 
+In addition, the online selection is fairly general, 
+while the offline selection is much more detailed and specific to individual 
+analyses, and hence it is mostly done by the user of the data.  
+
+
 \section{Online}
+The online selection consists mainly of the trigger system, 
+described in technical detail in a previous chapter.  
+%The implementation of the trigger's analysis-oriented f;adsjkl
+%is discussed in the following sections, 
+%especially the aspects relevant to this analysis.  
+The implementation of the trigger system's algorithms 
+that are relevant to this analysis 
+is discussed in the following sections, 
+including both the Level-1 and the High-Level Triggers.  
+In addition, as a last step, the information 
+from the High-Level Trigger is used to 
+group the data into primary datasets
+which are used as the basis for the offline selections.  
+
 \subsection{Trigger Eras}
 %\subsection{Electron Trigger}
 %\subsubsection{Electron Algorithms}
 %\subsubsection{Trigger Performance}
-Since the LHC began taking data the event rate has changed by orders of magnitude,  
+Since the LHC began taking data the event rate has changed by several orders of magnitude,  
 %In order to keep up with the changing rate, 
 and the trigger menus have evolved accordingly to deal with the changes.  
 Initially, the collision rate was so low that minimum bias triggers ran unprescaled.  
@@ -18,15 +48,61 @@ These criteria are looser than those applied in the course of analysis and so ar
 to seriously affect the trigger efficiency.  
 
 
-%% TALK ABOUT SOMEWHERE PREVIOUSLY: TRIGGER MENUS + PRESCALES, MINIMUM BIAS
+%% TALK ABOUT SOMEWHERE PREVIOUSLY: <strike>TRIGGER MENUS + PRESCALES,</strike> *MINIMUM BIAS*
 
 \subsection{Level-1 Trigger}
 %\subsubsection{Description of Algorithm}
-%Description of algorithm, along with diagrams.  
+%Description of egamma algorithm, along with diagrams.  
 %The electron-reconstruction algorithm for the Level-1 trigger is implemented in the Regional Calorimeter Trigger (see detector section).
+Reconstructing and triggering on an electron with the Level-1 Trigger 
+involves information from the calorimeters, 
+Regional Calorimeter Trigger, Global Calorimeter Trigger, and 
+Global Trigger.  
+Electrons and photons are indistinguishable in the L1 and are therefore 
+treated the same, as ``e/$\gamma$'' objects.  
+
+The ECAL trigger primitive generation system (TPG) combines the energy deposits 
+from a 5x5 square of ECAL crystals into a single energy value corresponding to 
+one trigger tower.% and sends it, 
+%compressed, to the RCT.  
+In addition, for each tower the ECAL TPG calculates a ``fine grain veto'' bit: 
+if most of the tower's energy is deposited in a 2x5 strip of crystals, 
+then the energy pattern is considered inconsistent with that of an electron
+or photon, 
+and the veto bit is set.  
+% HOW EXACTLY IS SPIKE-KILLING DONE -- FG or zeroed?
+Similarly, the HCAL also combines energy deposits into trigger towers; 
+however, the HCAL fine grain structure bit is not used in electron-finding.  
+The information from the ECAL and HCAL is compressed and sent to the 
+Regional Calorimeter Trigger.  
+The RCT does the main job of electron finding using several algorithms.  
+The decompressed ECAL energy of each trigger tower is examined and 
+compared to that of its four adjacent neighbors.  
+If the energy of the tower is greater than that of its neighbors, 
+it is considered an e/$\gamma$ candidate.  
+The candidate energy is set to the energy of the tower in question 
+plus that of its highest-energy neighbor.  
+However, if the tower's fine grain bit is set, 
+or if the ratio of the tower's HCAL energy to ECAL energy is too high, 
+it is vetoed as a candidate.  
+A candidate is additionally considered ``isolated'' if, 
+out of the eight towers directly surrounding it, 
+there are five contiguous towers forming an L-shape whose 
+energies are low and who pass the fine grain and HCAL/ECAL ratio veto.  
+Otherwise, the candidate is ``non-isolated''.  
+The RCT sends the collections of isolated and non-isolated candidates to the 
+Global Calorimeter Trigger, 
+which sends the highest-energy ones to the final step, the Global Trigger.  
+The Global Trigger then applies the criteria determining whether or not 
+this event passes the current set of trigger paths,
+for example, ``two e/$\gamma$ objects with energy above 10 GeV'' 
+or ``one e/$\gamma$ object with energy above 17 GeV''.  
+
 
 \subsubsection{Performance}
-Distributions, resolutions, efficiencies of Level-1 electron/photon objects.  
+This is where I want to put distributions, resolutions, efficiencies of Level-1 electron/photon objects, 
+when/if I make/get them.  Made some with old code a long time ago, but those are outdated.  
+Redo my own?
 
 Figures: Trigger Electron/Photon Pt, eta, phi spectra for L1, Fig. \ref{fig:L1TriggerObjectSpectra}
 
@@ -71,10 +147,14 @@ Figures: L1 trigger electron/photon efficiency turn on using offline reconstruct
 
 
 \subsection{High-Level Trigger}
-\subsubsection{Description of Algorithms}
+
+
+%\subsubsection{Description of Algorithms}
 Description of algorithms.
+
 \subsubsection{Performance}
 Distributions, resolutions, efficiencies of HLT electron/photon objects.
+
 
 Figures: Trigger Electron/Photon Pt, eta, phi spectra for HLT, Fig. \ref{fig:HLTriggerObjectSpectra}
 
@@ -118,10 +198,44 @@ Figures: HLT trigger electron/photon efficiency turn on using offline reconstruc
  \end{figure}
 
 
+\subsection{Primary Datasets}
+The final step done centrally is the grouping of events passing similar 
+HLT bits into primary datasets for storage.  
+For example, in early running, all events passing a minimum-bias trigger 
+were put into the MinimumBias dataset.  
+Once the event rate increased and physics triggers fired more often, 
+events were put into more specific datasets such as 
+EG for all events passing e/$\gamma$ (electron or photon) triggers, 
+or later, Electron for all events specifically passing 
+electron triggers.  
+These primary datasets are the groupings of stored data 
+that the offline analyses begin with.  
 
 \clearpage
 \section{Offline}
-Dataset (trig requirements), good vertex selection, etc
+%Dataset (trig requirements), good vertex selection, etc
+The offline selection consists of any criteria applied to the data 
+after it has already been stored, 
+i.e. criteria applied to an already-existing primary dataset.  
+This analysis uses data from two consecutive primary datasets: 
+the EG dataset gathered during earlier data-taking 
+(Run2010A, from run 135821 to run 144114), 
+and the Electron dataset from later data-taking 
+(the Run2010B era, runs 146240 to 149711).  
+In addition, it was required that the primary vertex of 
+each event be ``good'': 
+that is, within 24 cm of the nominal interaction point 
+in the longitudinal direction
+and 2 cm in the transverse direction, 
+and having a minimum of 4 degrees of freedom,
+which is a measure of the quality of the vertex fit.  %EXPLAIN WHAT THIS MEANS MORE?
+More detailed selections were made on the event contents, 
+which will be discussed in the following sections.  
+The electrons in these events were required to pass 
+a series of criteria to determine ``good'' electrons.  
+Finally, specific selections were made on the 
+characteristics of the event as a whole.  
+
 \subsection{Electron Selection}
 The electron selection starts with the full set of objects reconstructed as electrons, 
 i.e. ECAL energy deposits with nearby tracks.  
@@ -131,8 +245,11 @@ but are consistent with the electron signature at a low level.
 %(talk about def of GSF electron etc so know what kinds of cuts have already been applied)   % to be done in eventReconstruction!
 In order to select the reconstructed objects most likely to be real electrons from a Z, 
 sets of further conditions are applied.  
-First electrons are matched to trigger objects passing an egamma trigger with a Level-1 threshold of 5 GeV.  
-A 20-GeV cut on the supercluster transverse energy is applied,
+%First electrons are matched to trigger objects passing an egamma trigger with a Level-1 threshold of 5 GeV.  
+First the electrons are required to be within the $\eta$ region of ECAL in which 
+they can be fully measured, in the barrel, $0. < |\eta| < 1.4442$, 
+and in the endcap, $1.566 < |\eta| < 2.5$.  
+A 25-GeV cut on the supercluster transverse energy is applied,
 followed by a set of cuts designed to reject electrons from photon conversions.  
 Another set of cuts aims to distinguish real electrons from other energy deposits which may mimic electrons, 
 and finally a set of cuts to make sure the electron is isolated, i.e. not part of a jet unrelated to the Z.  
@@ -261,20 +378,22 @@ Fig. \ref{fig:sieieElecIdVars}
 
  \begin{figure}[htb]
    \centering
-%  \begin{center}
-   \subfloat[Barrel]{\label{fig:dEtaInBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dEtaInBarrelSeq.pdf}}
-%    \includegraphics[width=180pt, angle=90]{Figures/dEtaInBarrelSeq.pdf}
-%  \end{center}
-%  \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts for the barrel.}
-%  \label{fig:dEtaInBarrelElecIdVars}
-% \end{figure}
+%%  \begin{center}
+%   \subfloat[Barrel]{\label{fig:dEtaInBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dEtaInBarrelSeq.pdf}}
+%%    \includegraphics[width=180pt, angle=90]{Figures/dEtaInBarrelSeq.pdf}
+%%  \end{center}
+%%  \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts for the barrel.}
+%%  \label{fig:dEtaInBarrelElecIdVars}
+%% \end{figure}
 
-% \begin{figure}[htb]
-%  \begin{center}
-   \subfloat[Endcap]{\label{fig:dEtaInEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dEtaInEndcapSeq.pdf}}
-%    \includegraphics[width=180pt, angle=90]{Figures/dEtaInEndcapSeq.pdf}
-%  \end{center}
-%  \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts for the endcap.}
+%% \begin{figure}[htb]
+%%  \begin{center}
+%   \subfloat[Endcap]{\label{fig:dEtaInEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dEtaInEndcapSeq.pdf}}
+%%    \includegraphics[width=180pt, angle=90]{Figures/dEtaInEndcapSeq.pdf}
+%%  \end{center}
+%%  \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts for the endcap.}
+
+   \includegraphics[width=180pt, angle=90]{Figures/dEtaInSeq-01Apr11.pdf}
   \caption[deltaEtaIn electron ID variables after previous cuts]{deltaEtaIn electron ID variables after previous cuts.}
 %  \label{fig:dEtaInEndcapElecIdVars}
 \label{fig:dEtaInElecIdVars}
@@ -284,15 +403,17 @@ Fig. \ref{fig:sieieElecIdVars}
 
  \begin{figure}[htb]
   \begin{center}
-    \subfloat[Barrel]{\label{fig:dPhiInBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dPhiInBarrelSeq.pdf}}
-%  \end{center}
-%  \caption[deltaPhiIn electron ID variables after previous cuts]{deltaPhiIn electron ID variables after previous cuts for the barrel.}
-%  \label{fig:dPhiInBarrelElecIdVars}
-% \end{figure}
+%    \subfloat[Barrel]{\label{fig:dPhiInBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dPhiInBarrelSeq.pdf}}
+%%  \end{center}
+%%  \caption[deltaPhiIn electron ID variables after previous cuts]{deltaPhiIn electron ID variables after previous cuts for the barrel.}
+%%  \label{fig:dPhiInBarrelElecIdVars}
+%% \end{figure}
 
-% \begin{figure}[htb]
-%  \begin{center}
-    \subfloat[Endcap]{\label{fig:dPhiInEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dPhiInEndcapSeq.pdf}}
+%% \begin{figure}[htb]
+%%  \begin{center}
+%    \subfloat[Endcap]{\label{fig:dPhiInEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/dPhiInEndcapSeq.pdf}}
+
+    \includegraphics[width=180pt, angle=90]{Figures/dPhiInSeq-01Apr11.pdf}
   \end{center}
 %  \caption[deltaPhiIn electron ID variables after previous cuts]{deltaPhiIn electron ID variables after previous cuts for the endcap.}
   \caption[deltaPhiIn electron ID variables after previous cuts]{deltaPhiIn electron ID variables after previous cuts.}
@@ -304,15 +425,17 @@ Fig. \ref{fig:sieieElecIdVars}
 
  \begin{figure}[htb]
   \begin{center}
-    \subfloat[Barrel]{\label{fig:hOeBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/hOeBarrelSeq.pdf}}
-%  \end{center}
-%  \caption[hOe electron ID variables after previous cuts]{hOe electron ID variables after previous cuts for the barrel.}
-%  \label{fig:hOeBarrelElecIdVars}
-% \end{figure}
+%    \subfloat[Barrel]{\label{fig:hOeBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/hOeBarrelSeq.pdf}}
+%%  \end{center}
+%%  \caption[hOe electron ID variables after previous cuts]{hOe electron ID variables after previous cuts for the barrel.}
+%%  \label{fig:hOeBarrelElecIdVars}
+%% \end{figure}
 
-% \begin{figure}[htb]
-%  \begin{center}
-    \subfloat[Endcap]{\label{fig:hOeEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/hOeEndcapSeq.pdf}}
+%% \begin{figure}[htb]
+%%  \begin{center}
+%    \subfloat[Endcap]{\label{fig:hOeEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/hOeEndcapSeq.pdf}}
+
+    \includegraphics[width=180pt, angle=90]{Figures/hOeSeq-01Apr11.pdf}
   \end{center}
   \caption[hOe electron ID variables after previous cuts]{hOe electron ID variables after previous cuts.}
   \label{fig:hOeElecIdVars}
@@ -322,15 +445,17 @@ Fig. \ref{fig:sieieElecIdVars}
 
  \begin{figure}[htb]
   \begin{center}
-    \subfloat[Barrel]{\label{fig:sieieBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/sigIeIeBarrelSeq.pdf}}
-%  \end{center}
-%  \caption[sieie electron ID variables after previous cuts]{sieie electron ID variables after previous cuts for the barrel.}
-%  \label{fig:sieieBarrelElecIdVars}
-% \end{figure}
+%    \subfloat[Barrel]{\label{fig:sieieBarrelElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/sigIeIeBarrelSeq.pdf}}
+%%  \end{center}
+%%  \caption[sieie electron ID variables after previous cuts]{sieie electron ID variables after previous cuts for the barrel.}
+%%  \label{fig:sieieBarrelElecIdVars}
+%% \end{figure}
 
-% \begin{figure}[htb]
-%  \begin{center}
-    \subfloat[Endcap]{\label{fig:sieieEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/sigIeIeEndcapSeq.pdf}}
+%% \begin{figure}[htb]
+%%  \begin{center}
+%    \subfloat[Endcap]{\label{fig:sieieEndcapElecIdVars}\includegraphics[width=180pt, angle=90]{Figures/sigIeIeEndcapSeq.pdf}}
+
+    \includegraphics[width=180pt, angle=90]{Figures/sigIeIeSeq-01Apr11.pdf}
   \end{center}
   \caption[sieie electron ID variables after previous cuts]{sieie electron ID variables after previous cuts.}
   \label{fig:sieieElecIdVars}
@@ -413,7 +538,10 @@ In order to ensure that the offline-reconstructed objects being examined were al
 each offline object is compared with the list of trigger objects firing a given path.  
 If the offline object lies close enough to a trigger object (measured by \DR), 
 it is considered to have passed the trigger.  
-All electrons used in this analysis are required to be trigger-matched in this way.  
+%All electrons used in this analysis are required to be trigger-matched in this way.  
+Each event in this analysis was required to have at least one electron trigger-matched in this way, 
+within a \DR distance of 0.2.  
+This demonstrates that the constituent objects on the event did in fact fire an appropriate trigger.  
 %According to distribution of \DR between offline and trigger objects shown in Fig. \ref{fig:TriggerObjectSelectionDeltaR}, 
 %the threshold was chosen to be NUMBER.
 
@@ -441,10 +569,17 @@ Figures: Reco PT resolution plots using MC reference for Z MC, Fig. \ref{fig:Rec
 
 
 \subsection{\Zee Event Selection}
+trigger (including list of good triggers), mass window... that might be all
+
 \subsubsection{Acceptance for \Zee Events}
+full criteria, results
+
 \subsubsection{Efficiency of Selection for \Zee Events}
 Tag and Probe:  The tag and probe method is used to determine the efficiency of a given set of electron selection steps.  
-In this method, a set of data events is identified which appear to be good Z->ee candidate events.  
+In this method, a set of data events is identified which appear to be good 
+%Z->ee 
+\Zee
+candidate events.  
 One of the electrons in each of these events must pass 
 all selection cuts and essentially be identified as a golden electron; 
 %some stringent
@@ -474,7 +609,8 @@ in the data compared with those expected from Monte Carlo simulation.
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=360pt, angle=90]{Figures/Zquantities-21sep10.pdf}
+%    \includegraphics[width=360pt, angle=90]{Figures/Zquantities-21sep10.pdf}
+    \includegraphics[width=360pt, angle=90]{Figures/Zquantities-04Apr11.pdf}
   \end{center}
   \caption[Kinematic quantities of Z candidates after full selection]{Kinematic quantities of Z candidates after full selection.}
   \label{fig:Zquantities}
