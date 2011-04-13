@@ -1,4 +1,5 @@
 \chapter{Event Reconstruction}
+\label{evReco}
 %a little on daq, event building here?
 
 %Only dealing with parts of event relevant to \Zee analysis.  
@@ -16,6 +17,7 @@ namely the measurable quantities
 of the outgoing decay products.  
 
 \section{Detector Object Reconstruction}
+\label{evReco:detReco}
 %This is for the basic objects only. 
 %BUT, basic object reconstruction is so integrated with 
 %physics object reconstruction, maybe combine them?
@@ -38,6 +40,7 @@ to build up a more complex picture of
 the particles that passed through the detector.  
 
 \subsection{Electromagnetic Calorimeter Reconstruction}
+\label{evReco:ECAL}
 %\subsection{Electromagnetic Calorimeter Clustering}
 %reconstruction of position of energy deposits, 
 %rechits and that stuff: digitization, calibration?
@@ -55,6 +58,7 @@ relevant to the quality of the deposit,
 in particular whether or not the deposit happened 
 at a time consistent with the LHC 
 bunch collisions, i.e. if it was ``out of time''.  
+%bunch collisions, i.e. if it was ``in time''.  
 This information is especially useful in 
 identifying apparent energy deposits that have 
 been found to come from the electronics themselves; 
@@ -87,6 +91,7 @@ reconstruction.
 %\subsection{Pixel Hits} % need?
 
 \subsection{Track Reconstruction}
+\label{evReco:track}
 A track is a sequence of hits in the tracker, 
 reconstructed to trace the trajectory of a passing 
 particle.  
@@ -97,6 +102,7 @@ Therefore, GSF algorithm used for electrons --
 able to find those hits in unexpected directions.  
 
 \subsubsection{Kalman Filter}
+\label{evReco:KF}
 % CMS Note 2006/041
 % CMS Note 2006/026 for seeding
 The Kalman Filter (KF) tracking method is seeded 
@@ -144,6 +150,7 @@ the track with the worse fit)
 is discarded.  
 
 \subsubsection{Gaussian Sum Filter}
+\label{evReco:GSF}
 % CMS Note 2005/001
 
 The Kalman Filter track-fitting does not accurately 
@@ -171,6 +178,7 @@ of the track-fitting for electrons.
 % WHAT Q/P ACTUALLY TELLS YOU
 
 \section{Electron Reconstruction}
+\label{evReco:elec}
 % https://twiki.cern.ch/twiki/bin/view/CMS/ElectronRecoPrinciples
 % https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideEcalRecoClustering
 %here's where we start talking about electrons
@@ -205,6 +213,7 @@ producing fully-reconstructed electrons.
 %how many electrons are one vs other vs both?
 
 \subsection{ECAL-driven Electron Seeding}
+\label{evReco:ecalDrv}
 
 The ECAL-driven electron reconstruction method 
 starts with an energy deposit (or ``supercluster'') 
@@ -214,6 +223,7 @@ pixel system that matches the
 position of the calorimeter deposit.  
 
 \subsubsection{Superclusters}
+\label{evReco:SC}
 %Hybrid and multi5x5 (hybrid doesn't start with basic clusters, 
 %so probably combine detector object and physics object sections)
 
@@ -332,6 +342,7 @@ energy-weighted position of the individual clusters.
 %at least SC corrections are in dpg clusterization twiki
 
 \subsubsection{Pixel Hit-matching}
+\label{evReco:pixMatch}
 
 To reconstruct the full electron, 
 the supercluster must be matched with a track.  
@@ -369,6 +380,7 @@ of the hit in the first layer.
  \end{figure}
 
 \subsection{Tracker-driven Electron Seeding}
+\label{evReco:trkDrv}
 % AN 2008/032 michele pioppi
 In the tracker-driven electron seeding method, 
 electron-finding is seeded by tracks, 
@@ -437,6 +449,7 @@ to produce the final collection of
 tracker-driven electron seeds.  
 
 \subsection{Electron Track Reconstruction}
+\label{evReco:elecTrk}
 
 The full collection of electron seeds, 
 both ECAL- and tracker-driven, 
@@ -461,6 +474,7 @@ is saved for further analysis.
 %\subsection{Electron Identification Variables} %???? again, here????
 
 \section{Beam Spot Reconstruction}
+\label{evReco:BS}
 %maybe include just to talk about primary vertex correction
 % https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFindingBeamSpot
 % cms note 2007/021
@@ -488,6 +502,7 @@ $x$- and $y$-positions,
 and these values are extracted.  
 
 \section{Primary Vertex Reconstruction} % ? probably
+\label{evReco:PV}
 % few twikis with some info (most don't have much):
 % https://twiki.cern.ch/twiki/bin/view/MCSPublic/WorkBookVertexReco
 % https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideVertexReco

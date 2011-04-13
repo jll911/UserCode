@@ -1,5 +1,8 @@
 \chapter{Experimental Setup}
+\label{exp}
+
 \section{CERN}
+\label{exp:CERN}
 The European Organization for Nuclear Research, or CERN, is an
 international laboratory just outside Geneva, Switzerland.  
 It was founded in 1954 as a collaborative effort between twelve European 
@@ -10,6 +13,7 @@ particle physics facilities.
 %Europe, founded 1959?, maybe little significant history.  
 
 \section{Large Hadron Collider}
+\label{exp:LHC}
 %All the good stats on the LHC: circumference, (place,) dipole design, magnets, magnetic field.  
 %Design energy and luminosity.  how beam is actually accelerated.  
 %And pictures!  diagram of LHC, diagram of magnets?  just going through prelim diagrams here!
@@ -61,7 +65,7 @@ and its design luminosity is 10$^{34}$ cm$^{-2}$s$^{-1}$.
 
 
 \section{Compact Muon Solenoid}
-
+\label{exp:CMS}
 %SUBDETECTORS: material, coverage, resolution (spatial and energy/mom/whatever)
 
 %Important stats on CMS: height, weight, etc.  diagram of detector.  
@@ -105,6 +109,7 @@ and cathode strip chambers.
  \end{figure}
 
 \subsection{Detection of Particle Interactions}
+\label{exp:particleDetection}
 %Supercute picture here
 Figure: Particle detection in CMS, Fig. \ref{fig:CMSParticles}
 
@@ -182,6 +187,7 @@ A CMS event display from 2010 running can be seen in Fig. \ref{fig:EventDisplay}
  \end{figure}
 
 \subsection{Coordinate System} %define eta and phi earlier?
+\label{exp:coords}
 A standardized set of coordinates is used to describe points and directions within the CMS detector.  
 The origin of the coordinate system is at the interaction point,
 with the $x$-direction pointing horizontally south towards the LHC center
@@ -196,6 +202,7 @@ The longitudinal angle $\theta$ is measured from the positive $z$-axis,
 and the sign of $ \eta = -\ln\tan(\theta/2)$ is equal to the sign of $z$.  
 
 \subsection{Magnet}
+\label{exp:magnet}
 %Stats about the magnet!  how much field, how much current, weight, what it's made of,
 %what makes it special
 
@@ -218,6 +225,7 @@ The yoke consists of three concentric cylinders divided into the same
 5-ring barrel and 3-disk endcap structure as mentioned previously.  
 
 \subsection{Tracker}
+\label{exp:tracker}
 The purpose of the tracker is to detect the 
 tracks from end-product particles;
 only those which are charged can be detected in the tracker.  
@@ -244,6 +252,7 @@ A single track is reconstructed by stringing together
 the measurements from each of the layers.  
 
 \subsubsection{Pixels}
+\label{exp:pixels}
 The silicon pixel detector has a very fine accuracy
 due to the high density of tracks near the interaction point.  
 It consists of 65 million readout channels 
@@ -269,6 +278,7 @@ in the so-called bump-bonding method.
  \end{figure}
 
 \subsubsection{Strips}
+\label{exp:strips}
 The silicon strip detector consists of 10 million channels
 arranged in 10 layers of strips, 
 in both the barrel and the endcap,
@@ -309,6 +319,7 @@ as well as the azimuthal.
  \end{figure}
 
 \subsection{Calorimeters}
+\label{exp:cal}
 The general purpose of a calorimeter 
 is to measure energy passing through it.  
 CMS measures the energy of decay products 
@@ -322,6 +333,7 @@ in which energy lost in the magnet material leads
 to an uncertainty in the energy measurement.  
 
 \subsubsection{ECAL}
+\label{exp:ECAL}
 The ECAL is made up of ~76,000 lead tungstate crystals,
 arranged in a cylindrical barrel and disk-shaped endcap geometry.  
 The barrel is divided into 18 sections in $\phi$ and 
@@ -365,6 +377,7 @@ therefore there is no preshower detector for the barrel,
 which is too close to the interaction point.  
 
 \subsubsection{HCAL}
+\label{exp:HCAL}
 %HCAL resolution of energy: CMS NOTE 2006/036, but it's only
 %MC and also not just one equation.  can give value
 %quoted in abstract.  also, incl ecal: it's for reco jets
@@ -422,7 +435,7 @@ a shower detected only by the long fibers
 is likely to be electromagnetic in nature.  
 
 \subsection{Muon System}
-
+\label{exp:muons}
 The CMS muon system serves to identify muons, 
 which are the only particles that leave a signature 
 very far from the interaction point,
@@ -524,6 +537,7 @@ When combined with the information from the inner tracker,
 however, this resolution improves to ~1\% and 5\%, respectively.  
 
 \subsection{Trigger}
+\label{exp:trigger}
 The purpose of the CMS trigger is to 
 identify potentially interesting events.  
 Storing the data from every collision is unfeasible; 
@@ -543,6 +557,7 @@ having a lower input rate, it can afford more processing time per event.
 %Picture: Overall diagram of trigger
 
 \subsubsection{Level-1 Trigger}
+\label{exp:L1}
 %General L1 information, specific electron algorithms in online selection section.  
 %time-of-flight stuff!
 
@@ -597,7 +612,7 @@ synchronously.
  \end{figure}
 
 \subsubsection{Regional Calorimeter Trigger}
-
+\label{exp:RCT}
 The Regional Calorimeter Trigger (RCT) was designed and built and is maintained 
 by the University of Wisconsin at Madison.  
 It sits in eighteen crates in nine racks in the CMS underground electronics room.  
@@ -624,6 +639,7 @@ A more detailed treatment of the electron/photon-finding
 algorithm exists in a later chapter.  
 
 \subsubsection{High-Level Trigger}
+\label{exp:HLT}
 %General HLT information, specific electron algorithms in online selection section.  
 
 The High-Level Trigger (HLT) is implemented on a computer farm in the 
@@ -642,7 +658,7 @@ Still, the HLT algorithms are kept as close to the offline ones as possible.
 Specific algorithms are dealt with in more detail in a later chapter.  
 
 \subsubsection{Trigger Menus}
-
+\label{exp:trigMenus}
 Both the L1 and High-Level Triggers use the concept of a trigger menu.  
 There are different sets of criteria defining an ``interesting'' event 
 at any one time;  
@@ -654,11 +670,11 @@ so a prescaling factor is implemented:
 only a fraction of events firing that path is kept.  
 For example, a path with a prescale of 5 only 
 has 1/5 of its passing events actually saved.  
-In this way, events passing a certing path can still 
+In this way, events passing a certain path can still 
 be studied without taking too much of the available resources.  
 The set of paths that are being checked at any given time,
 along with their prescale factors,  
-is the trigger menu.  
+is called the trigger menu.  
 The Level-1 and High-Level Triggers each have their own 
 trigger menus.  
 Since the L1 must do things quickly, 
@@ -681,6 +697,7 @@ The successive algorithms have been studied in detail and
 commissioned successfully throughout the 2010 running conditions.  
 
 \subsection{Luminosity}
+\label{exp:lumi}
 %How the luminosity is measured (definition? or that done earlier in general particle physics section? recap here?)
 %What's actually used: HF?? that's in the detector paper, but not much else.  go to twiki, I guess (and that HN thread)
 

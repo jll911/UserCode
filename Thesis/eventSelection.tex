@@ -1,10 +1,11 @@
 \chapter{Event Selection}
+\label{evSel}
 Most analyses, including this one, are only interested in particle 
 interactions that happen relatively rarely during proton collisions.  
 Therefore, methods have been developed to sort through all the 
 events and select the interesting ones for further study.  
 This selection takes place both ``online'', in real time as the 
-detector is running, and ``offline'', after the selected data has 
+detector is running, and ``offline'', after the previously-selected data has 
 been stored.  
 %The selection done online is primarily for the purpose of reducing 
 %the volume of data enough to store it
@@ -16,8 +17,9 @@ analyses, and hence it is mostly done by the user of the data.
 
 
 \section{Online}
+\label{evSel:online}
 The online selection consists mainly of the trigger system, 
-described in technical detail in a previous chapter.  
+described in technical detail in Section~\ref{exp:trigger}.  
 %The implementation of the trigger's analysis-oriented f;adsjkl
 %is discussed in the following sections, 
 %especially the aspects relevant to this analysis.  
@@ -25,12 +27,21 @@ The implementation of the trigger system's algorithms
 that are relevant to this analysis 
 is discussed in the following sections, 
 including both the Level-1 and the High-Level Triggers.  
+Both levels reconstruct possible physics objects 
+%(in this analysis $e/\gamma$ or electron objects)
+and apply criteria to select the interesting events.  
+In general, the processing at the Level-1 is quicker 
+and coarser in order to sort through a larger volume of data, 
+while the High-Level Trigger processing can afford to be 
+longer and more thorough because it only deals with 
+data not already discarded by the Level-1.  
 In addition, as a last step, the information 
 from the High-Level Trigger is used to 
 group the data into primary datasets
 which are used as the basis for the offline selections.  
 
 \subsection{Trigger Eras}
+\label{evSel:triggerEras}
 %\subsection{Electron Trigger}
 %\subsubsection{Electron Algorithms}
 %\subsubsection{Trigger Performance}
@@ -51,6 +62,7 @@ to seriously affect the trigger efficiency.
 %% TALK ABOUT SOMEWHERE PREVIOUSLY: <strike>TRIGGER MENUS + PRESCALES,</strike> *MINIMUM BIAS*
 
 \subsection{Level-1 Trigger}
+\label{evSel:L1}
 %\subsubsection{Description of Algorithm}
 %Description of egamma algorithm, along with diagrams.  
 %The electron-reconstruction algorithm for the Level-1 trigger is implemented in the Regional Calorimeter Trigger (see detector section).
@@ -59,7 +71,7 @@ involves information from the calorimeters,
 Regional Calorimeter Trigger, Global Calorimeter Trigger, and 
 Global Trigger.  
 Electrons and photons are indistinguishable in the L1 and are therefore 
-treated the same, as ``e/$\gamma$'' objects.  
+treated the same, as ``$e/\gamma$'' objects.  
 
 The ECAL trigger primitive generation system (TPG) combines the energy deposits 
 from a 5x5 square of ECAL crystals into a single energy value corresponding to 
@@ -79,7 +91,7 @@ The RCT does the main job of electron finding using several algorithms.
 The decompressed ECAL energy of each trigger tower is examined and 
 compared to that of its four adjacent neighbors.  
 If the energy of the tower is greater than that of its neighbors, 
-it is considered an e/$\gamma$ candidate.  
+it is considered an $e/\gamma$ candidate.  
 The candidate energy is set to the energy of the tower in question 
 plus that of its highest-energy neighbor.  
 However, if the tower's fine grain bit is set, 
@@ -95,117 +107,278 @@ Global Calorimeter Trigger,
 which sends the highest-energy ones to the final step, the Global Trigger.  
 The Global Trigger then applies the criteria determining whether or not 
 this event passes the current set of trigger paths,
-for example, ``two e/$\gamma$ objects with energy above 10 GeV'' 
-or ``one e/$\gamma$ object with energy above 17 GeV''.  
+for example, ``two $e/\gamma$ objects with energy above 10 GeV'' 
+or ``one $e/\gamma$ object with energy above 17 GeV''.  
+
+% PUT THE PICTURE!!!!
 
 
-\subsubsection{Performance}
-This is where I want to put distributions, resolutions, efficiencies of Level-1 electron/photon objects, 
-when/if I make/get them.  Made some with old code a long time ago, but those are outdated.  
-Redo my own?
+%% \subsubsection{Performance}
+%% This is where I want to put distributions, resolutions, efficiencies of Level-1 electron/photon objects, 
+%% when/if I make/get them.  Made some with old code a long time ago, but those are outdated.  
+%% Redo my own?
 
-Figures: Trigger Electron/Photon Pt, eta, phi spectra for L1, Fig. \ref{fig:L1TriggerObjectSpectra}
+%% Figures: Trigger Electron/Photon Pt, eta, phi spectra for L1, Fig. \ref{fig:L1TriggerObjectSpectra}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Trigger Electron/Photon Pt, eta, phi spectra for L1]{Trigger Electron/Photon Pt, eta, phi spectra for L1.}
-  \label{fig:L1TriggerObjectSpectra}
- \end{figure}
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[Trigger Electron/Photon Pt, eta, phi spectra for L1]{Trigger Electron/Photon Pt, eta, phi spectra for L1.}
+%%   \label{fig:L1TriggerObjectSpectra}
+%%  \end{figure}
 
 
-Figures: \DR for L1 trigger object matching, Fig. \ref{fig:L1TriggerObjectDeltaR}
+%% Figures: \DR for L1 trigger object matching, Fig. \ref{fig:L1TriggerObjectDeltaR}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[\DR for L1 trigger object matching to offline]{\DR for L1 trigger object matching to offline-reconstructed objects.}
-  \label{fig:L1TriggerObjectDeltaR}
- \end{figure}
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[\DR for L1 trigger object matching to offline]{\DR for L1 trigger object matching to offline-reconstructed objects.}
+%%   \label{fig:L1TriggerObjectDeltaR}
+%%  \end{figure}
 
-Figures: L1 trigger Pt resolution plots using offline reference, Fig. \ref{fig:L1TriggerObjectResolutions}
+%% Figures: L1 trigger Pt resolution plots using offline reference, Fig. \ref{fig:L1TriggerObjectResolutions}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[L1 trigger Pt resolution plots using offline reference]{L1 trigger Pt resolution plots using offline reference.}
-  \label{fig:L1TriggerObjectResolutions}
- \end{figure}
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[L1 trigger Pt resolution plots using offline reference]{L1 trigger Pt resolution plots using offline reference.}
+%%   \label{fig:L1TriggerObjectResolutions}
+%%  \end{figure}
 
-Figures: L1 trigger electron/photon efficiency turn on using offline reconstructed electrons and MC, Fig. \ref{fig:L1TriggerObjectEfficiencies}
+%% Figures: L1 trigger electron/photon efficiency turn on using offline reconstructed electrons and MC, Fig. \ref{fig:L1TriggerObjectEfficiencies}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[L1 trigger electron/photon efficiency turn on using offline reconstructed electrons and MC]{L1 trigger electron/photon efficiency turn on using offline reconstructed electrons and MC.}
-  \label{fig:L1TriggerObjectEfficiencies}
- \end{figure}
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[L1 trigger electron/photon efficiency turn on using offline reconstructed electrons and MC]{L1 trigger electron/photon efficiency turn on using offline reconstructed electrons and MC.}
+%%   \label{fig:L1TriggerObjectEfficiencies}
+%%  \end{figure}
 
 
 \subsection{High-Level Trigger}
-
+\label{evSel:HLT}
 
 %\subsubsection{Description of Algorithms}
-Description of algorithms.
+%Description of algorithms.
 
-\subsubsection{Performance}
-Distributions, resolutions, efficiencies of HLT electron/photon objects.
+The algorithms used to reconstruct trigger objects 
+in the High-Level Trigger are the same as those 
+used in the offline analysis and are described in Chapter~\ref{evReco}.  
+However, because of timing considerations, 
+the algorithms are combined and configured differently at the HLT.  
+The HLT has a limited amount of time in which to 
+make a keep/discard decision for a given event 
+in order to keep up with the flow of events.  
+Therefore the algorithms are optimized for the best 
+performance in the shortest time, 
+which in practice means fewer steps and less 
+complexity than the implementation at the offline level, 
+where no such constraint exists.  
+In particular, while offline-reconstructed electrons 
+include tracker-driven electrons, 
+those reconstructed at the HLT are ECAL-drive only, 
+and the supercluster reconstruction algorithm uses 
+a lower number of steps in the search process.  
+Also, the size of the windows in which to search for 
+hits in the pixel-matching part of the 
+reconstruction is larger than that used offline.  
+
+%% However, these algorithms are used in different ways at the HLT 
+%% because of differences in performance considerations.  
+%% Namely, the algorithms as implemented in the HLT tend to be 
+%% configured to require 
+%% fewer steps and less complexity than at the offline level.  
+%% This includes in particular timing considerations.  
+%% The HLT has a time constraint in which to make its decision 
+%% to save or discard an event.  
+
+%% Another theme: evolution of triggers, from photon to electron to calo eID to full eID/isol, 
+%% for purpose of keeping rate down (manageable) as L goes up.  
+
+%%    * short summary of each sort of thing?  (with reference to event reco chapter)
+%% YES, just the things that are used in the relevant paths.  
+%% have short mentions also of e.g. eid vars and give reference to future section
 
 
-Figures: Trigger Electron/Photon Pt, eta, phi spectra for HLT, Fig. \ref{fig:HLTriggerObjectSpectra}
-
- \begin{figure}[htb]
+%Table of triggers used
+\begin{table}[htbp]
+%  \centering
   \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
+    \caption{Trigger paths used to select data.}
+    \label{TableTriggerPaths}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | }
+      \hline
+%      Cut variable & Barrel & Endcap  \\ \hline \hline
+      Trigger  \\ \hline \hline
+      HLT\_Photon15\_Cleaned\_L1R  \\ \hline
+      HLT\_Ele15\_LW\_L1R  \\ \hline
+      HLT\_Ele15\_SW\_L1R  \\ \hline
+      HLT\_Ele15\_SW\_CaloEleId\_L1R  \\ \hline
+      HLT\_Ele17\_SW\_CaloEleId\_L1R  \\ \hline
+      HLT\_Ele17\_SW\_TightEleId\_L1R  \\ \hline
+      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R  \\ \hline
+%%       \dphiin  \\ \hline
+%%       \detain  \\ \hline
+%%       $ H/E $  \\
+%%       \hline
+    \end{tabular}
   \end{center}
-  \caption[Trigger Electron/Photon Pt, eta, phi spectra for HLT]{Trigger Electron/Photon Pt, eta, phi spectra for HLT.}
-  \label{fig:HLTriggerObjectSpectra}
- \end{figure}
+\end{table}
+
+%% things common to all paths used: L1 match, SC reco, spike, et cut
+
+%% somewhere say how even with additions of criteria, 
+%% less complicated than offline still, and show why
+
+The luminosity increase and consequent evolution of trigger menus 
+described in Section~\ref{evSel:triggerEras} required incremental changes 
+in the definitions of the current HLT paths.  
+However, a few requirements remained common to all the paths used.  
+In particular, the execution of each path begins by taking 
+the Level-1 objects that passed the given L1 seed path 
+and retrieving the information from the ECAL regions % make sure we're in context of MY HLT paths
+around those objects.  
+From this information, 
+clusters of energy deposits are identified, 
+and clusters having too narrow a spatial distribution are 
+rejected as being spikes.  
+%........???????
+The trigger paths used in this analysis, shown in Table~\ref{TableTriggerPaths} 
+all required (at least) one 
+$e/\gamma$ or electron candidate above a certain energy threshold, 
+with possible other criteria applied to the candidate as well.%, 
+%depending on the path.  
+
+Initially, the LHC collision rate was low enough that loose 
+requirements and low thresholds could be used without 
+overwhelming the system.  
+The first trigger used did not require any matches to 
+hits in the pixel part of the tracker, 
+in contrast to all subsequent trigger paths used -- 
+without tracking requirements, it was by definition a 
+photon trigger.  
+In addition, after a few menu iterations 
+the energy threshold applied to the candidate 
+increased from 15 GeV to 17 GeV.  
+The size of the window used to search for potential pixel 
+matches also decreased (from ``large-window'' to ``startup-window'').%, 
+%and various further criteria were applied to 
+Later, various further criteria were applied to 
+the shape of the total energy deposit (\sieie, $H/E$) and 
+to the quality of the match between the energy cluster and the track 
+that make up the electron (\detain, \dphiin), 
+as well as to the amount of energy surrounding 
+the electron candidate (isolations).  
+These further criteria are described in more detail in 
+%Section~\ref{ELECSEL}; 
+Sections~\ref{evSel:eid}~and~\ref{evSel:isol}; 
+in the current section it is sufficient to say that they 
+were added in steps to the trigger paths to gradually tighten the 
+selection.  
 
 
-Figures: \DR for HLT trigger object matching, Fig. \ref{fig:HLTriggerObjectDeltaR}
+%% Basically the same as reco algo's, but with fewer steps and stuff to save time.  
+%% Do reduced version (and reference event reconstruction chapter) and 
+%% explain differences.  
+%% Also explain anything particular to HLT -- like farm, timing, etc 
+%% (although maybe that stuff should go in detector chapter).  
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[\DR for HLT trigger object matching to offline]{\DR for HLT trigger object matching to offline-reconstructed objects.}
-  \label{fig:HLTriggerObjectDeltaR}
- \end{figure}
+ALSO make these trigger plots.  
 
-Figures: HLT trigger Pt resolution plots using offline reference, Fig. \ref{fig:HLTriggerObjectResolutions}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[HLT trigger Pt resolution plots using offline reference]{HLT trigger Pt resolution plots using offline reference.}
-  \label{fig:HLTriggerObjectResolutions}
- \end{figure}
+%% e/gamma stuff: they added a 1/E - 1/p filter since the last time I did
+%% egamma HLT stuff.  probably also added other stuff.  
+%% READ UP ON.  Useful-looking talk on egamma trigger strategy 
+%% from alessio linked from SWGuideEgammaHLT
 
-Figures: HLT trigger electron/photon efficiency turn on using offline reconstructed electrons and MC, Fig. \ref{fig:HLTriggerObjectEfficiencies}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[HLT trigger electron/photon efficiency turn on using offline reconstructed electrons and MC]{HLT trigger electron/photon efficiency turn on using offline reconstructed electrons and MC.}
-  \label{fig:HLTriggerObjectEfficiencies}
- \end{figure}
+%% THEME FOR HLT: like offline, but optimized for good timing (not critical issue offline).  
+
+
+%% already in reco chapter:
+
+%%    * ecal reco -- rec hits
+
+%%    * spike cleaning based on timing and shape
+
+%%    * track reco, like KF and GSF
+
+%%    * electron reco
+
+%%       * ecal-driven: SC's from BC's (both algos used), pixel-hit matching to make seeds, then make tracks from them
+
+%%       * tracker-driven: 
+
+%% SO, HLT doesn't use tracker-driven stuff, just ECAL-driven
+
+
+
+
+
+
+
+
+%% \subsubsection{Performance}
+%% Distributions, resolutions, efficiencies of HLT electron/photon objects.
+
+
+%% Figures: Trigger Electron/Photon Pt, eta, phi spectra for HLT, Fig. \ref{fig:HLTriggerObjectSpectra}
+
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[Trigger Electron/Photon Pt, eta, phi spectra for HLT]{Trigger Electron/Photon Pt, eta, phi spectra for HLT.}
+%%   \label{fig:HLTriggerObjectSpectra}
+%%  \end{figure}
+
+
+%% Figures: \DR for HLT trigger object matching, Fig. \ref{fig:HLTriggerObjectDeltaR}
+
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[\DR for HLT trigger object matching to offline]{\DR for HLT trigger object matching to offline-reconstructed objects.}
+%%   \label{fig:HLTriggerObjectDeltaR}
+%%  \end{figure}
+
+%% Figures: HLT trigger Pt resolution plots using offline reference, Fig. \ref{fig:HLTriggerObjectResolutions}
+
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[HLT trigger Pt resolution plots using offline reference]{HLT trigger Pt resolution plots using offline reference.}
+%%   \label{fig:HLTriggerObjectResolutions}
+%%  \end{figure}
+
+%% Figures: HLT trigger electron/photon efficiency turn on using offline reconstructed electrons and MC, Fig. \ref{fig:HLTriggerObjectEfficiencies}
+
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[HLT trigger electron/photon efficiency turn on using offline reconstructed electrons and MC]{HLT trigger electron/photon efficiency turn on using offline reconstructed electrons and MC.}
+%%   \label{fig:HLTriggerObjectEfficiencies}
+%%  \end{figure}
 
 
 \subsection{Primary Datasets}
+\label{evSel:PD}
 The final step done centrally is the grouping of events passing similar 
 HLT bits into primary datasets for storage.  
 For example, in early running, all events passing a minimum-bias trigger 
 were put into the MinimumBias dataset.  
 Once the event rate increased and physics triggers fired more often, 
 events were put into more specific datasets such as 
-EG for all events passing e/$\gamma$ (electron or photon) triggers, 
+EG for all events passing $e/\gamma$ (electron or photon) triggers, 
 or later, Electron for all events specifically passing 
 electron triggers.  
 These primary datasets are the groupings of stored data 
@@ -213,6 +386,7 @@ that the offline analyses begin with.
 
 \clearpage
 \section{Offline}
+\label{evSel:offline}
 %Dataset (trig requirements), good vertex selection, etc
 The offline selection consists of any criteria applied to the data 
 after it has already been stored, 
@@ -233,10 +407,13 @@ More detailed selections were made on the event contents,
 which will be discussed in the following sections.  
 The electrons in these events were required to pass 
 a series of criteria to determine ``good'' electrons.  
-Finally, specific selections were made on the 
-characteristics of the event as a whole.  
+Finally, specific selections were made to the 
+characteristics of the event as a whole 
+in order to get the final collection of \Zee candidate 
+events.  
 
 \subsection{Electron Selection}
+\label{evSel:elec}
 The electron selection starts with the full set of objects reconstructed as electrons, 
 i.e. ECAL energy deposits with nearby tracks.  
 The objects in this collection are not necessarily real electrons 
@@ -267,6 +444,7 @@ tighter than those used in the offline (WP95) analysis.
 This analysis uses the WP80 set of cuts for the complete dataset.  
 
 \subsubsection{Conversion Rejection}
+\label{evSel:convRej}
 The conversion rejection step of the electron selection aims to eliminate photons that have converted into electron pairs.  
 Several variables have been chosen to distinguish between conversions and prompt electrons, focusing on the track properties.  
 Since prompt electrons are expected to hit the first layer of the tracker, 
@@ -319,6 +497,7 @@ The WP80 requirements apply a threshold at 0.02 for both quantities.
 
 
 \subsubsection{Electron Identification}
+\label{evSel:eid}
 Several ``electron identification'' variables are used to differentiate genuine electrons 
 from other particles or conditions that may mimic electron behavior.  
 Since an electron is reconstructed from a supercluster matched to a track, it is desired that the match is a good one.
@@ -475,7 +654,7 @@ Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID, Fig. \ref{
 
 
 \subsubsection{Electron Isolation}
-
+\label{evSel:isol}
 It is expected that the products of a Z decay will not come out in the vicinity of many other particles, 
 since the Z decay products are not part of a jet.
 We want to select those real electrons that are most likely to be prompt decay products,
@@ -534,6 +713,7 @@ Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation
 
 
 \subsubsection{Matching Offline-Reconstructed Objects to Trigger Objects}
+\label{evSel:matching}
 In order to ensure that the offline-reconstructed objects being examined were also reconstructed by the trigger, 
 each offline object is compared with the list of trigger objects firing a given path.  
 If the offline object lies close enough to a trigger object (measured by \DR), 
@@ -569,12 +749,15 @@ Figures: Reco PT resolution plots using MC reference for Z MC, Fig. \ref{fig:Rec
 
 
 \subsection{\Zee Event Selection}
+\label{evSel:zee}
 trigger (including list of good triggers), mass window... that might be all
 
 \subsubsection{Acceptance for \Zee Events}
+\label{evSel:acc}
 full criteria, results
 
 \subsubsection{Efficiency of Selection for \Zee Events}
+\label{evSel:eff}
 Tag and Probe:  The tag and probe method is used to determine the efficiency of a given set of electron selection steps.  
 In this method, a set of data events is identified which appear to be good 
 %Z->ee 
@@ -603,7 +786,7 @@ From this pair of fits the total number of events as well as the efficiency can 
 Figures: Efficiency table and supporting plots
 
 \subsubsection{Distribution of Z Kinematic Variables}
-
+\label{evSel:Zquants}
 Fig. \ref{fig:Zquantities} shows the distributions of the kinematic variables for the reconstructed Z candidates 
 in the data compared with those expected from Monte Carlo simulation.  
 
