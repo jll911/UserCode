@@ -1,3 +1,6 @@
+\newcommand{\AVal}{0.423}
+\newcommand{\AEcalVal}{0.387}
+
 \chapter{Event Selection}
 \label{evSel}
 Most analyses, including this one, are only interested in particle 
@@ -289,7 +292,7 @@ selection.
 %% Also explain anything particular to HLT -- like farm, timing, etc 
 %% (although maybe that stuff should go in detector chapter).  
 
-ALSO make these trigger plots.  
+%ALSO make these trigger plots.  
 
 
 %% e/gamma stuff: they added a 1/E - 1/p filter since the last time I did
@@ -569,15 +572,15 @@ Fig.~\ref{fig:hcalElecIsoVars} for HCAL isolation.
 
 
 
-Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation, Fig. \ref{fig:RecoSpectraAfterEidEiso}
+%Figures: Reconstructed electron/photon Pt, eta, phi spectra after isolation, Fig. \ref{fig:RecoSpectraAfterEidEiso}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=80pt, angle=90]{CMS-BW.pdf}
-  \end{center}
-  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation]{Reconstructed electron/photon Pt, eta, phi spectra after ID + isolation.}
-  \label{fig:RecoSpectraAfterEidEiso}
- \end{figure}
+% \begin{figure}[htb]
+%  \begin{center}
+%    \includegraphics[width=80pt, angle=90]{CMS-BW.pdf}
+%  \end{center}
+%  \caption[Reconstructed electron/photon Pt, eta, phi spectra after isolation]{Reconstructed electron/photon Pt, eta, phi spectra after isolation.}
+%  \label{fig:RecoSpectraAfterEidEiso}
+% \end{figure}
 
 
 \subsubsection{Electron Identification}
@@ -705,13 +708,23 @@ all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.
 
 
 
-Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID, Fig. \ref{fig:RecoSpectraAfterEid}
+%Figures: Reconstructed electron/photon Pt, eta, phi spectra after ID, Fig. \ref{fig:RecoSpectraAfterEid}
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=180pt]{CMS-BW.pdf}
+%    \includegraphics[width=180pt]{Figures/elecQuant-22Apr11.png}
+    \includegraphics[width=360pt]{Figures/elecQuant-22Apr11.png}
+%    \subfloat[Transverse Energy]{\label{fig:ElectronEtAfterCuts}\includegraphics[width=180pt]{Figures/hoe-barrel-15Apr11.png}}
+%    \subfloat[Pseudorapidity]{\label{fig:ElectronEtaAfterCuts}\includegraphics[width=180pt]{Figures/hoe-barrel-15Apr11.png}}
+%    \subfloat[Azimuthal Angle]{\label{fig:ElectronPhiAfterCuts}\includegraphics[width=180pt]{Figures/hoe-barrel-15Apr11.png}}
   \end{center}
-  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID]{Reconstructed electron/photon Pt, eta, phi spectra after ID.}
+%  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID]{Reconstructed electron/photon Pt, eta, phi spectra after ID.}
+   \caption[Reconstructed electron \pt, $\eta$, $\phi$ spectra after ID]{
+   Spectra of reconstructed electron kinematic quantities after all electron selection cuts. 
+   The plots show distributions for electron \pt, $\eta$, and $\phi$ respectively.  
+   The agreement between real data and the simulated sample is good, demonstrating 
+   that the effects of the cuts on the data is understood.  
+  }
   \label{fig:RecoSpectraAfterEid}
  \end{figure}
 
@@ -729,27 +742,27 @@ This demonstrates that the constituent objects in the event did in fact fire an 
 %According to distribution of \DR between offline and trigger objects shown in Fig. \ref{fig:TriggerObjectSelectionDeltaR}, 
 %the threshold was chosen to be NUMBER.
 
-Figures: \DR for L1 and HLT trigger object matching, Fig. \ref{fig:TriggerObjectSelectionDeltaR}
+%Figures: \DR for L1 and HLT trigger object matching, Fig. \ref{fig:TriggerObjectSelectionDeltaR}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[\DR for L1 and HLT trigger object matching to offline for electron selection]{\DR for L1 and HLT trigger object matching to offline-reconstructed objects.}
-  \label{fig:TriggerObjectSelectionDeltaR}
- \end{figure}
+% \begin{figure}[htb]
+%  \begin{center}
+%    \includegraphics[width=360pt]{CMS-BW.pdf}
+%  \end{center}
+%  \caption[\DR for L1 and HLT trigger object matching to offline for electron selection]{\DR for L1 and HLT trigger object matching to offline-reconstructed objects.}
+%  \label{fig:TriggerObjectSelectionDeltaR}
+% \end{figure}
 
 
-\subsubsection{Electron Selection Performance} %wesley comment
-Figures: Reco PT resolution plots using MC reference for Z MC, Fig. \ref{fig:RecoPtResolution}
+%\subsubsection{Electron Selection Performance} %wesley comment
+%Figures: Reco PT resolution plots using MC reference for Z MC, Fig. \ref{fig:RecoPtResolution}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=80pt, angle=90]{CMS-BW.pdf}
-  \end{center}
-  \caption[Reco PT resolution plots using MC reference for Z MC]{Reco PT resolution plots using MC reference for Z MC.}
-  \label{fig:RecoPtResolution}
- \end{figure}
+% \begin{figure}[htb]
+%  \begin{center}
+%    \includegraphics[width=80pt, angle=90]{CMS-BW.pdf}
+%  \end{center}
+%  \caption[Reco PT resolution plots using MC reference for Z MC]{Reco PT resolution plots using MC reference for Z MC.}
+%  \label{fig:RecoPtResolution}
+% \end{figure}
 
 
 \subsection{\Zee Event Selection}
@@ -770,9 +783,9 @@ this defines a window around the Z mass peak at about 91 GeV.
 
 \subsubsection{Acceptance for \Zee Events}
 \label{evSel:acc}
-full criteria, results
-discussion on acceptance: def, det acc vs ECAL acc, 
-systs due to theoretical vs other BUT PROB DON'T NEED SYSTS YET (do in separate ch)
+%full criteria, results
+%discussion on acceptance: def, det acc vs ECAL acc, 
+%systs due to theoretical vs other BUT PROB DON'T NEED SYSTS YET (do in separate ch)
 
 % maybe end up putting def of acceptance in some more general place, like intro with that formula
 
@@ -795,7 +808,8 @@ In addition, it is generally more difficult to distinguish
 very low-energy objects from background noise, 
 so the acceptance also includes a lower limit on the 
 energy of the particle.  
-It also must take into account the specific definition of the interaction.  
+%It also must take into account the specific definition of the interaction.  
+% 2 electrons w/in fiducial region, etc
 
 In this analysis, the signal was defined to be those \Zee events 
 whose invariant mass was between 60 and 120 GeV; 
@@ -830,7 +844,7 @@ These values can also be found in Table~\ref{TableAccCuts}.
 
 Acceptance cannot be calculated from data, 
 because it is impossible to know how many events were missed -- 
-all we have are the events which were not missed.  
+the only events we have are those which were not missed.  
 Instead acceptance is determined by applying the defining 
 criteria to a sample of simulated data, 
 a sample large enough that statistical uncertainties become 
@@ -844,35 +858,39 @@ what is used in the generation.
 These possible differences are taken into account in the 
 uncertainty calculated for the acceptance, 
 % OR JUST DO IT HERE??????
-which will be detailed in a later section.  
+which will be detailed in a later section.  %FIXME add section number
 
 It is also useful to combine the 
 supercluster reconstruction efficiency with the acceptance. 
 The supercluster reconstruction efficiency is impossible 
 to determine from data for the same reason as for 
-the acceptance -- it would require knowing about 
+the acceptance -- 
+it would require knowing about 
 events that were missed, in this case 
 electrons that had impacted the detector 
 (specifically ECAL) but which had 
-not ended in the formation of a supercluster.  
+not resulted in the formation of a supercluster.  
 % what about test-beam data??  I guess doesn't 
 % take into account brem or pileup or non-isolation 
 % or any of that stuff that could affect it
 Therefore this is also determined from simulated data.  
 Effectively it is combined with the acceptance 
-by applying an additional requirement: 
+by applying an additional requirement on the acceptance: 
 the simulated event should have two electrons 
 passing the $\eta$ and transverse energy requirements, 
 and those electrons should also both be matched 
 to reconstructed superclusters.  
-This combined quantity is referred to as 
+The fraction of total events passing these combined criteria 
+is referred to as 
 ``ECAL acceptance'' or $A_{ECAL}$.  
 
 The pure kinematic acceptance for this analysis
-was determined to be 
-BLAH1
-and the ECAL acceptance was calculated as 
-BLAH2.  
+was determined 
+with the POWHEG-generated Monte Carlo sample 
+to be 
+\AVal %0.423 %BLAH1
+and the ECAL acceptance was likewise calculated as 
+\AEcalVal. %0.387. %BLAH2.  
 These values can also be found in Table~\ref{TableAccValues}.  
 
 
@@ -886,8 +904,8 @@ These values can also be found in Table~\ref{TableAccValues}.
     \begin{tabular}[]{ | l | c | c | }
       \hline
       Quantity & Value  \\ \hline \hline
-      $ A $ & BLAH1  \\ \hline
-      $ A_{ECAL} $ & BLAH2  \\
+      $ A $ & \AVal  \\ \hline
+      $ A_{ECAL} $ & \AEcalVal  \\
       \hline
     \end{tabular}
   \end{center}
@@ -901,11 +919,38 @@ These values can also be found in Table~\ref{TableAccValues}.
 
 \subsubsection{Efficiency of Selection for \Zee Events}
 \label{evSel:eff}
-Def of efficiency (you have to know about events that were missed, could put before acc if necessary but might not be necessary...); 
-talk about different steps; 
-trigger effs done here or in trigger section (maybe easier here, because introduce T\&P here)
+%Def of efficiency (you have to know about events that were missed, could put before acc if necessary but might not be necessary...); 
+%talk about different steps; 
+%trigger effs done here or in trigger section (maybe easier here, because introduce T\&P here)
 
-Tag and Probe:  The tag and probe method is used to determine the efficiency of a given set of electron selection steps.  
+It is important to know how well the selection steps perform their task of 
+keeping signal events;  
+any signal events that are 
+missed %cut out 
+must be accounted for in the final 
+calculation to get an accurate result.  
+This factor is quantified in the efficiency, which is defined as 
+the fraction of total objects or events passing a given selection.% is called 
+%the selection efficiency.% and is used to 
+Simulated data can be used to calculate efficiency, 
+since it contains the ``truth'' information -- 
+the true total number of events, 
+whether or not they survive a given selection step.
+However, the simulation may not correctly model some 
+aspect of the real data, which would cause a discrepancy 
+with the real-data efficiency 
+and a corresponding inaccuracy in the final result.  
+Therefore it is desirable to use so-called ``data-driven'' 
+methods, % of determining efficiency, 
+determining the efficiency as closely as possible 
+using only the data itself.  
+Because the truth information does not exist in real data, 
+%another way must be used to determine how many 
+the number of events passing or failing a given selection 
+must be determined with another method.  
+
+%Tag and Probe:  
+The tag-and-probe method is used to determine the efficiency of a given set of electron selection steps.  
 In this method, a set of data events is identified which appear to be good 
 %Z->ee 
 \Zee
@@ -917,18 +962,81 @@ this is the tag.
 %The other electron must 
 %pass some less stringent criteria
 %be identified at least as a supercluster; 
-The criteria applied to the other electron are looser: it is not required to pass the selection cuts being tested.  
+The criteria applied to the other electron are looser: 
+it is not required to pass the selection cuts being tested.  
 This is the probe electron.  
-The event's status as a Z candidate is determined by enforcing a mass window cut on the invariant mass of the tag-probe system 
-(this is sufficient(enough?) to select a high-purity sample of events in which both legs are real electrons -- REFERENCE??).  
-The naive selection efficiency is then given by the fraction of probe electrons that pass the requirement being tested.  
+The event's status as a Z candidate is determined by enforcing 
+a mass window cut on the invariant mass of the tag-probe system 
+(this is sufficient %(enough?) 
+to select a high-purity sample of 
+events in which both legs are real electrons).
+% -- REFERENCE??).  
+The naive selection efficiency is then given by the fraction 
+of probe electrons that pass the requirement being tested.  
 
-However, a more sophisticated analysis of the efficiency can be performed by fitting the invariant mass spectra of the
-tag-probe pairs for both passing and failing probes to a lineshape representing both the signal and the background.  
-Then the distribution of passing probes can be represented as the signal lineshape multiplied by the efficiency and the
-total number of signal events added to the background lineshape multiplied by the number of passing background events.  
-The failing probe distribution can be represented in the analogous way, using (1-efficiency) instead.  
-From this pair of fits the total number of events as well as the efficiency can be extracted simultaneously.  
+However, a more sophisticated analysis of the efficiency can 
+be performed by fitting the invariant mass spectra of the
+tag-probe pairs for both passing and failing probes to a 
+lineshape representing both the signal and the background.  
+Then the distribution of passing probes can be represented as 
+the signal lineshape multiplied by the efficiency and the
+total number of signal events added to the background lineshape 
+multiplied by the number of passing background events.  
+The failing probe distribution can be represented in the 
+analogous way, using (1 - efficiency) instead.  
+From this pair of fits the total number of events as well as 
+the efficiency can be extracted simultaneously.  
+
+The event selection efficiency in this analysis is determined 
+by first obtaining the efficiencies of the individual 
+selection steps given above.%, using the tag-and-probe method.  
+This also includes the initial step of reconstructing 
+the electron objects from superclusters.  
+Since each selection step is applied one after the other, 
+the overall selection efficiency is given by the product 
+of the individual efficiencies.  
+In addition, since most steps are required to apply to both electrons, 
+the single-electron efficiencies of these steps 
+(the result of the tag-and-probe method)
+are squared to get 
+the efficiency of both electrons passing that step.  
+The trigger step, however, is a special case since only one electron is 
+required to pass.  
+In this case, the quantity used is the probability that at least 
+one electron passes, 
+which is equivalent to the probability both electrons fail 
+subtracted from 1.  
+
+% cute little genetics probability diagram illustration??  I kind of like that idea
+
+The formula used to calculate the overall event selection efficiency 
+from the individual step efficiencies is therefore 
+\[
+%BIG FAT FORMULA
+\epsilon_{total} = \epsilon_{reco}^2 \times \epsilon_{isol}^2 \times \epsilon_{ID}^2 \times \left( 1 - \left( 1 - \epsilon_{trig} \right)^2 \right)
+\]
+
+explain MC truth vs MC T\&P vs data T\&P (plot illustrating problem??  not really, I guess)
+
+The efficiencies are given for each step in Table~\ref{TableEfficiencies}.   %FIXME ALSO DO FOR BARREL/ENDCAP
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption{Efficiencies of electron selection steps.}
+    \label{TableEfficiencies}
+    \begin{tabular}[]{ | l | l | l | l | l | l | }
+      \hline
+%      STUFF \\ \hline
+      Step & True MC & MC T\&P & Data T\&P & Ratio & Efficiency \\ \hline \hline
+      SC to Gsf & 0.965 & 0.972 & 0.971 +/- 0.002 & 0.999 +/- 0.002 & 0.964 +/- 0.002 \\ \hline
+      Gsf to Iso & 0.926 & 0.927 & 0.910 +/- 0.003 & 0.976 +/- 0.003 & 0.905 +/- 0.003 \\ \hline
+      Iso to Id & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
+      Id to HLT & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline
+      Full Event selection & 0.654 & 0.665 & 0.621 +/- 0.005 & 0.933 +/- 0.007 & 0.610 +/- 0.005 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
 
 Figures: Efficiency table and supporting plots
 
@@ -936,18 +1044,32 @@ Figures: Efficiency table and supporting plots
 
    * BIG GIANT EFFICIENCY TABLES for each step/barrelvsendcap/datavsMC(/differentMCsamples?NO)
 
-   * do trigger effs separately, I guess!  Under trigger section
+   * do trigger effs separately, I guess!  Under trigger section.  or just put table here
+
+Trigger	EfficiencyError (fit)
+HLT\_Photon15\_Cleaned\_L1R 0.976 0.002
+HLT\_Ele15\_LW\_L1R 0.961 0.005
+HLT\_Ele15\_SW\_L1R  0.981 0.003
+HLT\_Ele15\_SW\_CaloEleId\_L1R 0.986 0.003
+HLT\_Ele17\_SW\_CaloEleId\_L1R  0.992 0.002
+HLT\_Ele17\_SW\_TightEleId\_L1R  0.973 0.002
+HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v1 0.973 0.003
+HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v2  0.977 0.002
+HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v3   0.974 0.003
+Overall 0.9763 0.0009
 
 \subsubsection{Distribution of Z Kinematic Variables}
 \label{evSel:Zquants}
 Fig. \ref{fig:Zquantities} shows the distributions of the kinematic variables for the reconstructed Z candidates 
 in the data compared with those expected from Monte Carlo simulation.  
 
+Dude, what else to say here?  
+
  \begin{figure}[htb]
   \begin{center}
     \includegraphics[width=360pt]{Figures/Zquantities-04Apr11.png}
   \end{center}
-  \caption[Kinematic quantities of Z candidates after full selection]{Kinematic quantities of Z candidates after full selection.}
+  \caption[Kinematic quantities of Z candidates after full selection]{Kinematic quantities of Z candidates after full event selection.}
   \label{fig:Zquantities}
  \end{figure}
 
