@@ -217,7 +217,6 @@ reconstruction is larger than that used offline.
 %    \begin{tabular}[]{ | l | c | c | }
     \begin{tabular}[]{ | l | }
       \hline
-%      Cut variable & Barrel & Endcap  \\ \hline \hline
       Trigger  \\ \hline \hline
       HLT\_Photon15\_Cleaned\_L1R  \\ \hline
       HLT\_Ele15\_LW\_L1R  \\ \hline
@@ -226,10 +225,6 @@ reconstruction is larger than that used offline.
       HLT\_Ele17\_SW\_CaloEleId\_L1R  \\ \hline
       HLT\_Ele17\_SW\_TightEleId\_L1R  \\ \hline
       HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R  \\ \hline
-%%       \dphiin  \\ \hline
-%%       \detain  \\ \hline
-%%       $ H/E $  \\
-%%       \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -723,7 +718,7 @@ all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.
    Spectra of reconstructed electron kinematic quantities after all electron selection cuts. 
    The plots show distributions for electron \pt, $\eta$, and $\phi$ respectively.  
    The agreement between real data and the simulated sample is good, demonstrating 
-   that the effects of the cuts on the data is understood.  
+   that the effects of the cuts on the data are understood.  
   }
   \label{fig:RecoSpectraAfterEid}
  \end{figure}
@@ -987,6 +982,28 @@ analogous way, using (1 - efficiency) instead.
 From this pair of fits the total number of events as well as 
 the efficiency can be extracted simultaneously.  
 
+However, the tag-and-probe may possibly introduce a bias 
+into the calculation, 
+in particular if observing one leg makes it more likely that 
+the other leg is observed. 
+For example, if the electrons are essentially back-to-back, 
+one is more likely to fall within the detector coverage 
+if the other one does as well.  
+In addition, there is a slight discrepancy between the efficiencies 
+calculated using data and those using the standard Monte Carlo sample.  
+Therefore, the strategy in this analysis is to calculate the 
+``true'' efficiency from the simulation sample, 
+as well as the tag-and-probe efficiencies from the real data 
+and simulation samples.  
+The ``true'' efficiency is then corrected by the ratio of the 
+data and simulation tag-and-probe efficiencies:
+\[
+\epsilon = \epsilon_{MC}^{true} \times \left( \frac{\epsilon_{data}^{T\&P}}{\epsilon_{MC}^{T\&P}} \right)
+\]
+This implies a certain amount of trust in the generator-level simulation of the interaction.  
+The corresponding uncertainty in the efficiency due to the generator-level simulation 
+is dealt with in a later chapter.  %FIXME say which
+
 The event selection efficiency in this analysis is determined 
 by first obtaining the efficiencies of the individual 
 selection steps given above.%, using the tag-and-probe method.  
@@ -1016,9 +1033,13 @@ from the individual step efficiencies is therefore
 \epsilon_{total} = \epsilon_{reco}^2 \times \epsilon_{isol}^2 \times \epsilon_{ID}^2 \times \left( 1 - \left( 1 - \epsilon_{trig} \right)^2 \right)
 \]
 
-explain MC truth vs MC T\&P vs data T\&P (plot illustrating problem??  not really, I guess)
+%explain MC truth vs MC T\&P vs data T\&P (plot illustrating problem??  not really, I guess)
 
-The efficiencies are given for each step in Table~\ref{TableEfficiencies}.   %FIXME ALSO DO FOR BARREL/ENDCAP
+
+
+
+The efficiencies are given for each selection step in Table~\ref{TableEfficiencies} %.   %FIXME ALSO DO FOR BARREL/ENDCAP
+and for all the triggers used in data individually in Table~\ref{TableTriggerEfficiencies}.  
 
 \begin{table}[htbp]
   \begin{center}
@@ -1028,42 +1049,76 @@ The efficiencies are given for each step in Table~\ref{TableEfficiencies}.   %FI
       \hline
 %      STUFF \\ \hline
       Step & True MC & MC T\&P & Data T\&P & Ratio & Efficiency \\ \hline \hline
-      SC to Gsf & 0.965 & 0.972 & 0.971 +/- 0.002 & 0.999 +/- 0.002 & 0.964 +/- 0.002 \\ \hline
-      Gsf to Iso & 0.926 & 0.927 & 0.910 +/- 0.003 & 0.976 +/- 0.003 & 0.905 +/- 0.003 \\ \hline
-      Iso to Id & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
-      Id to HLT & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline
+      %SC to Gsf & 0.965 & 0.972 & 0.971 +/- 0.002 & 0.999 +/- 0.002 & 0.964 +/- 0.002 \\ \hline
+      Reconstruction & 0.965 & 0.972 & 0.971 +/- 0.002 & 0.999 +/- 0.002 & 0.964 +/- 0.002 \\ \hline
+      %Gsf to Iso & 0.926 & 0.927 & 0.910 +/- 0.003 & 0.976 +/- 0.003 & 0.905 +/- 0.003 \\ \hline
+      Isolation & 0.926 & 0.927 & 0.910 +/- 0.003 & 0.976 +/- 0.003 & 0.905 +/- 0.003 \\ \hline
+      %Iso to Id & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
+      Identification & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
+      %Id to HLT & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline
+      Trigger & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline
       Full Event selection & 0.654 & 0.665 & 0.621 +/- 0.005 & 0.933 +/- 0.007 & 0.610 +/- 0.005 \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
 
 
-Figures: Efficiency table and supporting plots
+%Figures: Efficiency table and supporting plots
 
-   * tag and probe fit plots (most in an appendix, I'd say)
+%   * tag and probe fit plots (most in an appendix, I'd say) %FIXME
 
-   * BIG GIANT EFFICIENCY TABLES for each step/barrelvsendcap/datavsMC(/differentMCsamples?NO)
+%   * BIG GIANT EFFICIENCY TABLES for each step/barrelvsendcap/datavsMC(/differentMCsamples?NO)
 
-   * do trigger effs separately, I guess!  Under trigger section.  or just put table here
+%   * do trigger effs separately, I guess!  Under trigger section.  or just put table here
 
-Trigger	EfficiencyError (fit)
-HLT\_Photon15\_Cleaned\_L1R 0.976 0.002
-HLT\_Ele15\_LW\_L1R 0.961 0.005
-HLT\_Ele15\_SW\_L1R  0.981 0.003
-HLT\_Ele15\_SW\_CaloEleId\_L1R 0.986 0.003
-HLT\_Ele17\_SW\_CaloEleId\_L1R  0.992 0.002
-HLT\_Ele17\_SW\_TightEleId\_L1R  0.973 0.002
-HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v1 0.973 0.003
-HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v2  0.977 0.002
-HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v3   0.974 0.003
-Overall 0.9763 0.0009
+\begin{table}[htbp]
+  \begin{center}
+    \caption{Efficiencies of all the triggers used in data as determined with the tag-and-probe method.}
+    \label{TableTriggerEfficiencies}
+    \begin{tabular}[]{ | l | l | l | }
+      \hline
+      Trigger	& Efficiency & Error (fit) \\ \hline \hline
+      HLT\_Photon15\_Cleaned\_L1R & 0.976 & 0.002 \\ \hline
+      HLT\_Ele15\_LW\_L1R & 0.961 & 0.005 \\ \hline
+      HLT\_Ele15\_SW\_L1R & 0.981 & 0.003 \\ \hline
+      HLT\_Ele15\_SW\_CaloEleId\_L1R & 0.986 & 0.003 \\ \hline
+      HLT\_Ele17\_SW\_CaloEleId\_L1R & 0.992 & 0.002 \\ \hline
+      HLT\_Ele17\_SW\_TightEleId\_L1R & 0.973 & 0.002 \\ \hline
+      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v1 & 0.973 & 0.003 \\ \hline
+      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v2 & 0.977 & 0.002 \\ \hline
+      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R\_v3 & 0.974 & 0.003 \\ \hline
+      Overall & 0.9763 & 0.0009 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
 \subsubsection{Distribution of Z Kinematic Variables}
 \label{evSel:Zquants}
-Fig. \ref{fig:Zquantities} shows the distributions of the kinematic variables for the reconstructed Z candidates 
-in the data compared with those expected from Monte Carlo simulation.  
+%Some amount of text explaining what this is for!  
+Since a significant number of \Zee candidate events have been identified, 
+it is useful to examine the kinematic properties of these events.  
+Even though this analysis does not depend on these properties, 
+comparing the distributions from the data with those from the simulated samples 
+can provide an additional check of validity of the simulation.  
 
-Dude, what else to say here?  
+Fig. \ref{fig:Zquantities} shows the distributions of standard kinematic 
+variables for the reconstructed Z candidates: transverse momentum, rapidity, and azimuthal angle. 
+The data (black dots) is compared with the simulation including 
+background samples (lines/filled areas).  
+As the ratio plots show, the agreement is good in general; 
+large error bars indicate bins where the event count is not 
+high enough to give a very precise estimate 
+(such as the higher range of the Z \pt plot).  
+However, there are areas in which there is an evident discrepancy 
+between the data and the simulation, 
+most notably along the outer edges of the Z rapidity plot.  
+Possible causes might include a slightly inaccurate description of the particle 
+interaction in the generator, 
+or a slight miscalibration of the detector.  
+Since the difference is slight and does not affect this analysis, though, 
+it can safely be ignored and the general agreement accepted.  
+
+%Dude, what else to say here?  
 
  \begin{figure}[htb]
   \begin{center}
