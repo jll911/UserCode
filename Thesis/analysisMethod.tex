@@ -1,27 +1,100 @@
 \chapter{Analysis Method}
-\section{Comparison of Monte Carlo and Data}
-Figures: Electron-positron invariant mass for trigger objects/ID only/ID+isolation, Fig. \ref{fig:InvMassAfterEachStep}
+I guess this is the part of the analysis that's not included in event selection.  
+SO, how to get the cross section, like the main formula, 
+and where all the numbers came from (especially the ones we haven't calculated yet).
+
+%recap of invariant mass?
+
+As explained in Section FIXME, 
+the invariant mass of a set of decay-product particles is 
+%CONCEPTUAL EXPLANATION.
+essentially the mass of the original particle that decayed. 
+%to form the end-products.  
+It is defined mathematically as 
+
+INV MASS FORMULA
+
+where p momentum, E energy, etc. 
+In our case, for a two-particle system, it can be written as 
+
+MORE FORMULA (this one necessary??)
+
+The invariant mass distribution for the electron pairs 
+in the events surviving all selection cuts is shown in 
+Fig.~\ref{fig:InvMass}.  
+The peak around the Z mass (\~91 GeV) is clearly visible 
+in both the Monte Carlo and data distributions.  
+
+%yield plot first, since this is what the rest is based on.  
+
+%%Figures: Electron-pair invariant mass for trigger objects/ID only/ID+isolation, Fig. \ref{fig:InvMassAfterEachStep}
+%Figures: Electron-pair invariant mass after full selection, Fig. \ref{fig:InvMass}
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
+    \includegraphics[width=360pt]{Figures/invMass-04Apr11.png}
   \end{center}
-  \caption[Electron-positron invariant mass for trigger objects/ID only/ID+isolation]{Electron-positron invariant mass for trigger objects/ID only/ID+isolation.}
-  \label{fig:InvMassAfterEachStep}
+  \caption[Electron-pair invariant mass after full selection]{Electron-pair invariant mass after full selection.}
+  \label{fig:InvMass}
  \end{figure}
 
-Figures: Same-sign dielectron invariant mass for electrons passing all selection steps, Fig. \ref{fig:SameSignInvMass}
+% Also add plots for OS and SS??  Had them at one point!  
+% WELL, last OS plot I have does not show good data/MC agreement
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Same-sign dielectron invariant mass for electrons passing all selection steps]{Same-sign dielectron invariant mass for electrons passing all selection steps.}
-  \label{fig:SameSignInvMass}
- \end{figure}
+%% Figures: Same-sign dielectron invariant mass for electrons passing all selection steps, Fig. \ref{fig:SameSignInvMass}
+
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[Same-sign dielectron invariant mass for electrons passing all selection steps]{Same-sign dielectron invariant mass for electrons passing all selection steps.}
+%%   \label{fig:SameSignInvMass}
+%%  \end{figure}
+
+Ooh, I do also have inv mass by eta plots
+
+The total number of data events surviving 
+the selection cuts is 8453.  
+% mention slight upward shift in data of peak position here?
+
+ALSO TALK ABOUT HOW PLOTS SCALED??!!
 
 
+recap of formula:
+
+THE FORMULA
+
+   * ntotal
+   * nbg -- THE DIFFERENT METHODS OF BACKGROUND SUBTRACTION
+   * acc (event sel)
+   * eff (event sel) -- but talk about correcting for data/MC difference
+   * Lumi (exp chapter or sth)
+
+ntotal comes from inv mass plot just shown, nbg is what you need to calculate.
+3 methods: 
+   * MC estimate
+   * template method
+   * sideband subtraction
+
+You know, I don't think my analysis needs a whole giant section on data vs MC comparison.  
+I didn't do a whole lot.  
+Well, just write up what I did do, I guess.  
+
+%\section{Comparison of Monte Carlo and Data}
 \section{Background Subtraction}
+It is expected that some number of non-signal events %, 
+%or background events, 
+will look enough like signal events to pass the full selection.  
+These background events need to be accounted for 
+in the final calculation to arrive 
+at the most accurate result.  
+Therefore, the number of background events should 
+be estimated and subtracted from the total number 
+of events; 
+This estimation can be done in a variety of ways.  
+The methods used in this analysis are detailed 
+in the following sections.  
+
 Figures: Background subtracted yield versus eta with a MZ mass window - comparison to MC, Fig. \ref{fig:YieldVsZEtaComparedToMC}
 
  \begin{figure}[htb]
@@ -42,5 +115,57 @@ Figures: Background subtracted Z PT distribution with a MZ mass window - compari
   \label{fig:YieldVsZPtComparedToMC}
  \end{figure}
 
+\subsection{Monte Carlo Estimation}
+One estimate of the number of background events can be made 
+directly from the Monte Carlo simulation, 
+by counting the number of simulated events that pass 
+the full selection.  
+The numbers of passing events for the simulated background 
+samples used are in Table FIXME, 
+with a total of 18.6 events.  
+The accuracy of this method may be questionable due to 
+unaccounted differences bewteen the simulation and real data, however.  
+In particular, 
+the detector may not be correctly modeled in the simulation, 
+causing slight differences in event numbers 
+that are non-negligible at this level.  
+Therefore, data-driven methods of background subtraction 
+are also used, 
+and the results from all the methods are checked against each other 
+to confirm the accuracy of each method.  
+
+TABLE with MC-estimated number of events from each background source
+
+\subsection{Template Method}
+
+
+\subsection{Sideband Subtraction}
+
+
 
 \section{Estimation of Systematic Uncertainties}
+MAYBE MAKE WHOLE OTHER CHAPTER???
+
+Woohoo, the whole thing
+
+   * lumi
+
+   * stat (but that's not syst)
+
+   * theory systs (HOW TO REFERENCE??  Just reference VBTF paper, I guess...?)
+
+my stuff: 
+
+   * electron energy scale
+  
+   * MC sample for efficiency
+
+   * efficiency fitting
+
+   * background subtraction/modeling (variation among the methods)
+
+\section{What Else?}
+Is this supposed to be random collection of methods used?  
+e.g. tag and probe, template method, sideband fitting... 
+although I guess the last two are actually background subtraction, 
+which is somehow already determined to be part of this chapter.  
