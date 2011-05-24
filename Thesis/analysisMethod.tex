@@ -1,4 +1,5 @@
 \chapter{Analysis Method}
+\label{anMeth}
 I guess this is the part of the analysis that's not included in event selection.  
 SO, how to get the cross section, like the main formula, 
 and where all the numbers came from (especially the ones we haven't calculated yet).
@@ -53,11 +54,30 @@ in both the Monte Carlo and data distributions.
 
 Ooh, I do also have inv mass by eta plots
 
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/invMass-04Apr11.png}
+    \subfloat[Barrel-barrel]{\label{fig:InvMassEtaDivBarrelBarrel}\includegraphics[width=180pt]{Figures/invMassEtaDiv-barrel-barrel-19May11.png}}
+    \subfloat[Barrel-endcap]{\label{fig:InvMassEtaDivBarrelEndcap}\includegraphics[width=180pt]{Figures/invMassEtaDiv-barrel-endcap-19May11.png}}
+    \subfloat[Endcap-endcap]{\label{fig:InvMassEtaDivEndcapEndcap}\includegraphics[width=180pt]{Figures/invMassEtaDiv-endcap-endcap-19May11.png}}
+  \end{center}
+  \caption[Electron-pair invariant mass by $\eta$]{
+    Electron-pair invariant mass by $\eta$ after full selection.
+    Each combination of electron $\eta$-positions is 
+    distributed separately: 
+    both electrons in the barrel (Fig.~\ref{fig:InvMassEtaDivBarrelBarrel}), 
+    one electron each in the barrel and the endcap (Fig.~\ref{fig:InvMassEtaDivBarrelEndcap}),
+    and both electrons in the endcap (Fig.~\ref{fig:InvMassEtaDivEndcapEndcap}).
+    In each case the agreement between data and Monte Carlo simulation is good.  
+  }
+  \label{fig:InvMassEtaDiv}
+ \end{figure}
+
 The total number of data events surviving 
 the selection cuts is 8453.  
 % mention slight upward shift in data of peak position here?
 
-ALSO TALK ABOUT HOW PLOTS SCALED??!!
+ALSO TALK ABOUT HOW PLOTS SCALED??!!  somewhere
 
 
 recap of formula:
@@ -77,11 +97,12 @@ ntotal comes from inv mass plot just shown, nbg is what you need to calculate.
    * sideband subtraction
 
 You know, I don't think my analysis needs a whole giant section on data vs MC comparison.  
-I didn't do a whole lot.  
+I didn't do a whole lot on that.  
 Well, just write up what I did do, I guess.  
 
 %\section{Comparison of Monte Carlo and Data}
 \section{Background Subtraction}
+\label{anMeth:BGSub}
 It is expected that some number of non-signal events %, 
 %or background events, 
 will look enough like signal events to pass the full selection.  
@@ -116,13 +137,14 @@ Figures: Background subtracted Z PT distribution with a MZ mass window - compari
  \end{figure}
 
 \subsection{Monte Carlo Estimation}
+\label{anMeth:BGSubMC}
 One estimate of the number of background events can be made 
 directly from the Monte Carlo simulation, 
 by counting the number of simulated events that pass 
 the full selection.  
 The numbers of passing events for the simulated background 
-samples used are in Table FIXME, 
-with a total of 18.6 events.  
+samples used are shown in Table~\ref{TableBackgroundMC}, 
+with a total of 18.5 events.  
 The accuracy of this method may be questionable due to 
 unaccounted differences bewteen the simulation and real data, however.  
 In particular, 
@@ -134,23 +156,583 @@ are also used,
 and the results from all the methods are checked against each other 
 to confirm the accuracy of each method.  
 
-TABLE with MC-estimated number of events from each background source
+%TABLE with MC-estimated number of events from each background source
+
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Number of events passing full selection 
+      for each background, estimated from 
+      Monte Carlo simulation.}
+    \label{TableBackgroundMC}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | c | }
+      \hline
+      Background Sample & Number of Events  \\ \hline \hline
+      Wenu & 0.36 \\ \hline % 0.35799
+      Wtaunu & 0 \\ \hline % 0
+      Ztautau & 6.4 \\ \hline % 6.3777
+      Electroweak Total & 6.7 \\ \hline \hline % 6.73569
+      ttbar & 5.8 \\ \hline \hline % 5.83397
+      QCD & 0. \\ \hline \hline % Hah
+      WW & 1.5 \\ \hline % 1.5382
+      WZ & 1.4 \\ \hline % 1.4396
+      ZZ & 3.0 \\ \hline % 2.9984
+      Di-boson Total & 6.0 \\ \hline \hline % 5.9762
+      Total Background & 18.5 \\ \hline % 18.54586
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
 
 \subsection{Template Method}
+\label{anMeth:BGSubTemplate}
+The template method is a data-driven method 
+to estimate the background contribution 
+in a selected sample.  
+In general, it uses modified cuts 
+to select data events that are especially 
+likely to be signal or background; 
+these subsamples are called templates.  
+Extra-tight cuts select a ``signal-rich'' sample, 
+while a combination of loose and inverted cuts 
+select a ``background-rich'' sample.  
+A particular selection variable is chosen 
+which has significantly different distributions 
+for signal and background; 
+here, the relative tracker isolation variable is used.  
+The template method compares the 
+distributions of that variable 
+from the selected signal and background templates 
+to the distribution from the full data sample. %, 
+Essentially, the method determines what 
+combination of the signal and background templates 
+best fits the data distribution, 
+in an effort to determine what fraction 
+of the data sample is signal 
+and what fraction is background.  
+This method is only useful to determine the 
+background from QCD; 
+its technique relies on ``background'' electrons 
+being qualitatively different from 
+``good electrons'' 
+(measured by the variable being used), 
+but electrons from interactions similar 
+to the signal interaction, 
+such as Wenu, 
+are also ``good electrons.''  
+Objects arising from QCD interactions that are 
+identified as ``electrons'' are more likely 
+clusters of hadronic particles 
+that come out looking like electrons, 
+so they can be distinguished from 
+``good electrons'' and therefore 
+%used in this method.  
+%used for this method.  
+the template method can identify 
+them as background.  
+
+\subsubsection{Template Definitions}
+\label{anMeth:BGSubTemplateDefs}
+%defs of tighter and looser selections (bleah), more tables?
+
+Several new working points, based on WP80 
+(defined in Section~\ref{evSel:elec}), were defined to select 
+the signal-like and background-like template samples, 
+as well as the data distribution used in the comparison.  
+
+The first working point, used to select the data, 
+is called ``Semi-Tight'' and is identical to WP80 
+except for the removal of its relative track isolation 
+requirement.  
+This is solely to allow the full spectrum of track 
+isolation values to be examined.   
+All events with two electrons passing the 
+Semi-Tight working point are 
+included in the data sample.  
+
+The working point used to select the ``signal-rich'' 
+data sample is called ``Tight'' 
+and is based on the Semi-Tight working point 
+but with a few cuts made tighter.  
+(This is to ensure a very pure sample; 
+however, a very tight working point would not work 
+for standard data selection because its 
+efficiency is lower -- 
+it cuts out too many good events.  
+For the template method, though, a lower number 
+of events is sufficient.)  
+The tighter cut values were taken from WP70, 
+another of the standard working points. %, 
+%and the modified values are given in Table~\ref{TableWPs}.  
+%In particular, 
+Specifically, 
+the values for 
+\dphiin in both the barrel and the endcap, 
+$H/E$ in the barrel, 
+and \detain in the endcap 
+were modified.  
+To select the signal template sample, 
+each event was required to have two electrons 
+passing the Tight working point, 
+and the two electrons were required to have 
+opposite signs.  
+
+The final working point used for the template method 
+is the ``Loose'' working point, 
+which is used in selecting the background template.  
+The Loose working point is modeled on the 
+Semi-Tight working point, as is the Tight, 
+but for the Loose working point 
+all the thresholds for the isolation 
+and electron isolation variables 
+are increased by a factor of 5.  
+In addition, in order to get enough data 
+for a reasonable background template, 
+the ECAL isolation variable had to be further loosened, 
+from 0.07 to 2.5 in the barrel and from 0.05 to 1.0 in the endcap, 
+and the supercluster \Et cut had to be lowered 
+from 25 GeV to 20 GeV.  
+Events selected for the background template 
+must have two electrons, 
+one passing the Semi-Tight working point 
+and one passing the Loose, 
+and these two electrons are required to 
+have the same sign in order to reject signal.  
+
+%HOW TO DO TABLES: just one giant table showing all WP's?  
+%highlight changed values?  HA, with italics
+%(or tables of just changed values?)
+
+Table~\ref{TableWPs} shows the cut values for 
+WP80 and how each of the working points used 
+in the template method is modified with 
+respect to WP80.  
+Cut values changed with respect to WP80 
+are displayed in italics.  
+
+
+% WP'S
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{
+      Summary of the standard working point as well as 
+      the working point definitions used 
+      in the template method.
+      Italics indicates a cut changed relative to WP80.
+    }
+    \label{TableWPs}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | c | c | c | c | c | c | c | c | }
+      \hline
+      Cut Variable & \multicolumn{2}{|c|}{WP80} & \multicolumn{2}{|c|}{Semi-Tight} & \multicolumn{2}{|c|}{Tight} & \multicolumn{2}{|c|}{Loose}  \\ \hline \hline
+      & Barrel & Endcap & Barrel & Endcap & Barrel & Endcap & Barrel & Endcap \\ \hline
+      Conversion Rejection    & & & & & & & &  \\ \hline % 
+      missing hits            & 0    & 0    & 0    & 0    & 0    & 0    & 0    & 0     \\ \hline % 
+      dist                    & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02  \\ \hline % 
+      $\delta\cot\theta$      & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02  \\ \hline % 
+      Relative Isolation & & & & & & & &  \\ \hline % 
+      ECAL      & 0.07 & 0.05 & 0.07 & 0.05 & 0.07 & 0.05 & \textit{2.5} & \textit{1.0}  \\ \hline % 
+      HCAL      & 0.1 & 0.025 & 0.1 & 0.025 & 0.1 & 0.025 & \textit{0.5} & \textit{0.125}  \\ \hline % 
+      track     & 0.09 & 0.04 & \textit{N/A} & \textit{N/A} & \textit{N/A} & \textit{N/A} & \textit{N/A} & \textit{N/A}  \\ \hline % 
+      Electron Identification & & & & & & & &  \\ \hline % 
+      \sieie          & 0.01  & 0.03  & 0.01  & 0.03  & 0.01  & 0.03  & \textit{0.05} & \textit{0.15}  \\ \hline % 
+      \dphiin         & 0.06  & 0.03  & 0.06  & 0.03  & \textit{0.03} & \textit{0.02} & \textit{0.3} & \textit{0.15}  \\ \hline % 
+      \detain         & 0.004 & 0.007 & 0.004 & 0.007 & 0.004 & \textit{0.005} & \textit{0.02} & \textit{0.035}  \\ \hline % 
+      $H/E$           & 0.04  & 0.025 & 0.04  & 0.025 & \textit{0.025} & 0.025 & \textit{0.2} & \textit{0.125}  \\ \hline % 
+      Supercluster \Et & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{20}  \\ \hline % 
+    \end{tabular}
+  \end{center}
+\end{table}
+
+%\textit{italics}
+
+where to mention TFractionFitter itself, and give a little documentation?
+here, I guess
+ALSO NEED A REFERENCE TO TFRACTIONFITTER -- 
+look up the reference on that root page?  
+And/or just give URL of class page as reference?  
+they have some funky stuff to say about statistics and errors...
+AND, also find some way to have reference to the AN??  
+where I got some of this stuff from??
+
+\subsubsection{Results}
+\label{anMeth:BGSubTemplateResults}
+%fit plots -- the signal/background template distribution, as well as full data and fit.  
+
+%Also need to explain plots and results in this section
+
+The relative tracker isolation distributions of the 
+signal and background templates are shown in 
+Fig.~\ref{fig:TemplateShapes}.  
+Each curve independently integrates to 1
+and shows the fraction of events of the given type
+with relative tracker isolation in each bin.
+The difference in shape between signal and background 
+is clear:
+the background has a much higher fraction of events
+with higher values of isolation,
+while the data has a much higher fraction of events
+with lower values.
+The lowest bin contains 90\% of signal compared with
+around 65\% of background.
+These features enable the template method in general 
+and the TFractionFitter in particular 
+to fit the shape of the templates to the 
+distribution of the data.  
+The data distribution is shown in 
+Fig.~\ref{fig:TFractionFit} 
+as the hollow circles (black), 
+while the fit as determined by the
+TFractionFitter is displayed as asterisks (red).  
+The agreement is very good, showing that 
+TFractionFitter was able to make a good 
+match between the data and its combination 
+of templates.  
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/TemplateShapes-01Mar11.png}
+    \includegraphics[width=360pt]{Figures/TemplateShapes-01Mar11-lines.png}
+  \end{center}
+  \caption[Shapes of signal and background templates used in 
+    template method of background subtraction]{
+    Shapes of signal and background templates 
+    used in template method of background subtraction.
+    Each curve independently integrates to 1 
+    and shows the fraction of events of the given type 
+    with relative tracker isolation in each bin.  
+    The solid (black) curve represents signal 
+    and the dotted (red) shows background.  
+    The difference in shape between the two categories 
+    is clear: 
+    the background has a much higher fraction of events 
+    with higher values of isolation, 
+    while the data has a much higher fraction of events 
+    with lower values.  
+    The lowest bin contains 90\% of signal compared with 
+    around 65\% of background.  
+    This difference is exploited 
+    in the template method 
+    to determine the 
+    signal vs. background composition of a given 
+    data sample.  
+  }
+  \label{fig:TemplateShapes}
+ \end{figure}
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=360pt]{Figures/TFractionFitter-full-01Mar11.png}
+  \end{center}
+  \caption[Results of template fit to data]{
+    Results of template fit to data.
+    The relative track isolation distribution 
+    for the data sample 
+    is shown as the hollow circles (black), 
+    while the TFractionFitter-determined 
+    template fit, 
+    using a combination of the signal 
+    and background templates, 
+    is shown as the asterisks (red).  
+    The fit agrees very well to the data; 
+    small deviations are visible but 
+    are contained within the data error bars.  
+  }
+  \label{fig:TFractionFit}
+ \end{figure}
+
+Over the full range of the relative tracker isolation 
+values used for the template fit, 
+the fraction of signal was determined to be 
+0.998 +/- 0.014, 
+while the fraction of background was calculated to be 
+0.0016 +/- 0.0020.  
+However, the signal fraction over the full 
+range is not useful, because this includes 
+background events that would fail 
+the tracker isolation selection cut.  
+Therefore, the tracker isolation cut is effectively 
+reapplied by only looking at events which 
+pass the cut.  
+In effect this is done by integrating 
+the number of signal and background events 
+below the threshold and redetermining the 
+signal and background fractions.  
+This is done with the following formula: 
+\[
+f_{sig}^{thresh} = \frac{ f_{sig} \times n_{sig}^{thresh} }{ [ f_{sig} \times (n_{sig}^{thresh} + f_{bg} \times n_{bg}^{thresh} }
+\]
+which in essence scales the signal fraction 
+according to the relative number of events 
+below the threshold.  
+In this case $f_{sig}$ and $f_{bg}$ are the 
+signal and background fractions determined 
+from the full isolation spectrum, 
+while $f_{sig}^{thresh}$ is the signal fraction 
+below the isolation threshold.  
+$n_{sig}^{thresh}$ and $n_{bg}^{thresh}$ are the 
+integrated signal and background event numbers 
+below the threshold.  
+Since the barrel and endcap thresholds 
+for relative tracker isolation are different, 
+the integration and fraction 
+redetermination was performed with each 
+threshold separately.  
+However, the differences in the final fractions 
+were negligible (non-existent within significant figures), 
+so using the barrel threshold vs. the endcap threshold 
+was determined not to be a significant factor.  
+The signal fraction below the threshold was determined 
+to be 1.000 +/- 0.014, and the background fraction 
+0.000 +/- 0.002.  
+It is expected that the background fraction below 
+the cut threshold would be lower than over the 
+entire spectrum, 
+since more of the background distribution 
+was above the cut threshold than the data distribution.  
+The calculated values therefore agree with the 
+expectation in that sense.  
+
+The signal and background fractions of the data sample 
+determined both from the full isolation spectrum and 
+from the spectrum below the cut threshold are shown in 
+Table~\ref{TableSignalBGFractions}.  
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption[Signal and background fractions of data sample]{
+      Signal and background fractions of data sample, 
+      for both the full relative tracker isolation 
+      spectrum and for the part of the spectrum 
+      below the cut threshold.  
+    }
+    \label{TableSignalBGFractions}
+    \begin{tabular}[]{ | l | c | c | }
+      \hline
+      & Full spectrum & Below threshold  \\ \hline \hline
+      Signal fraction & 0.998 +/- 0.014 & 1.000 +/- 0.014 \\ \hline 
+      Background fraction & 0.0016 +/- 0.0020 & 0.000 +/- 0.002 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+The background fraction for the data sample measured 
+below the isolation cut threshold 
+translates to a event count of 0 +/- 16.8 events.  
+(It should be recalled that this method is only 
+considered valid for estimating QCD background.)  
+The relative uncertainty on the number of signal 
+events corresponding to the error (16.8 events) 
+is 0.2\%.  
 
 
 \subsection{Sideband Subtraction}
+\label{anMeth:BGSubSideband}
+%Sort of like a template fit...
 
+An additional method of estimating background was 
+attempted, to cross-check the other two.  
+This method involved fitting the invariant mass 
+peak with a lineshape to model the signal plus 
+one to model the background, 
+in the standard sideband subtraction method.  
+This is similar to the template method used in 
+the previous section, 
+in that a distribution is fitted to a composition 
+of signal and background contributions.  
+However, the sideband subtraction method 
+uses a different variable distribution, 
+the invariant mass peak, 
+as well as a different set of components 
+with which to fit the distribution.  
+Getting the same results with such 
+different methods adds strength to 
+the claim that the results are accurate.  
+The name ``sideband subtraction'' refers 
+to taking the distribution in 
+the areas away from the peak, the ``sidebands'', 
+to represent the background part of the contribution, 
+and extrapolating it into the peak area and 
+subtracting it from the total distribution.  
+
+explanations of what gozinta fits 
+(how much did I explain 
+about lineshapes in tag and probe?)
+
+The data invariant mass spectrum is fitted with 
+the same lineshapes used to determine the efficiency 
+with the tag-and-probe method (see Section~\ref{evSel:eff}).  
+That is, the data is fit with the \Zee spectrum 
+shape taken from the generator-level, 
+convolved with a Crystal Ball function 
+times a Gaussian function, 
+which represents the signal, 
+while using an exponential function to represent 
+the background.
+EXPLAIN ALL THESE FUNCTIONS SOMEWHERE
+The resulting fit is shown in Fig.~\ref{fig:ZFit}.  
+Fig.~\ref{fig:ZFitLin} shows the fit in linear
+scale, while Fig.~\ref{fig:ZFitLog} shows the
+same plot in logarithmic scale.
+The total composition of lineshapes is shown as the
+solid line.
+The background contribution is shown as a dotted line,
+and is only visible in Fig.~\ref{fig:ZFitLin}, the
+linear-scale plot.
+In logarithmic scale the exponential contribution is
+drawn around $10^{-3}$ and hence is not displayed
+on the logarithmic-scale plot.
+
+
+%plots of fit
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/TemplateShapes-01Mar11.png}
+%    \includegraphics[width=360pt]{Figures/TemplateShapes-01Mar11-lines.png}
+    \subfloat[Barrel-barrel]{\label{fig:ZFitLin}\includegraphics[width=180pt]{Figures/ZFit-lin-08Mar11.png}}
+    \subfloat[Barrel-barrel]{\label{fig:ZFitLog}\includegraphics[width=180pt]{Figures/ZFit-log-08Mar11.png}}
+  \end{center}
+  \caption[Functional fit of \Zee invariant mass peak 
+    for background subtraction]{
+    Fit of \Zee invariant mass peak for the purpose 
+    of background subtraction.  
+    Fig.~\ref{fig:ZFitLin} shows the fit in linear 
+    scale, while Fig.~\ref{fig:ZFitLog} shows the 
+    same plot in logarithmic scale.  
+    The peak is fit with a combination of 
+    lineshapes representing the signal, 
+    the generator-level lineshape convolved with 
+    a Crystal Ball function convolved with a Gaussian, 
+    and a Gaussian lineshape representing the background.  
+    The total composition of lineshapes is shown as the 
+    solid line.  
+    The background contribution is shown as a dotted line, 
+    and is only visible in Fig.~\ref{fig:ZFitLin}, the 
+    linear-scale plot.  
+    In logarithmic scale the exponential contribution is
+    drawn around $10^{-3}$ and hence is not displayed 
+    on the logarithmic-scale plot.  
+  }
+  \label{fig:ZFit}
+ \end{figure}
+
+%results/numbers/discussion of random little things
+
+In general it appears that the agreement of the fit 
+with the actual data points is quite good.  
+However, there are certain features of the fit 
+that bear explaining.  
+In particular, 
+at the lower and upper tails of the peak, 
+the fit appears to be higher than the data points, 
+and at the upper end an ``uptick'' in the fit 
+curve appears.  
+This is due to statistical fluctuations in 
+the generator-level \Zee spectrum histogram.  
+That histogram is very finely binned, 
+and small fluctuations affect the shape of the final fit.  
+The discrepancy at the lower end is likewise 
+due to the shape of the generator-level histogram.  
+The contribution of the background function to the 
+overall fit is negligible.  
+%what about the shoulder and the bump at 108?
+In addition, there appears to be a ``shoulder'' 
+in the data points between about 75 and 80 GeV, 
+as well as a fluctuation around 108 GeV.  
+At this point in time these features in the shape 
+are not understood but have been seen in 
+other analyses as well.  %REFERENCE??
+However, since they involve relatively few events, 
+and because the analysis does not largely 
+depend on the shape of the spectrum, 
+for this analysis they can be ignored.  
+
+The composition of signal and background 
+functions to the overall lineshape 
+gives the number of background events 
+to be 0 +/- 14 events.  
+
+
+\subsection{Comparison of Background Subtraction Methods}
+\label{anMeth:BGSubComp}
+Do overall analysis of comparison of background subtraction methods
+in its own section
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption[Summary of background estimates from different methods]{
+      Summary of background estimates from the three 
+      different methods used in this analysis.  
+      All three methods give roughly consistent results.  
+      In general the most conservative values have been used.  
+    }
+    \label{TableBGSub}
+    \begin{tabular}[]{ | l | c | c | }
+      \hline
+      Method & Background events & Error (events)  \\ \hline \hline
+      Monte Carlo & 18.5 &  \\ \hline 
+      Template Method & 0 & 16.8 \\ \hline 
+      Sideband Subtraction & 0 & 14 \\ \hline 
+    \end{tabular}
+  \end{center}
+\end{table}
+
+The three methods of background estimation 
+detailed in the previous sections have yielded 
+roughly consistent results, 
+summarized in Table~\ref{TableBGSub}.  
+It is interesting that both of the methods 
+that looked at data arrived at a total 
+of 0 background events.  
+The template method only gives an estimate for 
+QCD events, 
+but the estimate from invariant mass fit 
+applies to all sources of background.  
+These values of zero inherently look suspicious; 
+a value of 0 anywhere in a fit 
+means that something 
+has hit its limit in the optimization 
+algorithm.  
+However, investigations into the two methods 
+have yielded nothing inherently faulty.  
+With the template method in particular 
+it took many iterations of the criteria 
+to obtain a ``background-like'' sample 
+large enough to work with, 
+supporting the idea that the selection 
+cuts are very effective at eliminating background.  
+In addition, more than one independent 
+method of analysis is giving the same result.  
+Furthermore, the errors on both of those numbers 
+are approximately the value of the background 
+predicted by Monte Carlo simulation.  
+Therefore, the actual background number 
+could be 0 or 19 or somewhere in between 
+and still be basically consistent with 
+all three methods.  
+For the purposes of this analysis, 
+the most conservative values obtained 
+with any of the three methods were 
+taken for both the estimated number 
+of background events and the error estimate.  
+This yielded a background estimate of 
+19 events from the Monte Carlo estimate, 
+and an error of 17 events from the template method.  
 
 
 \section{Estimation of Systematic Uncertainties}
+\label{anMeth:Systs}
 MAYBE MAKE WHOLE OTHER CHAPTER???
 
 Woohoo, the whole thing
 
    * lumi
 
-   * stat (but that's not syst)
+   * stat (but that's not syst) -- should just go at end, I guess?  
+OR, make a separate little section to explain the statistical stuff
 
    * theory systs (HOW TO REFERENCE??  Just reference VBTF paper, I guess...?)
 
@@ -165,7 +747,10 @@ my stuff:
    * background subtraction/modeling (variation among the methods)
 
 \section{What Else?}
+\label{anMeth:WhatElse}
 Is this supposed to be random collection of methods used?  
 e.g. tag and probe, template method, sideband fitting... 
 although I guess the last two are actually background subtraction, 
 which is somehow already determined to be part of this chapter.  
+And Tag and probe is already part of event selection chapter, 
+when talking about event selection efficiency.  
