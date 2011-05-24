@@ -6,6 +6,8 @@ and where all the numbers came from (especially the ones we haven't calculated y
 
 %recap of invariant mass?
 
+\section{This all should have its own section}
+
 As explained in Section FIXME, 
 the invariant mass of a set of decay-product particles is 
 %CONCEPTUAL EXPLANATION.
@@ -65,9 +67,15 @@ Ooh, I do also have inv mass by eta plots
     Electron-pair invariant mass by $\eta$ after full selection.
     Each combination of electron $\eta$-positions is 
     distributed separately: 
-    both electrons in the barrel (Fig.~\ref{fig:InvMassEtaDivBarrelBarrel}), 
-    one electron each in the barrel and the endcap (Fig.~\ref{fig:InvMassEtaDivBarrelEndcap}),
-    and both electrons in the endcap (Fig.~\ref{fig:InvMassEtaDivEndcapEndcap}).
+    both electrons in the barrel 
+    %(Fig.~\ref{fig:InvMassEtaDivBarrelBarrel}), 
+    \subref{fig:InvMassEtaDivBarrelBarrel}, 
+    one electron each in the barrel and the endcap 
+    %(Fig.~\ref{fig:InvMassEtaDivBarrelEndcap}),
+    \subref{fig:InvMassEtaDivBarrelEndcap},
+    and both electrons in the endcap 
+    %(Fig.~\ref{fig:InvMassEtaDivEndcapEndcap}).
+    \subref{fig:InvMassEtaDivEndcapEndcap}.
     In each case the agreement between data and Monte Carlo simulation is good.  
   }
   \label{fig:InvMassEtaDiv}
@@ -220,7 +228,7 @@ being qualitatively different from
 (measured by the variable being used), 
 but electrons from interactions similar 
 to the signal interaction, 
-such as Wenu, 
+such as \Wenu, 
 are also ``good electrons.''  
 Objects arising from QCD interactions that are 
 identified as ``electrons'' are more likely 
@@ -329,20 +337,23 @@ are displayed in italics.
       \hline
       Cut Variable & \multicolumn{2}{|c|}{WP80} & \multicolumn{2}{|c|}{Semi-Tight} & \multicolumn{2}{|c|}{Tight} & \multicolumn{2}{|c|}{Loose}  \\ \hline \hline
       & Barrel & Endcap & Barrel & Endcap & Barrel & Endcap & Barrel & Endcap \\ \hline
-      Conversion Rejection    & & & & & & & &  \\ \hline % 
+%      Conversion Rejection    & & & & & & & &  \\ \hline % 
+      \multicolumn{9}{|l|}{Conversion Rejection}   \\ \hline % 
       missing hits            & 0    & 0    & 0    & 0    & 0    & 0    & 0    & 0     \\ \hline % 
       dist                    & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02  \\ \hline % 
       $\delta\cot\theta$      & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02 & 0.02  \\ \hline % 
-      Relative Isolation & & & & & & & &  \\ \hline % 
+%      Relative Isolation & & & & & & & &  \\ \hline % 
+      \multicolumn{9}{|l|}{Relative Isolation}   \\ \hline % 
       ECAL      & 0.07 & 0.05 & 0.07 & 0.05 & 0.07 & 0.05 & \textit{2.5} & \textit{1.0}  \\ \hline % 
       HCAL      & 0.1 & 0.025 & 0.1 & 0.025 & 0.1 & 0.025 & \textit{0.5} & \textit{0.125}  \\ \hline % 
       track     & 0.09 & 0.04 & \textit{N/A} & \textit{N/A} & \textit{N/A} & \textit{N/A} & \textit{N/A} & \textit{N/A}  \\ \hline % 
-      Electron Identification & & & & & & & &  \\ \hline % 
+%      Electron Identification & & & & & & & &  \\ \hline % 
+      \multicolumn{9}{|l|}{Electron Identification}   \\ \hline % 
       \sieie          & 0.01  & 0.03  & 0.01  & 0.03  & 0.01  & 0.03  & \textit{0.05} & \textit{0.15}  \\ \hline % 
       \dphiin         & 0.06  & 0.03  & 0.06  & 0.03  & \textit{0.03} & \textit{0.02} & \textit{0.3} & \textit{0.15}  \\ \hline % 
       \detain         & 0.004 & 0.007 & 0.004 & 0.007 & 0.004 & \textit{0.005} & \textit{0.02} & \textit{0.035}  \\ \hline % 
       $H/E$           & 0.04  & 0.025 & 0.04  & 0.025 & \textit{0.025} & 0.025 & \textit{0.2} & \textit{0.125}  \\ \hline % 
-      Supercluster \Et & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{20}  \\ \hline % 
+      Supercluster \Et & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{\textit{20}}  \\ \hline % 
     \end{tabular}
   \end{center}
 \end{table}
@@ -463,7 +474,7 @@ below the threshold and redetermining the
 signal and background fractions.  
 This is done with the following formula: 
 \[
-f_{sig}^{thresh} = \frac{ f_{sig} \times n_{sig}^{thresh} }{ [ f_{sig} \times (n_{sig}^{thresh} + f_{bg} \times n_{bg}^{thresh} }
+f_{sig}^{thresh} = \frac{ f_{sig} \times n_{sig}^{thresh} }{ f_{sig} \times n_{sig}^{thresh} + f_{bg} \times n_{bg}^{thresh} }
 \]
 which in essence scales the signal fraction 
 according to the relative number of events 
@@ -592,15 +603,20 @@ on the logarithmic-scale plot.
   \begin{center}
 %    \includegraphics[width=360pt]{Figures/TemplateShapes-01Mar11.png}
 %    \includegraphics[width=360pt]{Figures/TemplateShapes-01Mar11-lines.png}
-    \subfloat[Barrel-barrel]{\label{fig:ZFitLin}\includegraphics[width=180pt]{Figures/ZFit-lin-08Mar11.png}}
-    \subfloat[Barrel-barrel]{\label{fig:ZFitLog}\includegraphics[width=180pt]{Figures/ZFit-log-08Mar11.png}}
+    \subfloat[Linear scale]{\label{fig:ZFitLin}\includegraphics[width=180pt]{Figures/ZFit-lin-08Mar11.png}}
+    \subfloat[Logarithmic scale]{\label{fig:ZFitLog}\includegraphics[width=180pt]{Figures/ZFit-log-08Mar11.png}}
   \end{center}
   \caption[Functional fit of \Zee invariant mass peak 
     for background subtraction]{
     Fit of \Zee invariant mass peak for the purpose 
     of background subtraction.  
-    Fig.~\ref{fig:ZFitLin} shows the fit in linear 
-    scale, while Fig.~\ref{fig:ZFitLog} shows the 
+    %Fig.~\ref{fig:ZFitLin} 
+    \subref{fig:ZFitLin} 
+    shows the fit in linear 
+    scale, while 
+    %Fig.~\ref{fig:ZFitLog} 
+    Fig.~\subref{fig:ZFitLog} 
+    shows the 
     same plot in logarithmic scale.  
     The peak is fit with a combination of 
     lineshapes representing the signal, 
@@ -610,10 +626,13 @@ on the logarithmic-scale plot.
     The total composition of lineshapes is shown as the 
     solid line.  
     The background contribution is shown as a dotted line, 
-    and is only visible in Fig.~\ref{fig:ZFitLin}, the 
-    linear-scale plot.  
+    and is only visible in 
+    %Fig.~\ref{fig:ZFitLin}, 
+    \subref{fig:ZFitLin}, 
+    the linear-scale plot.  
     In logarithmic scale the exponential contribution is
-    drawn around $10^{-3}$ and hence is not displayed 
+    drawn around $10^{-3}$ on the vertical scale 
+    and hence is not displayed 
     on the logarithmic-scale plot.  
   }
   \label{fig:ZFit}
@@ -658,27 +677,8 @@ to be 0 +/- 14 events.
 
 \subsection{Comparison of Background Subtraction Methods}
 \label{anMeth:BGSubComp}
-Do overall analysis of comparison of background subtraction methods
-in its own section
-
-\begin{table}[htbp]
-  \begin{center}
-    \caption[Summary of background estimates from different methods]{
-      Summary of background estimates from the three 
-      different methods used in this analysis.  
-      All three methods give roughly consistent results.  
-      In general the most conservative values have been used.  
-    }
-    \label{TableBGSub}
-    \begin{tabular}[]{ | l | c | c | }
-      \hline
-      Method & Background events & Error (events)  \\ \hline \hline
-      Monte Carlo & 18.5 &  \\ \hline 
-      Template Method & 0 & 16.8 \\ \hline 
-      Sideband Subtraction & 0 & 14 \\ \hline 
-    \end{tabular}
-  \end{center}
-\end{table}
+%Do overall analysis of comparison of background subtraction methods
+%in its own section
 
 The three methods of background estimation 
 detailed in the previous sections have yielded 
@@ -721,6 +721,25 @@ of background events and the error estimate.
 This yielded a background estimate of 
 19 events from the Monte Carlo estimate, 
 and an error of 17 events from the template method.  
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption[Summary of background estimates from different methods]{
+      Summary of background estimates from the three 
+      different methods used in this analysis.  
+      All three methods give roughly consistent results.  
+      In general the most conservative values have been used.  
+    }
+    \label{TableBGSub}
+    \begin{tabular}[]{ | l | c | c | }
+      \hline
+      Method & Background events & Error (events)  \\ \hline \hline
+      Monte Carlo & 18.5 & N/A \\ \hline 
+      Template Method & 0 & 16.8 \\ \hline 
+      Sideband Subtraction & 0 & 14 \\ \hline 
+    \end{tabular}
+  \end{center}
+\end{table}
 
 
 \section{Estimation of Systematic Uncertainties}
