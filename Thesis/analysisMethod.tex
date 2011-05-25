@@ -1,3 +1,5 @@
+\newcommand{\nevents}{8453}
+
 \chapter{Analysis Method}
 \label{anMeth}
 I guess this is the part of the analysis that's not included in event selection.  
@@ -82,11 +84,30 @@ Ooh, I do also have inv mass by eta plots
  \end{figure}
 
 The total number of data events surviving 
-the selection cuts is 8453.  
+the selection cuts is \nevents{}. %8453.  
 % mention slight upward shift in data of peak position here?
 
-ALSO TALK ABOUT HOW PLOTS SCALED??!!  somewhere
+ALSO TALK ABOUT HOW PLOTS SCALED??!!  somewhere, like in event selection?
 
+
+The formula to calculate the cross section from Section FIXME is
+
+FORMULA
+
+where the terms refer to blah blah blah.  
+Essentially it means that. %FIXME
+Most of the required numbers have been dealt with 
+in other chapters.  % remove?
+
+Explain formula in detail here?  
+It really is the analysis method.  
+You plug in the numbers and get the cross section.  
+Some of the pieces have been done in other 
+chapters, like acceptance and efficiency 
+(ntotal is done above, I guess, just from 
+looking at inv mass plot which isn't strictly 
+necessary, either!)  
+Should they instead all be done here?  
 
 recap of formula:
 
@@ -360,14 +381,36 @@ are displayed in italics.
 
 %\textit{italics}
 
-where to mention TFractionFitter itself, and give a little documentation?
-here, I guess
-ALSO NEED A REFERENCE TO TFRACTIONFITTER -- 
-look up the reference on that root page?  
-And/or just give URL of class page as reference?  
-they have some funky stuff to say about statistics and errors...
-AND, also find some way to have reference to the AN??  
-where I got some of this stuff from??
+%\subsubsection{TFractionFitter} %need a whole subsection??
+%where to mention TFractionFitter itself, and give a little documentation?
+%here, I guess
+%ALSO NEED A REFERENCE TO TFRACTIONFITTER -- 
+%look up the reference on that root page?  
+%And/or just give URL of class page as reference?  
+%they have some funky stuff to say about statistics and errors...
+%AND, also find some way to have reference to the AN??  
+%where I got some of this stuff from??
+
+The mechanics of the fit are done by the ROOT class 
+TFractionFitter, %.  % easy wy to make fixed-width?
+whose purpose is to perform the exact sort of fit 
+needed for the template method.  
+It determines the composition of 
+template distributions that best 
+fits a given ``data'' distribution 
+using a likelihood fit.  
+%In the process, it takes into account 
+%uncertainties in both the templates 
+%and the data due to statistics.  
+Statistical uncertainties in both the 
+tempaltes and the data are 
+taken into account in the fitting process.  
+
+%http://root.cern.ch/root/html522/TFractionFitter.html  or just ``html'' instead of html522?  
+%Is there some kind of permanent class reference??
+%paper and stuff: Fits MC fractions to data histogram (a la HMCMLL, see R. Barlow and C. Beeston,
+% Comp. Phys. Comm. 77 (1993) 219-228, and http://www.hep.man.ac.uk/~roger/hfrac.f).
+%but I don't think that's about TFractionFitter itself.  
 
 \subsubsection{Results}
 \label{anMeth:BGSubTemplateResults}
@@ -744,7 +787,143 @@ and an error of 17 events from the template method.
 
 \section{Estimation of Systematic Uncertainties}
 \label{anMeth:Systs}
-MAYBE MAKE WHOLE OTHER CHAPTER???
+%MAYBE MAKE WHOLE OTHER CHAPTER???
+
+\subsection{Introduction to Error Analysis}
+
+When making any sort of measurement it is essential 
+to know how accurate the result is.  
+This accuracy can be quantified in the 
+``error'' or ``uncertainty'' 
+on a measurement, 
+meaning the bounds around the measured value 
+within which the true value can be assumed to lie.  
+A measurement with a smaller error is 
+therefore a more accurate or ``better'' result, 
+and hence calculating the error on a result is 
+an extremely important part of 
+any analysis.  
+
+An uncertainty on a quantity can be 
+expressed in two different ways.  
+The first way is as an absolute uncertainty, 
+with the same units as the quantity, 
+for example ``20.0 +/- 0.2 grams''.  
+The second way is as an uncertainty 
+relative to the value of the quantity itself, 
+such as ``20.0 grams +/- 1\%''.  
+The ``1\%'' comes from the value of the absolute 
+uncertainty divided by the value of the quantity: 
+$0.2/20.0 = 0.01 = 1\%$. 
+The relative uncertainty is therefore unitless.  
+
+%ADDING ERRORS IN QUADRATURE
+
+In order to combine the effects of 
+different (independent) uncertainties, 
+it is necessary to add them 
+in quadrature, as shown:
+\[
+\left(\frac{\delta X_{tot}}{X_{tot}}\right)^2 
+= \sum_{i=1}^{N} \left(\frac{\delta X_i}{X_i}\right)^2 
+= \left(\frac{\delta X_1}{X_1}\right)^2 + \left(\frac{\delta X_2}{X_2}\right)^2 + \ldots
+\]
+where 
+$X$ is the given quantity and 
+$\delta X$ is the absolute error, 
+making $\frac{\delta X}{X}$ the relative error.  
+Here, $tot$ denotes the total uncertainty 
+and $i=1,2,\ldots$ the uncertainties from 
+individual sources.  
+Only the relative uncertainties 
+can be combined in this way, 
+due to the lack of different units.  
+This formula may be understood 
+conceptually by analogy to the 
+x-y coordinate plane, in particular 
+the formula for a given point's distance 
+to the origin.  
+%The x and y coordinates of the point 
+%are independent of each other
+In the same way the square of the total distance 
+from zero is given as the sum of the squares 
+of the (independent) component distances, 
+the square of the ``total uncertainty'' 
+is given by the sum of the squares of the 
+individual (independent) component uncertainties.  
+Instead of calculating a distance in x-y 
+coordinate space, 
+this distance is calculated in 
+``uncertainty space''.
+%For this formula to be true, 
+%all sources of uncertainty 
+%must be independent.  
+
+In high energy physics the sources of uncertainty 
+are generally divided into two categories: 
+statistical and systematic.  
+Statistical error arises from the fluctuations 
+possible when counting elements in a population.  
+The higher the number of elements used 
+in the study, 
+the more accurate the measurement is likely to be.  
+%READ MORE ON STATISTICS!!!
+In a high energy physics analysis 
+this corresponds to the number of events used.  
+FIXME SAY MORE ON THE WHY HERE 
+The relative statistical error on a measurement 
+is equal to the square root of the total number 
+of events divided by the total number of events:
+\[
+\frac{\delta{}x}{x} = \frac{\sqrt{N}}{N}
+\]
+Where $x$ is the quantity being measured and 
+$N$ is the total number of events used.  
+In our case, the statistical error on the final 
+result is given by 
+\[
+%\frac{\sqrt{8453}}{8453}
+\frac{\sqrt{\nevents{}}}{\nevents{}} = 1.1\% % sqrt(8453)/8453 = 0.0108766
+\]
+The statistical error is fixed for a given number 
+of events; 
+the only way to reduce the statistical error 
+is to analyze more events.  
+
+The second type of error, systematic error, 
+encompasses everything else that may 
+inadvertently change the result of the analysis.  
+The particular sources are specific to the analysis 
+in question, 
+ranging from slight differences 
+in theoretical predictions, 
+reflecting our incomplete knowledge of the subject, 
+to possible miscalibrations of the detector, 
+to possible biases inherent in reconstruction 
+or identification algorithms.  
+The error is evaluated by changing something 
+in the analysis and seeing how much the 
+result itself would change.  
+Some changes have very little effect, 
+while some have larger effects.  
+In general, it is only necessary to account 
+for the larger effects, 
+``larger'' being defined by the scale 
+of the statistical uncertainty.  
+If the systematic error due to a particular 
+source is much smaller than the 
+overall statistical error, 
+its contribution to the total uncertainty 
+is relatively very small, 
+and it can safely be ignored.  
+It is therefore standard to try to adjust 
+an analysis if necessary such that its 
+systematic error is at most about the same as 
+the statistical error.  
+Such corrections might include using 
+a reconstruction method whose errors 
+are shown to be lower.  
+
 
 Woohoo, the whole thing
 
