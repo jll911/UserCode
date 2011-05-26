@@ -790,6 +790,7 @@ and an error of 17 events from the template method.
 %MAYBE MAKE WHOLE OTHER CHAPTER???
 
 \subsection{Introduction to Error Analysis}
+\label{anMeth:SystsIntro}
 
 When making any sort of measurement it is essential 
 to know how accurate the result is.  
@@ -814,7 +815,8 @@ relative to the value of the quantity itself,
 such as ``20.0 grams +/- 1\%''.  
 The ``1\%'' comes from the value of the absolute 
 uncertainty divided by the value of the quantity: 
-$0.2/20.0 = 0.01 = 1\%$. 
+%$0.2 grams/20.0 grams = 0.01 = 1\%$. 
+0.2 grams/20.0 grams = 0.01 = 1\%. 
 The relative uncertainty is therefore unitless.  
 
 %ADDING ERRORS IN QUADRATURE
@@ -826,14 +828,17 @@ in quadrature, as shown:
 \[
 \left(\frac{\delta X_{tot}}{X_{tot}}\right)^2 
 = \sum_{i=1}^{N} \left(\frac{\delta X_i}{X_i}\right)^2 
-= \left(\frac{\delta X_1}{X_1}\right)^2 + \left(\frac{\delta X_2}{X_2}\right)^2 + \ldots
+= \left(\frac{\delta X_1}{X_1}\right)^2 
++ \left(\frac{\delta X_2}{X_2}\right)^2 
++ \ldots
++ \left(\frac{\delta X_N}{X_N}\right)^2 
 \]
 where 
 $X$ is the given quantity and 
 $\delta X$ is the absolute error, 
 making $\frac{\delta X}{X}$ the relative error.  
 Here, $tot$ denotes the total uncertainty 
-and $i=1,2,\ldots$ the uncertainties from 
+and $i=1,2,\ldots ,N$ the uncertainties from 
 individual sources.  
 Only the relative uncertainties 
 can be combined in this way, 
@@ -851,7 +856,7 @@ of the (independent) component distances,
 the square of the ``total uncertainty'' 
 is given by the sum of the squares of the 
 individual (independent) component uncertainties.  
-Instead of calculating a distance in x-y 
+Instead of calculating a distance in %x-y 
 coordinate space, 
 this distance is calculated in 
 ``uncertainty space''.
@@ -922,33 +927,160 @@ systematic error is at most about the same as
 the statistical error.  
 Such corrections might include using 
 a reconstruction method whose errors 
-are shown to be lower.  
+are shown to be lower, 
+or doing a more thorough analysis 
+in which case some errors can be reduced.  
 
 
-Woohoo, the whole thing
+%Woohoo, the whole thing
 
-   * lumi
+%   * stat (but that's not syst) -- should just go at end, I guess?  
+%OR, make a separate little section to explain the statistical stuff
 
-   * stat (but that's not syst) -- should just go at end, I guess?  
-OR, make a separate little section to explain the statistical stuff
+\subsection{Systematic Uncertainty due to Luminosity}
+\label{anMeth:SystsLumi}
+
+%   * lumi
+
+The luminosity is measured by the forward hadronic calorimeter (HF) 
+as explained in Section~\ref{exp:lumi}.  
+For 2010, the luminosity measurement has an accepted 
+relative uncertainty value of 4\%.  
+
+\subsection{Systematic Uncertainties from Theory}
+\label{anMeth:SystsTheory}
 
    * theory systs (HOW TO REFERENCE??  Just reference VBTF paper, I guess...?)
 
-my stuff: 
+\subsection{Other Sources of Systematic Uncertainty}
+\label{anMeth:SystsOther}
 
-   * electron energy scale
-  
+%my stuff: 
+
+\subsubsection{Electron Energy Scale}
+\label{anMeth:SystsOtherEleEScale}
+
+%   * electron energy scale
+
+A typical source of systematic uncertainty 
+is the energy scale of the physics objects 
+used in the analysis, 
+depending on the type of physics object.  
+The electron energy scale is determined 
+by the accuracy of the electromagnetic 
+calorimeter (see Section~\ref{exp:ECAL})
+at measuring the energy 
+deposited by the particles passing into it.  
+The response of the ECAL is measured 
+using a test beam setup: 
+particle beams of known energies are 
+directed at the calorimeter material, 
+and the response is recorded.  
+This response is then correlated with the 
+original particle energies.  
+% ADD SOMETHING ABOUT THAT TO EXPERIMENT CHAPTER???
+% SOME REFERENCE TO TEST BEAM TESTS?
+However, the correlation may not be completely 
+accurate.  
+Scaling the electron energy by an amount 
+slightly less than or greater than 1 
+and then observing the resulting change 
+in the number of \Zee events 
+gives an estimate of the systematic error 
+due to the electron energy scale.  
+Uncertainties of 2\% and 3\% % do I need a reference?  not public,
+%it was on HN:
+% https://hypernews.cern.ch/HyperNews/CMS/get/egamma/911/1/1/1.html
+% https://hypernews.cern.ch/HyperNews/CMS/get/egamma/911/1/1/2.html
+for the ECAL barrel and endcap respectively 
+were given as conservative values.  
+The electrons' energy were then multiplied 
+by 1.02 or 1.03 for the upper-end calculation, 
+and 0.98 or 0.97 for the lower-end calculation, 
+according to their position (barrel or endcap).  
+Scaling the energy up resulted in finding 
+%67 more \Zee candidate events, 
+%for a relative change of 0.82\%.  
+%a relative change in number of candidate events 
+%of +0.82\%.  
+0.82\% more \Zee candidate events.  
+On the other hand, scaling the energy down 
+%caused the loss of 88 events, 
+%for a relative difference of 1.07\%.  
+caused the loss of 1.07\% of the events.  
+These two changes were averaged 
+to give an overall relative error 
+of 0.95\% for the final result.  
+
+\subsubsection{Monte Carlo Sample for Efficiency}
+\label{anMeth:SystsOtherMCEff}
+
    * MC sample for efficiency
 
-   * efficiency fitting
+\subsubsection{Fitting for Efficiency}
+\label{anMeth:SystsOtherFitEff}
 
-   * background subtraction/modeling (variation among the methods)
+%   * efficiency fitting
 
-\section{What Else?}
-\label{anMeth:WhatElse}
-Is this supposed to be random collection of methods used?  
-e.g. tag and probe, template method, sideband fitting... 
-although I guess the last two are actually background subtraction, 
-which is somehow already determined to be part of this chapter.  
-And Tag and probe is already part of event selection chapter, 
-when talking about event selection efficiency.  
+The efficiency calculations in Section~\ref{evSel:eff} 
+had associated systematic errors due to the 
+goodness of the fit, 
+which are the errors shown in Table~\ref{TableEfficiencies}.  
+The error on the final event selection 
+efficiency is 0.0047 in terms of absolute error, 
+or 0.76\% relative error.  
+
+
+\subsubsection{Background Subtraction/Modeling}
+\label{anMeth:SystsOtherBGSub}
+
+%   * background subtraction/modeling (variation among the methods)
+
+As described in Section~\ref{anMeth:BGSubComp}, 
+the uncertainty on the number of background 
+events was taken to be 17 events, 
+from the template method.  
+This produces a relative uncertainty 
+on the number of signal events 
+(and hence final cross section) 
+of 0.2\%.  
+
+\subsection{Summary of Uncertainties}
+\label{anMeth:SystsSummary}
+
+A summary of the uncertainties on the final 
+cross section resulting from various sources 
+is shown in Table~\ref{TableSystsSummary}.  
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption[Summary of uncertainties]{
+      Summary of relative uncertainties from sources 
+      including luminosity, theoretical uncertainties, 
+      and experimental uncertainties.  
+    }
+    \label{TableSystsSummary}
+    \begin{tabular}[]{ | l | l | }
+      \hline
+      Source & Value  \\ \hline \hline
+      Luminosity Uncertainty & 4\% \\ \hline 
+      Statistical Uncertainty & 1.1\% \\ \hline 
+      Theoretical Systematics & 1.7\% \\ \hline \hline 
+      Experimental Systematics & 1.7\% \\ \hline \hline 
+      Electron Energy Scale & 0.95\% \\ \hline 
+      MC Sample for Efficiency & 1.2\% \\ \hline 
+      Efficiency Fitting & 0.76\% \\ \hline 
+      Background Subtraction/Modeling & 0.2\% \\ \hline 
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
+%\section{What Else?}
+%\label{anMeth:WhatElse}
+%Is this supposed to be random collection of methods used?  
+%e.g. tag and probe, template method, sideband fitting... 
+%although I guess the last two are actually background subtraction, 
+%which is somehow already determined to be part of this chapter.  
+%And Tag and probe is already part of event selection chapter, 
+%when talking about event selection efficiency.  
