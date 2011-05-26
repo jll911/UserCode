@@ -1,4 +1,5 @@
 \chapter{Event Simulation}
+\label{sim}
 somewhere have the pretty picture from 
 matt mc tutorial on how generators/geant/etc 
 fit in with everything else (reco, whatever)
@@ -8,9 +9,11 @@ compare with data (desciption of current understanding as is)
 design detectors
 
 \section{Monte Carlo Event Generation}
+\label{sim:MC}
 put why called ``monte carlo''
 multiple types: shower vs matrix element?
 \subsection{some explanation of the black box}
+\label{sim:MCBlackBox}
 modular structure here?  that pretty picture showing all the 
 different steps to an interaction that need to be 
 simulated. 
@@ -22,14 +25,23 @@ hard scatter (underlying event, multiple interactions in parallel) ->
 hadronization (not directly applicable to my process, but applicable for bg's) -> 
 decay resonances -> interactions with detector material ...
 \subsection{Monte Carlo Generators}
+\label{sim:MCGens}
 \subsubsection{PYTHIA}
+\label{sim:MCGensPythia}
+what are the different tunes for?  tune z2, tune d6t
 \subsubsection{POWHEG}
+\label{sim:MCGensPowheg}
+why is this one used in favor of pythia?  
 \subsubsection{Other Generators}
-Like, whichever other samples I check
+\label{sim:MCGensOther}
+Like, whichever other samples I check (background etc)
 
 \section{Detector Simulation}
+\label{sim:Detector}
 %\subsection{GEANT Detector Model/Modeling of Particle Interactions in Detector Material}
 \subsection{GEANT Detector Model}
+\label{sim:DetectorGeant}
 
 \subsection{Level-1 Trigger Emulator}
+\label{sim:DetectorL1Emul}
 talk about how emulator necessary for l1, but not for hlt (duh)
