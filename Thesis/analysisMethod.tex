@@ -942,15 +942,116 @@ in which case some errors can be reduced.
 
 %   * lumi
 
+As one of the necessary components in the 
+cross-section calculation, 
+any uncertainty on the measurement of the luminosity 
+is relevant to the final result.  
 The luminosity is measured by the forward hadronic calorimeter (HF) 
 as explained in Section~\ref{exp:lumi}.  
 For 2010, the luminosity measurement has an accepted 
-relative uncertainty value of 4\%.  
+relative uncertainty value of 4\%.  % REFERENCE
 
 \subsection{Systematic Uncertainties from Theory}
 \label{anMeth:SystsTheory}
 
-   * theory systs (HOW TO REFERENCE??  Just reference VBTF paper, I guess...?)
+%   * theory systs (HOW TO REFERENCE??  Just reference VBTF paper, I guess...?)
+% the VBTF public paper aka PAS only has 3 lines on the theoretical uncertainties, 
+% plus the two entries in the table.  
+% I guess I can put in a little more detail, since it's not like it's secret
+
+%intro theory uncertainties
+
+Uncertainties in theoretical predictions do not 
+necessarily play a role in an experimental measurement.  
+However, the theoretical models do affect the 
+calculation of the acceptance (see Section~\ref{evSel:acc}).  
+The acceptance must inherently be obtained from 
+Monte Carlo simulation, making it dependent on the 
+individual model used.  
+% how exactly does PDF affect Z rapidity, for example?
+Since there are many different possible corrections 
+to the given Monte Carlo modeling, 
+all of these variations should be taken into account.  
+The official CMS \Zee analysis calculated % reference EWK-10-005 pas
+uncertainties in the acceptance due to 
+various elements of theory, 
+and these are given here.  
+
+
+%details on what they did -- outline of AN 2010/055, basically!
+
+%QCD resummation and NNLO corrections % LOOKUP resummation
+
+The Monte Carlo simulated data sample used in the analysis 
+does not include corrections from resummation or 
+NNLO QCD corrections.  
+There are tools that account for these corrections, 
+however, 
+namely the ResBos event generator, % REFERENCE
+so this generator was used to 
+calculate the uncertainty due to the missing corrections.  
+
+
+%higher order (>NNLO) QCD corrections
+
+Since calculations are generally done up to a fixed order 
+and depend on the renormalization and factorization scales, % LOOKUP
+varying these scales can estimate the uncertainty due 
+to the missing higher-order calculations.  
+The scales were therefore varied each way by a factor of two 
+and the maximum difference in results was taken, 
+using FEWZ to calculate the cross section.  % ADD FEWZ THING TO SIM CH
+
+
+%PDF -- put to front, in its own section -- others all in same section?
+
+There are several well-known
+parton distribution function (PDF) sets
+in existence,
+and the output of simulations
+using these PDFs vary slightly from one another.
+Three different PDF sets were used: 
+CT10, MSTW2008, and NNPDF2.0.  
+The value of the acceptance with each PDF was calculated 
+in order to determine the spread between the three sets.  
+In addition, the error function corresponding to each PDF 
+was evaluated, 
+and these were combined with the acceptance spread 
+over the PDFs.  
+% 0.81\% according to table, 0.9\% according to PAS
+
+
+%NLO EWK corrections (missing full EWK, uncertainty in FSR; ISR found to be insignificant)
+
+The Monte Carlo simulation sample used for the analysis 
+also does not fully account for next-to-leading-order (NLO) 
+electroweak corrections.  
+In addition, the existing corrections, 
+namely final-state radiation, 
+may not be completely accurate.  
+To deal with these sources of uncertainty, 
+a separate generator, HORACE, 
+was used to make the full set of corrections.  
+The output was then compared with the 
+standard simulation sample to estimate 
+the uncertainty due to the missing corrections.  
+
+% WHY NOT JUST USE THESE BETTER GENERATORS FOR FULL SAMPLE IN THE FIRST PLACE???
+
+%Guess I'd better give numbers in public note:
+%PDF by themselves, others together,
+%then combined number
+
+The uncertainty due to the PDF set used 
+was found to be 0.9\%, 
+while the rest of the sources 
+contributed a total of 1.4\%, 
+for a combined value of 1.7\% relative uncertainty.  
+
+% WILL BE REVISITED ONCE I'VE LEARNED MORE ABOUT EVENT GENERATORS AND THEORY!
+
+
+
 
 \subsection{Other Sources of Systematic Uncertainty}
 \label{anMeth:SystsOther}
