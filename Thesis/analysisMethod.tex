@@ -152,10 +152,10 @@ and the estimated number of background events,
 and 
 \[
 %\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } 
-\epsilon = \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
+\epsilon = \epsilon_{ reco } \times \epsilon_{ sel } \times \epsilon_{ trig }
 \]
 where the abbreviations refer to %acceptance, 
-trigger, reconstruction, and selection respectively.  
+reconstruction, selection, and trigger, respectively.  
 %Essentially it means that. %FIXME or just do in overview?
 %Most of the required numbers have been dealt with 
 %in other chapters.  % remove?
@@ -704,9 +704,10 @@ to represent the background part of the contribution,
 and extrapolating it into the peak area and 
 subtracting it from the total distribution.  
 
-explanations of what gozinta fits 
-(how much did I explain 
-about lineshapes in tag and probe?)
+% FIXME
+%explanations of what gozinta fits 
+%(how much did I explain 
+%about lineshapes in tag and probe?)
 
 The data invariant mass spectrum is fitted with 
 the same lineshapes used to determine the efficiency 
@@ -880,6 +881,8 @@ and an error of 17 events from the template method.
 \section{Estimation of Systematic Uncertainties}
 \label{anMeth:Systs}
 %MAYBE MAKE WHOLE OTHER CHAPTER???
+
+% SOME TEXT HERE???
 
 \subsection{Introduction to Error Analysis}
 \label{anMeth:SystsIntro}
@@ -1149,6 +1152,14 @@ for a combined value of 1.7\% relative uncertainty.
 \label{anMeth:SystsOther}
 
 %my stuff: 
+
+In addition to the analysis-independent 
+uncertainty due to luminosity, 
+and the uncertainty in the acceptance 
+from the theoretical modeling, 
+there are several sources of 
+uncertainty specific to this analysis 
+that also need to be accounted for.  
 
 \subsubsection{Electron Energy Scale}
 \label{anMeth:SystsOtherEleEScale}
