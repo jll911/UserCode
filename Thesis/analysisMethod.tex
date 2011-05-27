@@ -1,34 +1,75 @@
-\newcommand{\nevents}{8453}
+\newcommand{\nevents}{8453} %% BUT HARDCODED ELSEWHERE
 
 \chapter{Analysis Method}
 \label{anMeth}
-I guess this is the part of the analysis that's not included in event selection.  
-SO, how to get the cross section, like the main formula, 
-and where all the numbers came from (especially the ones we haven't calculated yet).
+%I guess this is the part of the analysis that's not included in event selection.  
+%SO, how to get the cross section, like the main formula, 
+%and where all the numbers came from (especially the ones we haven't calculated yet).
+
+The previous chapter explained how the data events used 
+in the analysis were selected.  
+The endpoint of that chapter was a set of 
+\Zee candidate events: 
+events that had two well-reconstructed electrons 
+with an invariant mass between 60 and 120 GeV.  % NEED TO EXPLAIN INV MASS BEFORE THIS
+This chapter explains the rest of the process 
+needed to obtain the result, the final cross section.  
+This includes assembling all the necessary components % SECTION TITLE! referring to assembling the components
+of the calculation, 
+as well as determining the uncertainty 
+inherent in each component 
+and combining the uncertainties into one overall value.  
 
 %recap of invariant mass?
 
-\section{This all should have its own section}
-
-As explained in Section FIXME, 
+\section{Invariant Mass Spectrum} % DON'T REALLY NEED ALL EXPLANATORY STUFF HERE, IF IN INTRO CH???
+\label{anMeth:invmass}
+As explained in Section TBD, % FIXME wherever it's done in introductory material
 the invariant mass of a set of decay-product particles is 
 %CONCEPTUAL EXPLANATION.
 essentially the mass of the original particle that decayed. 
 %to form the end-products.  
-It is defined mathematically as 
-
-INV MASS FORMULA
-
-where p momentum, E energy, etc. 
-In our case, for a two-particle system, it can be written as 
-
-MORE FORMULA (this one necessary??)
-
-The invariant mass distribution for the electron pairs 
+It is defined mathematically by %as 
+\[
+M_{inv}^2 = \left( \sum E \right)^2 - \left\| \sum \mathbf{p} \right\|^2
+\]
+where $ \mathbf{p} $ is the momentum 
+and $ E $ the energy for a given particle; 
+$ \sum $ denotes the sum over all particles 
+-- a vector sum in the case of momentum, 
+while $\left\| \mathbf{p} \right\|$ denotes the momentum's magnitude.  
+In our case, for a two-particle system, this can be written as 
+\[
+M_{inv} = \sqrt( \left(E_1 + E_2\right)^2 - \left\|\mathbf{p}_1 + \mathbf{p}_2\right\|^2 )
+\]
+The invariant mass distribution within the mass window 
+for the electron pairs 
 in the events surviving all selection cuts is shown in 
 Fig.~\ref{fig:InvMass}.  
-The peak around the Z mass (\~91 GeV) is clearly visible 
-in both the Monte Carlo and data distributions.  
+An explanation of how the different simulation 
+samples were combined can be 
+found in Section FIXME.  
+The peak around the Z mass (91 GeV) is clearly visible 
+in both the Monte Carlo (solid) and data (points) distributions.  
+The background contributions estimated from Monte Carlo simulation 
+are shown as the colored (grayscale) areas.  
+A slight shift in the peak position along the x-axis is 
+evident, due to slight miscalibrations of 
+the calorimeter response to given energies.  
+This difference is accounted for in the 
+systematic uncertainty due to the electron energy scale 
+(see Section~\ref{anMeth:SystsOtherEleEScale}).  
+The selected events are also divided into categories according 
+to which part of the detector, barrel or endcap, 
+each of their electron legs were located, 
+and the resulting invariant mass spectra are 
+shown in Fig.~\ref{fig:InvMassEtaDiv}.  
+Agreement in each case is good to within the 
+uncertainty.  
+
+%ALSO TALK ABOUT HOW PLOTS SCALED??!!  
+%somewhere, like in event selection? 
+%I guess also in this section (different chapter)
 
 %yield plot first, since this is what the rest is based on.  
 
@@ -39,7 +80,18 @@ in both the Monte Carlo and data distributions.
   \begin{center}
     \includegraphics[width=360pt]{Figures/invMass-04Apr11.png}
   \end{center}
-  \caption[Electron-pair invariant mass after full selection]{Electron-pair invariant mass after full selection.}
+  \caption[Electron-pair invariant mass after full selection]
+  {Electron-pair invariant mass after full selection.
+    The peak around the Z mass (91 GeV) is clearly visible
+    in both the Monte Carlo (solid) and data (points) distributions.
+    The background contributions estimated from Monte Carlo simulation
+    are shown as the colored (grayscale) areas.
+    A slight shift in the peak position along the x-axis is
+    evident, due to slight miscalibrations of
+    the calorimeter response to given energies.
+    This difference is accounted for in the
+    systematic uncertainty due to the electron energy scale.
+  }
   \label{fig:InvMass}
  \end{figure}
 
@@ -56,7 +108,7 @@ in both the Monte Carlo and data distributions.
 %%   \label{fig:SameSignInvMass}
 %%  \end{figure}
 
-Ooh, I do also have inv mass by eta plots
+%Ooh, I do also have inv mass by eta plots
 
  \begin{figure}[htb]
   \begin{center}
@@ -83,51 +135,89 @@ Ooh, I do also have inv mass by eta plots
   \label{fig:InvMassEtaDiv}
  \end{figure}
 
-The total number of data events surviving 
-the selection cuts is \nevents{}. %8453.  
-% mention slight upward shift in data of peak position here?
+\section{Cross-Section Extraction}
+\label{anMeth:xsec}
+The formula to calculate the cross section from 
+Section~\ref{over:xsec} is
+\[
+%\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ \Zee } }{  \mathcal{ L } \times \epsilon }
+\sigma_{ Z } \times \textrm{ BR }_{ Zee } = 
+\frac{ n_{signal} }{  \mathcal{ L } \times \epsilon \times A}
+\]
+where $\mathcal{ L }$ is the luminosity, 
+$n_{signal} = n_{total} - n_{background}$ is 
+the number of signal events, 
+derived from the total number of selected events 
+and the estimated number of background events, 
+and 
+\[
+%\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } 
+\epsilon = \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
+\]
+where the abbreviations refer to %acceptance, 
+trigger, reconstruction, and selection respectively.  
+%Essentially it means that. %FIXME or just do in overview?
+%Most of the required numbers have been dealt with 
+%in other chapters.  % remove?
+Many of the elements of these formulas have been 
+determined in previous sections: 
+the event selection efficiency $\epsilon$ was 
+calculated as 0.610 
+in Section~\ref{evSel:eff}, 
+and the acceptance as 0.387 
+in Section~\ref{evSel:acc}.  
+The luminosity is known to be 36.1 \pb 
+(Section~\ref{exp:lumi}). 
+The remaining component to be determined 
+is the number of signal events, 
+which is obtained from the total 
+number of selected events 
+and the estimated number of background 
+events.  
+The total number of selected events is 
+the number of events in the 
+invariant mass histogram, 
+Fig.~\ref{fig:InvMass}: 
+this is \nevents{} events.  
+The final element, estimated number 
+of background events, 
+will be calculated in 
+Section~\ref{anMeth:BGSub}.  
 
-ALSO TALK ABOUT HOW PLOTS SCALED??!!  somewhere, like in event selection?
 
+%Explain formula in detail here?  
+%It really is the analysis method.  
+%You plug in the numbers and get the cross section.  
+%Some of the pieces have been done in other 
+%chapters, like acceptance and efficiency 
+%(ntotal is done above, I guess, just from 
+%looking at inv mass plot which isn't strictly 
+%necessary, either!)  
+%Should they instead all be done here?  
 
-The formula to calculate the cross section from Section FIXME is
+%recap of formula:
 
-FORMULA
+%THE FORMULA
 
-where the terms refer to blah blah blah.  
-Essentially it means that. %FIXME
-Most of the required numbers have been dealt with 
-in other chapters.  % remove?
+%   * ntotal
+%   * nbg -- THE DIFFERENT METHODS OF BACKGROUND SUBTRACTION
+%   * acc (event sel)
+%   * eff (event sel) -- but talk about correcting for data/MC difference
+%   * Lumi (exp chapter or sth)
 
-Explain formula in detail here?  
-It really is the analysis method.  
-You plug in the numbers and get the cross section.  
-Some of the pieces have been done in other 
-chapters, like acceptance and efficiency 
-(ntotal is done above, I guess, just from 
-looking at inv mass plot which isn't strictly 
-necessary, either!)  
-Should they instead all be done here?  
+%ntotal comes from inv mass plot just shown, nbg is what you need to calculate.
 
-recap of formula:
+%The total number of data events surviving 
+%the selection cuts is \nevents{}. %8453.  
 
-THE FORMULA
+%3 methods: 
+%   * MC estimate
+%   * template method
+%   * sideband subtraction
 
-   * ntotal
-   * nbg -- THE DIFFERENT METHODS OF BACKGROUND SUBTRACTION
-   * acc (event sel)
-   * eff (event sel) -- but talk about correcting for data/MC difference
-   * Lumi (exp chapter or sth)
-
-ntotal comes from inv mass plot just shown, nbg is what you need to calculate.
-3 methods: 
-   * MC estimate
-   * template method
-   * sideband subtraction
-
-You know, I don't think my analysis needs a whole giant section on data vs MC comparison.  
-I didn't do a whole lot on that.  
-Well, just write up what I did do, I guess.  
+%You know, I don't think my analysis needs a whole giant section on data vs MC comparison.  
+%I didn't do a whole lot on that.  
+%Well, just write up what I did do, I guess.  
 
 %\section{Comparison of Monte Carlo and Data}
 \section{Background Subtraction}
@@ -145,25 +235,27 @@ This estimation can be done in a variety of ways.
 The methods used in this analysis are detailed 
 in the following sections.  
 
-Figures: Background subtracted yield versus eta with a MZ mass window - comparison to MC, Fig. \ref{fig:YieldVsZEtaComparedToMC}
+%%% FIXME! MAKE THESE PLOTS???
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Background subtracted yield versus eta with a MZ mass window - comparison to MC]{Background subtracted yield versus eta with a MZ mass window - comparison to MC.}
-  \label{fig:YieldVsZEtaComparedToMC}
- \end{figure}
+%% Figures: Background subtracted yield versus eta with a MZ mass window - comparison to MC, Fig. \ref{fig:YieldVsZEtaComparedToMC}
 
-Figures: Background subtracted Z PT distribution with a MZ mass window - comparison to MC, Fig. \ref{fig:YieldVsZPtComparedToMC}
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[Background subtracted yield versus eta with a MZ mass window - comparison to MC]{Background subtracted yield versus eta with a MZ mass window - comparison to MC.}
+%%   \label{fig:YieldVsZEtaComparedToMC}
+%%  \end{figure}
 
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{CMS-BW.pdf}
-  \end{center}
-  \caption[Background subtracted Z PT distribution with a MZ mass window - comparison to MC]{Background subtracted Z PT distribution with a MZ mass window - comparison to MC.}
-  \label{fig:YieldVsZPtComparedToMC}
- \end{figure}
+%% Figures: Background subtracted Z PT distribution with a MZ mass window - comparison to MC, Fig. \ref{fig:YieldVsZPtComparedToMC}
+
+%%  \begin{figure}[htb]
+%%   \begin{center}
+%%     \includegraphics[width=360pt]{CMS-BW.pdf}
+%%   \end{center}
+%%   \caption[Background subtracted Z PT distribution with a MZ mass window - comparison to MC]{Background subtracted Z PT distribution with a MZ mass window - comparison to MC.}
+%%   \label{fig:YieldVsZPtComparedToMC}
+%%  \end{figure}
 
 \subsection{Monte Carlo Estimation}
 \label{anMeth:BGSubMC}
@@ -626,7 +718,7 @@ times a Gaussian function,
 which represents the signal, 
 while using an exponential function to represent 
 the background.
-EXPLAIN ALL THESE FUNCTIONS SOMEWHERE
+% FIXME EXPLAIN ALL THESE FUNCTIONS SOMEWHERE
 The resulting fit is shown in Fig.~\ref{fig:ZFit}.  
 Fig.~\ref{fig:ZFitLin} shows the fit in linear
 scale, while Fig.~\ref{fig:ZFitLog} shows the
@@ -875,7 +967,7 @@ the more accurate the measurement is likely to be.
 %READ MORE ON STATISTICS!!!
 In a high energy physics analysis 
 this corresponds to the number of events used.  
-FIXME SAY MORE ON THE WHY HERE 
+%FIXME SAY MORE ON THE WHY HERE 
 The relative statistical error on a measurement 
 is equal to the square root of the total number 
 of events divided by the total number of events:
