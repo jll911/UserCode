@@ -154,7 +154,9 @@ and
 %\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } 
 \epsilon = \epsilon_{ reco } \times \epsilon_{ sel } \times \epsilon_{ trig }
 \]
-where the abbreviations refer to %acceptance, 
+is the event selection efficiency, 
+composed of the efficiencies of the individual steps: 
+%where the abbreviations refer to %acceptance, 
 reconstruction, selection, and trigger, respectively.  
 %Essentially it means that. %FIXME or just do in overview?
 %Most of the required numbers have been dealt with 
@@ -231,7 +233,7 @@ at the most accurate result.
 Therefore, the number of background events should 
 be estimated and subtracted from the total number 
 of events; 
-This estimation can be done in a variety of ways.  
+this estimation can be done in a variety of ways.  
 The methods used in this analysis are detailed 
 in the following sections.  
 
@@ -291,11 +293,11 @@ to confirm the accuracy of each method.
       \hline
       Background Sample & Number of Events  \\ \hline \hline
       Wenu & 0.36 \\ \hline % 0.35799
-      Wtaunu & 0 \\ \hline % 0
+      Wtaunu & 0.0 \\ \hline % 0
       Ztautau & 6.4 \\ \hline % 6.3777
       Electroweak Total & 6.7 \\ \hline \hline % 6.73569
       ttbar & 5.8 \\ \hline \hline % 5.83397
-      QCD & 0. \\ \hline \hline % Hah
+      QCD & 0.0 \\ \hline \hline % Hah
       WW & 1.5 \\ \hline % 1.5382
       WZ & 1.4 \\ \hline % 1.4396
       ZZ & 3.0 \\ \hline % 2.9984
@@ -359,7 +361,9 @@ them as background.
 %defs of tighter and looser selections (bleah), more tables?
 
 Several new working points, based on WP80 
-(defined in Section~\ref{evSel:elec}), were defined to select 
+%(defined in Section~\ref{evSel:elec}), 
+(see Section~\ref{evSel:elec}), 
+were defined to select 
 the signal-like and background-like template samples, 
 as well as the data distribution used in the comparison.  
 
@@ -495,7 +499,7 @@ using a likelihood fit.
 %uncertainties in both the templates 
 %and the data due to statistics.  
 Statistical uncertainties in both the 
-tempaltes and the data are 
+templates and the data are 
 taken into account in the fitting process.  
 
 %http://root.cern.ch/root/html522/TFractionFitter.html  or just ``html'' instead of html522?  
@@ -516,7 +520,8 @@ Fig.~\ref{fig:TemplateShapes}.
 Each curve independently integrates to 1
 and shows the fraction of events of the given type
 with relative tracker isolation in each bin.
-The difference in shape between signal and background 
+The difference in shape between signal (solid, black) 
+and background (dotted, red)
 is clear:
 the background has a much higher fraction of events
 with higher values of isolation,
@@ -607,7 +612,8 @@ In effect this is done by integrating
 the number of signal and background events 
 below the threshold and redetermining the 
 signal and background fractions.  
-This is done with the following formula: 
+%This is done with the following formula: 
+This is represented in the formula 
 \[
 f_{sig}^{thresh} = \frac{ f_{sig} \times n_{sig}^{thresh} }{ f_{sig} \times n_{sig}^{thresh} + f_{bg} \times n_{bg}^{thresh} }
 \]
@@ -672,12 +678,13 @@ translates to a event count of 0 +/- 16.8 events.
 considered valid for estimating QCD background.)  
 The relative uncertainty on the number of signal 
 events corresponding to the error (16.8 events) 
-is 0.2\%.  
+is 0.2\%.  % RELATIVE UNCERTAINTY NOT DEFINED YET
+% maybe move that bit to uncertainty section, 
+% to have it all together?  
 
 
 \subsection{Sideband Subtraction}
 \label{anMeth:BGSubSideband}
-%Sort of like a template fit...
 
 An additional method of estimating background was 
 attempted, to cross-check the other two.  
@@ -701,8 +708,10 @@ The name ``sideband subtraction'' refers
 to taking the distribution in 
 the areas away from the peak, the ``sidebands'', 
 to represent the background part of the contribution, 
-and extrapolating it into the peak area and 
-subtracting it from the total distribution.  
+%and 
+extrapolating it into the peak area, and 
+subtracting it from the total distribution 
+to leave only the signal contribution.  
 
 % FIXME
 %explanations of what gozinta fits 
@@ -929,7 +938,7 @@ in quadrature, as shown:
 + \left(\frac{\delta X_N}{X_N}\right)^2 
 \]
 where 
-$X$ is the given quantity and 
+$X$ is the value of the given quantity and 
 $\delta X$ is the absolute error, 
 making $\frac{\delta X}{X}$ the relative error.  
 Here, $tot$ denotes the total uncertainty 
@@ -1045,7 +1054,8 @@ any uncertainty on the measurement of the luminosity
 is relevant to the final result.  
 The luminosity is measured by the forward hadronic calorimeter (HF) 
 as explained in Section~\ref{exp:lumi}.  
-For 2010, the luminosity measurement has an accepted 
+For the 2010 dataset, 
+the luminosity measurement has an accepted 
 relative uncertainty value of 4\%.  % REFERENCE
 
 \subsection{Systematic Uncertainties from Theory}
