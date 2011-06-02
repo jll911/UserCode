@@ -1,19 +1,174 @@
 \chapter{Event Simulation}
 \label{sim}
-somewhere have the pretty picture from 
-matt mc tutorial on how generators/geant/etc 
-fit in with everything else (reco, whatever)
+%somewhere have the pretty picture from 
+%matt mc tutorial on how generators/geant/etc 
+%fit in with everything else (reco, whatever)
 
-points of event simulation: 
-compare with data (desciption of current understanding as is) 
-design detectors
+%ARXIV PAPER OF AWESOMENESS
+%http://arxiv.org/abs/hep-ph/0403045
+
+%PYTHIA MANUAL OF AWESOMENESS
+% the one I'm looking at is lutp0613man2.pdf, 
+% but there's probably a more recent one
+
+
+
+
+% I THINK I HAVE TOO MANY LONG SENTENCES 
+% AND PREPOSITIONAL PHRASES
+
+
+%need for event simulation: 
+
+Within %the role of % CHANGE THIS CONSTRUCTION
+a high-energy physics experiment's role of making 
+discoveries and measurements, 
+it necessary to know ahead of time what exactly 
+should be expected. 
+What will the detector signature of a new process look like? 
+How will we know whether we've seen something unexpected? 
+This is where event simulation contributes.  
+%what exactly is the simulated data
+Essentially, a series of programs is used to carefully 
+generate and calculate all the relevant quantities for a set of 
+fake events.  
+This information is then used 
+to aid analysis in ways for which 
+real data alone cannot suffice.  
+
+Having the ability to simulate physics processes 
+serves multiple purposes. 
+It aids in detector design: 
+knowing the expected typical characteristics of particle 
+interactions is essential to design a detector 
+suited for those interactions.  
+Once the detector design is settled, 
+simulation of the detector is useful to design 
+the algorithms used to reconstruct particles 
+from their signature interactions with the 
+detector material.  
+In addition, simulating the physics processes 
+can give estimates of how many 
+events of a particular type are expected, 
+further aiding the design process.  
+The event simulation also contributes 
+directly to many analyses, 
+in the way of calculating the acceptance, 
+the fraction of events that can theoretically 
+be detected (see Section~\ref{FIXME}): 
+it is impossible to know from observation 
+how many events are missed by the detector, 
+because of the very fact that they are unseen.  
+It is instead necessary to get that fraction 
+from a framework in which 
+the characteristics of all events are 
+inherently known, not reconstructed.  
+Finally, % and possibly most visibly (?) I don't like that
+simulated data is directly compared 
+with ``real'' data from the detector 
+to interpret the real-data results.  
+If the data shows something significantly 
+different from the simulation, 
+then something is missing: 
+perhaps a calibration needs to be applied, 
+or the response of a detector unit needs 
+to be further understood.  
+Or, perhaps, there is a new physics process 
+appearing for the first time, 
+which was not previously known and 
+which was therefore not present in the simulation.  
+In this case simulation of proposed new physics 
+processes may narrow down the identity of the 
+observed new process.  
+Whatever the case, 
+discrepancy between observed data and the event 
+simulation indicates that further 
+investigation is necessary.  
+
+
+%points of event simulation: 
+
+%   * directly relevant: compare with data (description of current understanding as is) 
+%-- we want to be able to interpret what we're seeing 
+%in terms of what physics process it might be
+
+%   * also relevant: acceptance is necessarily a MC calculation!
+
+%   * also: design detectors, design reconstruction and other (e.g. trigger) algorithms
+
+%   * also: event rates (like trigger rates?)  
+
+The entire detection process is simulated, 
+including the protons' direct interaction 
+and any subsequent particle decays, 
+as well as how the end-product particles 
+interact with the detector as they pass through 
+and how the detector itself responds.  
+This latter part includes not only the 
+material of the individual subdetectors 
+but also the algorithms of 
+the Level-1 Trigger, 
+which are implemented in hardware 
+(see Section~\ref{exp:L1}).  
+The High-Level Trigger does not need to be 
+simulated in this way; 
+since its algorithms are all software-based, 
+the same code can be run without modification 
+on both real data and simulated data.  
+
+
 
 \section{Monte Carlo Event Generation}
 \label{sim:MC}
 put why called ``monte carlo''
-multiple types: shower vs matrix element?
-\subsection{some explanation of the black box}
-\label{sim:MCBlackBox}
+
+\subsection{Put this stuff in its own section?}
+\label{sim:MCexplain}
+
+types of programs with different types of output -- what they're used for. 
+start with tree-level stuff and dsigma eqn...
+
+   * cross section integrators
+
+   * event generators
+
+tree-level all well and good, but need corrections to really 
+make things realistic.  
+ways of doing the corrections:
+
+   * matrix element
+
+   * parton shower
+
+And how these two things fulfill the different needs for 
+both higher orders and hadronization
+
+HOW THE PROGRAMS USED TO GENERATE THESE SAMPLES AND NUMBERS 
+FIT INTO THIS FRAMEWORK.  
+   pythia, powheg, tauola, fewz... else??  (didn't end up using MCatNLO) 
+I don't think anything else.  
+also explain about fewz different (xsec integrator, sounds like)
+
+AND, FEWZ webpage was on frank petriello's wisconsin space and doesn't exist anymore
+
+http://www.phys.hawaii.edu/~kirill/FEHiP.htm links to 
+http://www.hep.wisc.edu/~frankjp/FEWZ.html (bad link)
+
+FEWZ 2.0 abstract on the arXiv: http://arxiv.org/abs/1011.3540 
+from ryan gavin, ye li, frank petriello, and seth quackenbush (15 Nov 2010)
+
+WHICH VERSION DID VBTF USE??  look at syst AN.  
+e-mail frank about documentation page??
+
+https://indico.cern.ch/getFile.py/access?contribId=38\&resId=3\&materialId=slides\&confId=71330  tutorial from ryan giving original arXiv references (non-2.0)
+
+pythia is definitely parton shower, 
+explain steps and hadronization model, etc
+
+%\subsection{some explanation of the black box?}
+%\label{sim:MCBlackBox}
+% it's not really a black box anymore!
+%can talk about black-box mentality in introduction
 modular structure here?  that pretty picture showing all the 
 different steps to an interaction that need to be 
 simulated. 
@@ -24,21 +179,28 @@ hard scatter (underlying event, multiple interactions in parallel) ->
 [parton] shower (both isr and fsr, incl QED) ->
 hadronization (not directly applicable to my process, but applicable for bg's) -> 
 decay resonances -> interactions with detector material ...
-\subsection{Monte Carlo Generators}
+
+\subsection{Monte Carlo Generator Programs}
 \label{sim:MCGens}
+
 \subsubsection{PYTHIA}
 \label{sim:MCGensPythia}
 what are the different tunes for?  tune z2, tune d6t
+
 \subsubsection{POWHEG}
 \label{sim:MCGensPowheg}
 why is this one used in favor of pythia?  
+
 \subsubsection{Other Generators}
 \label{sim:MCGensOther}
 Like, whichever other samples I check (background etc)
 
+
+
 \section{Detector Simulation}
 \label{sim:Detector}
 %\subsection{GEANT Detector Model/Modeling of Particle Interactions in Detector Material}
+
 \subsection{GEANT Detector Model}
 \label{sim:DetectorGeant}
 
