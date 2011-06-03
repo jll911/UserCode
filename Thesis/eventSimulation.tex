@@ -127,7 +127,15 @@ like, ``simulation'' broken down into several steps,
 one of which is the generation of the main 
 physics process itself (aka ``hard physics process'')
 HOW the events are actually ``generated'', 
-like the whole random number business
+like the whole random number business. 
+It uses a random number generator , 
+to determine ``in a probabilistic way'' -- 
+only one main interaction happens 
+for each proton (bunch) interaction, 
+but the sum over all events ,
+according to the probability of each type of 
+interaction happening.  
+
 
 
 \subsection{Put this stuff in its own section?}
@@ -272,31 +280,167 @@ The process is iterative,
 repeating for any quarks or gluons that 
 branch off at any point.  
 In this way the parton shower method 
-is more flexible than the matrix element method. 
+is more flexible than the matrix element method -- 
+it can deal with many branchings and legs. 
 However, it is also less precise formally, 
-since it doesn't use the matrix elements from the 
-Feynman diagrams.  
+since it avoids the use of the matrix elements 
+from the Feynman diagrams.  
 
-where do the PDFs fit in?  just to parton shower method?? 
-no, it looks like PDFs have to enter in both 
-ways of doing hadronization. 
-(actually, is it only just the initial 
-proton interaction where you need the PDFs?? 
-dunno... skirt for now)
+%where do the PDFs fit in?  just to parton shower method?? 
+%no, it looks like PDFs have to enter in both 
+%ways of doing hadronization. 
+%(actually, is it only just the initial 
+%proton interaction where you need the PDFs?? 
+%inside a proton is the only place 
+%where x is a relevant quantity...
+%dunno, skirt for now)
+
+%do I need more detail at this point?  
+%I guess still need to explain modular structure... 
+%can more specific stuff like hadronization 
+%model go just under pythia, or should it 
+%go here?  
+%I guess should be more general, 
+%since those algorithms are more general.  
+%SO, HERE
+
+The philosophy of parton-shower generators 
+in particular 
+is that the entire process of simulating 
+a physics event can be done in a modular fashion.  
+Fig.~\ref{fig:MCsteps} 
+shows the typical steps necessary to simulate an events.  
+The incoming protons are modeled in terms of the 
+parton distribution functions (Section~\ref{FIXME}).  % NEED TO EXPLAIN ``PARTONS'' IN THAT SECTION
+The ``hard subprocess'' refers to the main 
+physics interaction.  
+Not shown in the diagram are other interactions 
+involving different parts of the protons 
+or other protons in the same bunch; 
+these interactions are not as interesting 
+because they are typically not as energetic.  
+The participant particles in the main interaction 
+are then ``evolved'' through the showering process, 
+which includes emissions of photons or gluons 
+by the initial or final particles, 
+as well as ``branchings'' of final particles. % INCLUDED IN FORMER?? 
+Any resulting quarks and gluons are 
+formed into ``colorless'' hadrons, 
+which may then decay into other particles. 
+These final particles are the ones seen 
+in the detector.  
+The fact that the full process can be separated 
+into these steps 
+makes it easier for different programs 
+to handle individual steps.  
+For example, one program may simulate the 
+hard process, 
+while another is better-equipped to take care 
+of the showering and hadronization, 
+and a third is specialized in the decay of 
+a particular particle.  
+To further the theme of modularity, 
+the fully-decayed situation 
+is then plugged into a program simulating 
+the passage of the particles through the detector 
+and the detector's response (Section~\ref{FIXME}).  
 
 %And how these two things fulfill the different needs for 
 %both higher orders and hadronization
 
-BIG PRETTY PARTON SHOWER PICTURE but also need to explain PDF part, etc etc 
+%BIG PRETTY PARTON SHOWER PICTURE but also need to explain PDF part, etc. etc. 
+should compare to other one from zeus people, which one is better? 
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics{Figures/mc-partonShower-lesHouches.png}
+  \end{center}
+  \caption[Diagram of typical steps used to simulate event in parton shower method]
+	  {Diagram of typical steps used to simulate event in parton shower method.
+	    The incoming protons are modeled in terms of the 
+	    parton distribution functions. 
+	    The ``hard subprocess'' refers to the main 
+	    physics interaction.  
+	    The participant particles in the main interaction 
+	    are then ``evolved'' through the showering process, 
+	    which includes emissions of photons or gluons 
+	    by the initial or final particles, 
+	    as well as ``branchings'' of final particles. % INCLUDED IN FORMER?? 
+	    Any resulting quarks and gluons are 
+	    formed into ``colorless'' hadrons, 
+	    which may then decay into other particles. 
+	    These final particles are the ones seen 
+	    in the detector.  
+	  }
+  \label{fig:MCsteps}
+ \end{figure}
+
+
+and lund string model pictures (both, yay!)
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics{Figures/mc-partonShower-lesHouches.png}
+    \subfloat[]{\label{fig:MClundA}\includegraphics{Figures/mc-lundStringModel-zeusPeople.png}}
+    \subfloat[]{\label{fig:MClundB}\includegraphics{Figures/mc-lundStringDiagram-zeusPeople.png}}
+  \end{center}
+  \caption[Schematics showing the Lund string model of hadronization]
+	  {Schematics showing the Lund string model of hadronization.}
+  \label{fig:MClund}
+ \end{figure}
 
 
 
+pythia is definitely parton shower, 
+explain steps and hadronization model, etc
+
+%\subsection{some explanation of the black box?}
+%\label{sim:MCBlackBox}
+% it's not really a black box anymore!
+%can talk about black-box mentality in introduction
+%modular structure here?  that pretty picture showing all the 
+%different steps to an interaction that need to be 
+%simulated. 
+%all those steps can be done by separate packages, 
+%which is the philosophy.  (pythia manual)
+%pdfs ->
+%hard scatter (underlying event, multiple interactions in parallel) ->
+%[parton] shower (both isr and fsr, incl QED) ->
+%hadronization (not directly applicable to my process, but applicable for bg's) -> 
+%decay resonances -> interactions with detector material ...
+
+\subsection{Monte Carlo Generator Programs}
+\label{sim:MCGens}
+
+short intro on programs: pythia, powheg, tauola, fewz
 
 HOW THE PROGRAMS USED TO GENERATE THESE SAMPLES AND NUMBERS 
 FIT INTO THIS FRAMEWORK.  
    pythia, powheg, tauola, fewz... else??  (didn't end up using MCatNLO) 
 I don't think anything else.  
 also explain about fewz different (xsec integrator, sounds like)
+
+I feel like I remember seeing something from herwig?? in one of the 
+production config fragments...
+
+\subsubsection{PYTHIA}
+\label{sim:MCGensPythia}
+
+PYTHIA THE MONSTER
+
+what are the different tunes for?  tune z2, tune d6t
+
+\subsubsection{POWHEG}
+\label{sim:MCGensPowheg}
+why is this one used in favor of pythia?  
+more to the point, what exactly is it? 
+and how is it different from pythia? 
+
+\subsubsection{Other Generators}
+\label{sim:MCGensOther}
+Like, whichever other samples I check (background etc) -- actually, they're all pythia
+
+TAUOLA AND FEWZ
 
 AND, FEWZ webpage was on frank petriello's wisconsin space and doesn't exist anymore
 
@@ -311,40 +455,6 @@ e-mail frank about documentation page??
 
 https://indico.cern.ch/getFile.py/access?contribId=38\&resId=3\&materialId=slides\&confId=71330  tutorial from ryan giving original arXiv references (non-2.0)
 
-pythia is definitely parton shower, 
-explain steps and hadronization model, etc
-
-%\subsection{some explanation of the black box?}
-%\label{sim:MCBlackBox}
-% it's not really a black box anymore!
-%can talk about black-box mentality in introduction
-modular structure here?  that pretty picture showing all the 
-different steps to an interaction that need to be 
-simulated. 
-all those steps can be done by separate packages, 
-which is the philosophy.  (pythia manual)
-pdfs ->
-hard scatter (underlying event, multiple interactions in parallel) ->
-[parton] shower (both isr and fsr, incl QED) ->
-hadronization (not directly applicable to my process, but applicable for bg's) -> 
-decay resonances -> interactions with detector material ...
-
-\subsection{Monte Carlo Generator Programs}
-\label{sim:MCGens}
-
-short intro on programs: pythia, powheg, tauola, fewz
-
-\subsubsection{PYTHIA}
-\label{sim:MCGensPythia}
-what are the different tunes for?  tune z2, tune d6t
-
-\subsubsection{POWHEG}
-\label{sim:MCGensPowheg}
-why is this one used in favor of pythia?  
-
-\subsubsection{Other Generators}
-\label{sim:MCGensOther}
-Like, whichever other samples I check (background etc) -- actually, they're all pythia
 
 
 
