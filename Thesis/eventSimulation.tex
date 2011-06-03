@@ -120,28 +120,177 @@ on both real data and simulated data.
 
 \section{Monte Carlo Event Generation}
 \label{sim:MC}
-put why called ``monte carlo''
+put why called ``monte carlo'', 
+also connect ``event simulation'' terminology 
+with ``generator'' and the multiple types thereof.
+like, ``simulation'' broken down into several steps, 
+one of which is the generation of the main 
+physics process itself (aka ``hard physics process'')
+HOW the events are actually ``generated'', 
+like the whole random number business
+
 
 \subsection{Put this stuff in its own section?}
 \label{sim:MCexplain}
 
-types of programs with different types of output -- what they're used for. 
-start with tree-level stuff and dsigma eqn...
+%types of programs with different types of output -- what they're used for. 
+%start with tree-level stuff and dsigma eqn...
 
-   * cross section integrators
+%   * cross section integrators
 
-   * event generators
+%   * event generators
 
-tree-level all well and good, but need corrections to really 
-make things realistic.  
-ways of doing the corrections:
+There are two sorts of programs that can be called 
+%``Monte Carlo generators''.  
+``Monte Carlo event simulators''.  
+They both use the matrix elements derived from 
+the Feynman diagrams of the physics interactions of interest 
+(explained in Section~\ref{FIXME}), % THAT MEANS EXPLAIN ALL THIS STUFF IN PREVIOUS CHAPTER
+but they use the matrix element formalism 
+in different ways to achieve different ends.  
+As a reminder, the equation to obtain the 
+differential cross section % WHAT'S IT ACTUALLY CALLED??
+from the matrix element for a given diagram is 
 
-   * matrix element
+\[
+d\sigma = \frac{1}{\hat{s}}|\mathcal{M}|^2 \frac{d \cos \theta d\phi}{8(2\pi)^2}
+\]
 
-   * parton shower
+The first type of Monte Carlo program outputs 
+a single quantity or set of quantities characteristic 
+of the given process, 
+such as the cross section.  
+These programs are called ``cross section integrators''.  
+They calculate 
+$d\sigma$ for each of a uniform distribution of 
+phase space vales (i.e. uniform increments 
+of $\cos\theta$ and $\phi$).  
+$d\sigma$ represents each event's ``weight''; 
+the total cross section $\sigma$ is then obtained 
+by integrating over the full collection of $d\sigma$ values.  
+The final result is a value for the cross section; 
+hence the name.  
+However, since the events themselves are distributed 
+uniformly in $\cos\theta$ and $\phi$, 
+their characteristics 
+do not represent actual event distributions 
+(real event distributions in data have 
+non-uniform distributions, 
+in $\cos\theta$ in particular).  
+Therefore they can only be used to calculate 
+a few select quantities; 
+they can't be used to predict distributions.  
 
-And how these two things fulfill the different needs for 
-both higher orders and hadronization
+The second type of program are called ``event generators''.  
+They also use the matrix element to calculate 
+the differential cross section % REAL NAME
+with the equation given above.  
+However, instead of using $d\sigma$ as an event weight, 
+it ``unweights'' the events to obtain the physical 
+distributions.  
+It does this through the so-called acceptance-rejection method: 
+first the maximum possible value of $d\sigma$ is calculated, 
+$d\sigma_{max}$. 
+Each event's individual $d\sigma$ value, 
+the ratio $\frac{d\sigma}{d\sigma_{max}}$ is taken; 
+this number is necessarily a fraction between 0 and 1.  
+A random number $g$ between 0 and 1 is then generated.  
+If the ratio $\frac{d\sigma}{d\sigma_{max}}$ is greater 
+than $g$, then then event is kept.  
+Otherwise, it is rejected.  
+This method causes the generated events to have the properties 
+and distributions that events would have in reality -- 
+sections of phase space with a higher ``event weight'' 
+are more likely to be represented.  
+
+%tree-level all well and good, but need corrections to really 
+%make things realistic.  
+%ways of doing the corrections:
+
+%   * matrix element
+
+%   * parton shower
+
+However, using a single Feynman diagram is not typically 
+sufficient to make very accurate calculations.  
+%a number or determine distributions is not typically 
+%sufficient.  
+In general, there are significant contributions from 
+the higher-order diagrams  
+(diagrams with more legs and loops, 
+but still representing the same final arrangement of particles). 
+These corrections must be taken into account.  
+In addition, the matrix elements and Feynman diagrams 
+for these calculations only consider bare quarks, 
+that is, quarks extracted from the framework of 
+hadrons such as the proton.  
+These bare quarks cannot exist in reality, 
+so a method of accounting for the quarks 
+as being inside hadrons must also be used.  
+There have been two different paths taken to deal % path = tack? track?...
+with the above issues.  
+In the first, the ``matrix element'' method, 
+Higher-order diagrams are explicity included in 
+the matrix element calculation.  
+Since the higher the order, 
+the more complex the calculation, 
+only diagrams of up to a given order are 
+generally used.  
+In one implementation, more ``legs'' can be dealt with, 
+but diagrams containing virtual loops are ignored.  % EXPLAIN IN PREVIOUS CH
+In the other, all diagrams, including those with virtual 
+loops, of a single order are used, 
+but at the moment there exist satisfactory solutions 
+only for next-to-leading-order diagrams 
+(or NLO, explained in Section~\ref{FIXME}).  
+%only for diagrams one step higher 
+%than the basic tree-level diagram
+The matrix element method does not explicitly 
+take care of the bare-quark problem; %, though.  
+this can be handled in multiple ways.  
+%Programs who do not deal with the interactions of 
+Some cross section integrators deal with the interactions of % is it only cross section integrators??
+quarks inside hadrons using Feyman's factorization theorem. 
+Programs which do not deal with them in this way 
+can be interfaced with programs following the 
+second of the two paths, %.  
+%The second path is called 
+the ``parton shower'' method, 
+which is the method used by many event generators 
+(as opposed to cross section integrators).  
+In the parton shower method, 
+instead of including diagrams representing 
+higher orders and quarks-within-hadrons 
+into the matrix element calculation, 
+this part of the interaction is taken care of 
+by a separate routine.  
+This routine takes the products of the 
+basic tree-level interaction 
+and decays them according to 
+probabilities and rules coded into the program.  
+The process is iterative, 
+repeating for any quarks or gluons that 
+branch off at any point.  
+In this way the parton shower method 
+is more flexible than the matrix element method. 
+However, it is also less precise formally, 
+since it doesn't use the matrix elements from the 
+Feynman diagrams.  
+
+where do the PDFs fit in?  just to parton shower method?? 
+no, it looks like PDFs have to enter in both 
+ways of doing hadronization. 
+(actually, is it only just the initial 
+proton interaction where you need the PDFs?? 
+dunno... skirt for now)
+
+%And how these two things fulfill the different needs for 
+%both higher orders and hadronization
+
+BIG PRETTY PARTON SHOWER PICTURE but also need to explain PDF part, etc etc 
+
+
+
 
 HOW THE PROGRAMS USED TO GENERATE THESE SAMPLES AND NUMBERS 
 FIT INTO THIS FRAMEWORK.  
@@ -183,6 +332,8 @@ decay resonances -> interactions with detector material ...
 \subsection{Monte Carlo Generator Programs}
 \label{sim:MCGens}
 
+short intro on programs: pythia, powheg, tauola, fewz
+
 \subsubsection{PYTHIA}
 \label{sim:MCGensPythia}
 what are the different tunes for?  tune z2, tune d6t
@@ -193,7 +344,7 @@ why is this one used in favor of pythia?
 
 \subsubsection{Other Generators}
 \label{sim:MCGensOther}
-Like, whichever other samples I check (background etc)
+Like, whichever other samples I check (background etc) -- actually, they're all pythia
 
 
 
@@ -203,6 +354,8 @@ Like, whichever other samples I check (background etc)
 
 \subsection{GEANT Detector Model}
 \label{sim:DetectorGeant}
+
+GEANT the giant
 
 \subsection{Level-1 Trigger Emulator}
 \label{sim:DetectorL1Emul}
