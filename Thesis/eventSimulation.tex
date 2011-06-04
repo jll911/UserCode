@@ -325,7 +325,8 @@ which includes emissions of photons or gluons
 by the initial or final particles, 
 as well as ``branchings'' of final particles. % INCLUDED IN FORMER?? 
 Any resulting quarks and gluons are 
-formed into ``colorless'' hadrons, 
+formed into ``colorless'' hadrons, % but gluons colorless to being with -- and do they ``form'' into hadrsons??
+% no, I think gluons are NOT colorless -- you wouldn't be able to get ggg vertices
 which may then decay into other particles. 
 These final particles are the ones seen 
 in the detector.  
@@ -344,6 +345,39 @@ the fully-decayed situation
 is then plugged into a program simulating 
 the passage of the particles through the detector 
 and the detector's response (Section~\ref{FIXME}).  
+
+%need to explain since not actually using jets 
+%in analysis, but there may be jets in final state
+%%(and need to define ``jet'' -- FIXME MORE FOR THEORY SECTION)
+%from ISR and FSR
+The process of hadronization is not directly 
+relevant to this analysis, 
+since it does not require hadrons to 
+exist in the final state.  
+However, since initial- or final-state radiation 
+may cause jets incidental to the main interaction, 
+hadronization is dealt with here.  
+%CAN TREAT ELECTRONS ETC AS ``PARTONS'' AND 
+%INCLUDE QED IN SHOWERING -- makes framework easier 
+%(maybe put in pythia section?  
+%can't remember if it's pythia-specific)
+In addition, it simplifies things to treat 
+electrons and photons in the final state as ``partons'', 
+same as the quarks and gluons.  
+Even though they are not constituents of the proton, 
+they can be modeled as having 
+``distribution functions'' 
+and subject to ``showers'' of 
+photons and electrons. 
+Therefore different sorts of processes can be 
+plugged into the same machinery and treated the same way.  
+
+all this stuff on QCD isn't directly relevant for my 
+stuff, should maybe concentrate more on mine... 
+show the feynman diagram again?  
+
+%parton-shower is default pythia method (for QCD), 
+%but matrix element can be used
 
 %And how these two things fulfill the different needs for 
 %both higher orders and hadronization
@@ -375,24 +409,6 @@ should compare to other one from zeus people, which one is better?
   \label{fig:MCsteps}
  \end{figure}
 
-
-and lund string model pictures (both, yay!)
-
- \begin{figure}[htb]
-  \begin{center}
-%    \includegraphics{Figures/mc-partonShower-lesHouches.png}
-    \subfloat[]{\label{fig:MClundA}\includegraphics{Figures/mc-lundStringModel-zeusPeople.png}}
-    \subfloat[]{\label{fig:MClundB}\includegraphics{Figures/mc-lundStringDiagram-zeusPeople.png}}
-  \end{center}
-  \caption[Schematics showing the Lund string model of hadronization]
-	  {Schematics showing the Lund string model of hadronization.}
-  \label{fig:MClund}
- \end{figure}
-
-
-
-pythia is definitely parton shower, 
-explain steps and hadronization model, etc
 
 %\subsection{some explanation of the black box?}
 %\label{sim:MCBlackBox}
@@ -428,11 +444,72 @@ production config fragments...
 
 PYTHIA THE MONSTER
 
+%and lund string model pictures (both, yay!)
+
+PYTHIA uses the Lund string model 
+(shown schematically in Fig.~\ref{fig:MClund})
+to evolve 
+quarks and gluons through the process of hadronization. %, 
+Conceptually, an interaction's final state may have 
+quarks 
+%and/or gluons 
+``flying off in different directions''.  
+However, quarks cannot exist alone: %.  % and gluons?
+they must always exist with other quarks, 
+held together by the strong force.  
+If the individual quarks do not have very much energy 
+as they move apart, 
+the increasing energy of their interaction will hold them together.  
+However, if the quarks have much energy, 
+the interaction energy will not be enough to hold 
+them together, 
+and they will need to form new ``quark partners'' 
+in order to not be alone.  
+According to the Lund string model, 
+%linear confinement -- 
+the energy between opposite color charges 
+increases approximately linearly with distance. 
+The energy is concentrated into a linear area, 
+like a tube or string.  
+These strings are always stretched between two quarks.  
+Enough energy on the part of the quarks will 
+``break'' the string and 
+create a new quark-antiquark pair, 
+which then fills the need for ``quark partners'', 
+as illustrated in Fig~\ref{fig:MClundB}.  
+The process continues until quarks 
+do not have enough energy to overcome 
+the force holding them together.  % wishy-washy use of ``force''?
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics{Figures/mc-partonShower-lesHouches.png}
+    \subfloat[]{\label{fig:MClundA}\includegraphics{Figures/mc-lundStringDiagram-zeusPeople.png}}
+    \subfloat[]{\label{fig:MClundB}\includegraphics{Figures/mc-lundStringModel-zeusPeople.png}}
+  \end{center}
+  \caption[Schematics showing the Lund string model of hadronization]
+	  {Schematics showing the Lund string model of hadronization.
+	  \subref{fig:MClundA} In the Lund string model, the quarks 
+	  are joined by strings which ``break'' to form new 
+	  quark-antiquark pairs. 
+	  The process continues until the quarks' energies are  
+	  not enough to overcome the force holding them together.  
+	  The gray areas represent chains of quarks joined by such strings.  
+	  \subref{fig:MClundB} An illustration of a possible 
+	  creation of a quark-antiquark pair.  
+	  }
+  \label{fig:MClund}
+ \end{figure}
+
+%pythia is definitely parton shower, 
+%explain steps and hadronization model, etc
+
+
 what are the different tunes for?  tune z2, tune d6t
 
 \subsubsection{POWHEG}
 \label{sim:MCGensPowheg}
-why is this one used in favor of pythia?  
+why is this one used for signal in favor of pythia?  
 more to the point, what exactly is it? 
 and how is it different from pythia? 
 
