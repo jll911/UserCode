@@ -446,6 +446,8 @@ PYTHIA THE MONSTER
 
    * general-purpose parton-shower event generator
 
+   * implements many beyond-standard model processes for study
+
 %and lund string model pictures (both, yay!)
 
 PYTHIA uses the Lund string model 
@@ -569,9 +571,63 @@ therefore not relevant.
 \label{sim:MCGensOther}
 %Like, whichever other samples I check (background etc) -- actually, they're all pythia
 
-or just have separate sections for both as for pythia and powheg?  
+%or just have separate sections for both as for pythia and powheg?  
 
-TAUOLA AND FEWZ
+%TAUOLA AND FEWZ
+
+Two other Monte Carlo event generators 
+played roles in the analysis.  
+In the first case, 
+particles in some of the background samples 
+called for a specialized decay package.  
+In the second, 
+a precise theoretical prediction was needed 
+to compare with data, 
+and the standard programs used to generate 
+the events 
+cannot reach the necessary precision.  
+
+%\subsubsubsection{TAUOLA}
+%\label{sim:MCGensTauola}
+
+%the first reference for TAUOLA is always
+%S. Jadach, J. H. Kuhn, and Z. Was, Comput.
+%Phys. Commun. 64 (1990) 275.
+% not mentioned in VBTF
+
+% but other refs through the years: 
+%http://arxiv.org/abs/hep-ph/0411377
+%http://arxiv.org/abs/hep-ph/0610386
+%http://arxiv.org/abs/1101.1652
+
+%homepage given as http://wasm.home.cern.ch/wasm/goodies.html
+%REAL homepage for any useful stuff is the f77: http://wasm.home.cern.ch/wasm/f77.html
+%(c++ page only has interface-specific stuff)
+
+% also abstract included in les houches guidebook -- didn't find it anywhere else
+
+Many particle decays are handled by 
+the primary event generator, PYTHIA.  
+However, there are several aspects of decays 
+that PYTHIA does not deal with, 
+such as spin polarization.  
+Because these aspects can have small effects 
+on the kinematic distributions of the decayed 
+particles, 
+CMS decided to use a separate package, TAUOLA, 
+to decay tau particles in the samples 
+that included taus.  
+%While TAUOLA implements non-standard interactions, % NEED THIS?????
+%this is not made use of here.  
+%Only standard decays are used.  
+TAUOLA specifically takes spin polarization 
+into account, 
+and includes first order QED corrections.  % WHY NOT [need] QCD?? can decay hadronically!
+The TAUOLA package was only necessary for the 
+Z->tau tau and W->tau nu background samples.  % PRETTIFY
+
+%\subsubsubsection{FEWZ}
+%\label{sim:MCGensFewz}
 
 %AND, FEWZ webpage was on frank petriello's wisconsin space and doesn't exist anymore
 
