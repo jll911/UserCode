@@ -444,6 +444,8 @@ production config fragments...
 
 PYTHIA THE MONSTER
 
+   * general-purpose parton-shower event generator
+
 %and lund string model pictures (both, yay!)
 
 PYTHIA uses the Lund string model 
@@ -509,30 +511,110 @@ what are the different tunes for?  tune z2, tune d6t
 
 \subsubsection{POWHEG}
 \label{sim:MCGensPowheg}
-why is this one used for signal in favor of pythia?  
-more to the point, what exactly is it? 
-and how is it different from pythia? 
+%why is this one used for signal in favor of pythia?  
+%more to the point, what exactly is it? 
+%and how is it different from pythia? 
+
+%http://www-zeuthen.desy.de/~alioli/talks/Granada.pdf  POWHEG 
+%explanatory talk of AWESOMENESS
+
+POWHEG (for ``POsitive Weight Hardest Emission Generator'') 
+is a method for making next-to-leading order (NLO) 
+corrections within a parton shower framework.  
+At low energies, the showering algorithms implemented 
+in parton shower generators 
+model the corrections well.  
+However, at higher energies, a next-to-leading order 
+matrix calculation is more accurate.  
+An ideal solution combines the two approaches 
+to get the best of each.  
+Since POWHEG does this, 
+it therefore produces a more accurate picture 
+of the radiation corrections and their effects 
+on final-state kinematic quantities 
+when compared to a standard parton-shower 
+generator such as PYTHIA, 
+which only include some (the real part) 
+of these corrections.  
+POWHEG consists of a number of routines representing 
+various main physics processes, 
+including \Zee.  
+Processes that are not already included 
+in the set may be implemented by the user.  
+
+POWHEG was used to generate the 
+hard process for each event 
+of the \Zee signal sample; 
+this part of the interaction was then 
+fed through PYTHIA 
+(by the modular procedure previously described) 
+to undergo hadronization.  
+It was more important for the signal 
+sample to be accurate to higher order 
+than for the background samples; 
+the background samples are only of interest 
+in terms of how much they may contaminate 
+the signal sample.  
+Slight variations in their distributions 
+due to missing higher-order corrections are 
+therefore not relevant.  
+
+% don't really need anything else?  
+% not from experimentalist point of view!(?)
+% experimentalist don't talk about 
+% angular-ordered showers
+
 
 \subsubsection{Other Generators}
 \label{sim:MCGensOther}
-Like, whichever other samples I check (background etc) -- actually, they're all pythia
+%Like, whichever other samples I check (background etc) -- actually, they're all pythia
+
+or just have separate sections for both as for pythia and powheg?  
 
 TAUOLA AND FEWZ
 
-AND, FEWZ webpage was on frank petriello's wisconsin space and doesn't exist anymore
+%AND, FEWZ webpage was on frank petriello's wisconsin space and doesn't exist anymore
 
-http://www.phys.hawaii.edu/~kirill/FEHiP.htm links to 
-http://www.hep.wisc.edu/~frankjp/FEWZ.html (bad link)
+%http://www.phys.hawaii.edu/~kirill/FEHiP.htm links to 
+%http://www.hep.wisc.edu/~frankjp/FEWZ.html (bad link)
 
-FEWZ 2.0 abstract on the arXiv: http://arxiv.org/abs/1011.3540 
-from ryan gavin, ye li, frank petriello, and seth quackenbush (15 Nov 2010)
+%FEWZ 2.0 abstract on the arXiv: http://arxiv.org/abs/1011.3540 
+%from ryan gavin, ye li, frank petriello, and seth quackenbush (15 Nov 2010)
 
-WHICH VERSION DID VBTF USE??  look at syst AN.  
-e-mail frank about documentation page??
+%WHICH VERSION DID VBTF USE??  look at syst AN.  
+%e-mail frank about documentation page??
 
-https://indico.cern.ch/getFile.py/access?contribId=38\&resId=3\&materialId=slides\&confId=71330  tutorial from ryan giving original arXiv references (non-2.0)
+%HA HERE'S THE NEW PAGE: http://gate.hep.anl.gov/fpetriello/FEWZ.html
 
+%https://indico.cern.ch/getFile.py/access?contribId=38\&resId=3\&materialId=slides\&confId=71330  
+%tutorial from ryan giving original arXiv references (non-2.0)
 
+%   * arxiv:hep-ph/0603182, arxiv:hep-ph/0609070 -- okay, both of those are calculation papers, not necessarily software papers
+
+%okay, the second one actually mentions fewz. 
+%(and the first is only W, so just need second, I think)
+%AND, vbtf gives no other references than those two.  
+%So I guess that's all there is!
+
+The theoretical prediction for the cross section value 
+was obtained with FEWZ, 
+a cross section integration program 
+specifially dealing with production of the W and Z.  
+Previously, all calculations of the cross section 
+had been done at next-to-leading order (NLO) in QCD, 
+which entails several percent uncertainty.  
+However, since the statistical error on 
+W and Z results at the LHC 
+was quickly expected to reach the order of 1\%, 
+it was deemed necessary to undertake 
+a calculation at next-to-next-to-leading order (NNLO), 
+which gives a theoretical uncertainty of 
+approximately the same value.  
+(In essence, all higher-order corrections beyond NNLO 
+contribute about a percent or less of uncertainty.)  
+FEWZ was chosen to calculate the cross sections 
+for the CMS analysis 
+because of this treatment of NNLO QCD corrections.  
 
 
 \section{Detector Simulation}
