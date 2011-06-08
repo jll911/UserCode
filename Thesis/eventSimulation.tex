@@ -677,11 +677,120 @@ because of this treatment of NNLO QCD corrections.
 \label{sim:Detector}
 %\subsection{GEANT Detector Model/Modeling of Particle Interactions in Detector Material}
 
+After the generation of the main physics process, 
+and the parton showering and hadronization and decays, 
+the role of the detector itself must be taken into account.  
+The final, end-state, decayed particles interact with 
+the detector, which causes signals representing 
+the particle's position and energy to be registered.  
+These must be properly modeled to know, for example, 
+%the magnitude of the energy that should be associated 
+%with a given signal.  
+what sort of signal would result from the passage of a particle 
+with a given momentum.  
+In addition, the detector itself is not completely passive, 
+in that it can change the properties of the 
+particles passing through it during the course of measurement.  
+Both of these roles necessitate a detailed simulation 
+of the detector and its response.  
+
+%ALSO NEED SOMETHING FOR ELECTRONICS, TRIGGER, ETC
+
 \subsection{GEANT Detector Model}
 \label{sim:DetectorGeant}
 
-GEANT the giant
+%ha ha, actually talk about geant down here, 
+%modeling of matter, 
+%interactions of particles with matter
+
+%GEANT the giant
+
+The CMS collaboration uses the software package 
+GEANT4 to model the detector 
+within the framework of CMSSW, 
+the CMS-specific analysis software 
+(see Section~\ref{FIXME}).  
+GEANT4 provides a toolkit designed 
+to accurately represent all facets of 
+the detector simulation.  
+These include the ability to construct 
+a precise geometrical model of the 
+detector itself, 
+complete with any actual misalignments 
+and a model of the detector's magnetic field, 
+as well as the physical properties 
+of the materials used.  
+In addition, the package also handles 
+the properties of the 
+fundamental particles involved, 
+how they behave in the modeled 
+magnetic field, 
+and how they interact with the different 
+materials present in the detector.  
+For example, the detection of particles 
+in the electromagnetic calorimeter 
+depends on those particles causing 
+a shower of other particles upon 
+interacting with the material of the 
+calorimeter; 
+this must be modeled.  
+Finally, GEANT4 also provides 
+the ability to model the response of 
+the electronics used to detect the particles, 
+like the response of a photomultiplier tube 
+to a light signal caused by such a shower.  
 
 \subsection{Level-1 Trigger Emulator}
 \label{sim:DetectorL1Emul}
-talk about how emulator necessary for l1, but not for hlt (duh)
+%YAY emulator
+
+%talk about how emulator necessary for l1, but not for hlt (duh)
+
+In addition to modeling the detector 
+components that do the actual detecting, 
+it is necessary to include the response of 
+the trigger system (Section~\ref{exp:trigger}), %.  
+%This modeling serves several purposes.  
+serving multiple purposes.  
+Modeling the trigger system enables 
+the estimation of event rates 
+for a given luminosity 
+before the experiment actually runs 
+with that luminosity.  
+In particular, 
+this permitted the estimation of rates
+long before the detector was fully constructed, 
+greatly aiding the experiment's 
+physics planning.  
+In addition, comparison of the real-time 
+``online'' performance of the trigger 
+with its software counterpart 
+can indicate and aid in diagnosing 
+problems with the online running.  
+
+The High-Level part of the trigger system (HLT), 
+consisting of algorithms implemented in software, 
+is simply run ``offline'' as an element 
+of the detector simulation.  
+However, the Level-1 Trigger (L1), 
+being implemented in electronics 
+instead of software, 
+must be explicitly modeled.  
+The sofware package that does this 
+is called the Level-1 Trigger Emulator, 
+since it aims to be a bit-by-bit 
+emulation of the trigger hardware 
+instead of just a simulation of the 
+algorithms implemented.  
+The L1 Emulator is modular in the 
+same sense as the hardware system; 
+information is passed between 
+separate packages representing the 
+different subsystems of the L1.  
+Each element of the hardware, 
+namely each type of processing card, 
+has its own software class to handle 
+its own specific functions.  
+The software therefore aims overall to model 
+each of the trigger's processing steps 
+in accurate detail.  
