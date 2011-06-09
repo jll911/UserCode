@@ -120,25 +120,65 @@ on both real data and simulated data.
 
 \section{Monte Carlo Event Generation}
 \label{sim:MC}
-put why called ``monte carlo'', 
-also connect ``event simulation'' terminology 
-with ``generator'' and the multiple types thereof.
-like, ``simulation'' broken down into several steps, 
-one of which is the generation of the main 
-physics process itself (aka ``hard physics process'')
-HOW the events are actually ``generated'', 
-like the whole random number business. 
-It uses a random number generator , 
-to determine ``in a probabilistic way'' -- 
-only one main interaction happens 
-for each proton (bunch) interaction, 
-but the sum over all events ,
-according to the probability of each type of 
-interaction happening.  
+
+``Event generation'' refers to 
+creating a set of fake physics events, 
+usually realistic, 
+for purposes of study and 
+comparison with real data.  
+The term ``Monte Carlo'' is connected 
+with this process 
+because at the most basic level 
+it is based on random numbers.  
+All physics interactions happen in 
+terms of probabilities: 
+process X is more likely to happen than 
+process Y, 
+so process X is observed more often.  
+For any given fake event, 
+which physics process is actually simulated 
+is randomly determined 
+according to those probabilities.  
+The kinematics of the event 
+(energies and directions of incoming 
+and outgoing particles) 
+are also assigned according to 
+probabilities.  
+The final result is that having enough events 
+will reproduce the original probabilities 
+of each interaction.  
+(It is worth noting that in terms of software, 
+nothing is really random; in general, 
+programs to create ``random numbers''
+are really only pseudorandom.  
+However, for the purpose of event generation, 
+pseudorandom numbers are suitable if 
+they are sufficiently random-like.  
+Moreover, using a deterministic 
+pseudorandom generation algorithm 
+aids in debugging -- 
+the results of the algorithm are reproducible, 
+which cannot happen with truly random numbers.)  
+
+%put why called ``monte carlo'', 
+%also connect ``event simulation'' terminology 
+%with ``generator'' and the multiple types thereof.
+%like, ``simulation'' broken down into several steps, 
+%one of which is the generation of the main 
+%physics process itself (aka ``hard physics process'')
+%HOW the events are actually ``generated'', 
+%like the whole random number business. 
+%It uses a random number generator , 
+%to determine ``in a probabilistic way'' -- 
+%only one main interaction happens 
+%for each proton (bunch) interaction, 
+%but the sum over all events ,
+%according to the probability of each type of 
+%interaction happening.  
 
 
 
-\subsection{Put this stuff in its own section?}
+\subsection{Types of Monte Carlo Simulation Programs}
 \label{sim:MCexplain}
 
 %types of programs with different types of output -- what they're used for. 
@@ -191,7 +231,7 @@ they can't be used to predict distributions.
 
 The second type of program are called ``event generators''.  
 They also use the matrix element to calculate 
-the differential cross section % REAL NAME
+the differential cross section element % REAL NAME ?
 with the equation given above.  
 However, instead of using $d\sigma$ as an event weight, 
 it ``unweights'' the events to obtain the physical 
@@ -317,7 +357,8 @@ physics interaction.
 Not shown in the diagram are other interactions 
 involving different parts of the protons 
 or other protons in the same bunch; 
-these interactions are not as interesting 
+these interactions, known as the ``underlying event,''  
+are often not as interesting physics-wise 
 because they are typically not as energetic.  
 The participant particles in the main interaction 
 are then ``evolved'' through the showering process, 
@@ -355,7 +396,8 @@ relevant to this analysis,
 since it does not require hadrons to 
 exist in the final state.  
 However, since initial- or final-state radiation 
-may cause jets incidental to the main interaction, 
+may cause jets incidental to the main interaction 
+that nevertheless affect its kinematics, 
 hadronization is dealt with here.  
 %CAN TREAT ELECTRONS ETC AS ``PARTONS'' AND 
 %INCLUDE QED IN SHOWERING -- makes framework easier 
@@ -363,7 +405,7 @@ hadronization is dealt with here.
 %can't remember if it's pythia-specific)
 In addition, it simplifies things to treat 
 electrons and photons in the final state as ``partons'', 
-same as the quarks and gluons.  
+in the same category as the quarks and gluons.  
 Even though they are not constituents of the proton, 
 they can be modeled as having 
 ``distribution functions'' 
@@ -372,9 +414,9 @@ photons and electrons.
 Therefore different sorts of processes can be 
 plugged into the same machinery and treated the same way.  
 
-all this stuff on QCD isn't directly relevant for my 
-stuff, should maybe concentrate more on mine... 
-show the feynman diagram again?  
+%all this stuff on QCD isn't directly relevant for my 
+%stuff, should maybe concentrate more on mine... 
+%show the feynman diagram again?  
 
 %parton-shower is default pythia method (for QCD), 
 %but matrix element can be used
@@ -383,7 +425,7 @@ show the feynman diagram again?
 %both higher orders and hadronization
 
 %BIG PRETTY PARTON SHOWER PICTURE but also need to explain PDF part, etc. etc. 
-should compare to other one from zeus people, which one is better? 
+%should compare to other one from zeus people, which one is better? 
 
  \begin{figure}[htb]
   \begin{center}
@@ -428,32 +470,90 @@ should compare to other one from zeus people, which one is better?
 \subsection{Monte Carlo Generator Programs}
 \label{sim:MCGens}
 
-short intro on programs: pythia, powheg, tauola, fewz
+%short intro on programs: pythia, powheg, tauola, fewz
 
-HOW THE PROGRAMS USED TO GENERATE THESE SAMPLES AND NUMBERS 
-FIT INTO THIS FRAMEWORK.  
-   pythia, powheg, tauola, fewz... else??  (didn't end up using MCatNLO) 
-I don't think anything else.  
-also explain about fewz different (xsec integrator, sounds like)
+%HOW THE PROGRAMS USED TO GENERATE THESE SAMPLES AND NUMBERS 
+%FIT INTO THIS FRAMEWORK.  
 
-I feel like I remember seeing something from herwig?? in one of the 
-production config fragments...
+Several Monte Carlo programs were used to fulfill 
+different roles in this analysis.  
+Two programs were used to generate the simulation events used: 
+one general-purpose generator for background events, 
+and a more specialized generator for the signal sample.  
+A few of the background samples used a dedicated decay 
+program to decay specific particles in the end state.  
+Finally, a cross section integrator was used to 
+obtain a highly precise estimate of the theoretical 
+value of the interaction cross section.  
+These programs will be detailed in the following sections.  
+
+
+%   pythia, powheg, tauola, fewz... else??  (didn't end up using MCatNLO) 
+%I don't think anything else.  
+%also explain about fewz different (xsec integrator, sounds like)
+
+%I feel like I remember seeing something from herwig?? in one of the 
+%production config fragments...
 
 \subsubsection{PYTHIA}
 \label{sim:MCGensPythia}
 
-PYTHIA THE MONSTER
+%PYTHIA THE MONSTER
 
-   * general-purpose parton-shower event generator
+%   * general-purpose parton-shower event generator
 
-   * implements many beyond-standard model processes for study
+%   * pdfs, main process, showering, hadronization, decays
+
+%   * implements many beyond-standard model processes for study
+
+%   * lots of stuff built up over the years, but doesn't do everything
+
+
+CMS makes use of one of the standard 
+Monte Carlo event generation workhorses, 
+a program known as PYTHIA.  
+PYTHIA is a general-purpose event generator 
+using the parton-shower approach to corrections.  
+It encompasses most of the steps necessary to generate 
+an event: 
+the parton distribution functions 
+that describe the colliding protons, 
+the main physics interaction process, 
+and how the end products shower, 
+hadronize, and decay.  
+Over its long history PYTHIA has built up 
+a large collection of tools, 
+which include many main physics processes and 
+various methods of dealing with each of the steps 
+mentioned above.  
+PYTHIA also includes many non-standard-model 
+physics processes 
+in order to study new physics theories.  
+Most of what it does can be adjusted by the user 
+via changing parameters; 
+however, its default values are chosen to produce 
+valid output without the need to 
+necessarily adjust settings.  
+Because PYTHIA is such a wide-ranging program, 
+it does not treat everything it handles in depth.  
+For this reason, specialized programs are sometime used 
+to work with specific areas of the simulation process, 
+including the ones in the following sections.  
+
 
 %and lund string model pictures (both, yay!)
-
-PYTHIA uses the Lund string model 
+This analysis does not directly deal with 
+quarks or jets; 
+however, since jets can be present in the final state 
+and can play a role in the kinematics of the \Zee 
+interaction, 
+the method of dealing with jets and the QCD 
+processes that form them is relevant here.  
+PYTHIA by default uses the Lund string model 
 (shown schematically in Fig.~\ref{fig:MClund})
 to evolve 
-quarks and gluons through the process of hadronization. %, 
+quarks and gluons through the process of hadronization 
+and formation into jets. %, 
 Conceptually, an interaction's final state may have 
 quarks 
 %and/or gluons 
@@ -509,7 +609,31 @@ the force holding them together.  % wishy-washy use of ``force''?
 %explain steps and hadronization model, etc
 
 
-what are the different tunes for?  tune z2, tune d6t
+%what are the different tunes for?  tune z2, tune d6t 
+%actually, I think they're for the underlying event
+
+%https://twiki.cern.ch/twiki/bin/view/CMS/PythiaTuning
+
+%so NOT just CMS-based, they're pythia-wide.  
+%but I don't see Z2 or D6T on this page: 
+%http://home.fnal.gov/~skands/leshouches-plots/
+
+The underlying event 
+can be represented in PYTHIA 
+by different configurations of parameters, 
+known as ``tunes.''  
+The tunes have been chosen to correctly model 
+already-existing distributions from previous 
+experiments.  
+This analysis uses samples generated 
+according to the default tune used in CMS, 
+Tune Z2.  
+However, differences between the tunes 
+are very slight and affect 
+final results very little; 
+these affects are accounted for 
+in the systematic errors 
+(Section~\ref{anMeth:SystsOther}).  
 
 \subsubsection{POWHEG}
 \label{sim:MCGensPowheg}
