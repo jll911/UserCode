@@ -55,7 +55,7 @@ The event simulation also contributes
 directly to many analyses, 
 in the way of calculating the acceptance, 
 the fraction of events that can theoretically 
-be detected (see Section~\ref{FIXME}): 
+be detected (see Section~\ref{FIXME}): % WHEREVER FIRST EXPLAIN ACC
 it is impossible to know from observation 
 how many events are missed by the detector, 
 because of the very fact that they are unseen.  
@@ -128,7 +128,7 @@ for purposes of study and
 comparison with real data.  
 The term ``Monte Carlo'' is connected 
 with this process 
-because at the most basic level 
+because at the most fundamental level 
 it is based on random numbers.  
 All physics interactions happen in 
 terms of probabilities: 
@@ -140,8 +140,8 @@ which physics process is actually simulated
 is randomly determined 
 according to those probabilities.  
 The kinematics of the event 
-(energies and directions of incoming 
-and outgoing particles) 
+(energies and directions of 
+involved particles) 
 are also assigned according to 
 probabilities.  
 The final result is that having enough events 
@@ -150,7 +150,9 @@ of each interaction.
 (It is worth noting that in terms of software, 
 nothing is really random; in general, 
 programs to create ``random numbers''
-are really only pseudorandom.  
+are really only pseudorandom, 
+because computers by nature 
+do things according to programmed rules.  
 However, for the purpose of event generation, 
 pseudorandom numbers are suitable if 
 they are sufficiently random-like.  
@@ -197,7 +199,7 @@ the Feynman diagrams of the physics interactions of interest
 but they use the matrix element formalism 
 in different ways to achieve different ends.  
 As a reminder, the equation to obtain the 
-differential cross section % WHAT'S IT ACTUALLY CALLED??
+differential cross section element % WHAT'S IT ACTUALLY CALLED??
 from the matrix element for a given diagram is 
 
 \[
@@ -211,13 +213,13 @@ such as the cross section.
 These programs are called ``cross section integrators''.  
 They calculate 
 $d\sigma$ for each of a uniform distribution of 
-phase space vales (i.e. uniform increments 
+phase space values (i.e. uniform increments 
 of $\cos\theta$ and $\phi$).  
-$d\sigma$ represents each event's ``weight''; 
+The value of $d\sigma$ represents each event's ``weight''; 
 the total cross section $\sigma$ is then obtained 
 by integrating over the full collection of $d\sigma$ values.  
 The final result is a value for the cross section; 
-hence the name.  
+hence the name ``cross section integrator''.  
 However, since the events themselves are distributed 
 uniformly in $\cos\theta$ and $\phi$, 
 their characteristics 
@@ -244,10 +246,10 @@ the ratio $\frac{d\sigma}{d\sigma_{max}}$ is taken;
 this number is necessarily a fraction between 0 and 1.  
 A random number $g$ between 0 and 1 is then generated.  
 If the ratio $\frac{d\sigma}{d\sigma_{max}}$ is greater 
-than $g$, then then event is kept.  
-Otherwise, it is rejected.  
+than $g$, then the event is kept; %.  
+otherwise, it is rejected.  
 This method causes the generated events to have the properties 
-and distributions that events would have in reality -- 
+and distributions that real events would have -- %in reality -- 
 sections of phase space with a higher ``event weight'' 
 are more likely to be represented.  
 
@@ -273,18 +275,18 @@ for these calculations only consider bare quarks,
 that is, quarks extracted from the framework of 
 hadrons such as the proton.  
 These bare quarks cannot exist in reality, 
-so a method of accounting for the quarks 
-as being inside hadrons must also be used.  
+so a method of accounting for the quarks' 
+presence inside hadrons must also be used.  
 There have been two different paths taken to deal % path = tack? track?...
 with the above issues.  
 In the first, the ``matrix element'' method, 
-Higher-order diagrams are explicity included in 
+higher-order diagrams are explicity included in 
 the matrix element calculation.  
 Since the higher the order, 
 the more complex the calculation, 
 only diagrams of up to a given order are 
 generally used.  
-In one implementation, more ``legs'' can be dealt with, 
+In one implementation, more ``legs'' can be dealt with, % DO I NEED TO GO INTO ALL THIS DETAIL IF IT'S NOT RELEVANT FOR MY ANALYSIS?
 but diagrams containing virtual loops are ignored.  % EXPLAIN IN PREVIOUS CH
 In the other, all diagrams, including those with virtual 
 loops, of a single order are used, 
@@ -349,7 +351,7 @@ in particular
 is that the entire process of simulating 
 a physics event can be done in a modular fashion.  
 Fig.~\ref{fig:MCsteps} 
-shows the typical steps necessary to simulate an events.  
+shows the typical steps necessary to simulate an event.  
 The incoming protons are modeled in terms of the 
 parton distribution functions (Section~\ref{FIXME}).  % NEED TO EXPLAIN ``PARTONS'' IN THAT SECTION
 The ``hard subprocess'' refers to the main 
@@ -363,7 +365,7 @@ because they are typically not as energetic.
 The participant particles in the main interaction 
 are then ``evolved'' through the showering process, 
 which includes emissions of photons or gluons 
-by the initial or final particles, 
+by the initial- or final-state particles, 
 as well as ``branchings'' of final particles. % INCLUDED IN FORMER?? 
 Any resulting quarks and gluons are 
 formed into ``colorless'' hadrons, % but gluons colorless to being with -- and do they ``form'' into hadrsons??
@@ -381,11 +383,12 @@ while another is better-equipped to take care
 of the showering and hadronization, 
 and a third is specialized in the decay of 
 a particular particle.  
-To further the theme of modularity, 
-the fully-decayed situation 
+%To further the theme of modularity, 
+Taking the theme of modularity even further, 
+the set of fully-decayed particles 
 is then plugged into a program simulating 
 the passage of the particles through the detector 
-and the detector's response (Section~\ref{FIXME}).  
+and the detector's response (Section~\ref{sim:Detector}).  
 
 %need to explain since not actually using jets 
 %in analysis, but there may be jets in final state
@@ -519,6 +522,7 @@ an event:
 the parton distribution functions 
 that describe the colliding protons, 
 the main physics interaction process, 
+the non-interacting remnants (underlying event)
 and how the end products shower, 
 hadronize, and decay.  
 Over its long history PYTHIA has built up 
@@ -539,6 +543,8 @@ it does not treat everything it handles in depth.
 For this reason, specialized programs are sometime used 
 to work with specific areas of the simulation process, 
 including the ones in the following sections.  
+PYTHIA was used to generate the background 
+samples used in this analysis.  % two ``this analysis''s right in a row...
 
 
 %and lund string model pictures (both, yay!)
@@ -547,10 +553,12 @@ quarks or jets;
 however, since jets can be present in the final state 
 and can play a role in the kinematics of the \Zee 
 interaction, 
-the method of dealing with jets and the QCD 
-processes that form them is relevant here.  
+the method of dealing with hadronization 
+%jets and the QCD processes that form them 
+is relevant here.  
 PYTHIA by default uses the Lund string model 
-(shown schematically in Fig.~\ref{fig:MClund})
+%(shown schematically in Fig.~\ref{fig:MClund})
+(illustrated in Fig.~\ref{fig:MClund})
 to evolve 
 quarks and gluons through the process of hadronization 
 and formation into jets. %, 
@@ -563,12 +571,15 @@ they must always exist with other quarks,
 held together by the strong force.  
 If the individual quarks do not have very much energy 
 as they move apart, 
-the increasing energy of their interaction will hold them together.  
+the increasing energy of their interaction 
+will hold them together.  % EXPLAIN THE ASYMPTOTIC FREEDOM IN THEORY CHAPTER
 However, if the quarks have much energy, 
 the interaction energy will not be enough to hold 
 them together, 
 and they will need to form new ``quark partners'' 
-in order to not be alone.  
+in order to 
+%not be alone.  
+remain in a bound state with other quarks.  
 According to the Lund string model, 
 %linear confinement -- 
 the energy between opposite color charges 
@@ -581,7 +592,7 @@ Enough energy on the part of the quarks will
 create a new quark-antiquark pair, 
 which then fills the need for ``quark partners'', 
 as illustrated in Fig~\ref{fig:MClundB}.  
-The process continues until quarks 
+The process continues until the quarks 
 do not have enough energy to overcome 
 the force holding them together.  % wishy-washy use of ``force''?
 
@@ -648,7 +659,7 @@ POWHEG (for ``POsitive Weight Hardest Emission Generator'')
 is a method for making next-to-leading order (NLO) 
 corrections within a parton shower framework.  
 At low energies, the showering algorithms implemented 
-in parton shower generators 
+in parton shower generators (such as PYTHIA) 
 model the corrections well.  
 However, at higher energies, a next-to-leading order 
 matrix calculation is more accurate.  
@@ -659,11 +670,12 @@ it therefore produces a more accurate picture
 of the radiation corrections and their effects 
 on final-state kinematic quantities 
 when compared to a standard parton-shower 
-generator such as PYTHIA, 
-which only include some (the real part) 
+generator, %such as PYTHIA, 
+which only includes some (the real part) 
 of these corrections.  
 POWHEG consists of a number of routines representing 
-various main physics processes, 
+various %main physics processes, 
+interactions, 
 including \Zee.  
 Processes that are not already included 
 in the set may be implemented by the user.  
@@ -748,7 +760,7 @@ TAUOLA specifically takes spin polarization
 into account, 
 and includes first order QED corrections.  % WHY NOT [need] QCD?? can decay hadronically!
 The TAUOLA package was only necessary for the 
-Z->tau tau and W->tau nu background samples.  % PRETTIFY
+\Ztautau and \Wtaunu background samples.  
 
 %\subsubsubsection{FEWZ}
 %\label{sim:MCGensFewz}
@@ -804,9 +816,10 @@ because of this treatment of NNLO QCD corrections.
 After the generation of the main physics process, 
 and the parton showering and hadronization and decays, 
 the role of the detector itself must be taken into account.  
-The final, end-state, decayed particles interact with 
+%The final, end-state, decayed particles interact with 
+The end-state, decayed particles interact with 
 the detector, which causes signals representing 
-the particle's position and energy to be registered.  
+the particle's position and energy to be recorded as data.  
 These must be properly modeled to know, for example, 
 %the magnitude of the energy that should be associated 
 %with a given signal.  
@@ -861,8 +874,8 @@ this must be modeled.
 Finally, GEANT4 also provides 
 the ability to model the response of 
 the electronics used to detect the particles, 
-like the response of a photomultiplier tube 
-to a light signal caused by such a shower.  
+for example the response of a photomultiplier tube 
+to a light signal caused by the aforementioned shower.  
 
 \subsection{Level-1 Trigger Emulator}
 \label{sim:DetectorL1Emul}
@@ -915,6 +928,7 @@ Each element of the hardware,
 namely each type of processing card, 
 has its own software class to handle 
 its own specific functions.  
-The software therefore aims overall to model 
+The software therefore aims to model 
 each of the trigger's processing steps 
-in accurate detail.  
+in accurate detail, 
+so that the overall result is identical.  
