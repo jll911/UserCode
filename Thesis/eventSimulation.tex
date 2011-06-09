@@ -286,7 +286,8 @@ Since the higher the order,
 the more complex the calculation, 
 only diagrams of up to a given order are 
 generally used.  
-In one implementation, more ``legs'' can be dealt with, % DO I NEED TO GO INTO ALL THIS DETAIL IF IT'S NOT RELEVANT FOR MY ANALYSIS?
+Two approaches exist: 
+in one implementation, more ``legs'' can be dealt with, % DO I NEED TO GO INTO ALL THIS DETAIL IF IT'S NOT RELEVANT FOR MY ANALYSIS?
 but diagrams containing virtual loops are ignored.  % EXPLAIN IN PREVIOUS CH
 In the other, all diagrams, including those with virtual 
 loops, of a single order are used, 
@@ -303,7 +304,7 @@ Some cross section integrators deal with the interactions of % is it only cross 
 quarks inside hadrons using Feyman's factorization theorem. 
 Programs which do not deal with them in this way 
 can be interfaced with programs following the 
-second of the two paths, %.  
+second of the two paths to higher-order corrections, %.  
 %The second path is called 
 the ``parton shower'' method, 
 which is the method used by many event generators 
@@ -312,11 +313,20 @@ In the parton shower method,
 instead of including diagrams representing 
 higher orders and quarks-within-hadrons 
 into the matrix element calculation, 
-this part of the interaction is taken care of 
-by a separate routine.  
-This routine takes the products of the 
+%this part of the interaction is taken care of 
+corrections are handled 
+by a separate 
+%routine.  
+method.  
+This routine takes the 
+particles involved in the 
 basic tree-level interaction 
-and decays them according to 
+and 
+%decays 
+%``evolves'' them, 
+%through radiation, 
+causes them to radiate 
+according to 
 probabilities and rules coded into the program.  
 The process is iterative, 
 repeating for any quarks or gluons that 
@@ -514,7 +524,9 @@ These programs will be detailed in the following sections.
 
 CMS makes use of one of the standard 
 Monte Carlo event generation workhorses, 
-a program known as PYTHIA.  
+a program known as PYTHIA, 
+which was used to generate the background 
+samples used in this analysis.  
 PYTHIA is a general-purpose event generator 
 using the parton-shower approach to corrections.  
 It encompasses most of the steps necessary to generate 
@@ -540,11 +552,9 @@ valid output without the need to
 necessarily adjust settings.  
 Because PYTHIA is such a wide-ranging program, 
 it does not treat everything it handles in depth.  
-For this reason, specialized programs are sometime used 
+For this reason, specialized programs are sometimes used 
 to work with specific areas of the simulation process, 
 including the ones in the following sections.  
-PYTHIA was used to generate the background 
-samples used in this analysis.  % two ``this analysis''s right in a row...
 
 
 %and lund string model pictures (both, yay!)
