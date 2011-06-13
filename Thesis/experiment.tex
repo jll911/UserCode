@@ -621,6 +621,8 @@ The general purpose of the RCT is to take
 energy information from ECAL and HCAL and combine it 
 to generate electron/photon candidates as well as energy sums for 
 jet-finding.  
+A diagram illustrating the structure of the RCT processing 
+is shown in Fig.~\ref{fig:RCTStructure}.  
 The information from the calorimeters arrives at the level of trigger towers, 
 a larger granularity than that sent to the full readout.  
 Each ECAL tower corresponds to an HCAL tower behind it.  
@@ -637,6 +639,23 @@ and sends these energy sums along with a list of possible
 electron or photons to the global calorimeter trigger level.  
 A more detailed treatment of the electron/photon-finding 
 algorithm exists in a later chapter.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=360pt]{Figures/RCT-structure-new-small.png} 
+  \end{center}
+  \caption[Diagram of the RCT structure]{Diagram of the RCT structure.
+  The RCT (Regional Calorimeter Trigger) takes energy 
+  information at the tower level from the electromagnetic 
+  and hadronic calorimeters.  
+  It processes this information to produce 
+  regional energy sums, electron candidates, 
+  and other regional information to be 
+  used in the GCT (Global Calorimeter Trigger) 
+  processing further downstream.}
+  \label{fig:RCTStructure}
+ \end{figure}
+
 
 \subsubsection{High-Level Trigger}
 \label{exp:HLT}
