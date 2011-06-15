@@ -2,15 +2,6 @@
 \label{over}
 \section{Measurement of Cross Section}
 \label{over:xsec}
-%xsec(Z) = n(Zee) / ( L * BR(Zee) * eff )
-\[
-\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ Zee } }{  \mathcal{ L } \times \epsilon \times A}
-\]
-where
-\[
-%\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
-\epsilon = \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
-\]
 
    * particles?  although that's theory intro (but need SOME particle-specific stuff) 
 
@@ -22,11 +13,86 @@ where
 
 %glossary? (explanatory text, with true glossary in appendix?)  
 
-   * acceptance, efficiency (especially for that formula above)
+Introductory terminology?  put terminology section in beginning?
+
+want to talk about Z and why important, motivations
+
+   * events
+In particle physics, an ``event'' is a particle interaction 
+that has been captured and recorded by the detector.  
+%   * signal, background.  
+In general, %events that contribute to the specific process     
+events caused by the specific process     
+being studied are termed ``signal,'' 
+while any events 
+%that do not contribute 
+from other sources 
+are called ``background.'' 
+A significant part of any analysis is designing 
+criteria that select signal events while 
+rejecting background events, 
+so that the analysis focuses only on data containing 
+that process.  
+The number of events for a given signal can be used 
+to calculate quantities of interest, 
+for example how often that process  
+occurs relative to others.  
 
    * cross section!
+The cross section, the quantity being calculated in this analysis, 
+is such a measure of ``how often things happen.''  
+However, it's not measured as a rate (occurrences per unit time), 
+it's measured as a cross-sectional area 
+and represents the probability of the given interaction occurring.  
+An analogy may be made to trying to hit a target with a tennis ball.  
+The bigger the target is, the more likely you will be able to hit it.  
+The sizes of both objects matter: 
+a trajectory that would cause a tennis ball to just miss the target 
+would cause a basketball to clip the edge, 
+solely because of the basketball's larger size.  
+Therefore ``cross section'' may be more precisely defined as the 
+effective cross-sectional area of the target, 
+taking into account the sizes of both the target and the projectile.  
+When both the target and projectile are particles, %such as protons, 
+they may interact ``at a distance,'' that is, without ``touching'' each other, 
+through the fundamental forces.  
+(For example, electrons are thought to be point particles 
+and therefore have no spatial extent, 
+but they still attract and repel other particles 
+through the electromagnetic force.) 
+This interaction-at-a-distance increases the effective cross section.  
+An interaction involving two particles that 
+interact with each other very strongly has a large cross section.  
+The cross section depends on the strength of the force between them.  
+FORMULA AND EXPLANATION HERE??
 
-   * signal, background
+According to the definition, ``interaction cross section'' applies only to 
+the particles doing the colliding.  
+However, a cross section is usually associated with the entire process, 
+such as (in our case) 
+$ q\bar{q} \rightarrow Z/ \gamma^{*} \rightarrow e^{+} e^{-} $.  
+Here, the number calculated as the cross section takes into account 
+only those events where a \Zg is formed, 
+as well as the fact that only some of those events decay into electrons.  
+The fraction of events that decay to a certain final state is known as 
+the branching ratio, abbreviated BR.  
+When it is not explicitly mentioned along with the cross section 
+for a given final state, it is understood to be included.  
+Adding up the cross sections for all of these possible interactions 
+would give the full proton-proton interaction cross section.  
+
+%xsec(Z) = n(Zee) / ( L * BR(Zee) * eff )
+\[
+\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ Zee } }{  \mathcal{ L } \times \epsilon \times A}
+\]
+where
+\[
+%\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
+\epsilon = \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
+\]
+
+   * acceptance, efficiency (especially for that formula above)
+
 
    * ``data-driven'' stuff?  need for efficiency, but also systs??
 
@@ -41,13 +107,26 @@ Like, what actually happens!
 
 \section{Terms in particle physics, technical stuff}
 
-   * ``event''!  
+%   * ``event''!  
 
    * ``high-energy''
+``High-energy'' physics refers to modern particle physics. 
+In the beginnings of particle physics, 
+the available accelerators operated at much lower energies.  
+Low-energy accelerators are still used in nuclear physics 
+and aid in materials physics and biophysics studies. 
+However, to probe the fundamental interactions between particles, 
+today's accelerators use much higher energies.  
 
    * ``kinematic'' maybe previous section?
+In the following pages, much will be described by the word 
+``kinematic'' or ``kinematics''.  
+This refers to the properties of position or motion.  
+So, ``kinematic criteria'' means selections applied according to 
+quantities such as momentum or angle.  
 
    * ``hard'' vs ``soft''
+
 
    * histogram?  errors? (stat/syst) etc?
 
@@ -57,9 +136,77 @@ Like, what actually happens!
 
 \section{coordinates used?}
 
-   * eta, phi, transverse quantities
+   * center of momentum reference frame
+For some high-energy physics experiments, 
+there is a choice of several reference 
+frames that can be used for measurement, 
+each with their own benefits.  
+%
+However, in the case of proton-proton collisions, 
+the logical reference frame for measurements is 
+the frame at rest with respect to the detector, 
+the ``lab frame,'' 
+because it is the same as the 
+proton-proton center of momentum frame.  
+Therefore all measurements are done 
+in the lab frame.  
 
-\section{General aANlsysis programs}
+   * eta, phi, transverse quantities -- relate eta to y and all that, 
+talk about difference, talk about meaning of each one
+
+A particular set of coordinates is often used to describe 
+the direction of outgoing or intermediate particles.  
+The direction of the incoming particles defines an axis, 
+the beam axis.  
+The azimuthal angle, measured around this axis 
+and analogous to longitude on the earth's surface, 
+is labeled $\phi$.  
+The angle along the axis, the polar angle 
+(analogous to latitude), 
+is labeled by $\theta$.  
+However, it is much more common to measure this 
+angle in terms of pseudorapidity, $\eta$, 
+which is given as a function of $\theta$:
+\[
+\eta = -\ln \left[ \tan \left( \frac{\theta}{2}\right) \right]
+\]
+$\eta$ is preferred because of its relation to another quantity, 
+rapidity, $y$, which is a function of the particle's 
+energy and momentum:
+\[
+y = \frac{1}{2} \ln \left( \frac{E+p_L}{E-p_L} \right)
+\]
+where $p_L$ is the longitudinal component of the 
+particle's momentum (the component parallel to the beam axis).  
+% WON'T DO COMPOSITION OF VECTORS
+Rapidity is useful when dealing with relativistic speeds, 
+such as those at which the particles typically travel.  
+When viewed from separate reference frames that are moving 
+at relativistic speeds with respect to each other, 
+a particle's speed, direction, and energy appear to be different.  
+However, rapidity has special status in that the 
+difference in rapidity 
+between two particles does not change 
+when the reference frame is changed.  
+A particle's rapidity can be approximated by the 
+pseudorapidity if it is very light or 
+traveling very fast 
+(pseudorapidity is identical to rapidity 
+if the particle has zero mass, 
+in which case it is also 
+moving at the speed of light).  
+In addition, outgoing particles tend to be 
+distributed uniformly in terms of rapidity, 
+as opposed to the polar angle $\theta$, 
+which does not enjoy the same uniform distribution. 
+Since rapidity itself is not a measure of angle, 
+pseudorapidity is used as the coordinate.  
+Rapidity is calculated in cases 
+where the particle of interest may be heavy 
+and may not have a high speed, 
+for example the Z boson examined in this analysis.  
+
+\section{General Analysis programs}
 
    * ROOOOOOOOOT!  other software, like CMSSW? yes
 
