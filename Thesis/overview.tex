@@ -95,15 +95,122 @@ where
 
 
    * ``data-driven'' stuff?  need for efficiency, but also systs??
-
+The term ``data-driven'' is used to describe an analysis method 
+that uses only real data, taken with the detector, 
+instead of relying on simulated data.  
+The purpose of using a data-driven method is to 
+eliminate the possibility of a physics result 
+being affected by an error or inaccuracy 
+in the simulation itself.  
+Since some quantities, such as efficiency, 
+are much easier to measure using simulated data, 
+devising data-driven methods to measure those quantities 
+is an important and potentially challenging 
+part of analysis.  
 
 \section{Anatomy of Event}
 
-Like, what actually happens!
+%Like, what actually happens!
 
-   * underlying event!
+%bunches of protons collide, maybe two protons interact very strongly
+%define parton
 
-   * pileup.  maybe under, like, ``the anatomy of an event'' or ``the structure of an event?''
+%A detector for a particle accelerator 
+%records 
+A proton-proton interaction begins 
+with beams of protons accelerated 
+in opposite directions.  
+The protons are formed into ``bunches,'' 
+with many, many millions of protons per bunch.  
+The beams of proton bunches are directed to 
+cross at the center of the detector.  
+%Most such ``bunch crossings'' do not result 
+%in a significant interaction.  % interaction at all? YES, DUH pileup
+Each such ``bunch crossing'' results in 
+a very small number of proton interactions, 
+the vast majority of which do not interact 
+strongly enough to be interesting.  
+However, sometimes a parton, 
+i.e. a quark or gluon inside the proton, 
+interacts very strongly with a parton 
+from another proton.  
+These are the types of interactions 
+that are typically interesting.  
+%   * ``hard'' vs ``soft''
+%A ``hard'' interaction is one in which the partons 
+%interact very energetically.  
+An interaction in which the partons interact 
+very energetically is a ``hard interaction.''  
+Conceptually, the partons ``hit each other hard.''  
+Hard interactions are typically detected 
+by having end-product particles with 
+a lot of momentum 
+in the transverse direction, 
+perpendicular to the protons' original 
+direction of motion.  
+Only in hard interactions is the original 
+momentum disturbed so much; 
+in ``soft,'' or low-energy, interactions, 
+most of the protons' momentum 
+continues in the same direction, 
+down the beam-pipe.  
+
+%exchange a particle
+%produce another particle which then decays
+Oftentimes the two partons exchange 
+a particle, such as a photon or gluon.  
+In other cases another particle is formed, 
+such as a Z boson; 
+this is the scenario 
+studied in this analysis.  
+Particles formed in this way 
+are typically heavy and therefore 
+short-lived, 
+decaying into lighter, more stable particles.  
+This analysis studies the Z's decay into two 
+electrons, 
+which are the lightest charged particles 
+and therefore (to conserve charge) 
+do not decay.  
+These decay products are what fly ``out'' 
+into the detector with 
+some energy and direction, 
+and it is these quantities 
+that are measured by the detector.  
+
+However, additional processes may contribute 
+to the signature left in the detector.  
+%
+%ISR, FSR
+One of the initial partons 
+or final decay products 
+may radiate an additional particle 
+which then ends up in the detector.  
+This is known as ``initial-state radiation'' (ISR) 
+and ``final-state radiation'' (FSR) respectively.  
+In addition, there are two ways that 
+particles unrelated to the hard interaction 
+may show up in the detector: 
+underlying event and pileup.  
+%
+%   * underlying event!
+The ``underlying event'' refers to the 
+interactions taking place between the 
+proton remnants, 
+the parts of the proton ``left over'' 
+from the hard interaction.  
+%
+%   * pileup.  maybe under, like, ``the anatomy of an event'' or ``the structure of an event?''
+``Pileup'' refers to any interactions that happen 
+between other protons in the bunch.  
+These are generally soft, 
+low-energy interactions.  
+Statistically, at most only one hard interaction 
+happens in any given bunch crossing.  
+Both underlying event and pileup can contribute 
+energy deposits that are recorded as part of the event.  
+Typically they are both fairly low-energy and 
+therefore easily filtered out as background.  
 
 \section{Terms in particle physics, technical stuff}
 
@@ -125,18 +232,30 @@ This refers to the properties of position or motion.
 So, ``kinematic criteria'' means selections applied according to 
 quantities such as momentum or angle.  
 
-   * ``hard'' vs ``soft''
-
 
    * histogram?  errors? (stat/syst) etc?
 
    * statistical and systematic uncertainties or errors
 
-   * ``phase space''!
+   * ``phase space''! % -- move this to only place (so far) 
+%that talks about it?  but theory WILL talk about it
+``Phase space'' refers to the collection of total 
+possible values for a set of quantities.  
+A given system is represented by one set of 
+values out of that collection.  
+%Direction (in three dimensions)   % NOT ACTUALLY TRUE!!!
+%plus speed or energy define a 
+%four-dimensional phase space 
+%for a particle's kinematic quantities.  
+For some calculations it is necessary to include 
+contributions from the entire phase space, 
+for example integrating over all possible 
+angles for a particle's direction.  
 
 \section{coordinates used?}
 
    * center of momentum reference frame
+
 For some high-energy physics experiments, 
 there is a choice of several reference 
 frames that can be used for measurement, 
@@ -151,8 +270,8 @@ proton-proton center of momentum frame.
 Therefore all measurements are done 
 in the lab frame.  
 
-   * eta, phi, transverse quantities -- relate eta to y and all that, 
-talk about difference, talk about meaning of each one
+%   * eta, phi, transverse quantities -- relate eta to y and all that, 
+%talk about difference, talk about meaning of each one
 
 A particular set of coordinates is often used to describe 
 the direction of outgoing or intermediate particles.  
@@ -208,5 +327,34 @@ for example the Z boson examined in this analysis.
 
 \section{General Analysis programs}
 
-   * ROOOOOOOOOT!  other software, like CMSSW? yes
+%   * ROOOOOOOOOT!  other software, like CMSSW? yes
+
+% root.cern.ch duh
+
+% have no idea how to reference CMSSW -- workbook??
+
+Two software programs in particular were 
+used in this analysis.  
+
+The CMS Software (CMSSW) package is 
+the collaboration-developed software 
+used for many aspects of CMS operation and use.  
+It encompasses data-taking, reconstruction, 
+simulation, and analysis.  
+% what else to say?  
+
+ROOT is a general data analysis package, 
+written in C++, 
+and developed and maintained at CERN. 
+It is widely used in the field of 
+experimental particle physics.  
+ROOT implements many tools and functions 
+necessary to various types of analysis, 
+such as histograms, fitting, 
+and statistics.  
+CMSSW can interface with ROOT, 
+providing access to ROOT's %wide 
+%range of 
+capabilities within a CMSSW 
+analysis setting.  
 
