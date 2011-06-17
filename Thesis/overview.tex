@@ -316,7 +316,8 @@ that have passed through a unit of area.
 It is a measure of the total amount of data gathered.  
 The luminosity in the above equation refers to 
 the integrated luminosity.  
-Essentially, the total amount of data (the luminosity) 
+Essentially, the equation says that 
+the total amount of data (the luminosity) 
 times the likelihood a specific interaction will happen 
 (the cross section) 
 gives you the total number of events of that type 
@@ -395,7 +396,8 @@ interaction,
 which is the quantity this analysis aims to get, 
 the equation must be rearranged into 
 \[
-\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ Zee } }{ \mathcal{ L } \times \epsilon \times A}
+%\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ Zee } }{ \mathcal{ L } \times \epsilon \times A}
+\sigma_{ Z } \times \textrm{ BR }( \Zee ) = \frac{ n_{ \Zee } }{ \mathcal{ L } \times \epsilon \times A}
 \]
 Now $\sigma \times \textrm{ BR }$ is expressed 
 in terms of other quantities which 
@@ -482,10 +484,17 @@ for example the Z boson examined in this analysis.
 \section{General Analysis Tools} % changed from ``considerations''
 
    * histogram?  errors? (stat/syst) etc?
+A ``histogram'' is a graphical representation 
+of a data set, used often in statistical analysis.  
+In general, each data point has a value, 
+and the points are grouped into intervals or ``bins'' 
+according to that value.  
+   * uncertainty?
+   * maybe just move this whole part to an appendix?  
+but it actually fits well here. 
 
-MAYBE COME UP WITH SOMEWHERE BETTER TO PUT THIS, someplace relevant 
-(talking about a data method vs MC or something)
-mention MC here, anyhow
+   * mention MC here, anyhow
+
    * ``data-driven'' stuff?  need for efficiency, but also systs??
 The term ``data-driven'' is used to describe an analysis method 
 that uses only real data, taken with the detector, 
