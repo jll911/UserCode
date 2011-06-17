@@ -1,9 +1,14 @@
 \chapter{Overview}
 \label{over}
+
+Little intro thing about science and stuff -- my story?
+short history of particle physics?
+
 \section{Measurement of Cross Section}
 \label{over:xsec}
 
    * particles?  although that's theory intro (but need SOME particle-specific stuff) 
+ref ch 2 -- or wherever end up putting standard model section, maybe move to ch 1!
 
 %the practical purpose of MC -- can simulate all stages of gen/sim/reco/etc and compare 
 %everything step-by-step with data, as well as of course getting some quantities 
@@ -16,6 +21,59 @@
 Introductory terminology?  put terminology section in beginning?
 
 want to talk about Z and why important, motivations
+
+\section{Terms in particle physics, technical stuff}
+
+   * ``high-energy''
+``High-energy'' physics refers to modern particle physics. 
+In the beginnings of particle physics, 
+the available accelerators operated at much lower energies.  
+Low-energy accelerators are still used in nuclear physics 
+and aid in materials physics and biophysics studies. 
+However, to probe the fundamental interactions between particles, 
+today's accelerators use much higher energies.  
+
+   * ``kinematic'' maybe previous section?
+In the following pages, much will be described by the word 
+``kinematic'' or ``kinematics''.  
+This refers to the properties of position or motion.  
+So, ``kinematic criteria'' means selections applied according to 
+quantities such as momentum or angle.  
+
+
+   * histogram?  errors? (stat/syst) etc?
+
+
+   * statistical and systematic uncertainties or errors
+
+   * ``phase space''! % -- move this to only place (so far) 
+%that talks about it?  but theory WILL talk about it
+``Phase space'' refers to the collection of total 
+possible values for a set of quantities.  
+A given system is represented by one set of 
+values out of that collection.  
+%Direction (in three dimensions)   % NOT ACTUALLY TRUE!!!
+%plus speed or energy define a 
+%four-dimensional phase space 
+%for a particle's kinematic quantities.  
+For some calculations it is necessary to include 
+contributions from the entire phase space, 
+for example integrating over all possible 
+angles for a particle's direction.  
+
+   * ``data-driven'' stuff?  need for efficiency, but also systs??
+The term ``data-driven'' is used to describe an analysis method 
+that uses only real data, taken with the detector, 
+instead of relying on simulated data.  
+The purpose of using a data-driven method is to 
+eliminate the possibility of a physics result 
+being affected by an error or inaccuracy 
+in the simulation itself.  
+Since some quantities, such as efficiency, 
+are much easier to measure using simulated data, 
+devising data-driven methods to measure those quantities 
+is an important and potentially challenging 
+part of analysis.  
 
    * events
 In particle physics, an ``event'' is a particle interaction 
@@ -64,13 +122,13 @@ This interaction-at-a-distance increases the effective cross section.
 An interaction involving two particles that 
 interact with each other very strongly has a large cross section.  
 The cross section depends on the strength of the force between them.  
-FORMULA AND EXPLANATION HERE??
+%FORMULA AND EXPLANATION HERE??
 
 According to the definition, ``interaction cross section'' applies only to 
 the particles doing the colliding.  
 However, a cross section is usually associated with the entire process, 
-such as (in our case) 
-$ q\bar{q} \rightarrow Z/ \gamma^{*} \rightarrow e^{+} e^{-} $.  
+such as (in this case) 
+$ q\bar{q} \rightarrow Z/ \gamma^{*} \rightarrow e^{+} e^{-} $.  %include ggF?? or other methods of Z prod?? put all relevant feynman diagrams in theory section...
 Here, the number calculated as the cross section takes into account 
 only those events where a \Zg is formed, 
 as well as the fact that only some of those events decay into electrons.  
@@ -81,34 +139,140 @@ for a given final state, it is understood to be included.
 Adding up the cross sections for all of these possible interactions 
 would give the full proton-proton interaction cross section.  
 
-%xsec(Z) = n(Zee) / ( L * BR(Zee) * eff )
+The cross section $\sigma$ is related to the event count $n$ by 
 \[
-\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ Zee } }{  \mathcal{ L } \times \epsilon \times A}
+n = \sigma \times \mathcal{ L }
 \]
-where
+$\mathcal{ L }$ in this equation is the ``luminosity,'' 
+a measure of the number of proton collisions.  
+Two types of luminosity are spoken of in particle physics: 
+instantaneous luminosity and integrated luminosity.  
+Instantaneous luminosity, denoted here by $L$, 
+refers to the rate of potential proton interactions.  
+Specifically, it is defined as the number of protons 
+passing through a given area in a given amount of time.  
+If the same number of protons are squeezed into a smaller area, 
+the instantaneous luminosity is higher; 
+the protons in the colliding beams are more likely to interact.  
+This is analogous to trying to walk through a room with many 
+other people in it; 
+you are much more likely to bump into people in a small, crowded room 
+than a large room in which the people are much more spread out.  
+% is luminosity measured per beam or what??
+% how is it measured otherwise??
+% how much the beams overlap affect it...
+Integrated luminosity, or $\mathcal{ L }$ here, 
+is the instantaneous luminosity accumulated 
+over a definite period of time, 
+effectively the total number of protons 
+that have passed through a unit of area.  
+It is a measure of the total amount of data gathered.  
+The luminosity in the above equation refers to 
+the integrated luminosity.  
+Essentially, the total amount of data (the luminosity) 
+times the likelihood a specific interaction will happen 
+(the cross section) 
+gives you the total number of events of that type 
+that have happened (the event count, $n$).  
+In practice this formula must be modified 
+to account for the natural limitations of the detector: 
+Two new factors, $A$ and $\epsilon$, must be introduced.  
+$A$, the ``acceptance,'' accounts for the fact 
+that the detector cannot be designed in a way 
+that allows it to see every possible particle.  
+In particular, any particles that continue 
+in the direction of the proton beam will be lost -- 
+the presence of the beam pipe precludes 
+detector material in that direction.  
+%In addition, due to the large magnetic field 
+%used within the detector, 
+%a particle with a low enough energy may 
+%spiral around inside, not actually hitting 
+%the calorimeter.  
+The value of the acceptance is the fraction 
+of the events that can theoretically 
+be seen by the detector, %.  
+often defined in terms of %as %to be within 
+a region of kinematic phase space: % PUT KINEMATIC AND PHASE SPACE DEFS BEFORE THIS
+``above energy X and within angular constraints Y.''
+For simplicity's sake, 
+these constraints are typically chosen to include 
+only regions of the detector 
+and particle energies 
+for which the particles of interest can be well-reconstructed.  
+The ``efficiency,'' $\epsilon$, 
+takes into account the fact that 
+even for particles that leave a definite 
+signature in the detector, 
+they may still not be recorded as such.  
+High efficiency is a primary goal of any 
+experiment, 
+but the sources of inefficiency can never be 
+completely eliminated.  
+The efficiency is often broken down into 
+efficiencies of the individual steps: 
 \[
-%\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
 \epsilon = \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
 \]
+The individual efficiencies correspond to 
+triggering, reconstruction, and selection.  
+The boundary between what is considered 
+for the acceptance versus for the efficiency 
+is somewhat fluid: 
+failing to record a particle 
+with a very low energy may be 
+considered an issue of acceptance 
+%defined as being outside the acceptance 
+(because the detector is not designed 
+for such small energies) 
+or a matter of efficiency 
+(because though the particle left 
+a signature in the detector, 
+it was not reconstructed).  
+It is merely a matter of definition, 
+and in the end result makes no difference.  
 
-   * acceptance, efficiency (especially for that formula above)
+The addition of acceptance and efficiency 
+turn the previous expression 
+of event count and cross section into 
+\[
+n = \sigma \times \mathcal{ L } \times \epsilon \times A
+\]
+The number of events actually seen ($n$) is reduced 
+by the factors accounting for the detector limitations.  
+In order to calculate the cross section $\sigma$ 
+(including the branching ratio) 
+of the 
+$ q\bar{q} \rightarrow Z/ \gamma^{*} \rightarrow e^{+} e^{-} $ 
+interaction, 
+which is the quantity this analysis aims to get, 
+the equation must be rearranged into 
+\[
+\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ Zee } }{ \mathcal{ L } \times \epsilon \times A}
+\]
+Now $\sigma \times \textrm{ BR }$ is expressed 
+in terms of other quantities which 
+can be measured or calculated.  
+This equation is the heart of this analysis.  
+The ``meat'' of the analysis is then 
+measuring the quantities that combine to 
+make up the cross section and putting it all together.  
 
 
-   * ``data-driven'' stuff?  need for efficiency, but also systs??
-The term ``data-driven'' is used to describe an analysis method 
-that uses only real data, taken with the detector, 
-instead of relying on simulated data.  
-The purpose of using a data-driven method is to 
-eliminate the possibility of a physics result 
-being affected by an error or inaccuracy 
-in the simulation itself.  
-Since some quantities, such as efficiency, 
-are much easier to measure using simulated data, 
-devising data-driven methods to measure those quantities 
-is an important and potentially challenging 
-part of analysis.  
+%that formula based on n = sigma * L.  
+%already introduced cross section and event count, 
+%need to explain luminosity in conceptual and technical terms.  
+%difference between instantaneous and integrated.  
+%also bring in A and eff by necessity.  
+%then explain how eff breaks down into steps.  
+
+%   * acceptance, efficiency (especially for that formula above)
+
 
 \section{Anatomy of Event}
+
+this section sets the context and introduces 
+terminology
 
 %Like, what actually happens!
 
@@ -122,18 +286,24 @@ with beams of protons accelerated
 in opposite directions.  
 The protons are formed into ``bunches,'' 
 with many, many millions of protons per bunch.  
-The beams of proton bunches are directed to 
+These beams of proton bunches are directed to 
 cross at the center of the detector.  
 %Most such ``bunch crossings'' do not result 
 %in a significant interaction.  % interaction at all? YES, DUH pileup
-Each such ``bunch crossing'' results in 
-a very small number of proton interactions, 
-the vast majority of which do not interact 
+In an encounter between two protons, 
+the fundamental interaction takes place 
+between individual ``partons,'' 
+which is the collective term for 
+the quarks and gluons that make up the proton.  
+Each ``bunch crossing'' results in 
+a small number of interactions, 
+the majority of which do not interact 
 strongly enough to be interesting.  
-However, sometimes a parton, 
-i.e. a quark or gluon inside the proton, 
-interacts very strongly with a parton 
-from another proton.  
+However, sometimes two partons %, 
+%i.e. a quark or gluon inside the proton, 
+%interacts very strongly with a parton 
+%from another proton.  
+from separate protons interact very strongly.  
 These are the types of interactions 
 that are typically interesting.  
 %   * ``hard'' vs ``soft''
@@ -203,54 +373,18 @@ from the hard interaction.
 %   * pileup.  maybe under, like, ``the anatomy of an event'' or ``the structure of an event?''
 ``Pileup'' refers to any interactions that happen 
 between other protons in the bunch.  
-These are generally soft, 
-low-energy interactions.  
+%These are generally soft, 
+%low-energy interactions.  
 Statistically, at most only one hard interaction 
-happens in any given bunch crossing.  
+happens in any given bunch crossing; the rest are soft.  
 Both underlying event and pileup can contribute 
 energy deposits that are recorded as part of the event.  
 Typically they are both fairly low-energy and 
 therefore easily filtered out as background.  
 
-\section{Terms in particle physics, technical stuff}
+hits, reconstruction, triggering?  
+selection out of reconstructed objects
 
-%   * ``event''!  
-
-   * ``high-energy''
-``High-energy'' physics refers to modern particle physics. 
-In the beginnings of particle physics, 
-the available accelerators operated at much lower energies.  
-Low-energy accelerators are still used in nuclear physics 
-and aid in materials physics and biophysics studies. 
-However, to probe the fundamental interactions between particles, 
-today's accelerators use much higher energies.  
-
-   * ``kinematic'' maybe previous section?
-In the following pages, much will be described by the word 
-``kinematic'' or ``kinematics''.  
-This refers to the properties of position or motion.  
-So, ``kinematic criteria'' means selections applied according to 
-quantities such as momentum or angle.  
-
-
-   * histogram?  errors? (stat/syst) etc?
-
-   * statistical and systematic uncertainties or errors
-
-   * ``phase space''! % -- move this to only place (so far) 
-%that talks about it?  but theory WILL talk about it
-``Phase space'' refers to the collection of total 
-possible values for a set of quantities.  
-A given system is represented by one set of 
-values out of that collection.  
-%Direction (in three dimensions)   % NOT ACTUALLY TRUE!!!
-%plus speed or energy define a 
-%four-dimensional phase space 
-%for a particle's kinematic quantities.  
-For some calculations it is necessary to include 
-contributions from the entire phase space, 
-for example integrating over all possible 
-angles for a particle's direction.  
 
 \section{coordinates used?}
 
@@ -325,7 +459,7 @@ where the particle of interest may be heavy
 and may not have a high speed, 
 for example the Z boson examined in this analysis.  
 
-\section{General Analysis programs}
+\section{General Analysis Software}
 
 %   * ROOOOOOOOOT!  other software, like CMSSW? yes
 
@@ -333,10 +467,20 @@ for example the Z boson examined in this analysis.
 
 % have no idea how to reference CMSSW -- workbook??
 
-Two software programs in particular were 
-used in this analysis.  
+This analysis made use of many software packages 
+to perform specific functions within 
+the process of analyzing the data.  
+Most of the software will be explained 
+in the chapter to which each piece is particularly 
+relevant.  
+However, two programs in particular 
+served many purposes 
+throughout the whole of the analysis and 
+should therefore be mentioned separately.  
+%Two software programs in particular were 
+%used in this analysis.  
 
-The CMS Software (CMSSW) package is 
+The CMS Software (CMSSW) framework is 
 the collaboration-developed software 
 used for many aspects of CMS operation and use.  
 It encompasses data-taking, reconstruction, 
