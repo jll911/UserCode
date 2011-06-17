@@ -3,26 +3,21 @@
 
 Little intro thing about science and stuff -- my story?
 short history of particle physics?
+quantum mech, cosmic ray detection with bubble chambers, etc, 
+move on to accelerators
+talk a little about proton interactions, 
+Z boson and history, decay and detecting electrons, history of electrons?
+Z important to LHC
 
-\section{Measurement of Cross Section}
-\label{over:xsec}
+maybe have all this history and the random definitions together 
 
-   * particles?  although that's theory intro (but need SOME particle-specific stuff) 
-ref ch 2 -- or wherever end up putting standard model section, maybe move to ch 1!
-
-%the practical purpose of MC -- can simulate all stages of gen/sim/reco/etc and compare 
-%everything step-by-step with data, as well as of course getting some quantities 
-%that require extra knowledge, like acceptance (and predicting efficiencies, rates, etc)
-%HA, that sounds like a few of those things in the pythia manual intro!  and I came 
-%up with them myself!  
-
-%glossary? (explanatory text, with true glossary in appendix?)  
-
-Introductory terminology?  put terminology section in beginning?
-
+%   * particles?  although that's theory intro (but need SOME particle-specific stuff) 
+%ref ch 2 -- or wherever end up putting standard model section, maybe move to ch 1!
+some kind of short little intro, motivate need to define those following terms,
 want to talk about Z and why important, motivations
 
-\section{Terms in particle physics, technical stuff}
+(The full set of particles and their interactions will be more fully 
+developed in Ch.~\ref{theory}.)
 
    * ``high-energy''
 ``High-energy'' physics refers to modern particle physics. 
@@ -33,7 +28,22 @@ and aid in materials physics and biophysics studies.
 However, to probe the fundamental interactions between particles, 
 today's accelerators use much higher energies.  
 
-   * ``kinematic'' maybe previous section?
+TACK THE DEFINITIONS ONTO THE END OF WHATEVER THE PREVIOUS 
+(INTRODUCTORY) PARAGRAPH WAS
+
+\section{Terms in particle physics, technical stuff}
+
+%the practical purpose of MC -- can simulate all stages of gen/sim/reco/etc and compare 
+%everything step-by-step with data, as well as of course getting some quantities 
+%that require extra knowledge, like acceptance (and predicting efficiencies, rates, etc)
+%HA, that sounds like a few of those things in the pythia manual intro!  and I came 
+%up with them myself!  
+
+%glossary? (explanatory text, with true glossary in appendix?)  
+
+%Introductory terminology?  put terminology section in beginning?
+
+   * ``kinematic'' 
 In the following pages, much will be described by the word 
 ``kinematic'' or ``kinematics''.  
 This refers to the properties of position or motion.  
@@ -41,13 +51,10 @@ So, ``kinematic criteria'' means selections applied according to
 quantities such as momentum or angle.  
 
 
-   * histogram?  errors? (stat/syst) etc?
 
+%   * statistical and systematic uncertainties or errors
 
-   * statistical and systematic uncertainties or errors
-
-   * ``phase space''! % -- move this to only place (so far) 
-%that talks about it?  but theory WILL talk about it
+   * ``phase space''! 
 ``Phase space'' refers to the collection of total 
 possible values for a set of quantities.  
 A given system is represented by one set of 
@@ -60,20 +67,6 @@ For some calculations it is necessary to include
 contributions from the entire phase space, 
 for example integrating over all possible 
 angles for a particle's direction.  
-
-   * ``data-driven'' stuff?  need for efficiency, but also systs??
-The term ``data-driven'' is used to describe an analysis method 
-that uses only real data, taken with the detector, 
-instead of relying on simulated data.  
-The purpose of using a data-driven method is to 
-eliminate the possibility of a physics result 
-being affected by an error or inaccuracy 
-in the simulation itself.  
-Since some quantities, such as efficiency, 
-are much easier to measure using simulated data, 
-devising data-driven methods to measure those quantities 
-is an important and potentially challenging 
-part of analysis.  
 
    * events
 In particle physics, an ``event'' is a particle interaction 
@@ -96,9 +89,163 @@ to calculate quantities of interest,
 for example how often that process  
 occurs relative to others.  
 
-   * cross section!
+\section{Anatomy of an Event}
+%Like, what actually happens!
+
+this section sets the context and introduces 
+terminology
+
+A proton-proton interaction begins 
+with beams of protons accelerated 
+in opposite directions.  
+The protons are formed into ``bunches,'' 
+with many, many millions of protons per bunch.  
+These beams of proton bunches are directed to 
+cross at the center of the detector.  
+%Most such ``bunch crossings'' do not result 
+%in a significant interaction.  % interaction at all? YES, DUH pileup
+In an encounter between two protons, 
+the fundamental interaction takes place 
+between individual ``partons,'' 
+which is the collective term for 
+the quarks and gluons that make up the proton.  
+Each ``bunch crossing'' results in 
+a small number of interactions, 
+the majority of which do not interact 
+strongly enough to be interesting.  
+However, sometimes two partons %, 
+%i.e. a quark or gluon inside the proton, 
+%interacts very strongly with a parton 
+%from another proton.  
+from separate protons interact very strongly.  
+These are the types of interactions 
+that are typically interesting.  
+%   * ``hard'' vs ``soft''
+%A ``hard'' interaction is one in which the partons 
+%interact very energetically.  
+An interaction in which the partons interact 
+very energetically is a ``hard interaction.''  
+Conceptually, the partons ``hit each other hard.''  
+Hard interactions are typically detected 
+by having end-product particles with 
+a lot of momentum 
+in the transverse direction, 
+perpendicular to the protons' original 
+direction of motion.  
+Only in hard interactions is the original 
+momentum disturbed so much; 
+in ``soft,'' or low-energy, interactions, 
+most of the protons' momentum 
+continues in the same direction, 
+down the beam-pipe.  
+
+Oftentimes the two partons exchange 
+a particle, such as a photon or gluon.  
+In other cases another particle is produced, %formed, 
+such as a Z boson; 
+this is the scenario 
+studied in this analysis.  
+Particles formed in this way 
+are typically heavy and therefore 
+short-lived, 
+decaying into lighter, more stable particles.  
+This analysis studies the Z's decay into two 
+electrons, 
+which are the lightest charged particles 
+and therefore (to conserve charge) 
+do not decay.  
+These decay products are what fly ``out'' 
+into the detector with 
+some energy and direction, 
+and it is these quantities 
+that are measured by the detector.  
+
+However, additional processes may contribute 
+to the signature left in the detector.  
+One of the initial partons 
+or final decay products 
+may radiate an additional particle 
+which then ends up in the detector.  
+This is known as ``initial-state radiation'' (ISR) 
+and ``final-state radiation'' (FSR) respectively.  
+In addition, there are two ways that 
+particles unrelated to the hard interaction 
+may show up in the detector: 
+underlying event and pileup.  
+The ``underlying event'' refers to the 
+interactions taking place between the 
+proton remnants, 
+the parts of the proton ``left over'' 
+from the hard interaction.  
+``Pileup'' refers to any interactions that happen 
+between other protons in the bunch.  
+%These are generally soft, 
+%low-energy interactions.  
+Statistically, at most only one hard interaction 
+happens in any given bunch crossing; the rest are soft.  
+Both underlying event and pileup can contribute 
+energy deposits that are recorded as part of the event.  
+Typically they are both fairly low-energy and 
+therefore easily filtered out as background.  
+
+%hits, reconstruction, triggering?  
+%selection out of reconstructed objects
+
+Fully-decayed, end-product 
+particles leave a signature in the detector 
+by interacting with its material.  
+Some detector material emits light when 
+particles pass through; 
+in these materials, the amount of light 
+is proportional to the energy of the particle.  
+Other parts of the detector rely on an 
+electric signal generated 
+as the particle passes by.  
+%A series of these signals, close together in space, 
+%can be linked together
+These particle interactions with the detector 
+are collectively known as ``hits.''  
+In the process of reconstruction, 
+hits are linked together to 
+follow the path of the particle that caused them.  
+For example, a series of hits in the tracker 
+could show the trajectory of a charged particle 
+as it passed through.  
+The curvature of the trajectory could be measured 
+and turned into a value for the momentum, 
+knowing the value of the magnetic field.  
+This track could then be linked 
+with a significant emission of light 
+in the calorimeter.  
+If the energy from the light 
+matches the momentum from the track, 
+this object is reconstructed as an electron.  
+A rough, on-the-fly reconstruction 
+process takes place in real time to decide 
+whether or not to save the event, 
+%which is 
+called triggering.  
+Saved events undergo a more thorough 
+reconstruction of their detector signals later, 
+since this more thorough version 
+takes too long to do in real time.  
+However, not all objects reconstructed as 
+a given particle are actually due to 
+a real particle of that type 
+passing through the detector.  
+Some reconstructed objects are ``fakes.''  
+These fakes are typically selected out 
+by more stringent criteria on various 
+particle properties. %, 
+However, this selection is done at the analysis level, 
+not during reconstruction.  
+
+\section{Measurement of Cross Section}
+\label{over:xsec}
+
+%   * cross section!
 The cross section, the quantity being calculated in this analysis, 
-is such a measure of ``how often things happen.''  
+is such a measure of ``how often things happen.''  % REWORD TO HAVE IT NOT RIGHT AFTER ``EVENT''
 However, it's not measured as a rate (occurrences per unit time), 
 it's measured as a cross-sectional area 
 and represents the probability of the given interaction occurring.  
@@ -215,7 +362,7 @@ efficiencies of the individual steps:
 \epsilon = \epsilon_{ trig } \times \epsilon_{ reco } \times \epsilon_{ sel }
 \]
 The individual efficiencies correspond to 
-triggering, reconstruction, and selection.  
+triggering, reconstruction, and selection.  % DEFINE THESE BEFOREHAND
 The boundary between what is considered 
 for the acceptance versus for the efficiency 
 is somewhat fluid: 
@@ -232,7 +379,7 @@ it was not reconstructed).
 It is merely a matter of definition, 
 and in the end result makes no difference.  
 
-The addition of acceptance and efficiency 
+The inclusion of acceptance and efficiency 
 turn the previous expression 
 of event count and cross section into 
 \[
@@ -256,145 +403,18 @@ can be measured or calculated.
 This equation is the heart of this analysis.  
 The ``meat'' of the analysis is then 
 measuring the quantities that combine to 
-make up the cross section and putting it all together.  
+make up the cross section, 
+and putting it all together.  
 
 
-%that formula based on n = sigma * L.  
-%already introduced cross section and event count, 
-%need to explain luminosity in conceptual and technical terms.  
-%difference between instantaneous and integrated.  
-%also bring in A and eff by necessity.  
-%then explain how eff breaks down into steps.  
+\section{Reference Frame and Coordinates}
 
-%   * acceptance, efficiency (especially for that formula above)
-
-
-\section{Anatomy of Event}
-
-this section sets the context and introduces 
-terminology
-
-%Like, what actually happens!
-
-%bunches of protons collide, maybe two protons interact very strongly
-%define parton
-
-%A detector for a particle accelerator 
-%records 
-A proton-proton interaction begins 
-with beams of protons accelerated 
-in opposite directions.  
-The protons are formed into ``bunches,'' 
-with many, many millions of protons per bunch.  
-These beams of proton bunches are directed to 
-cross at the center of the detector.  
-%Most such ``bunch crossings'' do not result 
-%in a significant interaction.  % interaction at all? YES, DUH pileup
-In an encounter between two protons, 
-the fundamental interaction takes place 
-between individual ``partons,'' 
-which is the collective term for 
-the quarks and gluons that make up the proton.  
-Each ``bunch crossing'' results in 
-a small number of interactions, 
-the majority of which do not interact 
-strongly enough to be interesting.  
-However, sometimes two partons %, 
-%i.e. a quark or gluon inside the proton, 
-%interacts very strongly with a parton 
-%from another proton.  
-from separate protons interact very strongly.  
-These are the types of interactions 
-that are typically interesting.  
-%   * ``hard'' vs ``soft''
-%A ``hard'' interaction is one in which the partons 
-%interact very energetically.  
-An interaction in which the partons interact 
-very energetically is a ``hard interaction.''  
-Conceptually, the partons ``hit each other hard.''  
-Hard interactions are typically detected 
-by having end-product particles with 
-a lot of momentum 
-in the transverse direction, 
-perpendicular to the protons' original 
-direction of motion.  
-Only in hard interactions is the original 
-momentum disturbed so much; 
-in ``soft,'' or low-energy, interactions, 
-most of the protons' momentum 
-continues in the same direction, 
-down the beam-pipe.  
-
-%exchange a particle
-%produce another particle which then decays
-Oftentimes the two partons exchange 
-a particle, such as a photon or gluon.  
-In other cases another particle is formed, 
-such as a Z boson; 
-this is the scenario 
-studied in this analysis.  
-Particles formed in this way 
-are typically heavy and therefore 
-short-lived, 
-decaying into lighter, more stable particles.  
-This analysis studies the Z's decay into two 
-electrons, 
-which are the lightest charged particles 
-and therefore (to conserve charge) 
-do not decay.  
-These decay products are what fly ``out'' 
-into the detector with 
-some energy and direction, 
-and it is these quantities 
-that are measured by the detector.  
-
-However, additional processes may contribute 
-to the signature left in the detector.  
-%
-%ISR, FSR
-One of the initial partons 
-or final decay products 
-may radiate an additional particle 
-which then ends up in the detector.  
-This is known as ``initial-state radiation'' (ISR) 
-and ``final-state radiation'' (FSR) respectively.  
-In addition, there are two ways that 
-particles unrelated to the hard interaction 
-may show up in the detector: 
-underlying event and pileup.  
-%
-%   * underlying event!
-The ``underlying event'' refers to the 
-interactions taking place between the 
-proton remnants, 
-the parts of the proton ``left over'' 
-from the hard interaction.  
-%
-%   * pileup.  maybe under, like, ``the anatomy of an event'' or ``the structure of an event?''
-``Pileup'' refers to any interactions that happen 
-between other protons in the bunch.  
-%These are generally soft, 
-%low-energy interactions.  
-Statistically, at most only one hard interaction 
-happens in any given bunch crossing; the rest are soft.  
-Both underlying event and pileup can contribute 
-energy deposits that are recorded as part of the event.  
-Typically they are both fairly low-energy and 
-therefore easily filtered out as background.  
-
-hits, reconstruction, triggering?  
-selection out of reconstructed objects
-
-
-\section{coordinates used?}
-
-   * center of momentum reference frame
+%   * center of momentum reference frame
 
 For some high-energy physics experiments, 
 there is a choice of several reference 
 frames that can be used for measurement, 
 each with their own benefits.  
-%
 However, in the case of proton-proton collisions, 
 the logical reference frame for measurements is 
 the frame at rest with respect to the detector, 
@@ -404,8 +424,7 @@ proton-proton center of momentum frame.
 Therefore all measurements are done 
 in the lab frame.  
 
-%   * eta, phi, transverse quantities -- relate eta to y and all that, 
-%talk about difference, talk about meaning of each one
+%   * eta/y, phi
 
 A particular set of coordinates is often used to describe 
 the direction of outgoing or intermediate particles.  
@@ -459,8 +478,29 @@ where the particle of interest may be heavy
 and may not have a high speed, 
 for example the Z boson examined in this analysis.  
 
-\section{General Analysis Software}
+%\section{General Analysis Software}
+\section{General Analysis Tools} % changed from ``considerations''
 
+   * histogram?  errors? (stat/syst) etc?
+
+MAYBE COME UP WITH SOMEWHERE BETTER TO PUT THIS, someplace relevant 
+(talking about a data method vs MC or something)
+mention MC here, anyhow
+   * ``data-driven'' stuff?  need for efficiency, but also systs??
+The term ``data-driven'' is used to describe an analysis method 
+that uses only real data, taken with the detector, 
+instead of relying on simulated data.  
+The purpose of using a data-driven method is to 
+eliminate the possibility of a physics result 
+being affected by an error or inaccuracy 
+in the simulation itself.  
+Since some quantities, such as efficiency, 
+are much easier to measure using simulated data, 
+devising data-driven methods to measure those quantities 
+is an important and potentially challenging 
+part of analysis.  
+
+\subsection{Software}
 %   * ROOOOOOOOOT!  other software, like CMSSW? yes
 
 % root.cern.ch duh
