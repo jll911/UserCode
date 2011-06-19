@@ -36,6 +36,51 @@ lagrangian etc? i.e. more specifics on ewk physics
 feynman diagrams, how they can actually be used -> 
 matrix elements -> cross section element.  
 
+\begin{figure}[htb]
+  \begin{tikzpicture}[
+      thick,
+      % Set the overall layout of the tree
+      level/.style={level distance=1.4cm, line width=0.8mm},
+      level 2/.style={sibling distance=1.4cm},
+      level 3/.style={sibling distance=1.4cm}
+    ]
+    \coordinate
+    child[grow=south east]{
+      child[grow=north east]{
+        edge from parent [gluon]
+        node[right]{$g$}
+      }
+      child[grow=south east]{
+        edge from parent [electron]
+        child[grow=south west] {
+          edge from parent [electron]
+          child[grow=south west]{
+            edge from parent [electron]
+            node[above] {$\bar{q}$}
+          }
+          child[grow=south east]{
+            edge from parent [gluon]
+            node[right] {$g$}
+          }
+        }
+        child[grow=east, level distance=2.4cm] {
+          child{
+            edge from parent [electron]
+            node[below] {$e^{-}$}
+          }
+          child{
+            edge from parent [electron]
+            node[above] {$e^{+}$}
+          }
+          edge from parent [boson]
+          node[below] {$Z$}
+        }
+      }
+      edge from parent [electron] node [above=3pt] {$q$}
+    };
+  \end{tikzpicture}
+\end{figure}
+
 where to put cross section formula stuff 
 -- make new section?
 (and which stuff to use?)

@@ -25,6 +25,11 @@
 \usepackage{amsmath} % Provides \text
 \usepackage{xspace}    % Provides \xspace
 
+\usepackage{tikz} % feynman diagrams!
+\usetikzlibrary{trees}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+
 % The following line would print the thesis in a postscript font 
 % \usepackage{newcent}
 
@@ -54,6 +59,25 @@
 
 \include{commonDefinitions}
 
+
+% Define styles for the different kind of edges in a Feynman diagram
+\tikzset{
+%  photon/.style={decorate, decoration={snake}, draw=npurple},
+  photon/.style={decorate, decoration={snake}, draw=purple},
+%  boson/.style={decorate, decoration={snake}, draw=npurple},
+  boson/.style={decorate, decoration={snake}, draw=purple},
+%  electron/.style={draw=jblue, postaction={decorate},
+  electron/.style={draw=blue, postaction={decorate},
+    %        decoration={markings,mark=at position .55 with {\arrow[draw=jblue]{>}}}
+  },
+%  fermion/.style={draw=jblue, postaction={decorate},
+  fermion/.style={draw=blue, postaction={decorate},
+    %        decoration={markings,mark=at position .55 with {\arrow[draw=jblue]{>}}}
+  },
+%  gluon/.style={decorate, draw=wred,
+  gluon/.style={decorate, draw=red,
+    decoration={coil,amplitude=4pt, segment length=6pt}} 
+}
 
 
 \begin{document}
