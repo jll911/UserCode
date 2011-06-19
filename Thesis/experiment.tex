@@ -623,22 +623,6 @@ to generate electron/photon candidates as well as energy sums for
 jet-finding.  
 A diagram illustrating the structure of the RCT processing 
 is shown in Fig.~\ref{fig:RCTStructure}.  
-The information from the calorimeters arrives at the level of trigger towers, 
-a larger granularity than that sent to the full readout.  
-Each ECAL tower corresponds to an HCAL tower behind it.  
-For each ECAL+HCAL tower, the RCT uses lookuptables to 
-calculate the total energy sum 
-as well as the ratio of HCAL energy to ECAL energy.  
-If that ratio is higher than a certain value, 
-too much energy has been deposited in the HCAL tower for it to 
-contain a probable electron or photon.  
-The RCT also calculates the total energy sums 
-of square regions of the calorimeter, 
-4 trigger towers to a side, 
-and sends these energy sums along with a list of possible 
-electron or photons to the global calorimeter trigger level.  
-A more detailed treatment of the electron/photon-finding 
-algorithm exists in a later chapter.  
 
  \begin{figure}[htb]
   \begin{center}
@@ -652,9 +636,120 @@ algorithm exists in a later chapter.
   regional energy sums, electron candidates, 
   and other regional information to be 
   used in the GCT (Global Calorimeter Trigger) 
-  processing further downstream.}
+  processing further downstream.
+  }
   \label{fig:RCTStructure}
  \end{figure}
+
+The information from the calorimeters arrives at the level of trigger towers, 
+a larger granularity than that sent to the full readout.  
+Each ECAL tower corresponds to an HCAL tower behind it.  
+For each ECAL+HCAL tower, the RCT uses lookuptables to 
+calculate the total energy sum 
+as well as the ratio of HCAL energy to ECAL energy.  
+If that ratio is higher than a certain value, 
+too much energy has been deposited in the HCAL tower for it to 
+contain a probable electron or photon.  
+The electron/photon candidates are constructed starting from 
+towers whose energy deposit is higher than any of their 
+four immediate neighbors.  
+This primary tower must not have the ECAL fine grain bit set; 
+this fine grain bit indicates a structure in the energy deposit 
+inconsistent with an electron or photon.  
+The tower's energy is then combined with that of its highest-energy 
+neighbor, to account for particles that deposite energy 
+in more than one tower; 
+this is the energy of the candidate.  
+The candidate is then determined to be either ``isolated'' or 
+``non-isolated'' depending on the character of the deposits 
+in the neighboring towers.  
+If the eight towers forming a square around the primary tower 
+have two full sides (five contiguous towers) with 
+deposits below a configurable threshold (the ``quiet'' threshold), 
+and these towers' fine grain bits are not set, 
+then the candidate is isolated.  
+Otherwise, it is non-isolated.  
+The algorithm is illustrated in Figure~\ref{fig:RctEgAlgo}.  
+Each crate sorts the isolated and non-isolated candidates found 
+according to energy, 
+and the four highest-energy of each type are kept and passed on.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=400pt]{Figures/RCT-EG-algo.png} 
+  \end{center}
+  \caption[Diagram of the RCT electron/photon algorithm]{
+    Diagram of the RCT electron/photon algorithm. 
+    The candidate is defined as a tower whose four 
+    immediate neighbor towers have lower energies.  
+    The candidate tower's energy is combined with 
+    the energy of its highest-energy neighbor.  
+    The candidate is defined as ``isolated'' if 
+    five contiguous towers out of the eight 
+    surrounding it (two full sides of the square) 
+    have energies below a ``quiet'' threshold 
+    and do not have the fine grain bit set.  
+    Otherwise the candidate is ``non-isolated.''  
+  }
+  \label{fig:RctEgAlgo}
+ \end{figure}
+
+The RCT also calculates the total energy sums 
+of square regions of the calorimeter, 
+4 trigger towers to a side.  
+The topology of the energy deposits in each region 
+is examined to determined whether or not the 
+deposit is consistent with that from 
+a $\tau$ particle that has decayed hadronically, 
+i.e. decayed into a jet of hadrons.  
+Only deposits above a configurable threshold 
+are considered.  
+If the deposits in the region make up a 
+single, small, contiguous area as shown in 
+Figure~\ref{fig:RctTauAlgo},
+then they are consistent with a tau.  
+In this case the $\tau$ veto bit associated 
+with the region is set to false; 
+in all other cases, it is set to true.  
+In addition, the HCAL sends a bit for each 
+HCAL tower indicating whether the deposit 
+is consistent with a minimum ionizing particle 
+(MIP) or muon.  
+If any individual tower's MIP bit is true, 
+then the overall MIP bit associated with the region 
+is also set to true.  
+Otherwise it is set to false.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=400pt]{Figures/RCT-tau-algo.png} 
+  \end{center}
+  \caption[Diagram of the RCT $\tau$ algorithm]{
+    Diagram of the RCT $\tau$ algorithm. 
+    The energy deposits in each region are 
+    examined to determine whether they are 
+    consistent with that from a $\tau$ 
+    that has decayed hadronically.  
+    A single small, contiguous region 
+    is consistent with a $\tau$. 
+  }
+  \label{fig:RctTauAlgo}
+ \end{figure}
+
+Finally, the RCT sends the regional energy sums 
+and the list of possible 
+electrons or photons, 
+along with the associated bits (MIP, $\tau$), 
+to the 
+Global Calorimeter Trigger (GCT) level.  
+The GCT groups the regional energy sums into jets 
+and collects the four highest-energy isolated and 
+non-isolated electron/photon candidates, 
+and sends this information to the Global Trigger (GT), 
+the last step in the chain.  
+The Global Trigger makes the final decision on 
+whether to accept or reject an event at the Level-1.  
+% NEED THE GCT/GT stuff?  talked about it earlier a little
 
 
 \subsubsection{High-Level Trigger}
