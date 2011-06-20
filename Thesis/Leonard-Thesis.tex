@@ -51,6 +51,8 @@
 \newcommand{\DR}{$ \Delta R $ }
 \newcommand{\Zg}{$ Z/ \gamma^{*} $ }
 \newcommand{\Zee}{$ Z \rightarrow e^{+} e^{-} $ }
+\newcommand{\qqZee}{$ q \bar{q} \rightarrow Z \rightarrow e^{+} e^{-} $ }
+\newcommand{\qqZgee}{$ q \bar{q} \rightarrow Z/ \gamma^{*} \rightarrow e^{+} e^{-} $ }
 \newcommand{\Zgee}{$ Z/ \gamma^{*} \rightarrow e^{+} e^{-} $ }
 \newcommand{\Ztautau}{$ Z/ \gamma^{*} \rightarrow \tau^{+} \tau^{-} $ }
 \newcommand{\Wenu}{$ W \rightarrow e \nu $ }
@@ -63,15 +65,19 @@
 % Define styles for the different kind of edges in a Feynman diagram
 \tikzset{
 %  photon/.style={decorate, decoration={snake}, draw=npurple},
-  photon/.style={decorate, decoration={snake}, draw=purple},
+%  photon/.style={decorate, decoration={snake}, draw=purple},
+  photon/.style={decorate, decoration={snake}, draw=black},
 %  boson/.style={decorate, decoration={snake}, draw=npurple},
-  boson/.style={decorate, decoration={snake}, draw=purple},
+%  boson/.style={decorate, decoration={snake}, draw=purple},
+  boson/.style={decorate, decoration={snake}, draw=black},
 %  electron/.style={draw=jblue, postaction={decorate},
-  electron/.style={draw=blue, postaction={decorate},
+%  electron/.style={draw=blue, postaction={decorate},
+  electron/.style={draw=black, postaction={decorate},
     %        decoration={markings,mark=at position .55 with {\arrow[draw=jblue]{>}}}
   },
 %  fermion/.style={draw=jblue, postaction={decorate},
-  fermion/.style={draw=blue, postaction={decorate},
+%  fermion/.style={draw=blue, postaction={decorate},
+  fermion/.style={draw=black, postaction={decorate},
     %        decoration={markings,mark=at position .55 with {\arrow[draw=jblue]{>}}}
   },
 %  gluon/.style={decorate, draw=wred,

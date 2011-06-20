@@ -4,27 +4,148 @@
 \section{The Standard Model}
 \label{theory:SM}
 
+% quarks, leptons, bosons!  HIGGS ha ha
+
+The Standard Model describes the current understanding 
+of how fundamental particles interact.  
+There are three different types of particles: 
+quarks and leptons (collectively, fermions), 
+which make up matter, 
+and bosons, which transmit forces.  
+The particles are shown in Figure~\ref{fig:StandardModel}. 
+The first three columns show the first three generations 
+of the quarks and leptons, 
+while the last column shows the bosons.  
+There are six quarks, often represented by their first letters: 
+up, down, charm, strange, top, and bottom.  
+The first quark in each pair has charge +2/3 
+(in terms of the electron charge), 
+while the second has charge -1/3.  
+The leptons consist of the electron, muon, and $\tau$, 
+each with charge -1, 
+and their corresponding neutrinos, 
+the electron neutrino, muon neutrino, and $\tau$ neutrino, 
+which are chargeless.  
+Each generation contains two quarks, 
+a neutrino, and a charged lepton.  
+In general, the generations get progressively heavier.  
+The electron is lighter than the muon, 
+which is lighter than the $\tau$.   
+The same relation exists between the quark generations; 
+the top quark is the heaviest particle in the Standard Model.  % CHECK!!!!!
+Until recently it was believed that all the neutrinos are massless.  
+However, recent experiments indicate 
+that neutrinos do have a small mass.  % REFERENCE
+Normal, everyday matter is made up solely of particles 
+from the first generation.  
+All normal matter is made of atoms, 
+which in turn consist of a nucleus and 
+electrons surrounding the nucleus.  
+Atomic nuclei are made of protons and neutrons, 
+which are made of up and down quarks: 
+the proton by $uud$ and the neutron by $udd$.  
+The bosons in the last column transmit the forces 
+by which particles interact: 
+the massless photon ($\gamma$) and gluon ($g$) 
+transmit the electromagnetic and the strong forces, 
+respectively, 
+while the relatively heavy $Z$ and $W$ bosons 
+transmit the weak force.  
+%antiparticles
+In general, each particle has an antiparticle partner 
+of the opposite charge and quantum numbers; % opposite quantum numbers in general, explain quantum numbers? because have to account for photon, gluon, Z, neutrinos
+the antiparticle of the electron ($e^-$) is the positron ($e^+$).  
+Neutrinos, being chargeless, 
+have antineutrinos with opposite lepton number.  % EXPLAIN!!!!!
+Not shown in the diagram is the Higgs boson, 
+which is predicted by the Standard Model 
+to give mass to the other particles.  
+The Higgs has not yet been discovered; 
+finding it (if it exists) is one of the 
+goals of the LHC.  
+The Standard Model does not include the final 
+fundamental force, gravity.  
+So far gravity has not yet been (fully?) worked into the % FIXME!!!
+framework of the fundamental particles.  
+There are many efforts currently ongoing to unite them, % REFERENCE?
+but none of these approaches have yet been proved.  
+
 % http://www.symmetrymagazine.org/cms/?pid=1000064  the symmetry magazine SM picture
 % don't know how it prints in black and white
 % LATEX DOESN'T DO GIFS
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=360pt]{Figures/theory-standard-model-symmetry-mag.png}
+%    \includegraphics[width=360pt]{Figures/theory-standard-model-symmetry-mag.png}
+    \includegraphics{Figures/theory-standard-model-symmetry-mag.png}
   \end{center}
   \caption[Particles of the standard model]
 	  {Particles of the standard model that are known to exist. 
 	    The Higgs boson is also predicted as part of the 
 	    Standard Model, 
 	    but has not yet been discovered. 
+
 	    }
   \label{fig:StandardModel}
  \end{figure}
 
+TABLE OF MASSES
 
-quarks, leptons, bosons!  HIGGS ha ha
+
 
 gauge groups, little intro to group theory
+
+A ``group'' is a set of elements with specific properties.  
+In particular, any transformation of an element in the group 
+results in another element in the group.  
+
+A ``Lie'' group is one in which any transformation 
+can be done in very small steps, 
+each of which results in an element still in the group.  
+The different fundamental forces are described by different Lie groups.  
+
+which particles feel which forces?
+
+Transformations in these groups can be represented as matrices.  
+These matrices act on the set of initial states 
+and result in the set of final states.  
+Each element in the matrix, mapping a single initial state 
+to a single other final state, 
+gives the amplitude with which the % ONLY IN SCATTERING???  make sure this is right context 
+transformation happens.  
+Essentially, squaring the matrix element gives the 
+relative probability of that particular transformation.  
+Matrices are often used to represent transitions 
+from one quantum mechanical state to another.  
+
+This is used in particle physics as such: 
+a transformation from an initial state, 
+in our case two quarks from colliding protons, 
+to a final state, 
+an electron and a positron, 
+is represented by a Feynman diagram, 
+shown in Figure~\ref{fig:ZeeFeynmanDiagram}.  
+The interaction can be thought to progress to the right.  
+Each straight line represents a fermion, 
+either the quark or the electron.  
+The wavy line represents a boson, the Z.  
+(Gluons are represented by curly lines.)  
+The intersections between particle lines, or vertices, 
+show interactions between the given particles.  
+%The type of interaction can be determined by the particles   % NEED THIS?  
+%taking part: 
+%an interaction between a Z and a quark or lepton 
+%indicates the weak force is involved.  
+The matrix element corresponding to this transformation 
+can be written down 
+by attributing factors to the various elements 
+of the Feynman diagram, 
+the particle lines and the vertices.  
+
+somewhere get into spinors...
+
+
+
 
 put all qcd stuff in here?  don't need all the detail of zeus stuff
 
@@ -37,48 +158,60 @@ feynman diagrams, how they can actually be used ->
 matrix elements -> cross section element.  
 
 \begin{figure}[htb]
+\begin{center}
   \begin{tikzpicture}[
       thick,
       % Set the overall layout of the tree
-      level/.style={level distance=1.4cm, line width=0.8mm},
+%      level/.style={level distance=1.4cm, line width=0.8mm},
+      level/.style={level distance=1.4cm, line width=0.5mm},
       level 2/.style={sibling distance=1.4cm},
       level 3/.style={sibling distance=1.4cm}
     ]
     \coordinate
+%    child[grow=south east]{
+%      child[grow=north east]{
+%        edge from parent [gluon]
+%        node[right]{$g$}
+%      }
     child[grow=south east]{
-      child[grow=north east]{
-        edge from parent [gluon]
-        node[right]{$g$}
-      }
-      child[grow=south east]{
+      edge from parent [electron]
+      child[grow=south west] {
         edge from parent [electron]
-        child[grow=south west] {
-          edge from parent [electron]
-          child[grow=south west]{
-            edge from parent [electron]
-            node[above] {$\bar{q}$}
-          }
-          child[grow=south east]{
-            edge from parent [gluon]
-            node[right] {$g$}
-          }
-        }
-        child[grow=east, level distance=2.4cm] {
-          child{
-            edge from parent [electron]
-            node[below] {$e^{-}$}
-          }
-          child{
-            edge from parent [electron]
-            node[above] {$e^{+}$}
-          }
-          edge from parent [boson]
-          node[below] {$Z$}
-        }
+%        node[above] {$\bar{q}$} % ADDED
+        node[below] {$\bar{q}$} % ADDED
+%          child[grow=south west]{
+%            edge from parent [electron]
+%            node[above] {$\bar{q}$}
+%          }
+%          child[grow=south east]{
+%            edge from parent [gluon]
+%            node[right] {$g$}
+%          }
       }
+      child[grow=east, level distance=2.4cm] {
+        child[]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
+          edge from parent [electron]
+          node[below] {$e^{-}$}
+        }
+        child[]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
+          edge from parent [electron]
+          node[above] {$e^{+}$}
+        }
+        edge from parent [boson]
+%        node[below] {$Z/\gamma*$}
+        node[below] {$Z$}
+      }
+%    }
       edge from parent [electron] node [above=3pt] {$q$}
     };
   \end{tikzpicture}
+\end{center}
+%  \caption[Feynman diagram of \qqZgee]
+  \caption[Feynman diagram of \qqZee]
+%	  {Feynman diagram of \qqZgee.  
+	  {Feynman diagram of \qqZee.  
+	    }
+  \label{fig:ZeeFeynmanDiagram}
 \end{figure}
 
 where to put cross section formula stuff 
