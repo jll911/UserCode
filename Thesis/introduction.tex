@@ -26,6 +26,22 @@ The particles are shown in Figure~\ref{fig:StandardModel}.
 The first three columns show the first three generations 
 of the quarks and leptons, 
 while the last column shows the bosons.  
+Each fermion generation contains two quarks, 
+a neutrino, and a charged lepton.  
+In general, the generations get progressively heavier.  
+The electron is lighter than the muon, 
+which is lighter than the $\tau$.   
+The same relation exists between the quark generations; 
+the top quark is the heaviest particle in the Standard Model.  % CHECK!!!!!
+Normal, everyday matter is made up solely of particles 
+from the first generation.  
+All normal matter is made of atoms, 
+which in turn consist of a nucleus and 
+electrons surrounding the nucleus.  
+Atomic nuclei are made of protons and neutrons, 
+which are made of up and down quarks: 
+the proton by $uud$ and the neutron by $udd$.  
+
 There are six quarks, often represented by their first letters: 
 up, down, charm, strange, top, and bottom.  
 The first quark in each pair has charge $+\frac{2}{3}$, 
@@ -35,29 +51,16 @@ These charges are given in terms of the electron charge;
 though the charges are fractional, 
 the quarks are always arranged into composite 
 particles that have integer multiples of the electron charge.  
+
 The leptons consist of the electron, muon, and tau ($\tau$), 
 each with charge -1, 
 and their corresponding neutrinos, 
 the electron neutrino, muon neutrino, and $\tau$ neutrino, 
 which are chargeless.  
-Each generation contains two quarks, 
-a neutrino, and a charged lepton.  
-In general, the generations get progressively heavier.  
-The electron is lighter than the muon, 
-which is lighter than the $\tau$.   
-The same relation exists between the quark generations; 
-the top quark is the heaviest particle in the Standard Model.  % CHECK!!!!!
 Until recently it was believed that all the neutrinos are massless.  
 However, recent experiments indicate 
 that neutrinos do have a small mass.  % REFERENCE
-Normal, everyday matter is made up solely of particles 
-from the first generation.  
-All normal matter is made of atoms, 
-which in turn consist of a nucleus and 
-electrons surrounding the nucleus.  
-Atomic nuclei are made of protons and neutrons, 
-which are made of up and down quarks: 
-the proton by $uud$ and the neutron by $udd$.  
+
 The bosons in the last column transmit the forces 
 by which particles interact.  
 %The massless photon ($\gamma$) and gluon ($g$) 
@@ -142,7 +145,11 @@ so far no theory has fully united gravity with the
 other fundamental forces.  
 %There are many efforts currently ongoing to unite them, % REFERENCE?
 %but none of these approaches have yet been proved.  
-Such a ``theory of everything'' is a dream of theoretical physics.  
+Such a ``theory of everything'' is 
+%a dream of 
+one of the goals that 
+theoretical physics %.  
+pursues.  
 
 % http://www.symmetrymagazine.org/cms/?pid=1000064  the symmetry magazine SM picture
 % don't know how it prints in black and white
@@ -375,7 +382,8 @@ matrix elements -> cross section element.
           edge from parent [electron]
           node[above] {$e^{+}$}
         }
-        edge from parent [boson]
+%        edge from parent [boson]
+        edge from parent [zboson]
 %        node[below] {$Z/\gamma*$}
         node[below] {$Z$}
       }
@@ -401,7 +409,129 @@ order of diagram = number of vertices!
 \subsection{Z Production}
 \label{theory:Zprod}
 
-previous results here?
+s, inv mass, pdfs attach to tree-level matrix element, 
+Z/gamma* interference
+
+s = Z mass -- well, dunno, also includes momentum
+
+%The definition of a 
+A particle system's ``invariant mass'' is 
+a combination of its energies and momenta that 
+remain unchanged regardless of reference frame.  
+A particle (or everyday object) can appear to 
+have a different energy depending on the reference 
+frame from which it is viewed.  
+If you are sitting on an airplace at cruising altitude, 
+the plane is not moving with respect to your body.  
+However, if you are on the ground, the plane is 
+moving very fast -- 
+it has a different kinetic energy in that frame.  
+The physics of the situation cannot depend on 
+the reference frame of the observer, 
+even at the relativistic speeds of interacting particles.  
+The invariant mass is such a quantity that 
+remains the same.  
+In addition, since the energy and momentum 
+of a system are conserved, 
+the invariant mass is also conserved 
+throughout the entire interaction, 
+in particular the decay.  
+The general definition is given as 
+\[
+M_{inv}^2 = \left( \sum E \right)^2 - \left\| \sum \mathbf{p} \right\|^2
+\]
+For a single particle, the expression simplifies 
+to the particle's mass.  
+This analysis makes use of the fact that the 
+invariant mass of the decay particles 
+(the two electrons) 
+is the same as the (invariant) mass of the 
+particle which decayed, the Z.  
+The above formula, simplified to two particles, 
+\[
+M_{inv} = \sqrt{ \left(E_1 + E_2\right)^2 - \left\|\mathbf{p}_1 + \mathbf{p}_2\right\|^2 }
+\]
+reconstructs the mass of the Z boson 
+based on the energies and momenta 
+of the decay products.  
+
+Another diagram contributes to the process being studied. 
+In this case, a photon replaces the Z boson 
+as the link between the quarks and the electrons.  
+Because these diagrams have the exact same 
+initial and final states, 
+they ``interfere'' with each other.  
+Experimentally, it is impossible to tell which one happened; 
+both must be included in the calculations.  % is this exactly why???
+
+It is necessary to note that the photon that takes 
+part in this interaction is a ``virtual'' photon -- 
+%it cannot be observed by itself.  
+it cannot be directly observed.  
+The reason for this is that there is always a 
+center-of-momentum reference 
+frame for the two particles colliding to form the photon.  
+In other words, there is always some way that you, 
+the observer, can be moving, 
+such that it looks like the two particles 
+have the same speed but opposite directions.  
+In this reference frame, the photon would be formed at rest, 
+which violates the principle that the speed of light 
+is the same in all reference frames -- 
+the speed of light can never be zero.  
+Equivalently, such a photon would have mass, 
+while real photons are massless.  
+The mass of this virtual photon is indeed the same 
+as the invariant mass of the system.  
+%Such virtual particles can exist due to inherent   %% is that actually why these photons in particular can be virtual?  
+%fluctuations in energy, by the uncertainty 
+%principle of quantum mechanics.  
+Such virtual particles are allowed to exist 
+by the uncertainty principle of quantum mechanics, 
+which governs the ``borrowing'' of energy from the vacuum.  
+The smaller the time scale over which the energy 
+fluctuation happens, 
+the larger the energy fluctuation allowed.  
+
+Having a specific mass defines a thin 
+surface or ``shell'' in kinematic phase space; 
+only certain combinations of energy and momentum 
+are allowed, 
+because of the relations between mass, energy, and momentum.  
+Particles that are virtual, 
+i.e. have a mass much different than their 
+defined ``real'' mass, 
+are called ``off-shell'' -- 
+they are ``off the mass shell.''  
+
+The Z boson, while it has a defined mass, 
+%DECAY WIDTH ETC ETC ETC 
+can be ``off-shell'' in the same way as the photon.  
+That is, in general the 
+%reconstructed 
+mass 
+does not take on a single precise value; 
+instead, over many events it manifests as a distribution 
+peaked around the ``real'' value.  
+This is typical of particles that are measured only 
+by their decays; 
+these particles tend to be at least slightly virtual 
+%because they are not being observed directly.  
+because of their short lifetimes.  
+%in fact, 
+%In addition, the width of the peak is inversely related to the   % how relevant is this actually?  
+%lifetime of the particle.  
+
+PIC OF DY SPECTRUM??
+
+In this case, only the area around the Z peak is being 
+studied, not the full spectrum.  
+The main contribution in this area is the Z itself 
+as opposed to virtual photons.  
+
+
+\subsubsection{Results from Previous Experiments}
+\label{theory:prev}
 
 \subsection{Z Decay}
 \label{theory:Zdec}
