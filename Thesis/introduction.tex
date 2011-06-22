@@ -9,6 +9,8 @@
 
 % MAKE TABLE SHOWING WHAT FEELS WHAT FORCE!  or something -- quantum number is more complicated way of showing it.  draw connection in text
 
+% EXPLAIN SQUARE ROOT OF S so do need to get into s.  okay, via s-level diagram
+
 The Standard Model describes the current understanding 
 of how fundamental particles interact.  
 There are three different types of particles: 
@@ -71,6 +73,21 @@ The relatively heavy $Z$ and $W$ bosons
 transmit the weak force, 
 which causes nuclear decay.  
 
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/theory-standard-model-symmetry-mag.png}
+    \includegraphics{Figures/theory-standard-model-symmetry-mag.png}
+  \end{center}
+  \caption[Particles of the standard model]
+	  {Particles of the standard model that are known to exist. 
+	    The Higgs boson is also predicted as part of the 
+	    Standard Model, 
+	    but has not yet been discovered. 
+
+	    }
+  \label{fig:StandardModel}
+ \end{figure}
+
 %antiparticles
 In general, each particle has an antiparticle partner 
 of the opposite charge and quantum numbers; % opposite quantum numbers in general, explain quantum numbers? because have to account for photon, gluon, Z, neutrinos
@@ -131,22 +148,8 @@ Such a ``theory of everything'' is a dream of theoretical physics.
 % don't know how it prints in black and white
 % LATEX DOESN'T DO GIFS
 
- \begin{figure}[htb]
-  \begin{center}
-%    \includegraphics[width=360pt]{Figures/theory-standard-model-symmetry-mag.png}
-    \includegraphics{Figures/theory-standard-model-symmetry-mag.png}
-  \end{center}
-  \caption[Particles of the standard model]
-	  {Particles of the standard model that are known to exist. 
-	    The Higgs boson is also predicted as part of the 
-	    Standard Model, 
-	    but has not yet been discovered. 
-
-	    }
-  \label{fig:StandardModel}
- \end{figure}
-
 TABLE OF MASSES
+
 
 
 
@@ -156,14 +159,130 @@ A ``group'' is a set of elements with specific properties.
 In particular, any transformation of an element in the group 
 results in another element in the group.  
 
-A ``Lie'' group is one in which any transformation 
+A ``Lie'' group is one in which any transformation % NEED THIS????
 can be done in very small steps, 
 each of which results in an element still in the group.  
 The different fundamental forces are described by different Lie groups.  
 
 which particles feel which forces?
 
-Transformations in these groups can be represented as matrices.  
+Each of the three forces in the Standard Model 
+is described by such a Lie group.  % group. 
+%In each case, the ``dimension'' of the group 
+%is the dimension of the matrices
+Each group is represented by a set of square matrices 
+of some dimension, given by the number in parentheses.  
+The matrices used for these representations are 
+all unitary (hence the common ``U'' designation).  
+``Unitary'' means that the matrix's inverse 
+is equal to its complex conjugate transpose.  
+In other words, if you flip the matrix's elements 
+about its diagonal and replace each imaginary unit $i$ 
+with $-i$, then multiply it by the original matrix, 
+the result is the identity matrix.   % EXPLAIN IDENTITY MATRIX??
+
+%EM: U(1)
+The electromagnetic force is described by the $U(1)$ group.  
+Essentially, this describes rotation about an axis.  % talk about more than matrices?
+The single parameter (an angle) requires only one matrix, 
+corresponding to a single % force particle(s)
+force carrier, the photon.  
+The electromagnetic force causes interactions between 
+photons and any particles that have electric charge.  
+This includes quarks, leptons, and the charged weak bosons.  
+%Because the photon is massless, the electromagnetic force % EXPLAIN MORE???
+%can act over long distances, observable on the human scale.  
+
+%Weak: SU(2)
+The weak force is represented by the $SU(2)$ group.  
+The ``S'' addition in the name stands for ``special'' 
+and means that each matrix's trace 
+(the sum of elements along the matrix's diagonal) is zero.  
+$SU(2)$ represents rotations in three dimensions 
+using three matrices, 
+and therefore has three parameters corresponding 
+to the single angle of $U(1)$.  
+These give rise to the three carriers of the weak force, 
+the two oppositely-charged W's and the Z.  %%% FIGURE OUT HOW TO DO W+- in latex? sort of like writing it out longhand, but should show at least W+ and W- notation 
+%All three carriers have significant mass, which means 
+%the distance over which they have an effect is very small.  
+The weak force acts on any particles that have the ``weak 
+version'' of electrical charge, 
+namely all fermions.  
+In particular, the weak force is the only way 
+neutrinos interact.  
+%However, interactions with W's only happen in ways  % TALK ABOUT CONSERVATION OF CHARGE IN GENERAL
+%that conserve charge.  
+
+%QCD: SU(3)
+Finally, the strong force is represented by $SU(3)$, 
+which does not have an easy analogy to rotations 
+like the previous two groups.  
+It uses eight matrices, which correspond to the 
+eight different gluon states that mediate the force.  
+% talk about dim-3 = 3 colors?
+The three dimensions of the group relate to the 
+three ``color charges,'' red, green, and blue.  
+Strong force interactions happen between all particles 
+that carry this color charge, 
+namely quarks, but also gluons themselves.  
+% talk about color confinement and asymptotic freedom?  YES, but how to explain in terms of mass???
+This so-called self-interaction on the part of the gluons 
+causes the strong force to increase with distance.  
+At short distances, the quarks making up another particle 
+essentially act free; 
+only when they get further apart do they feel the force 
+keeping them in their bound state.  
+This situation is related to the fact that quarks are 
+never observed alone, only within these bound states.  
+An interaction that is energetic enough to cause 
+quarks to separate is also energetic enough to 
+create more quarks with which the original quarks 
+form new bound states.  
+%When a quark gains a significant energy 
+%(through an interaction with another particle), 
+
+%This is known as color confinement
+%The implication is that in spite of the fact that 
+%gluons are massless, 
+%the strong force is not observable over large distances.  
+
+However, the individual groups by themselves 
+do not necessarily represent the reality of particles.  
+It is known experimentally that the bosons carrying 
+the weak force have mass.  
+%The $SU(2)$ formulation of the weak force
+In order for the theory to correctly predict the 
+fact those particles should be massive, 
+the electromagnetic and weak interactions had to be combined 
+into a single framework, 
+%Steven Weinberg and Abdus Salam 
+%The electromagnetic and weak forces were combined into one framework, 
+$SU(2) \times U(1)$, using a specific method.  
+The integrated $SU(2) \times U(1)$ group 
+allows for the collective four force-carrying bosons 
+(photon, positively- and negatively-charged W's, and Z) 
+to be described as compositions of the same underlying states.  
+The fact that the three weak bosons are massive, though, 
+comes from applying ``spontaneous symmetry breaking.''  
+This method uses the fact that the groups mentioned 
+above have underlying symmetries: 
+that is, they contain parameters that do not affect the 
+physical description in any way.  
+They are symmetric with respect to variations in these parameters.  
+However, the values of these parameters can be chosen 
+in a strategic way and the result manipulated % TALK ABOUT FIELD THEORY AT ALL?? this is all lagrangians and mass terms
+to give masses to the weak bosons.  
+(A consequence of this ``strategic choice'' is the appearance 
+of another massive particle in the theory: 
+the Higgs boson.  
+The Higgs boson is therefore predicted by the theoretical 
+mechanism used to account for massive weak bosons.  
+Time -- and collision data -- will tell if the theory 
+in this form is correct.)  
+
+
+%Transformations within these groups can be represented as matrices.  % IS THIS ACTUALLY THE SAME AS THE GROUP MATRICES??
 These matrices act on the set of initial states 
 and result in the set of final states.  
 Each element in the matrix, mapping a single initial state 
@@ -201,6 +320,8 @@ the particle lines and the vertices.
 
 somewhere get into spinors...
 
+put equation for differential cross section element 
+in terms of amplitude/matrix element 
 
 
 
@@ -314,6 +435,8 @@ to explain why Z mass has a spectrum and not a single value
    * invariant mass (here?)
 
    * cross section formula and matrix elements and what said matrices do
+
+   * PDFs, what they are, how they relate to Z physics
 
 AND, of course read the others' theses to see what they had in here, too.  
 
