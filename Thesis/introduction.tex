@@ -446,6 +446,13 @@ This can be approximated in terms of the original
 
 
 
+
+
+!!!! THIS IS ALL FOR PHOTONS DRELL YAN !!!!!
+is that okay?????????
+Z's have different feynman rule factors!!
+
+
 more specific derivation stuff?  
 I guess, if I'm starting from the 
 feynman diagram stuff
@@ -467,6 +474,113 @@ d \sigma = \frac{ \left| \mathcal{M} \right| ^2 }{F} d Q
 % since in CM pi1 = pi2, pf1 = pf2
 % differential is eventually integrated
 
+%% % now for curly M squared
+%% % Feynman diagram sez 
+%% \[
+%% \mathcal{M} = -
+%% \]
+
+curly M can be written down from Feynman rules, 
+according to tensor structure
+
+
+
+the giant thing from the PDG RPP CH 40:
+
+partial width given by 
+\[
+\Gamma(Z \rightarrow f \bar{f} )
+= N_c \frac{ \sqrt{2} G_F m_Z^3 }{6 \pi}
+\times \left[(T_3 - Q_f \sin^2 \theta_W )^2 
++ (Q_f \sin \theta_W )^2 \right]
+\]
+while the giant thing is given by 
+(full differential cross section for 
+$ f_i \bar{f_j} \rightarrow (W,Z) \rightarrow f_{i'} \bar{f_{j'}} $)
+\[
+\frac{d \sigma}{d \Omega} = \frac{N_c^f}{N_c^i} 
+\times \frac{1}{256 \pi s} 
+\times \frac{s^2}{(s - m_Z^2)^2 + s \Gamma^2}
+\times \left[(L^2 + R^2) (L'^2 + R'^2) (1 + \cos^2 \theta)
++ (L^2 - R^2) (L'^2 - R'^2) 2 \cos \theta \right]
+\]
+For Z, couplings are 
+\[
+%L = \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2} } }(T_3 - \sin^2 \theta_W Q)
+L = g (T_3 - \sin^2 \theta_W Q)
+\]
+
+\[
+%R = - \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2} } } \sin^2 \theta_W Q
+R = - g \sin^2 \theta_W Q
+\]
+``$T_3$ is weak isospin of initial left-handed fermion and 
+Q is initial fermion's electric charge. [FRACTIONAL] 
+The expressions for L' and R' are analogous.  
+The color factors $ N_c^{i,f} $ are 3 for initial or final quarks 
+and 1 for initial or final leptons.''  
+
+$T_3$ is the third component of the ``weak hypercharge,'' 
+which relates how to the fermions are arranged 
+within the standard model generations 
+(refer to Figure~\ref{fig:StandardModel}).  
+Each generation consists of two pairs, 
+one pair of quarks and one pair of leptons.  
+The placement of each particle within its pair 
+reflects how it interacts with the weak force.  
+This quantity is the ``weak version'' of electric charge, 
+known as ``hypercharge.''  
+For the top particle in each pair, the hypercharge 
+is $+\frac{1}{2}$; 
+for the bottom particle, it is $-\frac{1}{2}$.  
+(Note: this only applies to particles whose spin 
+is ``left-handed.''  
+Particles with ``right-handed'' spin have zero hypercharge; 
+right-handed neutrinos do not interact in the Standard Model.  
+This is equivalent with the assertion that neutrinos 
+must be moving at the speed of light and therefore 
+do not have mass. 
+If neutrinos had mass, 
+they would be moving slower than the speed of light 
+and there could be a reference frame -- 
+where the observer moves faster than the neutrino -- 
+in which the neutrino would actually be left-handed.  
+Because recent observations have indicated neutrinos % REFERENCE
+do in fact have mass, 
+this aspect of the Standard Model is inaccurate.)  
+%H+M have SUCH a nice little summary in the inside back cover.  
+
+can put in terms of little g:
+\[
+g = \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2}} }
+\]
+Initial particles are quarks: 
+\[
+N_c^i = 3
+\]
+Final particles are leptons: 
+\[
+N_c^f = 1
+\]
+BUT, initial particles are all flavors of quarks, 
+so can't just plug in flavor-dependent quantities 
+like $T_3$ and $Q$.  
+
+
+
+%% % WHICH simplifies to give us AVGD OVER SPINS or whatever
+%% \[
+%% \bar{ \left| \mathcal{M} \right| ^2 } 
+%% = 2 e^4 \left[ \frac{1}{2} \left( 1 + \cos^2 \theta \right) \right]
+%% \]
+
+%% % THEN
+%% \[
+%% \frac{d \sigma}{d \Omega} \big| _{CM}
+%% %= \frac{\alpha^2}{4s} \left( 1 + \cos^2 \theta \right) 
+%% = \frac{\alpha^2}{4 Q^2} \left( 1 + \cos^2 \theta \right) 
+%% \]
+
 
 % quark-level subprocess is 3 e_q^2 times that for muons
 % DON'T NEED TO SHOW THIS, backwards anyhow
@@ -475,25 +589,25 @@ d \sigma = \frac{ \left| \mathcal{M} \right| ^2 }{F} d Q
 %= 3 e_q^2 \sigma(e^- e^+ \rightarrow \mu^- \mu^+ )
 %\]
 
-% WHERE
-%\[
-%\sigma(e^- e^+ \rightarrow \mu^- \mu^+ ) 
-%= \frac{4 \pi \alpha^2}{3 s}
-%\]
-% don't need to show that one either, 
-%just result: 
-\[
-\sigma ( q \bar{q} \rightarrow e^- e^+ )
-%= 3 e_q^2 \frac{4 \pi \alpha^2}{3 s}
-= 3 e_q^2 \frac{4 \pi \alpha^2}{3 Q^2}
-\]
-% D'OH, look at next line!
+%% % WHERE
+%% %\[
+%% %\sigma(e^- e^+ \rightarrow \mu^- \mu^+ ) 
+%% %= \frac{4 \pi \alpha^2}{3 s}
+%% %\]
+%% % don't need to show that one either, 
+%% %just result: 
+%% \[
+%% \sigma ( q \bar{q} \rightarrow e^- e^+ )
+%% %= 3 e_q^2 \frac{4 \pi \alpha^2}{3 s}
+%% = 3 e_q^2 \frac{4 \pi \alpha^2}{3 Q^2}
+%% \]
+%% % D'OH, look at next line!
 
-% cross section of quark-level subprocess
-\[
-\hat{\sigma} (q \bar{q} \rightarrow l^- l^+) 
-= \frac{4 \pi \alpha^2}{3 Q^2} e_q^2
-\]
+%% % cross section of quark-level subprocess
+%% \[
+%% \hat{\sigma} (q \bar{q} \rightarrow l^- l^+) 
+%% = \frac{4 \pi \alpha^2}{3 Q^2} e_q^2
+%% \]
 
 % but need to account for the proton and pdfs
 
@@ -504,15 +618,15 @@ d \sigma = \frac{ \left| \mathcal{M} \right| ^2 }{F} d Q
 \frac{d \hat{\sigma} }{d Q^2}
 \]
 
-% ... which gives
-% THE BIG FAT GIANT CROSS SECTION EQUATION 
-% in terms of the parton distribution functions f_i(x)
-\[
-\frac{d \sigma}{d Q^2}(pp \rightarrow l \bar{l} X)
-= \frac{4 \pi \alpha^2}{9 Q^4} 
-\sum_q e_q^2 \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2) 
-\delta \left( 1 - x_1 x_2 \frac{s}{Q^2} \right)
-\]
+%% % ... which gives
+%% % THE BIG FAT GIANT CROSS SECTION EQUATION 
+%% % in terms of the parton distribution functions f_i(x)
+%% \[
+%% \frac{d \sigma}{d Q^2}(pp \rightarrow l \bar{l} X)
+%% = \frac{4 \pi \alpha^2}{9 Q^4} 
+%% \sum_q e_q^2 \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2) 
+%% \delta \left( 1 - x_1 x_2 \frac{s}{Q^2} \right)
+%% \]
 
 % THIS IS ONLY LOWEST ORDER, with no ISR/FSR gluon emission stuff
 
