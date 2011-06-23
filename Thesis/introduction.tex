@@ -409,10 +409,115 @@ order of diagram = number of vertices!
 \subsection{Z Production}
 \label{theory:Zprod}
 
+someplace need to go into 4-momenta...
+
 s, inv mass, pdfs attach to tree-level matrix element, 
 Z/gamma* interference
 
 s = Z mass -- well, dunno, also includes momentum
+
+The quantity $s$ is the square of the center-of-momentum 
+energy of the colliding proton system.  
+(Therefore $\sqrt{s}$ is the center-of-momentum 
+energy itself.)  
+It is obtained by adding together the four-momenta 
+of the colliding protons, designated $1$ and $2$: %.  
+\[
+s = (p_1 + p_2)^2
+\]
+However, since only a single quark participates 
+in the interaction, not the full proton, 
+the energy of the interaction must be reduced.  
+The fraction of the proton's momentum that is carried 
+by the quark is defined $x$, so that the 
+quark's momentum is then $xp$.  
+We can then define a center-of-momentum energy, 
+$\hat{s}$ (or $Q^2$), 
+for the quark-quark system, 
+the interacting part of the proton system: 
+\[
+\hat{s} = (x_1 p_1 + x_2 p_2)^2
+\]
+This can be approximated in terms of the original 
+(proton) $s$ as 
+\[
+\hat{s} \simeq x_1 x_2 s
+\]
+
+
+
+more specific derivation stuff?  
+I guess, if I'm starting from the 
+feynman diagram stuff
+
+% the VERY beginning of the cross section formula
+% where |M|2 is ``probability'', F is flux = particles per area per time, 
+% and dQ is dLIPS
+\[
+d \sigma = \frac{ \left| \mathcal{M} \right| ^2 }{F} d Q
+\]
+
+% (in CM) the full differential cross section is 
+\[
+\frac{d \sigma}{d \Omega} \big| _{CM} 
+= \frac{1}{64 pi^2 s} \frac{p_f}{p_i} \left| \mathcal{M} \right| ^2
+\]
+% where d\Omega is solid angle element
+% pf and pi are the initial and final momenta of each element,
+% since in CM pi1 = pi2, pf1 = pf2
+% differential is eventually integrated
+
+
+% quark-level subprocess is 3 e_q^2 times that for muons
+% DON'T NEED TO SHOW THIS, backwards anyhow
+%\[
+%\sigma(e^- e^+ \rightarrow q \bar{q} ) 
+%= 3 e_q^2 \sigma(e^- e^+ \rightarrow \mu^- \mu^+ )
+%\]
+
+% WHERE
+%\[
+%\sigma(e^- e^+ \rightarrow \mu^- \mu^+ ) 
+%= \frac{4 \pi \alpha^2}{3 s}
+%\]
+% don't need to show that one either, 
+%just result: 
+\[
+\sigma ( q \bar{q} \rightarrow e^- e^+ )
+%= 3 e_q^2 \frac{4 \pi \alpha^2}{3 s}
+= 3 e_q^2 \frac{4 \pi \alpha^2}{3 Q^2}
+\]
+% D'OH, look at next line!
+
+% cross section of quark-level subprocess
+\[
+\hat{\sigma} (q \bar{q} \rightarrow l^- l^+) 
+= \frac{4 \pi \alpha^2}{3 Q^2} e_q^2
+\]
+
+% but need to account for the proton and pdfs
+
+\[
+\frac{d \sigma}{d Q^2}(pp \rightarrow l \bar{l} X)
+= \left( \frac{1}{3} \right) \left( \frac{1}{3} \right) 3 
+\sum_q \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2)
+\frac{d \hat{\sigma} }{d Q^2}
+\]
+
+% ... which gives
+% THE BIG FAT GIANT CROSS SECTION EQUATION 
+% in terms of the parton distribution functions f_i(x)
+\[
+\frac{d \sigma}{d Q^2}(pp \rightarrow l \bar{l} X)
+= \frac{4 \pi \alpha^2}{9 Q^4} 
+\sum_q e_q^2 \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2) 
+\delta \left( 1 - x_1 x_2 \frac{s}{Q^2} \right)
+\]
+
+% THIS IS ONLY LOWEST ORDER, with no ISR/FSR gluon emission stuff
+
+%do I have to go all the way through the cross section stuff???  yeah, I think so...
+
 
 %The definition of a 
 A particle system's ``invariant mass'' is 
