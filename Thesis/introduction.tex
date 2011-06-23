@@ -42,6 +42,7 @@ Atomic nuclei are made of protons and neutrons,
 which are made of up and down quarks: 
 the proton by $uud$ and the neutron by $udd$.  
 
+\section{quarks}
 There are six quarks, often represented by their first letters: 
 up, down, charm, strange, top, and bottom.  
 The first quark in each pair has charge $+\frac{2}{3}$, 
@@ -52,6 +53,7 @@ though the charges are fractional,
 the quarks are always arranged into composite 
 particles that have integer multiples of the electron charge.  
 
+\section{leptons}
 The leptons consist of the electron, muon, and tau ($\tau$), 
 each with charge -1, 
 and their corresponding neutrinos, 
@@ -61,6 +63,7 @@ Until recently it was believed that all the neutrinos are massless.
 However, recent experiments indicate 
 that neutrinos do have a small mass.  % REFERENCE
 
+\section{bosons}
 The bosons in the last column transmit the forces 
 by which particles interact.  
 %The massless photon ($\gamma$) and gluon ($g$) 
@@ -91,8 +94,9 @@ which causes nuclear decay.
   \label{fig:StandardModel}
  \end{figure}
 
-%antiparticles
-In general, each particle has an antiparticle partner 
+\section{antiparticles}
+In general, each particle has an antiparticle partner, 
+often denoted by a bar ($\bar{u}$), 
 of the opposite charge and quantum numbers; % opposite quantum numbers in general, explain quantum numbers? because have to account for photon, gluon, Z, neutrinos
 quantum numbers are used to describe the properties of the particles 
 and corresponding interactions.  
@@ -120,8 +124,13 @@ In two-quark states, a color and its anti-color ``combine'' to make a colorless 
 Three-quark states are also colorless, but through a different combination: 
 the three quarks are colored red, green, and blue 
 (or the corresponding anticolors), which ``combine'' (like colored light) to form 
-a state with no color.
-  
+a state with no color
+In practice, antiparticles are often called by their particle names; 
+since it is known that a neutral Z must decay to one positive and one negative 
+particle, no distinction is made between ``positron'' and ``electron'' -- 
+both are called ``electrons.''  
+
+\section{higgs}  
 Not shown in Figure~\ref{fig:StandardModel} is the Higgs boson, 
 which is predicted by the Standard Model 
 to give mass to the other particles.  
@@ -129,6 +138,7 @@ The Higgs has not yet been discovered;
 finding it (if it exists) is one of the 
 goals of the LHC.  
 
+\section{gravity}
 The Standard Model does not include the final 
 fundamental force, gravity.  
 Gravity is the weakest of the forces and does not 
@@ -160,6 +170,8 @@ TABLE OF MASSES
 
 
 
+\section{forces and groups?}
+
 gauge groups, little intro to group theory
 
 A ``group'' is a set of elements with specific properties.  
@@ -188,7 +200,7 @@ about its diagonal and replace each imaginary unit $i$
 with $-i$, then multiply it by the original matrix, 
 the result is the identity matrix.   % EXPLAIN IDENTITY MATRIX??
 
-%EM: U(1)
+\section{EM: U(1)}
 The electromagnetic force is described by the $U(1)$ group.  
 Essentially, this describes rotation about an axis.  % talk about more than matrices?
 The single parameter (an angle) requires only one matrix, 
@@ -200,7 +212,7 @@ This includes quarks, leptons, and the charged weak bosons.
 %Because the photon is massless, the electromagnetic force % EXPLAIN MORE???
 %can act over long distances, observable on the human scale.  
 
-%Weak: SU(2)
+\section{Weak: SU(2)}
 The weak force is represented by the $SU(2)$ group.  
 The ``S'' addition in the name stands for ``special'' 
 and means that each matrix's trace 
@@ -214,14 +226,18 @@ the two oppositely-charged W's and the Z.  %%% FIGURE OUT HOW TO DO W+- in latex
 %All three carriers have significant mass, which means 
 %the distance over which they have an effect is very small.  
 The weak force acts on any particles that have the ``weak 
-version'' of electrical charge, 
+version'' of electrical charge, %known as %``hypercharge.''  
+%``weak isospin.''
 namely all fermions.  
+%All fermions interact via the weak force; 
 In particular, the weak force is the only way 
 neutrinos interact.  
 %However, interactions with W's only happen in ways  % TALK ABOUT CONSERVATION OF CHARGE IN GENERAL
 %that conserve charge.  
+%Hypercharge is a combination of electric charge 
+%and weak isospin.  
 
-%QCD: SU(3)
+\section{QCD: SU(3)}
 Finally, the strong force is represented by $SU(3)$, 
 which does not have an easy analogy to rotations 
 like the previous two groups.  
@@ -254,6 +270,7 @@ form new bound states.
 %gluons are massless, 
 %the strong force is not observable over large distances.  
 
+\section{ewk}
 However, the individual groups by themselves 
 do not necessarily represent the reality of particles.  
 It is known experimentally that the bosons carrying 
@@ -270,6 +287,40 @@ The integrated $SU(2) \times U(1)$ group
 allows for the collective four force-carrying bosons 
 (photon, positively- and negatively-charged W's, and Z) 
 to be described as compositions of the same underlying states.  
+The elecroweak interaction has its own set of quantum 
+numbers: ``weak isospin,'' and ``hypercharge,'' 
+which combines weak isospin with electric charge.  
+$T_3$ is the third component of the isospin 
+and relates how to the fermions are arranged 
+within the standard model generations 
+(refer to Figure~\ref{fig:StandardModel}).  
+Each generation consists of two pairs, 
+one pair of quarks and one pair of leptons.  
+The placement of each particle within its pair 
+reflects how it interacts with the weak force.  
+%This quantity is the ``weak version'' of electric charge, 
+%known as ``hypercharge.''  
+For the top particle in each pair, the hypercharge 
+is $+\frac{1}{2}$; 
+for the bottom particle, it is $-\frac{1}{2}$.  
+(Note: this only applies to particles whose spin 
+is ``left-handed,'' 
+or oriented to spin left with respect to its direction of motion.  
+Particles with ``right-handed'' spin have zero weak isospin; 
+right-handed neutrinos do not interact in the Standard Model.  
+This is equivalent with the assertion that neutrinos 
+must be moving at the speed of light and therefore 
+do not have mass. 
+If neutrinos had mass, 
+they would be moving slower than the speed of light 
+and there could be a reference frame -- 
+where the observer moves faster than the neutrino -- 
+in which the neutrino would actually be left-handed.  
+Because recent observations have indicated neutrinos % REFERENCE
+do in fact have mass, 
+this aspect of the Standard Model is inaccurate.)  
+
+\section{spont symm break}
 The fact that the three weak bosons are massive, though, 
 comes from applying ``spontaneous symmetry breaking.''  
 This method uses the fact that the groups mentioned 
@@ -288,6 +339,10 @@ mechanism used to account for massive weak bosons.
 Time -- and collision data -- will tell if the theory 
 in this form is correct.)  
 
+
+\section{matrix elements/feynman rules???}
+
+% MOVE THIS SECTION????
 
 %Transformations within these groups can be represented as matrices.  % IS THIS ACTUALLY THE SAME AS THE GROUP MATRICES??
 These matrices act on the set of initial states 
@@ -416,6 +471,7 @@ Z/gamma* interference
 
 s = Z mass -- well, dunno, also includes momentum
 
+\section{kinematics like s}
 The quantity $s$ is the square of the center-of-momentum 
 energy of the colliding proton system.  
 (Therefore $\sqrt{s}$ is the center-of-momentum 
@@ -447,28 +503,69 @@ This can be approximated in terms of the original
 
 
 
+\section{calculating xsec FORMULAS}
 
-!!!! THIS IS ALL FOR PHOTONS DRELL YAN !!!!!
-is that okay?????????
-Z's have different feynman rule factors!!
+%!!!! THIS IS ALL FOR PHOTONS DRELL YAN !!!!!
+%is that okay?????????
+%Z's have different feynman rule factors!!
 
 
-more specific derivation stuff?  
-I guess, if I'm starting from the 
-feynman diagram stuff
+%more specific derivation stuff?  
+%I guess, if I'm starting from the 
+%feynman diagram stuff
 
+The concept of the cross section was introduced previously, 
+in terms of how to calculate it from experimentally-measured 
+quantities.  
+%Knowing the underlying physics, though, 
+%the cross section can be calculated 
+In principle, though, the cross section 
+can also be calculated from the underlying physics.  
+%The cross section can be expressed as 
+%\[
+%Cross section = \frac{W_{fi} }{\mathrm{initial flux}}
+%\times (\mathrm{number of final states})
+%\]
+%$W_{fi}$ is the rate of transition from the initial state 
+%to a given final state, expressed per unit volume.  
+%The greater the number of possible final states, 
+%the more likely a transition is to occur.  
+The cross section element for a transition 
+between two states can be expressed as 
 % the VERY beginning of the cross section formula
 % where |M|2 is ``probability'', F is flux = particles per area per time, 
 % and dQ is dLIPS
 \[
 d \sigma = \frac{ \left| \mathcal{M} \right| ^2 }{F} d Q
 \]
-
+In this formula, $\mathcal{M}$ is the amplitude 
+(or matrix element) governing the probability of 
+transitioning from the initial state to the final state, 
+$F$ is the particle flux, and $d Q$ is the 
+phase space element.  
+An initial state within the phase space element $d Q$ will 
+contribute the element $d \sigma$ to the overall 
+interaction cross section.  
+Therefore, to get the full cross section, one must integrate 
+over the full phase space.  
+%Doing this in the center-of-momentum frame results 
+%in the formula for the differential cross section 
+For an interaction with two initial particles and 
+two final particles 
+(a $2 \rightarrow 2$ interaction), 
+this can be integrated partially to 
 % (in CM) the full differential cross section is 
+% for any given feynman diagram
 \[
-\frac{d \sigma}{d \Omega} \big| _{CM} 
-= \frac{1}{64 pi^2 s} \frac{p_f}{p_i} \left| \mathcal{M} \right| ^2
+\frac{d \sigma}{d \Omega} \bigg| _{CM} 
+= \frac{1}{64 \pi^2 s} \frac{p_f}{p_i} \left| \mathcal{M} \right| ^2
 \]
+where $p_i$ and $p_f$ are the momenta of the initial and final particles 
+(in the center-of-momentum frame with two particles, 
+the initial and final momenta each have the same magnitude).  
+Here $d \Omega$ is the solid angle element; 
+the formula cannot be further integrated without knowing the 
+(angular-dependent) form of $ \left| \mathcal{M} \right| ^2 $.  
 % where d\Omega is solid angle element
 % pf and pi are the initial and final momenta of each element,
 % since in CM pi1 = pi2, pf1 = pf2
@@ -480,92 +577,112 @@ d \sigma = \frac{ \left| \mathcal{M} \right| ^2 }{F} d Q
 %% \mathcal{M} = -
 %% \]
 
-curly M can be written down from Feynman rules, 
-according to tensor structure
+%curly M can be written down from Feynman rules, 
+%according to tensor structure
 
-
-
-the giant thing from the PDG RPP CH 40:
-
-partial width given by 
+For any given Feynman diagram, 
+such as Figure~\ref{fig:ZeeFeynmanDiagram}, 
+a set of rules makes it possible to write 
+down the elements of the interaction amplitude, 
+$\left| \mathcal{M} \right| ^2$.  
+%Due to the nature of electroweak interactions 
+Electromagnetic interactions are fairly 
+simple in structure and can be written down 
+(and then calculated out) relatively easily.  
+Electroweak interactions are somewhat 
+more complicated.  
+The full differential cross section for the interaction 
+%the giant thing from the PDG RPP CH 40:
+%while the giant thing is given by 
+%(full differential cross section for 
+%$ f_i \bar{f_j} \rightarrow (W,Z) \rightarrow f_{i'} \bar{f_{j'}} $
+$ q_A \bar{q_B} \rightarrow Z \rightarrow e_{C} \bar{e_{D}} $
+(where $q_A$ and $\bar{q_B}$ are the initial quarks 
+and $e_{C}$ and $\bar{e_{D}}$ are the final electrons) is given by 
+%\[
+%\frac{d \sigma}{d \Omega} = \frac{N_c^f}{N_c^i} 
+%\times \frac{1}{256 \pi s} 
+%\times \frac{s^2}{(s - m_Z^2)^2 + s \Gamma^2}
+%\times \left[(L^2 + R^2) (L'^2 + R'^2) (1 + \cos^2 \theta)
+%+ (L^2 - R^2) (L'^2 - R'^2) 2 \cos \theta \right]
+%\]
+%Initial particles are quarks: 
+%\[
+%N_c^i = 3
+%\]
+%Final particles are leptons: 
+%\[
+%N_c^f = 1
+%\]
 \[
-\Gamma(Z \rightarrow f \bar{f} )
-= N_c \frac{ \sqrt{2} G_F m_Z^3 }{6 \pi}
-\times \left[(T_3 - Q_f \sin^2 \theta_W )^2 
-+ (Q_f \sin \theta_W )^2 \right]
-\]
-while the giant thing is given by 
-(full differential cross section for 
-$ f_i \bar{f_j} \rightarrow (W,Z) \rightarrow f_{i'} \bar{f_{j'}} $)
-\[
-\frac{d \sigma}{d \Omega} = \frac{N_c^f}{N_c^i} 
+%\frac{d \sigma}{d \Omega} (\qqZee) = \frac{1}{3} 
+\frac{d \sigma}{d \Omega} 
+( q \bar{q} \rightarrow Z \rightarrow e^+ e^- ) 
+= \frac{1}{3} 
 \times \frac{1}{256 \pi s} 
 \times \frac{s^2}{(s - m_Z^2)^2 + s \Gamma^2}
 \times \left[(L^2 + R^2) (L'^2 + R'^2) (1 + \cos^2 \theta)
 + (L^2 - R^2) (L'^2 - R'^2) 2 \cos \theta \right]
 \]
-For Z, couplings are 
+$\Gamma$ is the \Zee decay's 
+partial width (see Section~\ref{FIXME}) 
+given by 
+%% \[
+%% \Gamma(Z \rightarrow f \bar{f} )
+%% = N_c \frac{ \sqrt{2} G_F m_Z^3 }{6 \pi}
+%% \times \left[(T_3 - Q_f \sin^2 \theta_W )^2 
+%% + (Q_f \sin \theta_W )^2 \right]
+%% \]
 \[
-%L = \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2} } }(T_3 - \sin^2 \theta_W Q)
-L = g (T_3 - \sin^2 \theta_W Q)
+\Gamma (Z \rightarrow e \bar{e} )
+= \frac{ \sqrt{2} G_F m_Z^3 }{6 \pi}
+\times \left[(T_3 - Q_f \sin^2 \theta_W )^2 
++ (Q_f \sin \theta_W )^2 \right]
 \]
-
+The $L$ and $R$ in the cross section equation 
+refer to factors from %relating to the 
+left-handed and right-handed initial quarks, respectively 
+(likewise $L'$ and $R'$ refer to the final electrons).  
+These factors are 
+%For Z, couplings are 
 \[
-%R = - \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2} } } \sin^2 \theta_W Q
-R = - g \sin^2 \theta_W Q
+L = \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2} } }(T_3 - \sin^2 \theta_W Q)
+%L = g (T_3 - \sin^2 \theta_W Q)
 \]
-``$T_3$ is weak isospin of initial left-handed fermion and 
-Q is initial fermion's electric charge. [FRACTIONAL] 
-The expressions for L' and R' are analogous.  
-The color factors $ N_c^{i,f} $ are 3 for initial or final quarks 
-and 1 for initial or final leptons.''  
+\[
+R = - \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2} } } \sin^2 \theta_W Q
+%R = - g \sin^2 \theta_W Q
+\]
+%``$T_3$ is weak isospin of initial left-handed fermion and 
+%Q is initial fermion's electric charge. [FRACTIONAL] 
+%The expressions for L' and R' are analogous.  
+%The color factors $ N_c^{i,f} $ are 3 for initial or final quarks 
+%and 1 for initial or final leptons.''  
+$T_3$ is the weak isospin of the left-handed particle 
+(the right-handed particle has isospin 0, 
+hence $T_3$ does not show up in $R$). 
+$Q$ is the particle's electric charge.  
+%BUT, initial particles are all flavors of quarks, 
+%so can't just plug in flavor-dependent quantities 
+%like $T_3$ and $Q$.  
+%MUST SUM OVER FLAVORS.  oh boy!
+The $T_3$ and $Q$ values for the relevant particles are 
+given in Table~\ref{FIXME}.  
 
-$T_3$ is the third component of the ``weak hypercharge,'' 
-which relates how to the fermions are arranged 
-within the standard model generations 
-(refer to Figure~\ref{fig:StandardModel}).  
-Each generation consists of two pairs, 
-one pair of quarks and one pair of leptons.  
-The placement of each particle within its pair 
-reflects how it interacts with the weak force.  
-This quantity is the ``weak version'' of electric charge, 
-known as ``hypercharge.''  
-For the top particle in each pair, the hypercharge 
-is $+\frac{1}{2}$; 
-for the bottom particle, it is $-\frac{1}{2}$.  
-(Note: this only applies to particles whose spin 
-is ``left-handed.''  
-Particles with ``right-handed'' spin have zero hypercharge; 
-right-handed neutrinos do not interact in the Standard Model.  
-This is equivalent with the assertion that neutrinos 
-must be moving at the speed of light and therefore 
-do not have mass. 
-If neutrinos had mass, 
-they would be moving slower than the speed of light 
-and there could be a reference frame -- 
-where the observer moves faster than the neutrino -- 
-in which the neutrino would actually be left-handed.  
-Because recent observations have indicated neutrinos % REFERENCE
-do in fact have mass, 
-this aspect of the Standard Model is inaccurate.)  
+TABLE
+
+Since the final-state particles are already known to be electrons, 
+their values can be plugged into the equation.  
+However, the flavor of the initial quarks is not known.  
+Therefore, all the possible initial quark states must 
+be taken into account, by adding up the contribution from each one.  
+
 %H+M have SUCH a nice little summary in the inside back cover.  
 
-can put in terms of little g:
-\[
-g = \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2}} }
-\]
-Initial particles are quarks: 
-\[
-N_c^i = 3
-\]
-Final particles are leptons: 
-\[
-N_c^f = 1
-\]
-BUT, initial particles are all flavors of quarks, 
-so can't just plug in flavor-dependent quantities 
-like $T_3$ and $Q$.  
-
+%can put in terms of little g:
+%\[
+%g = \sqrt{ \frac{8 G_F m_Z^2}{\sqrt{2}} }
+%\]
 
 
 %% % WHICH simplifies to give us AVGD OVER SPINS or whatever
@@ -611,12 +728,32 @@ like $T_3$ and $Q$.
 
 % but need to account for the proton and pdfs
 
+%In addition, 
+However, the interaction does not happen 
+between two quarks in isolation.  
+The cross section calculation must take 
+into account the fact that the quarks come from 
+protons with internal structure.  
+The following formula gives the full cross section 
+in terms of that given by the quark-level diagram: 
+%% \[
+%% \frac{d \sigma}{d Q^2}(pp \rightarrow f \bar{f} )
+%% = \left( \frac{1}{3} \right) \left( \frac{1}{3} \right) 3 
+%% \sum_q \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2)
+%% \frac{d \hat{\sigma} }{d Q^2}
+%% \]
 \[
-\frac{d \sigma}{d Q^2}(pp \rightarrow l \bar{l} X)
+\frac{d \sigma}{d Q^2}(pp \rightarrow e^+ e^- )
 = \left( \frac{1}{3} \right) \left( \frac{1}{3} \right) 3 
 \sum_q \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2)
-\frac{d \hat{\sigma} }{d Q^2}
+%\frac{d \hat{\sigma} }{d Q^2}
+%\frac{d \sigma }{d Q^2}(\qqZee)
+\frac{d \sigma }{d Q^2}
+( q \bar{q} \rightarrow Z \rightarrow e^+ e^- )
 \]
+Here $q$ is the sum over the possible quark flavors 
+and $f_q(x)$ are the parton distribution functions 
+(see Section~\ref{FIXME}) for each quark flavor.  
 
 %% % ... which gives
 %% % THE BIG FAT GIANT CROSS SECTION EQUATION 
@@ -628,11 +765,13 @@ like $T_3$ and $Q$.
 %% \delta \left( 1 - x_1 x_2 \frac{s}{Q^2} \right)
 %% \]
 
-% THIS IS ONLY LOWEST ORDER, with no ISR/FSR gluon emission stuff
+THIS IS ONLY LOWEST ORDER, with no ISR/FSR gluon emission stuff. 
+TALK ABOUT CORRECTIONS!!!!!
 
 %do I have to go all the way through the cross section stuff???  yeah, I think so...
 
 
+\section{inv mass}
 %The definition of a 
 A particle system's ``invariant mass'' is 
 a combination of its energies and momenta that 
@@ -673,7 +812,12 @@ M_{inv} = \sqrt{ \left(E_1 + E_2\right)^2 - \left\|\mathbf{p}_1 + \mathbf{p}_2\r
 reconstructs the mass of the Z boson 
 based on the energies and momenta 
 of the decay products.  
+%The Z's $M_{inv}^2$ is also the energy 
+%of the interaction, $\hat{s}$ 
+%(see Section~FIXME).  
 
+
+\section{dy interference}
 Another diagram contributes to the process being studied. 
 In this case, a photon replaces the Z boson 
 as the link between the quarks and the electrons.  
@@ -682,6 +826,8 @@ initial and final states,
 they ``interfere'' with each other.  
 Experimentally, it is impossible to tell which one happened; 
 both must be included in the calculations.  % is this exactly why???
+
+BOTH DIAGRAMS SIDE-BY-SIDE
 
 It is necessary to note that the photon that takes 
 part in this interaction is a ``virtual'' photon -- 
@@ -711,7 +857,7 @@ which governs the ``borrowing'' of energy from the vacuum.
 The smaller the time scale over which the energy 
 fluctuation happens, 
 the larger the energy fluctuation allowed.  
-
+\section{off-shell}
 Having a specific mass defines a thin 
 surface or ``shell'' in kinematic phase space; 
 only certain combinations of energy and momentum 
@@ -722,7 +868,7 @@ i.e. have a mass much different than their
 defined ``real'' mass, 
 are called ``off-shell'' -- 
 they are ``off the mass shell.''  
-
+\section{Z can be offshell like photon, that's why it's a distribution with a peak with a width}
 The Z boson, while it has a defined mass, 
 %DECAY WIDTH ETC ETC ETC 
 can be ``off-shell'' in the same way as the photon.  
@@ -733,20 +879,34 @@ does not take on a single precise value;
 instead, over many events it manifests as a distribution 
 peaked around the ``real'' value.  
 This is typical of particles that are measured only 
-by their decays; 
+by their decays, called ``resonances;'' 
 these particles tend to be at least slightly virtual 
 %because they are not being observed directly.  
 because of their short lifetimes.  
 %in fact, 
-%In addition, the width of the peak is inversely related to the   % how relevant is this actually?  
-%lifetime of the particle.  
+\section{decay lifetime partial width}
+In addition, the width of the peak is inversely prorportion to the   % how relevant is this actually?  in cross section formula
+lifetime of the particle.  
+The wider the peak, the more final states the particle can decay into, 
+and the more likely it is to decay.  
+The contribution of each final state is called the 
+``partial width;'' 
+this quantity plays a role in calculating 
+how often a given resonance is produced.  
 
 PIC OF DY SPECTRUM??
 
+PUT DY CROSS SECTION FORMULA STUFF HERE, 
+saying it's simpler in form.  
+ALSO NEED TO EMPHASIZE CROSS SECTION NOT ADDITIVE.  
+matrix elements interfere.  
+
 In this case, only the area around the Z peak is being 
 studied, not the full spectrum.  
-The main contribution in this area is the Z itself 
-as opposed to virtual photons.  
+The main contribution in this area is the Z itself; 
+%as opposed to virtual photons.  
+however, the photon contribution must still be included 
+in the discussion.  
 
 
 \subsubsection{Results from Previous Experiments}
@@ -778,10 +938,10 @@ AND asymptotic freedom, how it takes more and more energy to get them further ap
 
    * intial- and final-state radiation
 
-   * [HERE OR IN THEORY INTRO] need to do on-shell/off-shell decays 
-to explain why Z mass has a spectrum and not a single value
+%   * [HERE OR IN THEORY INTRO] need to do on-shell/off-shell decays 
+%to explain why Z mass has a spectrum and not a single value
 
-   * invariant mass (here?)
+%   * invariant mass (here?)
 
    * cross section formula and matrix elements and what said matrices do
 
