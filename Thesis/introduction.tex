@@ -32,7 +32,7 @@ In general, the generations get progressively heavier.
 The electron is lighter than the muon, 
 which is lighter than the $\tau$.   
 The same relation exists between the quark generations; 
-the top quark is the heaviest particle in the Standard Model.  % CHECK!!!!!
+the top quark is the heaviest known particle in the Standard Model.  % CHECK!!!!!
 Normal, everyday matter is made up solely of particles 
 from the first generation.  
 All normal matter is made of atoms, 
@@ -43,7 +43,8 @@ which are made of up and down quarks:
 the proton by $uud$ and the neutron by $udd$.  
 
 \section{quarks}
-There are six quarks, often represented by their first letters: 
+There are six ``flavors'' of quarks, 
+often represented by their first letters: 
 up, down, charm, strange, top, and bottom.  
 The first quark in each pair has charge $+\frac{2}{3}$, 
 %(in terms of the electron charge), 
@@ -278,7 +279,52 @@ form new bound states.
 
 \section{PDFs}
 
-\section{ewk}
+Since quarks do not exist in an isolated state 
+outside hadrons, 
+any interaction between them must also take 
+into account the structure of the protons.  
+The quark structure of protons is given 
+by a set of functions called 
+``parton distribution functions'' or PDFs: 
+\[
+f_i(x)
+\]
+These functions represent the probability 
+of finding a given quark flavor $i$ inside 
+the proton with a given momentum.  
+The quark's momentum itself is not used; 
+rather, the fraction of the proton's 
+momentum that the quark carries, or $x$. 
+Since no quark can have momentum greater 
+than that of the proton itself, 
+the value of $x$ ranges from 0 to 1.  
+%Furthermore, % do PDFs only refer to quarks??? do they necessarily integrate to 1??
+A proton is said to consist of two up quarks 
+and a down quark; 
+however, these represent the ``valence'' quarks only.  
+A ``sea'' of quarks is also present, 
+formed from gluons and each existing only 
+momentarily, 
+illustrated in Figure~\ref{FIXME}.  
+Therefore the PDFs represent all quark 
+flavors, not just $u$ and $d$.  
+
+QUARK MODEL PICTURE
+
+PDFs cannot be calculated from first 
+principles and must be measured by fits 
+to experimental data.  
+The currently-distributed PDF sets 
+account for data from all major past experiments.  
+However, there is still some uncertainty, 
+%in the PDFs, 
+and precision measurements of Z production 
+at the LHC can %help %contribute to better PDF sets.  
+improve the community's knowledge of PDFs.  
+
+\section{ewk: SU(2)xU(1)}
+The forces here have been given in terms 
+of mathematical groups.  
 However, the individual groups by themselves 
 do not necessarily represent the reality of particles.  
 It is known experimentally that the bosons carrying 
@@ -575,8 +621,9 @@ s = (p_1 + p_2)^2
 However, since only a single quark participates 
 in the interaction, not the full proton, 
 the energy of the interaction must be reduced.  
-The fraction of the proton's momentum that is carried 
-by the quark is defined $x$, so that the 
+Since $x$ the fraction of the proton's momentum that is carried 
+by the quark (see Section~\ref{FIXME}), %is defined $x$, so that 
+the 
 quark's momentum is then $xp$.  
 We can then define a center-of-momentum energy, 
 $\hat{s}$ (or $Q^2$), 
@@ -845,6 +892,12 @@ in terms of the one given by the quark-level diagram:
 Here $q$ is the sum over the possible quark flavors 
 and $f_q(x)$ are the parton distribution functions 
 (see Section~\ref{FIXME}) for each quark flavor.  
+Since the Z differential cross section depends 
+on the PDFs in this way, 
+it is useful as a test of current PDF knowledge.  
+Precision measurements of the differential cross section 
+can distinguish between different implementations 
+of the PDFs.  
 
 %% % ... which gives
 %% % THE BIG FAT GIANT CROSS SECTION EQUATION 
@@ -856,10 +909,17 @@ and $f_q(x)$ are the parton distribution functions
 %% \delta \left( 1 - x_1 x_2 \frac{s}{Q^2} \right)
 %% \]
 
-THIS IS ONLY LOWEST ORDER, with no ISR/FSR gluon emission stuff. 
-TALK ABOUT CORRECTIONS!!!!!
-
 %do I have to go all the way through the cross section stuff???  yeah, I think so...
+
+%THIS IS ONLY LOWEST ORDER, with no ISR/FSR gluon emission stuff. 
+%TALK ABOUT CORRECTIONS!!!!!
+
+However, this formula only gives the cross section 
+for the simplest Feynman diagrams; 
+higher-order diagrams contribute as well.  
+As mentioned previously, various programs 
+in existence attempt to include some of these higher-order 
+diagrams in their calculations.  
 
 
 \section{inv mass}
@@ -987,10 +1047,22 @@ how often a given resonance is produced.
 
 PIC OF DY SPECTRUM??
 
-PUT DY CROSS SECTION FORMULA STUFF HERE, 
-saying it's simpler in form.  
-ALSO NEED TO EMPHASIZE CROSS SECTION NOT ADDITIVE.  
-matrix elements interfere.  
+%PUT DY CROSS SECTION FORMULA STUFF HERE, 
+%saying it's simpler in form.  
+%ALSO NEED TO EMPHASIZE CROSS SECTION NOT ADDITIVE.  
+%matrix elements interfere.  
+
+The cross section for the photon process 
+is more easily calculated and is given by the formula
+\[
+\sigma(q \bar{q} \rightarrow e^+ e^-) 
+= \frac{4 \pi \alpha^2}{3 Q^2} e_q^2
+\]
+However, the cross sections of the Z and the photon 
+processes are not additive; 
+rather, the diagrams interfere, 
+so the full amplitude must be calculated taking 
+both into account at once.  
 
 In this case, only the area around the Z peak is being 
 studied, not the full spectrum.  
