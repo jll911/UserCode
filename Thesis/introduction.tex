@@ -531,11 +531,11 @@ matrix elements -> cross section element.
 %          }
       }
       child[grow=east, level distance=2.4cm] {
-        child[]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
+        child[grow=south east]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
           edge from parent [electron]
           node[below] {$e^{-}$}
         }
-        child[]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
+        child[grow=north east]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
           edge from parent [electron]
           node[above] {$e^{+}$}
         }
@@ -555,6 +555,116 @@ matrix elements -> cross section element.
 	  {Feynman diagram of \qqZee.  
 	    }
   \label{fig:ZeeFeynmanDiagram}
+\end{figure}
+
+
+% DOUBLE PICTURE!
+\begin{figure}[htb]
+\begin{center}
+  \subfloat[]{
+    \begin{tikzpicture}[
+	thick,
+	% Set the overall layout of the tree
+	%      level/.style={level distance=1.4cm, line width=0.8mm},
+	level/.style={level distance=1.4cm, line width=0.5mm},
+	level 2/.style={sibling distance=1.4cm},
+	level 3/.style={sibling distance=1.4cm}
+      ]
+      \coordinate
+      %    child[grow=south east]{
+      %      child[grow=north east]{
+      %        edge from parent [gluon]
+      %        node[right]{$g$}
+      %      }
+      child[grow=south east]{
+	edge from parent [electron]
+	child[grow=south west] {
+          edge from parent [electron]
+	  %        node[above] {$\bar{q}$} % ADDED
+          node[below] {$\bar{q}$} % ADDED
+	  %          child[grow=south west]{
+	  %            edge from parent [electron]
+	  %            node[above] {$\bar{q}$}
+	  %          }
+	  %          child[grow=south east]{
+	  %            edge from parent [gluon]
+	  %            node[right] {$g$}
+	  %          }
+	}
+	child[grow=east, level distance=2.4cm] {
+          child[grow=south east]{ 
+            edge from parent [electron]
+            node[below] {$e^{-}$}
+          }
+          child[grow=north east]{ 
+            edge from parent [electron]
+            node[above] {$e^{+}$}
+          }
+	  %        edge from parent [boson]
+          edge from parent [zboson]
+	  %        node[below] {$Z/\gamma*$}
+          node[below] {$Z$}
+	}
+	%    }
+	edge from parent [electron] node [above=3pt] {$q$}
+      };
+    \end{tikzpicture}
+  \label{fig:ZeeFeynmanDiagramZ}
+  }
+  \subfloat[]{
+    \begin{tikzpicture}[
+	thick,
+	% Set the overall layout of the tree
+	%      level/.style={level distance=1.4cm, line width=0.8mm},
+	level/.style={level distance=1.4cm, line width=0.5mm},
+	level 2/.style={sibling distance=1.4cm},
+	level 3/.style={sibling distance=1.4cm}
+      ]
+      \coordinate
+      %    child[grow=south east]{
+      %      child[grow=north east]{
+      %        edge from parent [gluon]
+      %        node[right]{$g$}
+      %      }
+      child[grow=south east]{
+	edge from parent [electron]
+	child[grow=south west] {
+          edge from parent [electron]
+          node[below] {$\bar{q}$} % ADDED
+	  %          child[grow=south west]{
+	  %            edge from parent [electron]
+	  %            node[above] {$\bar{q}$}
+	  %          }
+	  %          child[grow=south east]{
+	  %            edge from parent [gluon]
+	  %            node[right] {$g$}
+	  %          }
+	}
+	child[grow=east, level distance=2.4cm] {
+          child[grow=south east]{ 
+            edge from parent [electron]
+            node[below] {$e^{-}$}
+          }
+          child[grow=north east]{ 
+            edge from parent [electron]
+            node[above] {$e^{+}$}
+          }
+	  edge from parent [boson]
+	  node[below] {$\gamma*$}
+	}
+	%    }
+	edge from parent [electron] node [above=3pt] {$q$}
+      };
+    \end{tikzpicture}
+    \label{fig:ZeeFeynmanDiagramGamma}
+  }
+\end{center}
+%  \caption[Feynman diagram of \qqZgee]
+  \caption[Feynman diagram of \qqZee]
+%	  {Feynman diagram of \qqZgee.  
+	  {Feynman diagram of \qqZee.  
+	    }
+  \label{fig:ZeeFeynmanDiagramCompare}
 \end{figure}
 
 where to put cross section formula stuff 
