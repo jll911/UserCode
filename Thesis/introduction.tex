@@ -22,7 +22,9 @@ Quarks and leptons are collectively called fermions;
 two fermions cannot exist in the same state as each other.  
 Bosons do not have this constraint; 
 many bosons can be in the same state.  
-The particles are shown in Figure~\ref{fig:StandardModel}. 
+The particles are shown in Figure~\ref{fig:StandardModel}, 
+with more detailed information given in 
+Table~\ref{TableSMParticles}. 
 The first three columns show the first three generations 
 of the quarks and leptons, 
 while the last column shows the bosons.  
@@ -41,6 +43,57 @@ electrons surrounding the nucleus.
 Atomic nuclei are made of protons and neutrons, 
 which are made of up and down quarks: 
 the proton by $uud$ and the neutron by $udd$.  
+
+% http://www.symmetrymagazine.org/cms/?pid=1000064  the symmetry magazine SM picture
+% don't know how it prints in black and white
+% LATEX DOESN'T DO GIFS
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/theory-standard-model-symmetry-mag.png}
+    \includegraphics[width=240pt]{Figures/theory-standard-model-symmetry-mag.png}
+  \end{center}
+  \caption[Particles of the standard model]
+	  {Known particles of the standard model. 
+	    represented in three generations.
+	  }
+  \label{fig:StandardModel}
+ \end{figure}
+
+%TABLE OF MASSES and charges and which forces does it interact by 
+
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Masses and charges of the Standard Model particles.}
+    \label{TableSMParticles}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | c | c | c | c | c | c | }
+      \hline
+      Particle & Mass (GeV) & Charge (e) & Weak force & EM force & Strong force \\ \hline \hline
+      \multicolumn{6}{|l|}{Quarks} \\ \hline 
+      up, $u$ & $2.5 \times 10^{-3}$ & $+\frac{2}{3}$ & Yes & Yes & Yes \\ \hline
+      down, $d$ & $5.0 \times 10^{-3}$ & $-\frac{1}{3}$ & Yes & Yes & Yes \\ \hline
+      charm, $c$ & $0.10$ & $+\frac{2}{3}$ & Yes & Yes & Yes \\ \hline
+      strange, $s$ & $1.29$ & $-\frac{1}{3}$ & Yes & Yes & Yes \\ \hline
+      top, $t$ & $173$ & $+\frac{2}{3}$ & Yes & Yes & Yes \\ \hline
+      bottom, $b$ & $4.2$ & $-\frac{1}{3}$ & Yes & Yes & Yes \\ \hline
+      \multicolumn{6}{|l|}{Leptons} \\ \hline
+      electron, $e$ & $0.511 \times 10^{-3}$ & $-1$ & Yes & Yes & No \\ \hline
+      muon, $\mu$ & $106 \times 10^{-3}$ & $-1$ & Yes & Yes & No \\ \hline
+      tau, $\tau$ & $1.78$ & $-1$ & Yes & Yes & No \\ \hline
+      electron neutrino, $\nu_e$ & $< 2 \times 10^{-6}$ & $0$ & Yes & No & No \\ \hline
+      muon neutrino, $\nu_{\mu}$ & $< 2 \times 10^{-6}$ & $0$ & Yes & No & No \\ \hline
+      tau neutrino, $\nu_{\tau}$ & $< 2 \times 10^{-6}$ & $0$ & Yes & No & No \\ \hline
+      \multicolumn{6}{|l|}{Bosons} \\ \hline
+      photon, $\gamma$ & 0 & $0$ & No & No & No \\ \hline
+      $W\pm$ & 80.4 & $\pm 1$ & No & Yes & No \\ \hline
+      $Z$ & 91.2 & $0$ & No & No & No \\ \hline
+      gluon, $g$ & 0 & $0$ & No & No & Yes \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
 
 \section{quarks}
 There are six ``flavors'' of quarks, 
@@ -76,7 +129,8 @@ by which particles interact.
 %transmit the electromagnetic and the strong forces, 
 %respectively, 
 The massless photon ($\gamma$) transmits the 
-electromagnetic force; this particle is more familiar in its 
+electromagnetic (EM) force; 
+this particle is more familiar in its 
 everyday context as the particle that makes up light.  
 The gluon ($g$), also massless, transmits the strong force, 
 which holds protons and neutrons together     %%%%%% STRENGTH OF FORCES, mass of propagator?? but not in all cases
@@ -90,21 +144,6 @@ The strong force's coupling constant ($\alpha_S$)
 is larger than that 
 of the electromagnetic force ($\alpha$); 
 the weak force's ($G_F$) is weaker.  
-
- \begin{figure}[htb]
-  \begin{center}
-%    \includegraphics[width=360pt]{Figures/theory-standard-model-symmetry-mag.png}
-    \includegraphics{Figures/theory-standard-model-symmetry-mag.png}
-  \end{center}
-  \caption[Particles of the standard model]
-	  {Particles of the standard model that are known to exist. 
-	    The Higgs boson is also predicted as part of the 
-	    Standard Model, 
-	    but has not yet been discovered. 
-
-	    }
-  \label{fig:StandardModel}
- \end{figure}
 
 \section{antiparticles}
 In general, each particle has an antiparticle partner, 
@@ -123,8 +162,8 @@ The antiparticle of the electron ($e^-$)
 has the opposite charge and lepton number 
 and is called the positron ($e^+$).  
 Neutrinos, being chargeless, 
-have antineutrinos with opposite lepton number.  % EXPLAIN!!!!!
-Quarks and gluons have another quantum ``number'' known as color.   % EXPLAIN HOW CANNOT HAVE BARE QUARKS
+have antineutrinos with opposite lepton number.  
+Quarks and gluons have another quantum ``number'' known as color.   
 The three colors are red, green, and blue, with the corresponding 
 ``anti-colors'' being anti-red, anti-green, and anti-blue.  
 %This ``color'' does not refer to our everyday experience of red, green, and blue, 
@@ -159,10 +198,8 @@ The reason that it is the only one observable on a
 cosmological scale is because its ``charge,'' mass, 
 is cumulative; there is no anti-mass to counter it 
 the way a negatively-charge electron and a positively-charged 
-proton combine to make an electrically neutral hydrogen atom.  % put this sort of stuff in beginning?
+proton combine to make an electrically neutral hydrogen atom.  
 Gravity has been described on a macroscopic scale, but 
-%so far gravity has not yet been (fully?) worked into the % FIXME!!!
-%framework of the fundamental particles.  
 so far no theory has fully united gravity with the 
 other fundamental forces.  
 %There are many efforts currently ongoing to unite them, % REFERENCE?
@@ -173,30 +210,24 @@ one of the goals that
 theoretical physics %.  
 pursues.  
 
-% http://www.symmetrymagazine.org/cms/?pid=1000064  the symmetry magazine SM picture
-% don't know how it prints in black and white
-% LATEX DOESN'T DO GIFS
-
-TABLE OF MASSES
 
 
 
 
 \section{forces and groups?}
 
-gauge groups, little intro to group theory
+%gauge groups, little intro to group theory
 
+The forces in the Standard Model can be described 
+by group mathematics.  
 A ``group'' is a set of elements with specific properties.  
 In particular, any transformation of an element in the group 
 results in another element in the group.  
-
 A ``Lie'' group is one in which any transformation % NEED THIS????
 can be done in very small steps, 
 each of which results in an element still in the group.  
 The different fundamental forces are described by different Lie groups.  
-
-which particles feel which forces?
-
+%which particles feel which forces?
 Each of the three forces in the Standard Model 
 is described by such a Lie group.  % group. 
 %In each case, the ``dimension'' of the group 
@@ -311,11 +342,27 @@ however, these represent the ``valence'' quarks only.
 A ``sea'' of quarks is also present, 
 formed from gluons and each existing only 
 momentarily, 
-illustrated in Figure~\ref{FIXME}.  
+illustrated in Figure~\ref{fig:ProtonQuarkModel}.  
 Therefore the PDFs represent all quark 
 flavors, not just $u$ and $d$.  
 
-QUARK MODEL PICTURE
+%QUARK MODEL PICTURE
+
+ \begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=360pt]{Figures/theory-quark-proton-naif-desy.png}
+    \includegraphics[width=240pt]{Figures/theory-quark-proton-naif-desy.png}
+  \end{center}
+  \caption[Quark model of proton]
+	  {Quark model of the proton, 
+	    showing the three valence quarks 
+	    and the quark-antiquark pairs 
+	    that make up the quark sea. 
+	  }
+  \label{fig:ProtonQuarkModel}
+ \end{figure}
+
+
 
 PDFs cannot be calculated from first 
 principles and must be measured by fits 
@@ -460,14 +507,241 @@ such as Figure~\ref{fig:ZeeFeynmanDiagram},
 there is an infinite number of 
 more-complicated diagrams that 
 represent the same initial and final states.  
-A few examples are illustrated in Figure~\ref{FIXME}.  
+A few examples are illustrated in 
+Figure~\ref{fig:ZeeFeynmanDiagramHighOrder}.  
 
-FIGURE WITH MORE FEYNMAN DIAGRAMS
+%FIGURE WITH MORE FEYNMAN DIAGRAMS
+% DOUBLE PICTURE!
+\begin{figure}[htb]
+\begin{center}
+%%   \subfloat[]{
+%%     \begin{tikzpicture}[
+%% 	thick,
+%% 	% Set the overall layout of the tree
+%% 	%      level/.style={level distance=1.4cm, line width=0.8mm},
+%% 	level/.style={level distance=1.4cm, line width=0.5mm},
+%% 	level 2/.style={sibling distance=1.4cm},
+%% 	level 3/.style={sibling distance=1.4cm}
+%%       ]
+%%       \coordinate
+%%       %    child[grow=south east]{
+%%       %      child[grow=north east]{
+%%       %        edge from parent [gluon]
+%%       %        node[right]{$g$}
+%%       %      }
+%%       child[grow=south east]{
+%% 	edge from parent [electron]
+%% 	child[grow=south west] {
+%%           edge from parent [electron]
+%% 	  %        node[above] {$\bar{q}$} % ADDED
+%%           node[below] {$\bar{q}$} % ADDED
+%% 	  %          child[grow=south west]{
+%% 	  %            edge from parent [electron]
+%% 	  %            node[above] {$\bar{q}$}
+%% 	  %          }
+%% 	  %          child[grow=south east]{
+%% 	  %            edge from parent [gluon]
+%% 	  %            node[right] {$g$}
+%% 	  %          }
+%% 	}
+%% 	child[grow=east, level distance=2.4cm] {
+%%           child[grow=south east]{ 
+%%             edge from parent [electron]
+%%             node[below] {$e^{-}$}
+%%           }
+%%           child[grow=north east]{ 
+%%             edge from parent [electron]
+%%             node[above] {$e^{+}$}
+%%           }
+%% 	  edge from parent [boson]
+%%           %edge from parent [zboson]
+%% 	  %        node[below] {$Z/\gamma*$}
+%%           node[below] {$Z$}
+%% 	}
+%% 	%    }
+%% 	edge from parent [electron] node [above=3pt] {$q$}
+%%       };
+%%     \end{tikzpicture}
+%% %  \label{fig:ZeeFeynmanDiagramZ}
+%%   }
+  \subfloat[]{
+    \begin{tikzpicture}[
+	thick,
+	% Set the overall layout of the tree
+	%      level/.style={level distance=1.4cm, line width=0.8mm},
+%	level/.style={level distance=1.4cm, line width=0.5mm},
+	level/.style={level distance=1.0cm, line width=0.5mm},
+%	level 2/.style={sibling distance=1.4cm},
+	level 2/.style={sibling distance=1.0cm},
+%	level 3/.style={sibling distance=1.4cm}
+	level 3/.style={sibling distance=1.0cm}
+      ]
+      \coordinate
+      %    child[grow=south east]{
+      %      child[grow=north east]{
+      %        edge from parent [gluon]
+      %        node[right]{$g$}
+      %      }
+      child[grow=south east, level distance=2.0cm]{
+	edge from parent [electron]
+	child[grow=south west, level distance=2.0cm] {
+          edge from parent [electron]
+          node[below] {$\bar{q}$} % ADDED
+	  %          child[grow=south west]{
+	  %            edge from parent [electron]
+	  %            node[above] {$\bar{q}$}
+	  %          }
+	  %          child[grow=south east]{
+	  %            edge from parent [gluon]
+	  %            node[right] {$g$}
+	  %          }
+	}
+	child[grow=east, level distance=2.4cm] {
+          child[grow=south east]{ 
+            child[grow=south east]{ 
+              edge from parent [electron]
+              node[below] {$e^{-}$}
+	    }
+          }
+          child[grow=north east]{ 
+            child[grow=south east]{ 
+              edge from parent [boson]
+              node[above] {$\gamma$}
+	    }
+            child[grow=north east]{ 
+              edge from parent [electron]
+              node[above] {$e^{+}$}
+	    }
+          }
+	  edge from parent [boson]
+	  node[below] {$Z$}
+	}
+	%    }
+	edge from parent [electron] node [above=3pt] {$q$}
+      };
+    \end{tikzpicture}
+%    \label{fig:ZeeFeynmanDiagramGamma}
+  }
+  \subfloat[]{
+    \begin{tikzpicture}[
+	thick,
+	% Set the overall layout of the tree
+	%      level/.style={level distance=1.4cm, line width=0.8mm},
+%	level/.style={level distance=1.4cm, line width=0.5mm},
+	level/.style={level distance=1.0cm, line width=0.5mm},
+%	level 2/.style={sibling distance=1.4cm},
+	level 2/.style={sibling distance=1.0cm},
+%	level 3/.style={sibling distance=1.4cm}
+	level 3/.style={sibling distance=1.0cm}
+      ]
+      \coordinate
+      %    child[grow=south east]{
+      %      child[grow=north east]{
+      %        edge from parent [gluon]
+      %        node[right]{$g$}
+      %      }
+      child[grow=south east, level distance=2.0cm]{
+	edge from parent [electron]
+	child[grow=south west, level distance=2.0cm] {
+          edge from parent [electron]
+          node[below] {$\bar{q}$} % ADDED
+	  %          child[grow=south west]{
+	  %            edge from parent [electron]
+	  %            node[above] {$\bar{q}$}
+	  %          }
+	  %          child[grow=south east]{
+	  %            edge from parent [gluon]
+	  %            node[right] {$g$}
+	  %          }
+	}
+	child[grow=east, level distance=2.4cm] {
+          child[grow=south east]{ 
+            child[grow=south east]{ 
+              edge from parent [electron]
+              node[below] {$e^{-}$}
+	    }
+          }
+          child[grow=north east]{ 
+            child[grow=south, level distance=1.4cm]{ 
+              edge from parent [boson]
+              node[right] {$\gamma$}
+	    }
+            child[grow=north east]{ 
+              edge from parent [electron]
+              node[above] {$e^{+}$}
+	    }
+          }
+	  edge from parent [boson]
+	  node[below] {$Z$}
+	}
+	%    }
+	edge from parent [electron] node [above=3pt] {$q$}
+      };
+    \end{tikzpicture}
+%    \label{fig:ZeeFeynmanDiagramGamma}
+  }
+  \subfloat[]{
+    \begin{tikzpicture}[
+        thick,
+        % Set the overall layout of the tree
+%        level/.style={level distance=1.4cm, line width=0.5mm},
+        level/.style={level distance=1.0cm, line width=0.5mm},
+%        level 2/.style={sibling distance=1.4cm},
+        level 2/.style={sibling distance=1.0cm},
+%        level 3/.style={sibling distance=1.4cm}
+        level 3/.style={sibling distance=1.0cm}
+      ]
+      \coordinate
+      child[grow=south east]{
+        child[grow=north east]{
+          edge from parent [gluon]
+          node[right=3pt]{$g$}
+        }
+        child[grow=south east]{
+          edge from parent [electron]
+          child[grow=south west] {
+            edge from parent [electron]
+            child[grow=south west]{
+              edge from parent [electron]
+              node[above] {$\bar{q}$}
+            }
+            child[grow=south east]{
+              edge from parent [gluon]
+              node[right=6pt] {$g$}
+            }
+          }
+          child[grow=east, level distance=2.4cm] {
+            child[grow=south east]{
+              child[grow=south east]{
+		edge from parent [electron]
+		node[below] {$e^{-}$}
+	      }
+            }
+            child[grow=north east]{
+              child[grow=north east]{
+		edge from parent [electron]
+		node[above] {$e^{+}$}
+	      }
+            }
+            edge from parent [boson]
+            node[below] {$Z$}
+          }
+        }
+        edge from parent [electron] node [above=3pt] {$q$}
+      };
+    \end{tikzpicture}
+  }
+  
+\end{center}
+  \caption{Higher-order Feynman diagrams for the process \qqZee.}
+  \label{fig:ZeeFeynmanDiagramHighOrder}
+\end{figure}
+
 
 Fortunately, the more complicated a diagram, 
 the smaller its contribution.  
 Each vertex in the diagram contributes 
-one factor of the relevant coupling constant. % (see Section~\ref{FIXME}).  
+one factor of the relevant coupling constant. 
 Since the coupling constants are small, 
 a two-vertex diagram contributes much more 
 than a three-vertex diagram, 
@@ -480,9 +754,21 @@ diagrams make noticeable contributions
 to the overall result, 
 and therefore they should be taken into 
 account as far as possible.  
+Commonly a particle in the initial or final state 
+will radiate a photon or a gluon, 
+creating another vertex.  
+These particles will also produce a signature 
+in the detector 
+(the gluon after branching to quarks, 
+which then continue to form 
+a ``jet'' of hadrons, 
+called ``hadronization''). 
+These radiative processes are called 
+``initial-state radiation'' (ISR) and 
+``final-state radiation'' (FSR).  
 Calculating the contributions from 
 successively higher-order diagrams 
-can be difficult, though, 
+can be difficult, %though, 
 and many specialized programs exist.  
 (See Chapter~\ref{sim}.)  
 The simplest Feynman diagram is called 
@@ -497,13 +783,14 @@ which gives a result accurate to
 around 1\%.  
 
 
+
 \section{Electroweak Physics}
 \label{theory:EWK}
 
-lagrangian etc? i.e. more specifics on ewk physics
+%lagrangian etc? i.e. more specifics on ewk physics
 
-feynman diagrams, how they can actually be used -> 
-matrix elements -> cross section element.  
+%feynman diagrams, how they can actually be used -> 
+%matrix elements -> cross section element.  
 
 \begin{figure}[htb]
 \begin{center}
@@ -665,29 +952,26 @@ matrix elements -> cross section element.
     \label{fig:ZeeFeynmanDiagramGamma}
   }
 \end{center}
-%  \caption[Feynman diagram of \qqZgee]
-  \caption[Feynman diagram of \qqZee]
-%	  {Feynman diagram of \qqZgee.  
-	  {Feynman diagram of \qqZee.  
-	    }
+  \caption{Feynman diagrams for \qqZgee: 
+    the $Z$ and $\gamma$ production interfere.}
   \label{fig:ZeeFeynmanDiagramCompare}
 \end{figure}
 
-where to put cross section formula stuff 
--- make new section?
-(and which stuff to use?)
+%where to put cross section formula stuff 
+%-- make new section?
+%(and which stuff to use?)
 
-order of diagram = number of vertices!  
+%order of diagram = number of vertices!  
 
 \subsection{Z Production}
 \label{theory:Zprod}
 
-someplace need to go into 4-momenta...
+%someplace need to go into 4-momenta...
 
-s, inv mass, pdfs attach to tree-level matrix element, 
-Z/gamma* interference
+%s, inv mass, pdfs attach to tree-level matrix element, 
+%Z/gamma* interference
 
-s = Z mass -- well, dunno, also includes momentum
+%s = Z mass -- well, dunno, also includes momentum
 
 \section{relativistic kinematics}
 
@@ -868,16 +1152,18 @@ and $e_{C}$ and $\bar{e_{D}}$ are the final electrons) is given by
 %\[
 %N_c^f = 1
 %\]
-\[
+%\[
+\begin{align*}
 %\frac{d \sigma}{d \Omega} (\qqZee) = \frac{1}{3} 
 \frac{d \sigma}{d \Omega} 
 ( q \bar{q} \rightarrow Z \rightarrow e^+ e^- ) 
-= \frac{1}{3} 
+= &\frac{1}{3} 
 \times \frac{1}{256 \pi s} 
-\times \frac{s^2}{(s - m_Z^2)^2 + s \Gamma^2}
-\times \left[(L^2 + R^2) (L'^2 + R'^2) (1 + \cos^2 \theta)
+\times \frac{s^2}{(s - m_Z^2)^2 + s \Gamma^2} \\
+&\times \left[(L^2 + R^2) (L'^2 + R'^2) (1 + \cos^2 \theta)
 + (L^2 - R^2) (L'^2 - R'^2) 2 \cos \theta \right]
-\]
+%\]
+\end{align*}
 $\Gamma$ is the \Zee decay's 
 partial width (see Section~\ref{FIXME}) 
 given by 
@@ -921,9 +1207,29 @@ $Q$ is the particle's electric charge.
 %like $T_3$ and $Q$.  
 %MUST SUM OVER FLAVORS.  oh boy!
 The $T_3$ and $Q$ values for the relevant particles are 
-given in Table~\ref{FIXME}.  
+given in Table~\ref{TableWeakNumbers}.  
 
-TABLE
+%TABLE
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Charge and third component of weak isospin for 
+      left-handed Standard Model fermions.}
+    \label{TableWeakNumbers}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | c | c | }
+      \hline
+      Particle & $Q$ (e) & $T_3$  \\ \hline \hline
+      $u,c,t$ & $+\frac{2}{3}$ & $+\frac{1}{2}$ \\ \hline
+      $d,s,b$ & $-\frac{1}{3}$ & $-\frac{1}{2}$ \\ \hline
+      $e,\mu,\tau$ & $-1$ & $+\frac{1}{2}$ \\ \hline
+      $\nu_e, \nu_{\mu}, \nu_{\tau}$ & $0$ & $-\frac{1}{2}$ \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
+
 
 Since the final-state particles are already known to be electrons, 
 their values can be plugged into the equation.  
@@ -1261,29 +1567,40 @@ The data from these measurements was parameterized
 in terms of a set of fit values to the lineshape.  
 The primary cross section measured was the production 
 of Z decaying to hadrons, which dominates the decay 
-to leptons, at the Z peak.  
+to leptons, at the Z peak ($\sigma_{had}^0$).  
 The value determined for this was consistently 
 around 41.5 nb across the experiments.  
-The ratio of hadronic to leptonic decay rates was also calculated, 
+The ratio of hadronic to leptonic decay rates 
+was also calculated ($R_l^0$), 
 and this was found to be about 20.8.  
 More detailed results 
 are shown in Table~\ref{TableLep}.  
 
 
-FIXMEEEEEEEE!!!!!
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{Electron-positron Z production cross sections, measured by LEP experiments.}
+    \caption[Electron-positron Z production cross sections, 
+      measured by LEP experiments]
+	    {Electron-positron Z production cross sections, 
+	      measured by LEP experiments. 
+	      $\sigma_{had}^0$ is the cross section for hadronic 
+	      final states, measured at the Z peak. 
+	      $R_X^0$ shows the ratio of Z decays into hadrons 
+	      to decays into lepton flavor X, 
+	      while $R_l^0$ gives the averaged result for all leptons.  
+	    }
     \label{TableLep}
 %    \begin{tabular}[]{ | l | c | c | }
-    \begin{tabular}[]{ | l | l | }
+    \begin{tabular}[]{ | l | c | c | c | c | c |}
       \hline
-      Experiment & $\sigma \times BR(Z \rightarrow ll)$ (pb) \\ \hline \hline
-%      CDF & 254.9 +- 3.3 stat +- 2.6 syst +- 15.2 lumi \\ \hline
-      CDF & 254.9 $\pm$ 3.3 (stat) $\pm$ 2.6 (syst) $\pm$ 15.2 (lumi) \\ \hline
-%      D0 & 264.9 +- 3.9 (stat) +/- 3.5 (sys) +/- 5.1 (pdf) +- 17.2 (lumi) pb\\ \hline
-      D0 & 264.9 $\pm$ 3.9 (stat) $\pm$ 3.5 (sys) $\pm$ 17.2 (lumi) \\ \hline
+%      & & \multicolumn{3}{ | c | }{}\\ %\hline \hline
+      Experiment & $\sigma_{had}^0 $ (pb) & $R_e^0$ & $R_{\mu}^0$ & $R_{\tau}^0$ & $R_l^0$ \\ \hline \hline
+      ALEPH & 41.558$\pm$0.057 & 20.690$\pm$0.075 & 20.801$\pm$0.056 & 20.708$\pm$0.062 &\\ \hline
+      DELPHI & 41.578$\pm$0.069 & 20.88$\pm$0.12 & 20.650$\pm$0.076 & 20.84$\pm$0.13 &\\ \hline
+      L3 & 41.535$\pm$0.054 & 20.815$\pm$0.089 & 20.861$\pm$0.097 & 20.79$\pm$0.13 &\\ \hline
+      OPAL & 41.501$\pm$0.055 & 20.901$\pm$0.084 & 20.811$\pm$0.058 & 20.832$\pm$0.091 &\\ \hline
+      Combined & 41.541$\pm$0.037 & 20.804$\pm$0.050 & 20.785$\pm$0.033 & 20.764$\pm$0.045 & 20.767$\pm$0.025\\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -1295,37 +1612,37 @@ FIXMEEEEEEEE!!!!!
 need this section??
 
 
-somewhere have intro to QFT and all that?  
+%somewhere have intro to QFT and all that?  
 
-also, explanatory items from overview:
+%also, explanatory items from overview:
 
-   * [here or] in theory chapter define ``tree-level''.  
-ALSO IN THEORY: explain how Feynman diagrams are so useful! 
-writing down the matrix element and all that
-AND PDFs, basically whole process of stuff simulated 
-really happens and should be explained.  
-AND DEF OF PARTONS
-yeah, basically explain all the stuff in the MC chapter
-INCLUDING ISR and FSR
-ALSO define ``jets'' and talk about how they come from 
-quarks and gluons (define partons) and relate to ``hadronization'' -- 
-not entirely relevant for this analysis, 
-but possible in general
-AND define ``color''
-AND asymptotic freedom, how it takes more and more energy to get them further apart
+%   * [here or] in theory chapter define ``tree-level''.  
+%ALSO IN THEORY: explain how Feynman diagrams are so useful! 
+%writing down the matrix element and all that
+%AND PDFs, basically whole process of stuff simulated 
+%really happens and should be explained.  
+%AND DEF OF PARTONS
+%yeah, basically explain all the stuff in the MC chapter
+%INCLUDING ISR and FSR
+%ALSO define ``jets'' and talk about how they come from 
+%quarks and gluons (define partons) and relate to ``hadronization'' -- 
+%not entirely relevant for this analysis, 
+%but possible in general
+%AND define ``color''
+%AND asymptotic freedom, how it takes more and more energy to get them further apart
 
-   * intial- and final-state radiation
+%   * intial- and final-state radiation
 
 %   * [HERE OR IN THEORY INTRO] need to do on-shell/off-shell decays 
 %to explain why Z mass has a spectrum and not a single value
 
 %   * invariant mass (here?)
 
-   * cross section formula and matrix elements and what said matrices do
+%   * cross section formula and matrix elements and what said matrices do
 
-   * PDFs, what they are, how they relate to Z physics
+%   * PDFs, what they are, how they relate to Z physics
 
-AND, of course read the others' theses to see what they had in here, too.  
+%AND, of course read the others' theses to see what they had in here, too.  
 
 
 
