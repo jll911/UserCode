@@ -258,6 +258,7 @@ the result is the identity matrix.   % EXPLAIN IDENTITY MATRIX??
 
 \subsubsection{Electromagnetic Force}
 %\subsubsection{EM: U(1)}
+\label{theory:EM}
 The electromagnetic force is described by the $U(1)$ group.  
 Essentially, this describes rotation about an axis.  % talk about more than matrices?
 The single parameter (an angle) requires only one matrix, 
@@ -271,6 +272,7 @@ This includes quarks, leptons, and the charged weak bosons.
 
 %\subsubsection{Weak: SU(2)}
 \subsubsection{Weak Force}
+\label{theory:weak}
 The weak force is represented by the $SU(2)$ group.  
 The ``S'' addition in the name stands for ``special'' 
 and means that each matrix's trace 
@@ -297,6 +299,7 @@ neutrinos interact.
 
 %\subsubsection{QCD: SU(3)}
 \subsubsection{Strong Force}
+\label{theory:strong}
 Finally, the strong force is represented by $SU(3)$, 
 which does not have an easy analogy to rotations 
 like the previous two groups.  
@@ -329,7 +332,7 @@ form new bound states.
 %gluons are massless, 
 %the strong force is not observable over large distances.  
 
-\subsection{Partion Distribution Functions}
+\subsection{Parton Distribution Functions}
 \label{theory:pdf}
 
 Since quarks do not exist in an isolated state 
@@ -400,6 +403,7 @@ improve the community's knowledge of PDFs.
 
 %\section{ewk: SU(2)xU(1)}
 \subsection{Electroweak Physics}
+\label{theory:EWK}
 The forces here have been given in terms 
 of mathematical groups.  
 However, the individual groups by themselves 
@@ -452,6 +456,7 @@ do in fact have mass,
 this aspect of the Standard Model is inaccurate.)  
 
 \subsubsection{Spontaneous Symmetry Breaking}
+\label{theory:SpontSymmBreak}
 The fact that the three weak bosons are massive, though, 
 comes from applying ``spontaneous symmetry breaking.''  
 This method uses the fact that the groups mentioned 
@@ -482,7 +487,7 @@ arriving at a discussion of the
 cross section calculation.  
 
 \subsection{Relativistic Kinematics}
-
+\label{theory:RelKin}
 A particle's coordinates can be described in terms of 
 four quantities: its three spatial coordinates 
 and its point in time.  This is conventionally 
@@ -612,7 +617,7 @@ and therefore, the mass of the Z that is produced.
 %Transformations within these groups can be represented as matrices.  % IS THIS ACTUALLY THE SAME AS THE GROUP MATRICES??
 The concept of matrices that 
 transform a particle's state 
-was introduced in Section~\ref{ForcesGroups}. 
+was introduced in Section~\ref{theory:ForcesGroups}. 
 Matrices are often used to represent transitions 
 from one quantum mechanical state to another.  
 This can be broadened to the full interaction.  
@@ -715,10 +720,12 @@ but also powerful calculational tools.
 \end{figure}
 
 \subsection{Interference from $q \bar{q} \rightarrow \gamma* \rightarrow e^+ e^-$}
+\label{theory:DY}
 In this case, another diagram contributes 
 to the process being studied: 
 a photon replaces the Z boson 
 as the link between the quarks and the electrons.  
+This is known as the Drell-Yan process.
 Both cases are illustrated in 
 Figure~\ref{fig:ZeeFeynmanDiagramZ}. 
 Because these diagrams have the exact same 
@@ -907,7 +914,7 @@ how often a given resonance is produced.
 
 
 \subsection{Higher-Order Diagrams}
-
+\label{theory:HigherOrderDiagrams}
 %put all qcd stuff in here?  don't need all the detail of zeus stuff
 
 %NOT JUST QCD!  vertices in QED, too!  
@@ -1462,8 +1469,27 @@ be taken into account, by adding up the contribution from each one.
 
 % but need to account for the proton and pdfs
 
-%In addition, 
-However, the interaction does not happen 
+The cross section for the photon process 
+is more easily calculated and is given by the formula
+\[
+\sigma(q \bar{q} \rightarrow e^+ e^-) 
+= \frac{4 \pi \alpha^2}{3 Q^2} e_q^2
+\]
+However, the cross sections of the Z and the photon 
+processes are not additive; 
+rather, the diagrams interfere, 
+so the full amplitude must be calculated taking 
+both into account at once.  
+
+In this case, only the area around the Z peak is being 
+studied, not the full spectrum.  
+The main contribution in this area is the Z itself; 
+%as opposed to virtual photons.  
+however, the photon contribution must still be included 
+in the discussion.  
+
+In addition, 
+the interaction does not happen 
 between two quarks in isolation.  
 The cross section calculation must take 
 into account the fact that the quarks come from 
@@ -1516,7 +1542,9 @@ higher-order diagrams contribute as well.
 As mentioned previously, various programs 
 in existence attempt to include some of these higher-order 
 diagrams in their calculations.  
-
+More details on the program used for this analysis 
+is available in 
+Section~\ref{sim:MCGensOther}. 
 
 
 %PIC OF DY SPECTRUM??
@@ -1525,25 +1553,6 @@ diagrams in their calculations.
 %saying it's simpler in form.  
 %ALSO NEED TO EMPHASIZE CROSS SECTION NOT ADDITIVE.  
 %matrix elements interfere.  
-
-The cross section for the photon process 
-is more easily calculated and is given by the formula
-\[
-\sigma(q \bar{q} \rightarrow e^+ e^-) 
-= \frac{4 \pi \alpha^2}{3 Q^2} e_q^2
-\]
-However, the cross sections of the Z and the photon 
-processes are not additive; 
-rather, the diagrams interfere, 
-so the full amplitude must be calculated taking 
-both into account at once.  
-
-In this case, only the area around the Z peak is being 
-studied, not the full spectrum.  
-The main contribution in this area is the Z itself; 
-%as opposed to virtual photons.  
-however, the photon contribution must still be included 
-in the discussion.  
 
 
 \section{Results from Previous Experiments}
@@ -1557,6 +1566,7 @@ The LHC marks the first opportunity to study
 Z production in proton-proton collisions.  % NO RHIC STUFF, I THINK
 
 \subsection{Tevatron}
+\label{theory:tevatraon}
 
 The Tevatron at Fermilab collides protons and antiprotons 
 at a center-of-momentum energy of 1.96 TeV.  
@@ -1598,7 +1608,7 @@ which in turn depend on the interaction energy.
 
 
 \subsection{LEP}
-
+\label{theory:lep}
 The Large Electron-Positron Collider (LEP), 
 formerly housed in the LHC tunnel, 
 collided electrons and positrons at a 
@@ -1662,9 +1672,9 @@ are shown in Table~\ref{TableLep}.
 
 
 
-\subsection{Z Decay}
-\label{theory:Zdec}
-%need this section??
+%\subsection{Z Decay}
+%\label{theory:Zdec}
+%%need this section??
 
 
 %somewhere have intro to QFT and all that?  
