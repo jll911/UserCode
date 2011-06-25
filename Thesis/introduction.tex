@@ -53,6 +53,11 @@ These charges are given in terms of the electron charge;
 though the charges are fractional, 
 the quarks are always arranged into composite 
 particles that have integer multiples of the electron charge.  
+These composite particles are known as ``hadrons'' 
+and are divided into two categories: 
+``mesons,'' made of a quark and an antiquark, 
+and ``baryons,'' made of three quarks 
+(or three antiquarks).  
 
 \section{leptons}
 The leptons consist of the electron, muon, and tau ($\tau$), 
@@ -285,10 +290,11 @@ any interaction between them must also take
 into account the structure of the protons.  
 The quark structure of protons is given 
 by a set of functions called 
-``parton distribution functions'' or PDFs: 
-\[
-f_i(x)
-\]
+``parton distribution functions'' or PDFs, 
+$f_i(x)$. 
+%\[
+%f_i(x)
+%\]
 These functions represent the probability 
 of finding a given quark flavor $i$ inside 
 the proton with a given momentum.  
@@ -539,8 +545,8 @@ matrix elements -> cross section element.
           edge from parent [electron]
           node[above] {$e^{+}$}
         }
-%        edge from parent [boson]
-        edge from parent [zboson]
+        edge from parent [boson]
+%        edge from parent [zboson]
 %        node[below] {$Z/\gamma*$}
         node[below] {$Z$}
       }
@@ -600,8 +606,8 @@ matrix elements -> cross section element.
             edge from parent [electron]
             node[above] {$e^{+}$}
           }
-	  %        edge from parent [boson]
-          edge from parent [zboson]
+	  edge from parent [boson]
+          %edge from parent [zboson]
 	  %        node[below] {$Z/\gamma*$}
           node[below] {$Z$}
 	}
@@ -1184,6 +1190,105 @@ in the discussion.
 
 \subsubsection{Results from Previous Experiments}
 \label{theory:prev}
+
+Previous experiments have measured the Z production cross section; however, these experiments have been at electron-
+positron or proton-antiproton colliders.  The LHC marks the first opportunity to study Z production in proton-proton 
+collisions.  
+
+\subsubsection{Tevatron}
+
+The Tevatron at Fermilab collides protons and antiprotons 
+at a center-of-momentum energy of 1.96 TeV.  
+The two general-purpose detectors, CDF and D0, 
+have each produced a Z cross section measurement.  
+CDF measured a cross section of 255 pb, while D0 measured 265 pb.  
+These results are also shown in 
+Table~\ref{TableTevatron}.  
+However, the Z cross section for proton-antiproton collisions 
+is expected to be higher than that for proton-proton collisions, 
+due to the makeup of the 
+colliding particles.  
+Since a Z can form from a quark and an antiquark, 
+but not two quarks, the chances of a favorable 
+interaction are higher with proton-antiproton pairs.  
+In the proton-proton case, the antiquark must come from the sea, 
+while both may be valence quarks in proton-antiproton interactions.  
+The exact difference depends on the parton 
+distribution functions, 
+which in turn depend on the interaction energy.  
+
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Proton-antiproton Z production cross sections, measured by Tevatron experiments.}
+    \label{TableTevatron}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | l | }
+      \hline
+      Experiment & $\sigma \times BR(Z \rightarrow ll)$ (pb) \\ \hline \hline
+%      CDF & 254.9 +- 3.3 stat +- 2.6 syst +- 15.2 lumi \\ \hline
+      CDF & 254.9 $\pm$ 3.3 (stat) $\pm$ 2.6 (syst) $\pm$ 15.2 (lumi) \\ \hline
+%      D0 & 264.9 +- 3.9 (stat) +/- 3.5 (sys) +/- 5.1 (pdf) +- 17.2 (lumi) pb\\ \hline
+      D0 & 264.9 $\pm$ 3.9 (stat) $\pm$ 3.5 (sys) $\pm$ 17.2 (lumi) \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
+
+\subsubsection{LEP}
+
+The Large Electron-Positron Collider (LEP), 
+formerly housed in the LHC tunnel, 
+collided electrons and positrons at a 
+series of center-of-momentum energies.  
+The four associated experiments, 
+OPAL, DELPHI, L3, and ALEPH, performed studies of 
+the Z production 
+when the center-of-momentum energy 
+was scanned across the Z mass, 
+from 88 to 94 GeV (the Z mass being about 91 GeV).  
+Interactions between beams of point particles 
+is different from that of protons in that there is no 
+remnants and hence no leftover energy -- 
+all the energy goes into the interaction.  
+This means that the invariant mass, 
+the Z mass, is exactly the beams' energy.  
+The beam energy was therefore scanned 
+to measure the Z production at different 
+points along the Z mass spectrum.  
+The data from these measurements was parameterized 
+in terms of a set of fit values to the lineshape.  
+The primary cross section measured was the production 
+of Z decaying to hadrons, which dominates the decay 
+to leptons, at the Z peak.  
+The value determined for this was consistently 
+around 41.5 nb across the experiments.  
+The ratio of hadronic to leptonic decay rates was also calculated, 
+and this was found to be about 20.8.  
+More detailed results 
+are shown in Table~\ref{TableLep}.  
+
+
+FIXMEEEEEEEE!!!!!
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Electron-positron Z production cross sections, measured by LEP experiments.}
+    \label{TableLep}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | l | }
+      \hline
+      Experiment & $\sigma \times BR(Z \rightarrow ll)$ (pb) \\ \hline \hline
+%      CDF & 254.9 +- 3.3 stat +- 2.6 syst +- 15.2 lumi \\ \hline
+      CDF & 254.9 $\pm$ 3.3 (stat) $\pm$ 2.6 (syst) $\pm$ 15.2 (lumi) \\ \hline
+%      D0 & 264.9 +- 3.9 (stat) +/- 3.5 (sys) +/- 5.1 (pdf) +- 17.2 (lumi) pb\\ \hline
+      D0 & 264.9 $\pm$ 3.9 (stat) $\pm$ 3.5 (sys) $\pm$ 17.2 (lumi) \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
 
 \subsection{Z Decay}
 \label{theory:Zdec}
