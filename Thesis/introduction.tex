@@ -1,5 +1,13 @@
-\chapter{Theory Introduction}  % should probably change this name
+%\chapter{Theory Introduction}  % should probably change this name
+\chapter{Introduction to Theory Background} 
 \label{theory}
+
+Any physics analysis must be based on a 
+solid understanding of the 
+underlying theory and mathematics.  
+This chapter's aim is to introduce 
+the background for a Z production 
+cross section analysis.  
 
 \section{The Standard Model}
 \label{theory:SM}
@@ -95,7 +103,9 @@ the proton by $uud$ and the neutron by $udd$.
 \end{table}
 
 
-\section{quarks}
+\subsection{Particles}
+\label{theory:particles}
+%\section{quarks}
 There are six ``flavors'' of quarks, 
 often represented by their first letters: 
 up, down, charm, strange, top, and bottom.  
@@ -112,7 +122,7 @@ and are divided into two categories:
 and ``baryons,'' made of three quarks 
 (or three antiquarks).  
 
-\section{leptons}
+%\section{leptons}
 The leptons consist of the electron, muon, and tau ($\tau$), 
 each with charge -1, 
 and their corresponding neutrinos, 
@@ -122,7 +132,7 @@ Until recently it was believed that all the neutrinos are massless.
 However, recent experiments indicate 
 that neutrinos do have a small mass.  % REFERENCE
 
-\section{bosons}
+%\section{bosons}
 The bosons in the last column transmit the forces 
 by which particles interact.  
 %The massless photon ($\gamma$) and gluon ($g$) 
@@ -145,7 +155,7 @@ is larger than that
 of the electromagnetic force ($\alpha$); 
 the weak force's ($G_F$) is weaker.  
 
-\section{antiparticles}
+%\section{antiparticles}
 In general, each particle has an antiparticle partner, 
 often denoted by a bar ($\bar{u}$), 
 of the opposite charge and quantum numbers; % opposite quantum numbers in general, explain quantum numbers? because have to account for photon, gluon, Z, neutrinos
@@ -181,7 +191,7 @@ since it is known that a neutral Z must decay to one positive and one negative
 particle, no distinction is made between ``positron'' and ``electron'' -- 
 both are called ``electrons.''  
 
-\section{higgs}  
+%\section{higgs}  
 Not shown in Figure~\ref{fig:StandardModel} is the Higgs boson, 
 which is predicted by the Standard Model 
 to give mass to the other particles.  
@@ -189,7 +199,7 @@ The Higgs has not yet been discovered;
 finding it (if it exists) is one of the 
 goals of the LHC.  
 
-\section{gravity}
+%\section{gravity}
 The Standard Model does not include the final 
 fundamental force, gravity.  
 Gravity is the weakest of the forces and does not 
@@ -214,26 +224,29 @@ pursues.
 
 
 
-\section{forces and groups?}
-
+%\section{forces and groups?}
+\subsection{Forces}
+\label{theory:ForcesGroups}
 %gauge groups, little intro to group theory
 
 The forces in the Standard Model can be described 
 by group mathematics.  
 A ``group'' is a set of elements with specific properties.  
-In particular, any transformation of an element in the group 
+In particular, a transformation applied to an element in the group 
 results in another element in the group.  
 A ``Lie'' group is one in which any transformation % NEED THIS????
 can be done in very small steps, 
 each of which results in an element still in the group.  
-The different fundamental forces are described by different Lie groups.  
+The different fundamental forces are 
+each described by such a Lie group.  
 %which particles feel which forces?
-Each of the three forces in the Standard Model 
-is described by such a Lie group.  % group. 
+%Each of the three forces in the Standard Model 
+%is described by such a Lie group.  % group. 
 %In each case, the ``dimension'' of the group 
 %is the dimension of the matrices
 Each group is represented by a set of square matrices 
-of some dimension, given by the number in parentheses.  
+of some dimension, given by the number in parentheses 
+in the name of the group.  
 The matrices used for these representations are 
 all unitary (hence the common ``U'' designation).  
 ``Unitary'' means that the matrix's inverse 
@@ -243,7 +256,8 @@ about its diagonal and replace each imaginary unit $i$
 with $-i$, then multiply it by the original matrix, 
 the result is the identity matrix.   % EXPLAIN IDENTITY MATRIX??
 
-\section{EM: U(1)}
+\subsubsection{Electromagnetic Force}
+%\subsubsection{EM: U(1)}
 The electromagnetic force is described by the $U(1)$ group.  
 Essentially, this describes rotation about an axis.  % talk about more than matrices?
 The single parameter (an angle) requires only one matrix, 
@@ -255,7 +269,8 @@ This includes quarks, leptons, and the charged weak bosons.
 %Because the photon is massless, the electromagnetic force % EXPLAIN MORE???
 %can act over long distances, observable on the human scale.  
 
-\section{Weak: SU(2)}
+%\subsubsection{Weak: SU(2)}
+\subsubsection{Weak Force}
 The weak force is represented by the $SU(2)$ group.  
 The ``S'' addition in the name stands for ``special'' 
 and means that each matrix's trace 
@@ -280,7 +295,8 @@ neutrinos interact.
 %Hypercharge is a combination of electric charge 
 %and weak isospin.  
 
-\section{QCD: SU(3)}
+%\subsubsection{QCD: SU(3)}
+\subsubsection{Strong Force}
 Finally, the strong force is represented by $SU(3)$, 
 which does not have an easy analogy to rotations 
 like the previous two groups.  
@@ -313,12 +329,14 @@ form new bound states.
 %gluons are massless, 
 %the strong force is not observable over large distances.  
 
-\section{PDFs}
+\subsection{Partion Distribution Functions}
+\label{theory:pdf}
 
 Since quarks do not exist in an isolated state 
 outside hadrons, 
 any interaction between them must also take 
-into account the structure of the protons.  
+into account the structure of thosee hadrons, 
+in this case protons.  
 The quark structure of protons is given 
 by a set of functions called 
 ``parton distribution functions'' or PDFs, 
@@ -375,7 +393,13 @@ and precision measurements of Z production
 at the LHC can %help %contribute to better PDF sets.  
 improve the community's knowledge of PDFs.  
 
-\section{ewk: SU(2)xU(1)}
+
+
+%% \section{Electroweak Physics}
+%% \label{theory:EWK}
+
+%\section{ewk: SU(2)xU(1)}
+\subsection{Electroweak Physics}
 The forces here have been given in terms 
 of mathematical groups.  
 However, the individual groups by themselves 
@@ -427,7 +451,7 @@ Because recent observations have indicated neutrinos % REFERENCE
 do in fact have mass, 
 this aspect of the Standard Model is inaccurate.)  
 
-\section{spont symm break}
+\subsubsection{Spontaneous Symmetry Breaking}
 The fact that the three weak bosons are massive, though, 
 comes from applying ``spontaneous symmetry breaking.''  
 This method uses the fact that the groups mentioned 
@@ -447,21 +471,159 @@ Time -- and collision data -- will tell if the theory
 in this form is correct.)  
 
 
-\section{matrix elements/feynman rules???}
+\section{Z Production}
+\label{theory:Zprod}
 
+Theoretical treatment of Z production 
+requires a wide variety of tools.  
+The following sections attempt to introduce 
+and explain those concepts, 
+arriving at a discussion of the 
+cross section calculation.  
+
+\subsection{Relativistic Kinematics}
+
+A particle's coordinates can be described in terms of 
+four quantities: its three spatial coordinates 
+and its point in time.  This is conventionally 
+represented as 
+\[
+x^{\mu} = (t, x, y, z)
+\]
+(where we are treating the speed of light to be 
+equal to 1).  
+A particle (or everyday object) can appear to 
+have different properties of motion 
+depending on the reference 
+frame from which it is viewed.  
+If you are sitting on an airplace at cruising altitude, 
+the plane is not moving with respect to your body.  
+However, if you are on the ground, the plane is 
+moving very fast. % -- 
+%it has a different kinetic energy in that frame.  
+The physics of the situation cannot depend on 
+the reference frame of the observer, 
+even at the relativistic speeds of interacting particles.  
+%Moving at relativistic speeds, 
+%or being viewed from a relativistic reference frame, 
+%can change the relation between these 
+%four quantities at any point.  
+There is, however, a certain combination 
+of those time and position coordinates that is 
+%However, a certain combination is 
+invariant -- that is, it remains the same no 
+matter the speed or reference frame.  
+This invariant can be constructed as 
+\[
+t^2 - x^2 - y^2 - z^2 = x^{\mu} x_{\mu}
+\]
+
+In the same way, a particle's motion can be described 
+in terms of its energy and the three components of 
+its momentum, called ``four-momentum:''
+\[
+p^{\mu} = (E, p_x, p_y, p_z)
+\]
+The invariant combination is called ``invariant mass'' 
+and is equal to the particle's rest mass.  
+%
+%% %PUT INV MASS UP HERE
+%% %\section{inv mass}
+%% %The definition of a 
+%% A particle system's ``invariant mass'' is 
+%% a combination of its energies and momenta that 
+%% remain unchanged regardless of reference frame.  
+%
+%% The invariant mass is such a quantity that 
+%% remains the same.  
+In addition, since the energy and momentum 
+of a system are conserved, 
+the invariant mass is also conserved 
+throughout the entire interaction, 
+in particular the decay.  
+The general definition is given by 
+\[
+p^{\mu}p_{\mu} = M_{inv}^2 = \left( \sum E \right)^2 - \left\| \sum \mathbf{p} \right\|^2
+\]
+or
+\[
+M_{inv} = \sqrt{ \left( \sum E \right)^2 - \left\| \sum \mathbf{p} \right\|^2 }
+\]
+For a single particle, the expression simplifies 
+to the particle's mass.  
+This analysis makes use of the fact that the 
+invariant mass of the decay particles 
+(the two electrons) 
+is the same as the (invariant) mass of the 
+particle which decayed, the Z.  
+The above formula, simplified to two particles, 
+\[
+M_{inv} = \sqrt{ \left(E_1 + E_2\right)^2 - \left\|\mathbf{p}_1 + \mathbf{p}_2\right\|^2 }
+\]
+reconstructs the mass of the Z boson 
+based on the energies and momenta 
+of the decay products.  
+%The Z's $M_{inv}^2$ is also the energy 
+%of the interaction, $\hat{s}$ 
+%(see Section~FIXME).  
+
+%\section{kinematics like s}
+It is also useful to define variables 
+characterizing the collision itself.  
+The quantity $s$ is the square of the center-of-momentum 
+energy of the colliding proton system.  
+(Therefore $\sqrt{s}$ is the center-of-momentum 
+energy itself.)  
+It is obtained by adding together the four-momenta 
+of the colliding protons, designated $1$ and $2$: %.  
+\[
+s = (p_1 + p_2)^2
+\]
+However, since only a single quark participates 
+in the interaction, not the full proton, 
+the energy of the interaction must be reduced.  
+Since $x$ the fraction of the proton's momentum that is carried 
+by the quark (see Section~\ref{theory:pdf}), %is defined $x$, so that 
+the 
+quark's momentum is then $xp$.  
+We can then define a center-of-momentum energy, 
+$\hat{s}$ (or $Q^2$), 
+for the quark-quark system, 
+the interacting part of the proton system: 
+\[
+\hat{s} = (x_1 p_1 + x_2 p_2)^2 = Q^2
+\]
+($\hat{s}$ and $Q^2$ will be used interchangeably.)  
+This can be approximated in terms of the original 
+(proton) $s$ as 
+\[
+\hat{s} \simeq x_1 x_2 s
+\]
+In a center-of-momentum frame, $\hat{s}$ is equal 
+to the invariant mass of the quark pair, 
+and therefore, the mass of the Z that is produced.  
+
+
+
+\subsection{Feynman Diagrams}
+\label{theory:feynman}
 % MOVE THIS SECTION????
 
 %Transformations within these groups can be represented as matrices.  % IS THIS ACTUALLY THE SAME AS THE GROUP MATRICES??
-These matrices act on the set of initial states 
+The concept of matrices that 
+transform a particle's state 
+was introduced in Section~\ref{ForcesGroups}. 
+Matrices are often used to represent transitions 
+from one quantum mechanical state to another.  
+This can be broadened to the full interaction.  
+Such a matrix acts on the set of initial states 
 and result in the set of final states.  
-Each element in the matrix, mapping a single initial state 
-to a single other final state, 
+Each element in the matrix, mapping an initial state 
+to a final state, 
 gives the amplitude with which the % ONLY IN SCATTERING???  make sure this is right context 
 transformation happens.  
 Essentially, squaring the matrix element gives the 
 relative probability of that particular transformation.  
-Matrices are often used to represent transitions 
-from one quantum mechanical state to another.  
 
 This is used in particle physics as such: 
 a transformation from an initial state, 
@@ -494,15 +656,265 @@ but also powerful calculational tools.
 %put equation for differential cross section element 
 %in terms of amplitude/matrix element 
 
-\section{pQCD: LO, NLO, all that}
+\begin{figure}[htb]
+\begin{center}
+  \begin{tikzpicture}[
+      thick,
+      % Set the overall layout of the tree
+%      level/.style={level distance=1.4cm, line width=0.8mm},
+      level/.style={level distance=1.4cm, line width=0.5mm},
+      level 2/.style={sibling distance=1.4cm},
+      level 3/.style={sibling distance=1.4cm}
+    ]
+    \coordinate
+%    child[grow=south east]{
+%      child[grow=north east]{
+%        edge from parent [gluon]
+%        node[right]{$g$}
+%      }
+    child[grow=south east]{
+      edge from parent [electron]
+      child[grow=south west] {
+        edge from parent [electron]
+%        node[above] {$\bar{q}$} % ADDED
+        node[below] {$\bar{q}$} % ADDED
+%          child[grow=south west]{
+%            edge from parent [electron]
+%            node[above] {$\bar{q}$}
+%          }
+%          child[grow=south east]{
+%            edge from parent [gluon]
+%            node[right] {$g$}
+%          }
+      }
+      child[grow=east, level distance=2.4cm] {
+        child[grow=south east]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
+          edge from parent [electron]
+          node[below] {$e^{-}$}
+        }
+        child[grow=north east]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
+          edge from parent [electron]
+          node[above] {$e^{+}$}
+        }
+        edge from parent [boson]
+%        edge from parent [zboson]
+%        node[below] {$Z/\gamma*$}
+        node[below] {$Z$}
+      }
+%    }
+      edge from parent [electron] node [above=3pt] {$q$}
+    };
+  \end{tikzpicture}
+\end{center}
+%  \caption[Feynman diagram of \qqZgee]
+  \caption[Feynman diagram of \qqZee]
+%	  {Feynman diagram of \qqZgee.  
+	  {Feynman diagram of \qqZee.  
+	    }
+  \label{fig:ZeeFeynmanDiagram}
+\end{figure}
+
+\subsection{Interference from $q \bar{q} \rightarrow \gamma* \rightarrow e^+ e^-$}
+In this case, another diagram contributes 
+to the process being studied: 
+a photon replaces the Z boson 
+as the link between the quarks and the electrons.  
+Both cases are illustrated in 
+Figure~\ref{fig:ZeeFeynmanDiagramZ}. 
+Because these diagrams have the exact same 
+initial and final states, 
+they ``interfere'' with each other.  
+Experimentally, it is impossible to tell which one happened; 
+both must be included in the calculations.  % is this exactly why???
+
+%BOTH DIAGRAMS SIDE-BY-SIDE
+% DOUBLE PICTURE!
+\begin{figure}[htb]
+\begin{center}
+  \subfloat[]{
+    \begin{tikzpicture}[
+	thick,
+	% Set the overall layout of the tree
+	%      level/.style={level distance=1.4cm, line width=0.8mm},
+	level/.style={level distance=1.4cm, line width=0.5mm},
+	level 2/.style={sibling distance=1.4cm},
+	level 3/.style={sibling distance=1.4cm}
+      ]
+      \coordinate
+      %    child[grow=south east]{
+      %      child[grow=north east]{
+      %        edge from parent [gluon]
+      %        node[right]{$g$}
+      %      }
+      child[grow=south east]{
+	edge from parent [electron]
+	child[grow=south west] {
+          edge from parent [electron]
+	  %        node[above] {$\bar{q}$} % ADDED
+          node[below] {$\bar{q}$} % ADDED
+	  %          child[grow=south west]{
+	  %            edge from parent [electron]
+	  %            node[above] {$\bar{q}$}
+	  %          }
+	  %          child[grow=south east]{
+	  %            edge from parent [gluon]
+	  %            node[right] {$g$}
+	  %          }
+	}
+	child[grow=east, level distance=2.4cm] {
+          child[grow=south east]{ 
+            edge from parent [electron]
+            node[below] {$e^{-}$}
+          }
+          child[grow=north east]{ 
+            edge from parent [electron]
+            node[above] {$e^{+}$}
+          }
+	  edge from parent [boson]
+          %edge from parent [zboson]
+	  %        node[below] {$Z/\gamma*$}
+          node[below] {$Z$}
+	}
+	%    }
+	edge from parent [electron] node [above=3pt] {$q$}
+      };
+    \end{tikzpicture}
+  \label{fig:ZeeFeynmanDiagramZ}
+  }
+  \subfloat[]{
+    \begin{tikzpicture}[
+	thick,
+	% Set the overall layout of the tree
+	%      level/.style={level distance=1.4cm, line width=0.8mm},
+	level/.style={level distance=1.4cm, line width=0.5mm},
+	level 2/.style={sibling distance=1.4cm},
+	level 3/.style={sibling distance=1.4cm}
+      ]
+      \coordinate
+      %    child[grow=south east]{
+      %      child[grow=north east]{
+      %        edge from parent [gluon]
+      %        node[right]{$g$}
+      %      }
+      child[grow=south east]{
+	edge from parent [electron]
+	child[grow=south west] {
+          edge from parent [electron]
+          node[below] {$\bar{q}$} % ADDED
+	  %          child[grow=south west]{
+	  %            edge from parent [electron]
+	  %            node[above] {$\bar{q}$}
+	  %          }
+	  %          child[grow=south east]{
+	  %            edge from parent [gluon]
+	  %            node[right] {$g$}
+	  %          }
+	}
+	child[grow=east, level distance=2.4cm] {
+          child[grow=south east]{ 
+            edge from parent [electron]
+            node[below] {$e^{-}$}
+          }
+          child[grow=north east]{ 
+            edge from parent [electron]
+            node[above] {$e^{+}$}
+          }
+	  edge from parent [boson]
+	  node[below] {$\gamma*$}
+	}
+	%    }
+	edge from parent [electron] node [above=3pt] {$q$}
+      };
+    \end{tikzpicture}
+    \label{fig:ZeeFeynmanDiagramGamma}
+  }
+\end{center}
+  \caption{Feynman diagrams for \qqZgee: 
+    the $Z$ and $\gamma$ production interfere.}
+  \label{fig:ZeeFeynmanDiagramCompare}
+\end{figure}
+
+
+It is necessary to note that the photon that takes 
+part in this interaction is a ``virtual'' photon -- 
+%it cannot be observed by itself.  
+it cannot be directly observed.  
+The reason for this is that there is always a 
+center-of-momentum reference 
+frame for the two particles colliding to form the photon.  
+In other words, there is always some way that you, 
+the observer, can be moving, 
+such that it looks like the two particles 
+have the same speed but opposite directions.  
+In this reference frame, the photon would be formed at rest, 
+which violates the principle that the speed of light 
+is the same in all reference frames -- 
+the speed of light can never be zero.  
+Equivalently, such a photon would have mass, 
+while real photons are massless.  
+The mass of this virtual photon is indeed the same 
+as the invariant mass of the system.  
+%Such virtual particles can exist due to inherent   %% is that actually why these photons in particular can be virtual?  
+%fluctuations in energy, by the uncertainty 
+%principle of quantum mechanics.  
+Such virtual particles are allowed to exist 
+by the uncertainty principle of quantum mechanics, 
+which governs the ``borrowing'' of energy from the vacuum.  
+The smaller the time scale over which the energy 
+fluctuation happens, 
+the larger the energy fluctuation allowed.  
+
+\subsection{Mass Distribution}
+\label{theory:mass}
+Having a specific mass defines a thin 
+surface or ``shell'' in kinematic phase space; 
+only certain combinations of energy and momentum 
+are allowed, 
+because of the relations between mass, energy, and momentum.  
+Particles that are virtual, 
+i.e. have a mass much different than their 
+defined ``real'' mass, 
+are called ``off-shell'' -- 
+they are ``off the mass shell.''  
+
+%\section{Z can be offshell like photon, that's why it's a distribution with a peak with a width}
+The Z boson, while it has a defined mass, 
+%DECAY WIDTH ETC ETC ETC 
+can be ``off-shell'' in the same way as the photon.  
+That is, in general the 
+%reconstructed 
+mass 
+does not take on a single precise value; 
+instead, over many events it manifests as a distribution 
+peaked around the ``real'' value.  
+This is typical of particles that are measured only 
+by their decays, called ``resonances;'' 
+these particles tend to be at least slightly virtual 
+%because they are not being observed directly.  
+because of their short lifetimes.  
+%in fact, 
+%\section{decay lifetime partial width}
+In addition, the width of the peak is inversely proportional to the 
+lifetime of the particle.  
+The wider the peak, the more final states the particle can decay into, 
+and the more likely it is to decay.  
+The contribution of each final state is called the 
+``partial width;'' 
+this quantity plays a role in calculating 
+how often a given resonance is produced.  
+
+
+
+
+\subsection{Higher-Order Diagrams}
 
 %put all qcd stuff in here?  don't need all the detail of zeus stuff
 
 %NOT JUST QCD!  vertices in QED, too!  
 
-However, in real life a given interaction is 
-never represented by just one diagram.  
-For each diagram, 
+In real life a given interaction is 
+never represented by just a finite set of diagrams.  
+For each simple diagram, 
 such as Figure~\ref{fig:ZeeFeynmanDiagram}, 
 there is an infinite number of 
 more-complicated diagrams that 
@@ -784,187 +1196,16 @@ around 1\%.
 
 
 
-\section{Electroweak Physics}
-\label{theory:EWK}
-
 %lagrangian etc? i.e. more specifics on ewk physics
 
 %feynman diagrams, how they can actually be used -> 
 %matrix elements -> cross section element.  
-
-\begin{figure}[htb]
-\begin{center}
-  \begin{tikzpicture}[
-      thick,
-      % Set the overall layout of the tree
-%      level/.style={level distance=1.4cm, line width=0.8mm},
-      level/.style={level distance=1.4cm, line width=0.5mm},
-      level 2/.style={sibling distance=1.4cm},
-      level 3/.style={sibling distance=1.4cm}
-    ]
-    \coordinate
-%    child[grow=south east]{
-%      child[grow=north east]{
-%        edge from parent [gluon]
-%        node[right]{$g$}
-%      }
-    child[grow=south east]{
-      edge from parent [electron]
-      child[grow=south west] {
-        edge from parent [electron]
-%        node[above] {$\bar{q}$} % ADDED
-        node[below] {$\bar{q}$} % ADDED
-%          child[grow=south west]{
-%            edge from parent [electron]
-%            node[above] {$\bar{q}$}
-%          }
-%          child[grow=south east]{
-%            edge from parent [gluon]
-%            node[right] {$g$}
-%          }
-      }
-      child[grow=east, level distance=2.4cm] {
-        child[grow=south east]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
-          edge from parent [electron]
-          node[below] {$e^{-}$}
-        }
-        child[grow=north east]{ % added the [], did nothing, don't know how to make angle of line the same as LHS
-          edge from parent [electron]
-          node[above] {$e^{+}$}
-        }
-        edge from parent [boson]
-%        edge from parent [zboson]
-%        node[below] {$Z/\gamma*$}
-        node[below] {$Z$}
-      }
-%    }
-      edge from parent [electron] node [above=3pt] {$q$}
-    };
-  \end{tikzpicture}
-\end{center}
-%  \caption[Feynman diagram of \qqZgee]
-  \caption[Feynman diagram of \qqZee]
-%	  {Feynman diagram of \qqZgee.  
-	  {Feynman diagram of \qqZee.  
-	    }
-  \label{fig:ZeeFeynmanDiagram}
-\end{figure}
-
-
-% DOUBLE PICTURE!
-\begin{figure}[htb]
-\begin{center}
-  \subfloat[]{
-    \begin{tikzpicture}[
-	thick,
-	% Set the overall layout of the tree
-	%      level/.style={level distance=1.4cm, line width=0.8mm},
-	level/.style={level distance=1.4cm, line width=0.5mm},
-	level 2/.style={sibling distance=1.4cm},
-	level 3/.style={sibling distance=1.4cm}
-      ]
-      \coordinate
-      %    child[grow=south east]{
-      %      child[grow=north east]{
-      %        edge from parent [gluon]
-      %        node[right]{$g$}
-      %      }
-      child[grow=south east]{
-	edge from parent [electron]
-	child[grow=south west] {
-          edge from parent [electron]
-	  %        node[above] {$\bar{q}$} % ADDED
-          node[below] {$\bar{q}$} % ADDED
-	  %          child[grow=south west]{
-	  %            edge from parent [electron]
-	  %            node[above] {$\bar{q}$}
-	  %          }
-	  %          child[grow=south east]{
-	  %            edge from parent [gluon]
-	  %            node[right] {$g$}
-	  %          }
-	}
-	child[grow=east, level distance=2.4cm] {
-          child[grow=south east]{ 
-            edge from parent [electron]
-            node[below] {$e^{-}$}
-          }
-          child[grow=north east]{ 
-            edge from parent [electron]
-            node[above] {$e^{+}$}
-          }
-	  edge from parent [boson]
-          %edge from parent [zboson]
-	  %        node[below] {$Z/\gamma*$}
-          node[below] {$Z$}
-	}
-	%    }
-	edge from parent [electron] node [above=3pt] {$q$}
-      };
-    \end{tikzpicture}
-  \label{fig:ZeeFeynmanDiagramZ}
-  }
-  \subfloat[]{
-    \begin{tikzpicture}[
-	thick,
-	% Set the overall layout of the tree
-	%      level/.style={level distance=1.4cm, line width=0.8mm},
-	level/.style={level distance=1.4cm, line width=0.5mm},
-	level 2/.style={sibling distance=1.4cm},
-	level 3/.style={sibling distance=1.4cm}
-      ]
-      \coordinate
-      %    child[grow=south east]{
-      %      child[grow=north east]{
-      %        edge from parent [gluon]
-      %        node[right]{$g$}
-      %      }
-      child[grow=south east]{
-	edge from parent [electron]
-	child[grow=south west] {
-          edge from parent [electron]
-          node[below] {$\bar{q}$} % ADDED
-	  %          child[grow=south west]{
-	  %            edge from parent [electron]
-	  %            node[above] {$\bar{q}$}
-	  %          }
-	  %          child[grow=south east]{
-	  %            edge from parent [gluon]
-	  %            node[right] {$g$}
-	  %          }
-	}
-	child[grow=east, level distance=2.4cm] {
-          child[grow=south east]{ 
-            edge from parent [electron]
-            node[below] {$e^{-}$}
-          }
-          child[grow=north east]{ 
-            edge from parent [electron]
-            node[above] {$e^{+}$}
-          }
-	  edge from parent [boson]
-	  node[below] {$\gamma*$}
-	}
-	%    }
-	edge from parent [electron] node [above=3pt] {$q$}
-      };
-    \end{tikzpicture}
-    \label{fig:ZeeFeynmanDiagramGamma}
-  }
-\end{center}
-  \caption{Feynman diagrams for \qqZgee: 
-    the $Z$ and $\gamma$ production interfere.}
-  \label{fig:ZeeFeynmanDiagramCompare}
-\end{figure}
 
 %where to put cross section formula stuff 
 %-- make new section?
 %(and which stuff to use?)
 
 %order of diagram = number of vertices!  
-
-\subsection{Z Production}
-\label{theory:Zprod}
 
 %someplace need to go into 4-momenta...
 
@@ -973,75 +1214,8 @@ around 1\%.
 
 %s = Z mass -- well, dunno, also includes momentum
 
-\section{relativistic kinematics}
-
-A particle's coordinates can be described in terms of 
-four quantities: its three spatial coordinates 
-and its point in time.  This is conventionally 
-represented as 
-\[
-x^{\mu} = (t, x, y, z)
-\]
-(where we are treating the speed of light to be 
-equal to 1).  
-Moving at relativistic speeds, 
-or being viewed from a relativistic reference frame, 
-can change the relation between these 
-four quantities at any point.  
-However, a certain combination is 
-invariant -- that is, it remains the same no 
-matter the speed or reference frame.  
-This invariant can be constructed as 
-\[
-t^2 - x^2 - y^2 - z^2 = x^{\mu} x_{\mu}
-\]
-
-In the same way, a particle's motion can be described 
-in terms of its energy and the three components of 
-its momentum, called ``four-momentum:''
-\[
-p^{\mu} = (E, p_x, p_y, p_z)
-\]
-The invariant combination is called ``invariant mass'' 
-and is equal to the particle's rest mass.  
-
-
-PUT INV MASS UP HERE
-
-\section{kinematics like s}
-The quantity $s$ is the square of the center-of-momentum 
-energy of the colliding proton system.  
-(Therefore $\sqrt{s}$ is the center-of-momentum 
-energy itself.)  
-It is obtained by adding together the four-momenta 
-of the colliding protons, designated $1$ and $2$: %.  
-\[
-s = (p_1 + p_2)^2
-\]
-However, since only a single quark participates 
-in the interaction, not the full proton, 
-the energy of the interaction must be reduced.  
-Since $x$ the fraction of the proton's momentum that is carried 
-by the quark (see Section~\ref{FIXME}), %is defined $x$, so that 
-the 
-quark's momentum is then $xp$.  
-We can then define a center-of-momentum energy, 
-$\hat{s}$ (or $Q^2$), 
-for the quark-quark system, 
-the interacting part of the proton system: 
-\[
-\hat{s} = (x_1 p_1 + x_2 p_2)^2
-\]
-This can be approximated in terms of the original 
-(proton) $s$ as 
-\[
-\hat{s} \simeq x_1 x_2 s
-\]
-
-
-
-
-\section{calculating xsec FORMULAS}
+\subsection{\Zee Cross Section}
+\label{theory:xsec}
 
 %!!!! THIS IS ALL FOR PHOTONS DRELL YAN !!!!!
 %is that okay?????????
@@ -1165,7 +1339,7 @@ and $e_{C}$ and $\bar{e_{D}}$ are the final electrons) is given by
 %\]
 \end{align*}
 $\Gamma$ is the \Zee decay's 
-partial width (see Section~\ref{FIXME}) 
+partial width (see Section~\ref{theory:mass}) 
 given by 
 %% \[
 %% \Gamma(Z \rightarrow f \bar{f} )
@@ -1313,7 +1487,7 @@ in terms of the one given by the quark-level diagram:
 \]
 Here $q$ is the sum over the possible quark flavors 
 and $f_q(x)$ are the parton distribution functions 
-(see Section~\ref{FIXME}) for each quark flavor.  
+(see Section~\ref{theory:pdf}) for each quark flavor.  
 Since the Z differential cross section depends 
 on the PDFs in this way, 
 it is useful as a test of current PDF knowledge.  
@@ -1344,130 +1518,8 @@ in existence attempt to include some of these higher-order
 diagrams in their calculations.  
 
 
-\section{inv mass}
-%The definition of a 
-A particle system's ``invariant mass'' is 
-a combination of its energies and momenta that 
-remain unchanged regardless of reference frame.  
-A particle (or everyday object) can appear to 
-have a different energy depending on the reference 
-frame from which it is viewed.  
-If you are sitting on an airplace at cruising altitude, 
-the plane is not moving with respect to your body.  
-However, if you are on the ground, the plane is 
-moving very fast -- 
-it has a different kinetic energy in that frame.  
-The physics of the situation cannot depend on 
-the reference frame of the observer, 
-even at the relativistic speeds of interacting particles.  
-The invariant mass is such a quantity that 
-remains the same.  
-In addition, since the energy and momentum 
-of a system are conserved, 
-the invariant mass is also conserved 
-throughout the entire interaction, 
-in particular the decay.  
-The general definition is given as 
-\[
-M_{inv}^2 = \left( \sum E \right)^2 - \left\| \sum \mathbf{p} \right\|^2
-\]
-For a single particle, the expression simplifies 
-to the particle's mass.  
-This analysis makes use of the fact that the 
-invariant mass of the decay particles 
-(the two electrons) 
-is the same as the (invariant) mass of the 
-particle which decayed, the Z.  
-The above formula, simplified to two particles, 
-\[
-M_{inv} = \sqrt{ \left(E_1 + E_2\right)^2 - \left\|\mathbf{p}_1 + \mathbf{p}_2\right\|^2 }
-\]
-reconstructs the mass of the Z boson 
-based on the energies and momenta 
-of the decay products.  
-%The Z's $M_{inv}^2$ is also the energy 
-%of the interaction, $\hat{s}$ 
-%(see Section~FIXME).  
 
-
-\section{dy interference}
-Another diagram contributes to the process being studied. 
-In this case, a photon replaces the Z boson 
-as the link between the quarks and the electrons.  
-Because these diagrams have the exact same 
-initial and final states, 
-they ``interfere'' with each other.  
-Experimentally, it is impossible to tell which one happened; 
-both must be included in the calculations.  % is this exactly why???
-
-BOTH DIAGRAMS SIDE-BY-SIDE
-
-It is necessary to note that the photon that takes 
-part in this interaction is a ``virtual'' photon -- 
-%it cannot be observed by itself.  
-it cannot be directly observed.  
-The reason for this is that there is always a 
-center-of-momentum reference 
-frame for the two particles colliding to form the photon.  
-In other words, there is always some way that you, 
-the observer, can be moving, 
-such that it looks like the two particles 
-have the same speed but opposite directions.  
-In this reference frame, the photon would be formed at rest, 
-which violates the principle that the speed of light 
-is the same in all reference frames -- 
-the speed of light can never be zero.  
-Equivalently, such a photon would have mass, 
-while real photons are massless.  
-The mass of this virtual photon is indeed the same 
-as the invariant mass of the system.  
-%Such virtual particles can exist due to inherent   %% is that actually why these photons in particular can be virtual?  
-%fluctuations in energy, by the uncertainty 
-%principle of quantum mechanics.  
-Such virtual particles are allowed to exist 
-by the uncertainty principle of quantum mechanics, 
-which governs the ``borrowing'' of energy from the vacuum.  
-The smaller the time scale over which the energy 
-fluctuation happens, 
-the larger the energy fluctuation allowed.  
-\section{off-shell}
-Having a specific mass defines a thin 
-surface or ``shell'' in kinematic phase space; 
-only certain combinations of energy and momentum 
-are allowed, 
-because of the relations between mass, energy, and momentum.  
-Particles that are virtual, 
-i.e. have a mass much different than their 
-defined ``real'' mass, 
-are called ``off-shell'' -- 
-they are ``off the mass shell.''  
-\section{Z can be offshell like photon, that's why it's a distribution with a peak with a width}
-The Z boson, while it has a defined mass, 
-%DECAY WIDTH ETC ETC ETC 
-can be ``off-shell'' in the same way as the photon.  
-That is, in general the 
-%reconstructed 
-mass 
-does not take on a single precise value; 
-instead, over many events it manifests as a distribution 
-peaked around the ``real'' value.  
-This is typical of particles that are measured only 
-by their decays, called ``resonances;'' 
-these particles tend to be at least slightly virtual 
-%because they are not being observed directly.  
-because of their short lifetimes.  
-%in fact, 
-\section{decay lifetime partial width}
-In addition, the width of the peak is inversely prorportion to the   % how relevant is this actually?  in cross section formula
-lifetime of the particle.  
-The wider the peak, the more final states the particle can decay into, 
-and the more likely it is to decay.  
-The contribution of each final state is called the 
-``partial width;'' 
-this quantity plays a role in calculating 
-how often a given resonance is produced.  
-
-PIC OF DY SPECTRUM??
+%PIC OF DY SPECTRUM??
 
 %PUT DY CROSS SECTION FORMULA STUFF HERE, 
 %saying it's simpler in form.  
@@ -1494,14 +1546,17 @@ however, the photon contribution must still be included
 in the discussion.  
 
 
-\subsubsection{Results from Previous Experiments}
+\section{Results from Previous Experiments}
 \label{theory:prev}
 
-Previous experiments have measured the Z production cross section; however, these experiments have been at electron-
-positron or proton-antiproton colliders.  The LHC marks the first opportunity to study Z production in proton-proton 
-collisions.  
+Previous experiments have measured the 
+Z production cross section; 
+however, these experiments have been at electron-
+positron or proton-antiproton colliders.  
+The LHC marks the first opportunity to study 
+Z production in proton-proton collisions.  % NO RHIC STUFF, I THINK
 
-\subsubsection{Tevatron}
+\subsection{Tevatron}
 
 The Tevatron at Fermilab collides protons and antiprotons 
 at a center-of-momentum energy of 1.96 TeV.  
@@ -1542,7 +1597,7 @@ which in turn depend on the interaction energy.
 
 
 
-\subsubsection{LEP}
+\subsection{LEP}
 
 The Large Electron-Positron Collider (LEP), 
 formerly housed in the LHC tunnel, 
@@ -1609,7 +1664,7 @@ are shown in Table~\ref{TableLep}.
 
 \subsection{Z Decay}
 \label{theory:Zdec}
-need this section??
+%need this section??
 
 
 %somewhere have intro to QFT and all that?  
