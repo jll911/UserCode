@@ -1,3 +1,15 @@
+%% COMMENTS ARE WEIRD
+%% Things that emacs things are comments
+%% really aren't somehow, 
+%% especially when you're trying to 
+%% comment out an entry or an element 
+%% of an entry
+
+%% HOW TO DO BIBTEX
+%% pdflatex Leonard-Thesis.tex
+%% bibtex Leonard-Thesis          // NOTE LACK OF FILE SUFFIX
+%% pdflatex ... until it catches all the references 
+
 %% ---------- LHC ---------- %%%
 @article{LhcMachine,
   author={Lyndon Evans and Philip Bryant},
@@ -53,7 +65,17 @@
   title        = "{CMS TriDAS project: Technical Design Report; 1, the trigger systems}",
   series       = "Technical Design Report CMS",
   publisher = "CERN",
-  year = "2000"
+  year = "2000",
+  url = "http://cmsdoc.cern.ch/cms/TDR/TRIGGER-public/trigger.html"
+}
+
+@book{TrackerTDR,
+  author="{CMS Collaboration}",
+  title        = "{CMS TriDAS project: Technical Design Report; 5, the tracker project}",
+  series       = "Technical Design Report CMS",
+  publisher = "CERN",
+  year = "1998",
+  url = "http://cmsdoc.cern.ch/ftp/TDR/TRACKER/tracker.html"
 }
 
 @article{CMS-PAS-EWK-10-004,
@@ -78,15 +100,24 @@
   journal={CMS PAS EGM-10-004},
 }
 
-@Comment @article{CMS-PAS-JME-10-003,
-@Comment      author= "{CMS Collaboration}",
-@Comment       title        = "{Jet Performance in pp Collisions at 7 TeV}",
-@Comment       journal = {CMS-PAS-JME-10-003},
-@Comment       year         = "2010",
-@Comment       abstract = "We present the techniques adopted by CMS to measure the jet energy response and resolutions."
-@Comment }
 
-@Article{Adam:2005zf,
+
+
+%% -------------- Lumi --------------------- %%
+
+%% !!!!!!!!!!!!! INTERNAL NOTE !!!!!!!!!!!!!!!! %%
+@article{CMS-IN-2007-030,
+ author = "N.~Adam and V.~Halyo and J.~Jones and D.~Marlow and S.~Schnetzer and Y.~Guo and L.~Lueking and K.~Maeshima and W.~Badgett and L.~Sexton-Kennedy and I.~M.~De~Abril and M.~M.~De~Abril",
+ title = "{The CMS Luminosity System}",
+ journal = "CMS IN-2007/030",
+ year = "2007",
+}
+
+
+
+%% ---------------- HLT ---------------------- %% 
+
+@Article{hlt-0512077,
      author    = "Adam, W. and others",
  collaboration = "CMS Trigger and Data Acquisition Group",
      title     = "{The CMS high level trigger}",
@@ -96,15 +127,21 @@
      pages     = "605-667",
      eprint    = "hep-ex/0512077",
      archivePrefix = "arXiv",
-     doi       = "10.1140/epjc/s2006-02495-8",
+     doi       = "10.1140/epjc/s2006-02495-8"
 }
 
-@Comment @article{CMS-IN-2010-008,
-@Comment  author = "M. Anderson and A. Askew and A.F. Barfuss and D. Evans and F. Ferri and K. Kaadze and Y. Maravin and P. Meridiani and C. Seez",
-@Comment  title = "{Review of clustering algorithms and energy corrections in ECAL}",
-@Comment  journal = "CMS IN-2010/008",
-@Comment  year = "2008",
-@Comment }
+
+
+%% ----------- Beam Spot Reco ------------- %%
+@article{CMS-NOTE-2007-021,
+ author = "T.~Miao and H.~Wenzel and F.~Yumiceva and N.~Leioatts",
+ title = "{Beam Spot Determination using Tracks}",
+ journal = "CMS NOTE 2007/021",
+ year = "2007",
+}
+
+
+
 
 %% ---------- Vertex Reconstruction ---------- %%%
 @article{CMS-NOTE-2007-008,
@@ -129,26 +166,6 @@
  year = "2010",
 }
 
-
-@Comment %% ---------- Computing ---------- %%
-@Comment @book{LhcComputing,
-@Comment       author       = "J. Knobloch et al.",
-@Comment       title        = "LHC computing Grid: Technical Design Report.",
-@Comment       publisher    = "CERN",
-@Comment       address      = "Geneva",
-@Comment       series       = "Technical Design Report LCG",
-@Comment       year         = "2005"
-@Comment }
-
-
-@Comment @book{CmsComputing,
-@Comment       author       = "Bayatyan, G L and Della Negra, Michel and Foà, and Hervé, A and Petrilli, Achille",
-@Comment       title        = "CMS computing: Technical Design Report",
-@Comment       publisher    = "CERN",
-@Comment       address      = "Geneva",
-@Comment       series       = "Technical Design Report CMS",
-@Comment       year         = "2005"
-@Comment }
 
 %% ---------- Trigger ---------- %%
 @article{rctTriggerSystem,
@@ -581,7 +598,7 @@ keywords = "Object-oriented technology",
 keywords = "Distributed software development"
 }
 
-@article{Sjostrand:2006za,
+@article{PYTHIA6.4,
   author = {Torbj{\"o}rn Sj{\"o}strand and Stephen Mrenna and Peter Z. Skands},
   interhash = {96af835d1fe6145a95d0e21f86378632},
   intrahash = {352219652ba2c6e6554728829b40e00e},
@@ -671,6 +688,65 @@ keywords = "Event record",
 keywords = "High Energy Physics",
 keywords = "C++"
 }
+
+
+%% ------------ FEWZ ----------------- %%
+%% Journal reference:  Phys.Rev.D74:114017,2006 
+@article{FEWZ2,
+ author = "Kirill~Melnikov and Frank~Petriello",
+ title = "{Electroweak gauge boson production at hadron colliders through $O(\alpha_s^2)$}",
+ journal = "Phys.Rev.D", 
+ number = "74",
+ pages = "114017",
+ year = "2006",
+     eprint    = "060907v1",
+     archivePrefix = "arXiv",
+     primaryClass  =  "hep-ph",
+ doi = "10.1103/PhysRevD.74.114017",
+ url = "http://arxiv.org/abs/hep-ph/0609070"
+}
+
+
+%% ------------ POWHEG NEED SOMETHING -------------- %%
+
+
+
+
+%% ------------ TAUOLA ------------------------ %%
+
+% Nuclear Physics B - Proceedings Supplements
+% Volume 144, July 2005, Pages 88-94
+
+@article{TAUOLA,
+ author = "Z.~Was and P. Golonka",
+ title = "{TAUOLA as tau Monte Carlo for future applications}",
+ journal = "Nuclear Physics B - Proceedings Supplements",
+ year = "2004",
+     eprint    = "0411377v1",
+     archivePrefix = "arXiv",
+     primaryClass  =  "hep-ph",
+ doi = "10.1016/j.nuclphysbps.2005.02.012", 
+}
+
+
+
+
+%% ------------ MC Les Houches Guidebook ----------------- %%
+
+%% may need journal
+@article{MCLesHouchesGuide,
+ author = "M.~A.~Dobbs and others",
+ title = "{Les Houches Guidebook to Monte Carlo Generators for Hadron Collider Physics}",
+ year = "2004",
+     eprint    = "0403045v2",
+     archivePrefix = "arXiv",
+     primaryClass  =  "hep-ph",
+}
+
+
+
+
+
 
 
 %% ---------- Processes in Pythia ---------- %%
@@ -869,6 +945,122 @@ author = "E. L. Berger and E. Braaten and R. D. Field"
 }
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%%            EVENT RECO
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% -------------- HCAL ----------------------- %%
+@article{CMS-NOTE-2006-036,
+ author = "A.~Heister and O.~Kodolova and V.~Konoplianikov and S.~Petrushanko and J.~Rohlf and C.~Tully and A.~Ulyanov",
+ title = "{Measurement of Jets with the CMS Detector at the LHC}",
+ journal = "CMS NOTE 2006/036",
+ year = "2006",
+}
+
+
+%% ------------ Tracker --------------------- %%
+@article{CMS-PAPER-CFT-09-001,
+ author = "The CMS Collaboration",
+ title = "{Commissioning and Performance of the CMS Pixel Tracker with Cosmic Ray Muons}",
+ journal = "Instrumentation and Detectors",
+ year = "2010",
+ eprint = "0911.5434v2",
+ archivePrefix = "arXiv",
+ primaryClass  =  "hep-ex",
+}
+
+
+
+@article{CMS-TRK-10-001,
+ author = "The CMS Collaboration",
+ title = "{CMS Tracking Performance Results from Early LHC Operation}",
+ journal = "Instrumentation and Detectors",
+ year = "2010",
+ eprint = "1007.1988v2",
+ archivePrefix = "arXiv",
+ primaryClass  =  "hep-ex",
+}
+
+
+
+
+
+
+
+%% ---------------- Electron Reconstruction ------------ %%
+@article{CMS-NOTE-2006-040,
+ author = "S.~Baffioni and C.~Charlot and F.~Ferri and D.~Futyan and P.~Meridiani and I.~Puljak and C.~Rovelli and R.~Salerno and Y.~Sirois",
+ title = "{Electron Reconstruction in CMS}",
+ journal = "CMS NOTE 2006/040",
+ year = "2006",
+}
+
+%% --------------- trk gsf note ----------------------- %%
+@article{CMS-NOTE-2005-001,
+ author = "W.~Adam and R.~Fr{\"u}hwirth and A.~Strandlie and T.~Todorov",
+ title = "{Reconstruction of Electrons with the Gaussian-Sum Filter in the CMS Tracker at the LHC}",
+ journal = "CMS NOTE 2005/001",
+ year = "2005",
+}
+
+%% ----------------- trk kf note ------------- %%
+@article{CMS-NOTE-2006-041,
+ author = "W.~Adam and Th.~Speer and B.~Mangano and T.~Todorov",
+ title = "{Track reconstruction in the CMS tracker}",
+ journal = "CMS NOTE 2006/041",
+ year = "2006",
+}
+
+
+%% ----------------- trk kf seeding note, also PV ------------- %%
+@article{CMS-NOTE-2006-026,
+ author = "S.~Cucciarelli and M.~Konecki and D.~Kotlinski and T.~Todorov",
+ title = "{Track reconstruction, primary vertex finding and seed generation with the Pixel Detector}",
+ journal = "CMS NOTE 2006/026",
+ year = "2006",
+}
+
+
+%% ----------------- trk vtx note ------------- %%
+@article{CMS-NOTE-2006-032,
+ author = "Th.~Speer and K.~Prokofiev and R.~Fr{\"u}hwirth and W.~Waltenberger and P.~Vanlaer",
+ title = "{Vertex Fitting in the CMS Tracker}",
+ journal = "CMS NOTE 2006/032",
+ year = "2006",
+}
+
+
+%% ----------------- trk vtx pv note ------------- %%
+@article{CMS-NOTE-2006-029,
+ author = "P.~Vanlaer and L.~Barbone and N.~De~Filippis and Th.~Speer and O.~Buchm{\"u}ller and F.-P.~Schilling",
+ title = "{Impact of CMS Silicon Tracker Misalignment on Track and Vertex Reconstruction}",
+ journal = "CMS NOTE 2006/029",
+ year = "2006",
+}
+
+
+%% !!!!!!!!!!!!! ANALYSIS NOTE! !!!!!!!!!! %%
+@article{CMS-AN-2008-032,
+ author = "Michele~Pioppi",
+ title = "{Electron Pre-identification in the Particle Flow framework}",
+ journal = "CMS AN-2008/032",
+ year = "2008",
+}
+
+
+
+
+
+
+
+
+
+%% -------------- Theory -------------------- %%
+
 %%  LEP WG article
 
 @Article{Z-PoleLep,
@@ -881,7 +1073,7 @@ volume = "427",
 year = "2006",
 pages = "257",
 eprint = "hep-ex/0509008",
-%SLACcitation = "%%CITATION = HEP-EX 0509008;%%"
+SLACcitation = "%%CITATION = HEP-EX 0509008;%%"
 } 
 
 
@@ -891,8 +1083,8 @@ eprint = "hep-ex/0509008",
 author = {F. Halzen and A. D. Martin},
 title = {Quarks and Leptons: an Introductory Course in Modern Particle Physics},
 year = {1984},
-publisher = {John Wiley & Sons
-masid = {3636013}
+publisher = {John Wiley & Sons},
+masid = {3636013},
 }
 
 
@@ -900,18 +1092,19 @@ masid = {3636013}
 %% PDG 2011
 %% 2011 Review of Particle Physics.
 %% K. Nakamura et al. (Particle Data Group), Journal of Physics G37, 075021 (2010)
+%% "page" entry: this is article number, issue number is 7A.  but this is how IOP export does it
+%% http://stacks.iop.org/0954-3899/37/i=7A/a=075021
 
 @Article{PdgRpp,
 author ="{K. Nakamura et al. (Particle Data Group)}",
 title ="{2011 Review of Particle Physics}",
 journal = "Journal of Physics G",
 volume = "37",
-number={7A}
+number={7A},
 year = "2010",
-pages = {075021}, % this is article number, issue number is 7A.  but this is how IOP export does it
-doi = "10.1088/0954-3899/37/7A/075021"
+pages = {075021}, 
+doi = "10.1088/0954-3899/37/7A/075021",
 url = {http://pdg.lbl.gov},
-%  url={http://stacks.iop.org/0954-3899/37/i=7A/a=075021},
 } 
 
 

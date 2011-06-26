@@ -105,7 +105,8 @@ able to find those hits in unexpected directions.
 \label{evReco:KF}
 % CMS Note 2006/041
 % CMS Note 2006/026 for seeding
-The Kalman Filter (KF) tracking method is seeded 
+The Kalman Filter (KF) tracking method \cite{CMS-NOTE-2006-041} 
+is seeded \cite{CMS-NOTE-2006-026}
 by pairs of hits in the pixel detector.  
 The seeding algorithm first searches for a hit 
 in one of the outer layers of the pixel detector.  
@@ -161,7 +162,8 @@ The KF description is in particular inadequate
 for electrons, which 
 readily interact with matter in these ways.  
 %are prone to these interactions with matter.  
-The Gaussian Sum Filter (GSF) algorithm was 
+The Gaussian Sum Filter (GSF) algorithm 
+\cite{CMS-NOTE-2005-001} was 
 therefore developed:
 essentially a Kalman Filter 
 with a more sophisticated energy loss modeling.   
@@ -193,7 +195,8 @@ as well as an energy deposit in the
 electromagnetic calorimeter.  
 Therefore an electron is reconstructed 
 by matching tracks and energy clusters 
-that appear to have been made by the same particle.  
+that appear to have been made by the same particle 
+\cite{CMS-NOTE-2006-040}.  
 There are currently two approaches used to 
 initiate electron reconstruction: 
 the ``ECAL-driven'' method and 
@@ -431,17 +434,20 @@ bremsstrahlung-induced changes in track direction.
 This reduced version of the GSF algorithm runs 
 must faster than that with the default parameters, 
 but the performance is slightly reduced.  
-Finally, a multi-variate analysis using 
+Finally, a multi-variate analysis (MVA) using 
 boosted decision trees 
 is performed on these candidates.  
-The MVA is trained on a sample of electrons from 
-bbbar events, which are primarily non-isolated, 
+The MVA algorithm is 
+%trained 
+calibrated 
+on a sample of electrons from 
+$b \bar{b}$ events, which are primarily non-isolated, 
 and a sample of \Zee events, 
 which provides high-\pT electrons.  
 %List of MVA variables?: ...
 The output of the MVA is a number indicating 
 the likelihood of the object being an electron.   
-Those whose MVA output is greater than a threshold 
+Those objects whose MVA output is greater than a threshold 
 are considered electron candidates. 
 These candidates are then combined with those 
 previously identified from the cluster-matching 
@@ -486,7 +492,8 @@ and is therefore useful in track-seeding.
 Its position %and width %how? necessary?
 %in all three dimensions %how is it done for z?
 can be determined from measurements of tracks in the 
-general track collection.  
+general track collection 
+\cite{CMS-NOTE-2007-021}.  
 %This is done by applying a fit to the distance of 
 %the tracks' closest approach to the nominal beam spot (0,0,0), 
 %plotted as a function
@@ -548,6 +555,8 @@ should be taken into account when calculating $\eta$.
 %as described in that cms note
 
 The process of the reconstructing the primary vertex 
+\cite{CMS-NOTE-2006-026}, 
+\cite{CMS-NOTE-2006-029} 
 involves creating primary vertex candidates
 from the tracks in the event,
 matching each track to the interaction

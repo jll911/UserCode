@@ -55,7 +55,7 @@ The event simulation also contributes
 directly to many analyses, 
 in the way of calculating the acceptance, 
 the fraction of events that can theoretically 
-be detected (see Section~\ref{FIXME}): % WHEREVER FIRST EXPLAIN ACC
+be detected (see Section~\ref{over:xsec}): 
 it is impossible to know from observation 
 how many events are missed by the detector, 
 because of the very fact that they are unseen.  
@@ -195,15 +195,20 @@ There are two sorts of programs that can be called
 ``Monte Carlo event simulators''.  
 They both use the matrix elements derived from 
 the Feynman diagrams of the physics interactions of interest 
-(explained in Section~\ref{FIXME}), % THAT MEANS EXPLAIN ALL THIS STUFF IN PREVIOUS CHAPTER
+(explained in Section~\ref{theory:feynman}), % THAT MEANS EXPLAIN ALL THIS STUFF IN PREVIOUS CHAPTER
 but they use the matrix element formalism 
 in different ways to achieve different ends.  
 As a reminder, the equation to obtain the 
 differential cross section element % WHAT'S IT ACTUALLY CALLED??
 from the matrix element for a given diagram is 
 
+%\[
+%d\sigma = \frac{1}{\hat{s}}|\mathcal{M}|^2 \frac{d \cos \theta d\phi}{8(2\pi)^2}
+%\]
 \[
-d\sigma = \frac{1}{\hat{s}}|\mathcal{M}|^2 \frac{d \cos \theta d\phi}{8(2\pi)^2}
+%\frac{d \sigma}{d \Omega} \bigg| _{CM}
+d \sigma
+= \frac{1}{64 \pi^2 s} \frac{p_f}{p_i} \left| \mathcal{M} \right| ^2 d \Omega
 \]
 
 The first type of Monte Carlo program outputs 
@@ -293,7 +298,8 @@ In the other, all diagrams, including those with virtual
 loops, of a single order are used, 
 but at the moment there exist satisfactory solutions 
 only for next-to-leading-order diagrams 
-(or NLO, explained in Section~\ref{FIXME}).  
+(or NLO, explained in 
+Section~\ref{theory:HigherOrderDiagrams}).  
 %only for diagrams one step higher 
 %than the basic tree-level diagram
 The matrix element method does not explicitly 
@@ -363,7 +369,7 @@ a physics event can be done in a modular fashion.
 Fig.~\ref{fig:MCsteps} 
 shows the typical steps necessary to simulate an event.  
 The incoming protons are modeled in terms of the 
-parton distribution functions (Section~\ref{FIXME}).  % NEED TO EXPLAIN ``PARTONS'' IN THAT SECTION
+parton distribution functions (Section~\ref{theory:pdf}).  
 The ``hard subprocess'' refers to the main 
 physics interaction.  
 Not shown in the diagram are other interactions 
@@ -856,7 +862,7 @@ The CMS collaboration uses the software package
 GEANT4 to model the detector 
 within the framework of CMSSW, 
 the CMS-specific analysis software 
-(see Section~\ref{FIXME}).  
+(see Section~\ref{over:software}).  
 GEANT4 provides a toolkit designed 
 to accurately represent all facets of 
 the detector simulation.  
