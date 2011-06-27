@@ -6,8 +6,8 @@
 %% of an entry
 
 %% HOW TO DO BIBTEX
-%% pdflatex Leonard-Thesis.tex
-%% bibtex Leonard-Thesis          // NOTE LACK OF FILE SUFFIX
+%% pdflatex Thesis.tex
+%% bibtex Thesis          // NOTE LACK OF FILE SUFFIX
 %% pdflatex ... until it catches all the references 
 
 %% ---------- LHC ---------- %%%
@@ -60,7 +60,8 @@
   year={2007}
 }
 
-@book{Bayatyan:706847,
+book{Bayatyan:706847,
+@book{TriggerTDR,
   author="{CMS Collaboration}",
   title        = "{CMS TriDAS project: Technical Design Report; 1, the trigger systems}",
   series       = "Technical Design Report CMS",
@@ -177,110 +178,6 @@
 }
 
 
-%% ---------- Photons at D0 ---------- %%
-@Article{Abazov:2008er,
-     author    = "Abazov, V. M. and others",
-     collaboration = "D0",
-     title     = "{Measurement of the differential cross-section for the production of an isolated photon with associated jet in $p\bar{p}$ collisions at $\sqrt{s}$ = 1.96-TeV}",
-     journal   = "Phys. Lett.",
-     volume    = "B666",
-     year      = "2008",
-     pages     = "435-445",
-     eprint    = "0804.1107",
-     archivePrefix = "arXiv",
-     primaryClass  =  "hep-ex",
-     doi       = "10.1016/j.physletb.2008.06.076",
-}
-
-
-%% ---------- Photons at CDF ---------- %%
-@article{PhysRevD.48.2998,
-  title = {Prompt photon cross section measurement in $p\bar{p}$ collisions at $s=1.8$ TeV},
-  author = "{CDF Collaboration}",
-  journal = {Phys. Rev. D},
-  volume = {48},
-  number = {7},
-  pages = {2998--3025},
-  numpages = {27},
-  year = {1993},
-  month = {Oct},
-  doi = {10.1103/PhysRevD.48.2998},
-  publisher = {American Physical Society}
-}
-
-
-@article{Phys.Rev.D65.112003,
-	title = {Comparison of the isolated direct photon cross sections in \ppbar collisions at $\sqrt{s}=1.8 \TeV$ and $\sqrt{s}=0.63 \TeV$.},
-	author = "{CDF Collaboration}",
-	abstract = {We have measured the cross sections d(2)sigma/dP(T)deta for production of isolated direct photons in p (p) over bar collisions at two different center-of-mass energies, 1.8 TeV and 0.63 TeV, using the Collider Detector at Fermilab. The normalization of both data sets agrees with the predictions of quantum chromodynamics for a photon transverse momentum (P-T) of 25 GeV/c, but the shapes versus photon P-T do not. These shape differences lead to a significant disagreement in the ratio of cross sections in the scaling variable x(T)(=2P(T)/roots). This disagreement in the x(T) ratio is difficult to explain with conventional theoretical uncertainties such as scale dependence and parton distribution parametrizations.},
-	journal = {Phys.Rev.D},
-	volume = {65},
-	year = {2002},
-	url = {http://arxiv.org/abs/hep-ex/0201004},
-}
-
-@article{PhysRevLett.94.041803,
-  title = {Measurement of $W\gamma{}$ and $Z\gamma{}$ Production in $p\bar{p}$ Collisions at $s=1.96 TeV$},
-  author = "{CDF Collaboration}",
-  journal = {Phys. Rev. Lett.},
-  volume = {94},
-  number = {4},
-  pages = {041803},
-  numpages = {7},
-  year = {2005},
-  month = {Feb},
-  doi = {10.1103/PhysRevLett.94.041803},
-  publisher = {American Physical Society}
-}
-
-
-%% ---------- Photons at Hera ---------- %%
-@Article{Aaron:2010uj,
-     author    = "Aaron, F. D. and others",
- collaboration = "H1",
-     title     = "{Prompt Photons in Photoproduction at HERA}",
-     journal   = "Eur. Phys. J.",
-     volume    = "C66",
-     year      = "2010",
-     pages     = "17-33",
-     eprint    = "0910.5631",
-     archivePrefix = "arXiv",
-     primaryClass  =  "hep-ex",
-     doi       = "10.1140/epjc/s10052-010-1240-7",
-     SLACcitation  = "%%CITATION = 0910.5631;%%"
-}
-
-%% ---------- Photons at Zeus ---------- %%
-@article{Breitweg2000175,
-title = "Measurement of inclusive prompt photon photoproduction at HERA",
-journal = "Physics Letters B",
-volume = "472",
-number = "1-2",
-pages = "175 - 188",
-year = "2000",
-note = "",
-issn = "0370-2693",
-doi = "DOI: 10.1016/S0370-2693(99)01450-1",
-url = "http://www.sciencedirect.com/science/article/B6TVN-3YJ9D44-Y/2/c074b813db6f61dd9ab72958086877fe",
-author = "J. Breitweg et al. (ZEUS)"
-}
-
-@Article{Chekanov:2006un,
-     author    = "Chekanov, S. and others",
- collaboration = "ZEUS",
-     title     = "{Measurement of prompt photons with associated jets in
-                  photoproduction  at HERA}",
-     journal   = "Eur. Phys. J.",
-     volume    = "C49",
-     year      = "2007",
-     pages     = "511-522",
-     eprint    = "hep-ex/0608028",
-     archivePrefix = "arXiv",
-     doi       = "10.1140/epjc/s10052-006-0134-1",
-     SLACcitation  = "%%CITATION = HEP-EX/0608028;%%"
-}
-
-
 %% ---------- Photons at ATLAS ---------- %%
 @Article{Collaboration:2010sp,
      author    = "{ATLAS Collaboration}",
@@ -336,93 +233,10 @@ author = "J. Breitweg et al. (ZEUS)"
 
 
 %% ---------- Photon Production ---------- %%
-@Article{Aurenche:1998gv,
-     author    = "Aurenche, P. and others",
-     title     = "{A critical phenomenological study of inclusive photon
-                  production in  hadronic collisions}",
-     journal   = "Eur. Phys. J.",
-     volume    = "C9",
-     year      = "1999",
-     pages     = "107-119",
-     eprint    = "hep-ph/9811382",
-     archivePrefix = "arXiv",
-     doi       = "10.1007/s100529900018",
-     SLACcitation  = "%%CITATION = HEP-PH/9811382;%%"
-}
-
-@article{Adams1995569,
-title = "Measurement of single spin asymmetry for direct photon production in pp collisions at 200 GeV/c",
-journal = "Physics Letters B",
-volume = "345",
-number = "4",
-pages = "569 - 575",
-year = "1995",
-note = "",
-issn = "0370-2693",
-doi = "DOI: 10.1016/0370-2693(94)01695-9",
-url = "http://www.sciencedirect.com/science/article/B6TVN-3YMWP3J-D2/2/bdda6bb8af1d3c2e8d7ef7f256e644ff",
-author = "D. L. Adams and N. Achurin and N. I. Belikov and A. Bravar and J. Bystricky and M. D. Corcoran and J. D. Cossairt and J. Cranshaw and A. A. Derevschikov and H. En'yo and H. Funahashi and Y. Goto and O. A. Grachov and D. P. Grosnick and D. A. Hill and T. Iijima and K. Imai and Y. Itow and K. Iwatani and K. W. Krueger and K. Kuroda and F. Lehar and A. de Lesquen and D. Lopiano and F. C. Luehring and T. Maki and S. Makino and A. Masaike and Yu. A. Matulenko and A. P. Meschanin and A. Michalowicz and D. H. Miller and K. Miyake and T. Nagamine and F. Nessi-Tedaldi and M. Nessi and C. Nguyen and S. B. Nurushev and Y. Ohashi and Y. Onel and D. I. Patalakha and G. Pauletta and A. Penzo and A. L. Read and J. B. Roberts and L. van Rossum and V. L. Rykov and N. Saito and G. Salvato and P. Schiavon and T. Shima and J. Skeens and V. L. Solovyanov and H. Spinka and R. Takashima and F. Takeutchi and N. Tamura and N. Tanaka and D. G. Underwood and A. N. Vasiliev and A. Villari and J. L. White and S. Yamashita and A. Yokosawa and T. Yoshida and A. Zanetti"
-}
 
 
-@article{PhysRevLett.73.388,
-  title = "High-\pt Photon Production at \ppbar Colliders",
-  author = "Gluck, M.  and Gordon, L. E. and Reya, E.  and Vogelsang, W. ",
-  journal = "Phys. Rev. Lett.",
-  volume = "73",
-  number = "3",
-  pages = "388--391",
-  numpages = "3",
-  year = "1994",
-  month = "Jul",
-  doi = "10.1103/PhysRevLett.73.388",
-  publisher = "American Physical Society"
-}
-
-@Article{RevModPhys.56.181,
-  title = {Direct-photon production in high-energy collisions},
-  author = {Ferbel, T.  and Molzon, W. R.},
-  journal = {Rev. Mod. Phys.},
-  volume = {56},
-  number = {2},
-  pages = {181--221},
-  numpages = {40},
-  year = {1984},
-  month = {Apr},
-  doi = {10.1103/RevModPhys.56.181},
-  publisher = {American Physical Society}
-}
 
 
-%% ---------- Jets & Jet Algorithms ---------- %%
-
-@Article{ref:PFJets,
-     author    = "{CMS Collaboration}",
-     title     = "{Commissioning of the Particle-Flow Event Reconstruction using high-energy LHC Collisions in the CMS Detector}",
-     journal   = "CMS PAS PFT",
-     volume    = "1-002",
-     year      = "2010",
-     pages     = "",
-     doi       = "",
-     SLACcitation  = ""
-}
-@Article{ref:JME-10-010,
-     author    = "{CMS Collaboration}",
-     title     = "{Jet Energy Corrections determination at $\sqrt{s}=7$ TeV}",
-     journal   = "CMS PAS JME",
-     volume    = "10-010",
-     year      = "2010",
-     pages     = "",
-     doi       = "",
-     SLACcitation  = ""
-}
-@Article{ref:PFJet_ID,
-     AUTHOR       = "Saoulidou, N.",
-     TITLE        = "Particle Flow Jet Identification Criteria",
-     JOURNAL      = "CMS Note",
-     VOLUME       = "{CMS AN AN-10-003}",
-     YEAR         = "2010"
-}
 
 % Lund String Model
 @article{Andersson198331,
@@ -438,58 +252,6 @@ doi = "DOI: 10.1016/0370-1573(83)90080-7",
 author = "B. Andersson and G. Gustafson and G. Ingelman and T. Sjöstrand"
 }
 
-@article{1126-6708-2008-04-063,
-  author={Matteo Cacciari and Gavin P. Salam and Gregory Soyez},
-  title={The anti-\kt jet clustering algorithm},
-  journal={Journal of High Energy Physics},
-  volume={2008},
-  number={04},
-  pages={063},
-  url={http://stacks.iop.org/1126-6708/2008/i=04/a=063},
-  year={2008},
-  abstract={The \kt and Cambridge/Aachen inclusive jet finding algorithms for hadron-hadron collisions can be seen as belonging to a broader class of sequential recombination jet algorithms, parametrised by the power of the energy scale in the distance measure. We examine some properties of a new member of this class, for which the power is negative. This ``anti- \kt '' algorithm essentially behaves like an idealised cone algorithm, in that jets with only soft fragmentation are conical, active and passive areas are equal, the area anomalous dimensions are zero, the non-global logarithms are those of a rigid boundary and the Milan factor is universal. None of these properties hold for existing sequential recombination algorithms, nor for cone algorithms with split-merge steps, such as SISCone. They are however the identifying characteristics of the collinear unsafe plain ``iterative cone'' algorithm, for which the anti- k t algorithm provides a natural, fast, infrared and collinear safe replacement.}
-}
-
-@Article{Catani:1993hr,
-     author    = "Catani, S. and Dokshitzer, Yuri L. and Seymour, M. H. and
-                  Webber, B. R.",
-     title     = "{Longitudinally invariant K(t) clustering algorithms for
-                  hadron hadron collisions}",
-     journal   = "Nucl. Phys.",
-     volume    = "B406",
-     year      = "1993",
-     pages     = "187-224",
-     doi       = "10.1016/0550-3213(93)90166-M",
-     SLACcitation  = "%%CITATION = NUPHA,B406,187;%%"
-}
-
-@Article{Dokshitzer:1997in,
-     author    = "Dokshitzer, Yuri L. and Leder, G. D. and Moretti, S. and
-                  Webber, B. R.",
-     title     = "{Better Jet Clustering Algorithms}",
-     journal   = "JHEP",
-     volume    = "08",
-     year      = "1997",
-     pages     = "001",
-     eprint    = "hep-ph/9707323",
-     archivePrefix = "arXiv",
-     SLACcitation  = "%%CITATION = HEP-PH/9707323;%%"
-}
-
-@Article{Wobisch:1998wt,
-     author    = "Wobisch, M. and Wengler, T.",
-     title     = "{Hadronization corrections to jet cross sections in deep-inelastic  scattering}",
-     year      = "1998",
-     eprint    = "hep-ph/9907280",
-     archivePrefix = "arXiv",
-}
-
-@article{CMS-PFT-2009-001,
- author = "{CMS Collaboration}",
- title = "{ParticleÐFlow Event Reconstruction in CMS and Performance for Jets, Taus, and $E_{T}^{\mathrm{miss}}$}",
- journal = "CMS PFT-2009/001",
- year = "2009",
-}
 
 
 
@@ -1059,23 +821,104 @@ author = "E. L. Berger and E. Braaten and R. D. Field"
 
 
 
-%% -------------- Theory -------------------- %%
 
-%%  LEP WG article
+%% ---------- overview ----------- %%
 
-@Article{Z-PoleLep,
-author ="{The ALEPH, DELPHI, L3, OPAL, SLD Collaborations,
-the LEP Electroweak Working Group,
-the SLD Electroweak and Heavy Flavour Groups}",
-title ="{Precision Electroweak Measurements on the Z Resonance}",
-journal = "Phys. Rept.",
-volume = "427",
-year = "2006",
-pages = "257",
-eprint = "hep-ex/0509008",
-SLACcitation = "%%CITATION = HEP-EX 0509008;%%"
-} 
+%% ----------- brief history ------- %%
+@Book{BriefHistory, 
+author="Stephen Hawking",
+title="A Brief History of Time",
+publisher="Bantam Dell Publishing Group",
+year="1988",
+}
 
+
+%% ---- gargamelle observation ----- %%
+%% haven't found a title yet...
+
+@article{NC-Gargamelle,
+  author = "F. J. Hasert et al",
+  collaboration = "Gargamelle",
+  title = "Observation of Neutrino-like Interactions without Muon or Electron in the Gargamelle Neutrino Experiment",
+  journal = "Phys. Lett.",
+  volume = "46",
+  pages = "121", 
+  year = "1973",
+}
+
+
+%% ---- ua1 and ua2 discoveries ----- %%
+%% papers found at http://cerncourier.com/cws/article/cern/28849
+%% more info found http://usparc.ihep.su/spires/find/hep/www?key=9028935&format=wwwrefslatex
+
+
+@article{Z-ua1, 
+  author = "G.~Arnison et al.", 
+  collaboration = "UA1 Collaboration",
+  title = "Experimental Observation of Lepton Pairs of Invariant Mass Around 95-GeV/$c^2$ at the CERN SPS Collider", 
+  journal = "Phys. Lett. B",
+  volume = "126",
+  year = "1983", 
+  pages = "398",
+}
+
+@article{Z-ua2, 
+  author = "P.~Bagnaia et al.",
+  collaboration = "UA2 Collaboration",
+  title = "Evidence for Z0 $\rightarrow$ e+ e- at the CERN anti-p p Collider", 
+  journal = "Phys. Lett. B",
+  volume = "129",
+  year = "1983", 
+  pages = "130",
+}
+
+
+
+%% ----------- CMSSW ------------- %%
+
+%% \bibitem{CMSSW} C.D. Jones et al., Analysis environments for CMS, {\em J. Phys.: Conf. 2008 Ser. 119 032027 }.
+
+%% from https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuide: 
+%% CMS Physics TDR, Volume 1, CERN-LHCC-2006-001, 2 February 2006 
+
+@article{cmssw,
+  author = "CMS Collaboration",
+  title = "CMS Physics Technical Design Report Volume I : Detector Performance and Software", 
+  journal = "CERN-LHCC-2006-001", 
+  year = "2006",
+  date = "2 February 2006", 
+  series = "Technical Design Report CMS", 
+  url = "https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuide", 
+  url2 = "http://cdsweb.cern.ch/record/922757?ln=en"
+}
+
+
+%% ----------- ROOT --------------- %%
+
+%% \bibitem{ROOT} R. Brun and F. Rademakers, ROOT: an object oriented data analysis framework, Nucl. Instrum. Meth. A 389 (1997) 81; see also http://root.cern.ch.
+
+%% from http://root.cern.ch/drupal/content/publication-list: 
+%% Rene Brun and Fons Rademakers, 
+%% ROOT - An Object Oriented Data Analysis Framework, 
+%% Proceedings AIHENP'96 Workshop, Lausanne, Sep. 1996, Nucl. Inst. & Meth. in Phys. Res. A 389 (1997) 81-86. See also http://root.cern.ch/.
+
+@article{root, 
+  author = "Rene Brun and Fons Rademakers", 
+  title = "ROOT - An Object Oriented Data Analysis Framework", 
+  journal = "Nucl. Inst. and Meth. in Phys. Res. A", 
+  conference = "AIHENP'96 Workshop, Lausanne, Sep. 1996",
+  volume = "389",
+  pages = "81-86",
+  year = "1997", 
+  url = "http://root.cern.ch/",
+}
+
+
+
+
+
+
+%% ---------------- Theory --------------- %%
 
 
 %% Quarks and Leptons
@@ -1106,5 +949,49 @@ pages = {075021},
 doi = "10.1088/0954-3899/37/7A/075021",
 url = {http://pdg.lbl.gov},
 } 
+
+
+
+%% ---------- Z at D0 ---------- %%
+@Article{Z-D0,
+     author    = "The D0 Collaboration",
+     collaboration = "D0",
+     title     = "{Measurement of the Cross Section for W and Z Production to Electron Final States with the D0 detector at $\sqrt{s}$ = 1.96 TeV}",
+     journal   = "D0Note 4403-CONF",
+     year      = "2004",
+     url       = "http://www-d0.fnal.gov/Run2Physics/WWW/results/prelim/EW/E06/E06.pdf",
+     url2      = "http://www-d0.fnal.gov/Run2Physics/WWW/documents/Run2Results.htm",
+}
+
+
+%% ---------- Z at CDF ---------- %%
+@article{Z-CDF,
+  title = {First Measurements of Inclusive W and Z Cross Sections from Run II of the Tevatron Collider},
+  author = "{CDF Collaboration}",
+  journal = {Phys. Rev. Lett.},
+  year = {2004},
+  eprint = {arXiv:hep-ex/0406078v2},
+  doi = {10.1103/PhysRevLett.94.091803},
+  url = "http://www-cdf.fnal.gov/physics/ewk/2004/wzxsec/",
+  url2 = "http://www-cdf.fnal.gov/physics/ewk/2004/wzxsec/z_final.gif",
+  url3 = "http://www-cdf.fnal.gov/physics/WZXsec_prl.pdf",
+}
+
+
+%%  LEP WG article
+
+@Article{Z-PoleLep,
+author ="{The ALEPH, DELPHI, L3, OPAL, SLD Collaborations,
+the LEP Electroweak Working Group,
+the SLD Electroweak and Heavy Flavour Groups}",
+title ="{Precision Electroweak Measurements on the Z Resonance}",
+journal = "Phys. Rept.",
+volume = "427",
+year = "2006",
+pages = "257",
+eprint = "hep-ex/0509008",
+SLACcitation = "%%CITATION = HEP-EX 0509008;%%"
+} 
+
 
 

@@ -37,7 +37,7 @@ been a part of human life.
 One of the most lasting questions has been 
 ``What, exactly, are things made of?'' 
 %ancient greeks
-The ancient Greeks tried to distill all matter into 
+The ancient Greeks tried to distill all matter into % DO I NEED TO REFERENCE ALL THE HISORICAL STUFF?  it came from wikipedia, and I would think it's common knowledge
 four elements: fire, earth, water, and air.  % look up role of quintessence
 They also came up with the idea of an ``atom,'' 
 the smallest possible piece of matter, 
@@ -260,8 +260,9 @@ outside the Standard Model.
 % Z background
 This analysis studies the production of the Z boson.  
 The Z is one of the particles that mediates the weak force.  
-It was first observed in 1973 in the Gargamelle bubble chamber at CERN % REFERENCE FOR THIS DISCOVERY
-when an electron would sometimes apparently start moving on its own.  
+It was first observed in 1973 in the Gargamelle bubble chamber at CERN 
+when an electron would sometimes apparently start moving on its own 
+\cite{NC-Gargamelle}.  
 This was understood to be due to a neutrino striking the electron 
 (by their nature, neutrinos rarely interact with matter and so are generally 
 not seen in particle detectors).  
@@ -271,7 +272,8 @@ This new interaction implied the existence of a new particle, the Z,
 as had been predicted by electroweak theory.  
 The Z was not observed directly until a decade later, 
 when it was produced in proton collisions in the 
-Super Proton Synchrotron (SPS) accelerator at CERN in 1983.  
+Super Proton Synchrotron (SPS) accelerator at CERN in 1983 
+\cite{Z-ua1}, \cite{Z-ua2}.  
 
 % Z properties
 The Z has a relatively large mass, 
@@ -302,8 +304,8 @@ proposed Higgs boson. %,
 A particular Z decay signature may 
 look like the Higgs and vice versa.  
 Therefore, in order to look for the Higgs, 
-the decays that look like it must be very well-studied -- 
-that way, if the Higgs is seen, 
+the decays that look like it must be very well-studied.  
+This way, if the Higgs is seen, 
 it will be known that it is definitely something new.  
 
 
@@ -582,6 +584,9 @@ Instantaneous luminosity, denoted here by $L$,
 refers to the rate of potential proton interactions.  
 Specifically, it is defined as the number of protons 
 passing through a given area in a given amount of time.  
+(The units are therefore 
+$\frac{1}{\mathrm{area} \times \mathrm{time}}$, 
+typically cm$^{-2}$s$^{-1}$.)  
 If the same number of protons are squeezed into a smaller area, 
 the instantaneous luminosity is higher; 
 the protons in the colliding beams are more likely to interact.  
@@ -597,6 +602,10 @@ is the instantaneous luminosity accumulated
 over a definite period of time, 
 effectively the total number of protons 
 that have passed through a unit of area.  
+(Integrated luminosity is measure in units of 
+$\frac{1}{\mathrm{area}}$, the conventional unit 
+being powers of the \textit{barn}, 
+equal to $10^{-28}\mathrm{m}^2$.)
 It is a measure of the total amount of data gathered.  
 The luminosity in the above equation refers to 
 the integrated luminosity.  
@@ -864,14 +873,16 @@ should therefore be mentioned separately.
 %Two software programs in particular were 
 %used in this analysis.  
 %
-The CMS Software (CMSSW) framework is 
-the collaboration-developed software 
+The CMS Software (CMSSW) framework 
+\cite{cmssw}
+is the collaboration-developed software 
 used for many aspects of CMS operation and use.  
 It encompasses data-taking, reconstruction, 
 simulation, and analysis.  
 % what else to say?  
 %
-ROOT is a general data analysis package, 
+ROOT \cite{root} 
+is a general data analysis package, 
 written in C++, 
 and developed and maintained at CERN. 
 It is widely used in the field of 
