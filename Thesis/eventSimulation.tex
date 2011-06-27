@@ -18,6 +18,8 @@
 % AND PREPOSITIONAL PHRASES
 
 
+%\cite{MCLesHouchesGuide} FIXMEEEEE REFERENCE FOOTNOTE WHATEVER
+
 %need for event simulation: 
 
 Within %the role of % CHANGE THIS CONSTRUCTION
@@ -530,7 +532,8 @@ These programs will be detailed in the following sections.
 
 CMS makes use of one of the standard 
 Monte Carlo event generation workhorses, 
-a program known as PYTHIA, 
+a program known as PYTHIA 
+\cite{PYTHIA6.4}, 
 which was used to generate the background 
 samples used in this analysis.  
 PYTHIA is a general-purpose event generator 
@@ -671,7 +674,11 @@ in the systematic errors
 %http://www-zeuthen.desy.de/~alioli/talks/Granada.pdf  POWHEG 
 %explanatory talk of AWESOMENESS
 
+%% JHEP 0807 (2008) 060, arXiv:0805.4802 
+%% http://arxiv.org/abs/0805.4802
+
 POWHEG (for ``POsitive Weight Hardest Emission Generator'') 
+\cite{powheg} 
 is a method for making next-to-leading order (NLO) 
 corrections within a parton shower framework.  
 At low energies, the showering algorithms implemented 
@@ -766,7 +773,8 @@ such as spin polarization.
 Because these aspects can have small effects 
 on the kinematic distributions of the decayed 
 particles, 
-CMS decided to use a separate package, TAUOLA, 
+CMS decided to use a separate package, TAUOLA 
+\cite{TAUOLA}, 
 to decay tau particles in the samples 
 that included taus.  
 %While TAUOLA implements non-standard interactions, % NEED THIS?????
@@ -805,7 +813,7 @@ The TAUOLA package was only necessary for the
 %So I guess that's all there is!
 
 The theoretical prediction for the cross section value 
-was obtained with FEWZ, 
+was obtained with FEWZ \cite{FEWZ2}, 
 a cross section integration program 
 specifially dealing with production of the W and Z.  
 Previously, all calculations of the cross section 
@@ -859,7 +867,7 @@ of the detector and its response.
 %GEANT the giant
 
 The CMS collaboration uses the software package 
-GEANT4 to model the detector 
+GEANT4 \cite{GEANT4} to model the detector 
 within the framework of CMSSW, 
 the CMS-specific analysis software 
 (see Section~\ref{over:software}).  
@@ -904,7 +912,7 @@ components that do the actual detecting,
 it is necessary to include the response of 
 the trigger system (Section~\ref{exp:trigger}), %.  
 %This modeling serves several purposes.  
-serving multiple purposes.  
+which serves multiple purposes.  
 Modeling the trigger system enables 
 the estimation of event rates 
 for a given luminosity 
@@ -930,7 +938,8 @@ being implemented in electronics
 instead of software, 
 must be explicitly modeled.  
 The sofware package that does this 
-is called the Level-1 Trigger Emulator, 
+is called the Level-1 Trigger Emulator 
+\cite{emulator}, 
 since it aims to be a bit-by-bit 
 emulation of the trigger hardware 
 instead of just a simulation of the 

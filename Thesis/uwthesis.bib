@@ -1,5 +1,5 @@
 %% COMMENTS ARE WEIRD
-%% Things that emacs things are comments
+%% Things that emacs thinks are comments
 %% really aren't somehow, 
 %% especially when you're trying to 
 %% comment out an entry or an element 
@@ -49,7 +49,8 @@
    year         = {2006}
 }
 
-@article{CmsTdr2,
+article{CmsTdr2,
+@article{PhysicsTdr,
   author="{CMS Collaboration}",
   title="{CMS Physics Technical Design Report, Volume II: Physics Performance}",
   journal={Journal of Physics G: Nuclear and Particle Physics},
@@ -60,7 +61,8 @@
   year={2007}
 }
 
-book{Bayatyan:706847,
+%% looks from the table of contents like it's really all about the L1
+%% book{Bayatyan:706847,
 @book{TriggerTDR,
   author="{CMS Collaboration}",
   title        = "{CMS TriDAS project: Technical Design Report; 1, the trigger systems}",
@@ -341,7 +343,8 @@ author = "B. Andersson and G. Gustafson and G. Ingelman and T. Sjöstrand"
 }
 
 %% ---------- Monte Carlo Software ---------- %%
-@article{Agostinelli2003250,
+article{Agostinelli2003250,
+@article{GEANT4,
 title = "Geant4--a simulation toolkit",
 journal = "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment",
 volume = "506",
@@ -375,6 +378,22 @@ keywords = "Distributed software development"
   description = {SPIRES-HEP: FIND KEY 6566170},
   biburl = {http://www.bibsonomy.org/bibtex/2352219652ba2c6e6554728829b40e00e/wc},
   eprint = {hep-ph/0603175}
+}
+
+@article{powheg,
+  author = "Simone Alioli and Paolo Nason and Carlo Oleari and Emanuele Re",
+  title = "NLO vector-boson production matched with shower in POWHEG", 
+  journal={Journal of High Energy Physics},
+  volume={2008},
+  number={07},
+  year = "2008", 
+  pages = "60", 
+  eprint    = "0805.4802v1",
+  archivePrefix = "arXiv",
+  primaryClass  =  "hep-ph",
+  doi       = "10.1088/1126-6708/2008/07/060",
+  url={http://stacks.iop.org/1126-6708/2008/i=07/a=060},
+  abstract={We present a next-to-leading-order calculation of W / Z production interfaced to shower Monte Carlo, implemented according to the POWHEG method. Finite width effects, Z /. interference and angular correlations of decay products are included. A detailed comparison with MC@NLO and PYTHIA is carried out.}
 }
 
 @Article{Alwall:2007st,
@@ -455,10 +474,10 @@ keywords = "C++"
 %% ------------ FEWZ ----------------- %%
 %% Journal reference:  Phys.Rev.D74:114017,2006 
 @article{FEWZ2,
- author = "Kirill~Melnikov and Frank~Petriello",
+ author = "Kirill Melnikov and Frank Petriello",
  title = "{Electroweak gauge boson production at hadron colliders through $O(\alpha_s^2)$}",
  journal = "Phys.Rev.D", 
- number = "74",
+ volume = "74",
  pages = "114017",
  year = "2006",
      eprint    = "060907v1",
@@ -503,6 +522,7 @@ keywords = "C++"
      eprint    = "0403045v2",
      archivePrefix = "arXiv",
      primaryClass  =  "hep-ph",
+ url = "http://arxiv.org/abs/hep-ph/0403045",
 }
 
 
@@ -634,16 +654,6 @@ author = "H. -U. Bengtsson"
      SLACcitation  = ""
 }
 
-@Article{ref:AntiKtNote,
-     author    = "{M. Cacciari, G.P. Salam, and G. Soyez}",
-     title     = "{The anti-kt jet clustering algorithm}",
-     journal   = "JHEP",
-     volume    = "0804",
-     year      = "2008",
-     pages     = "063",
-     doi       = "",
-     SLACcitation  = ""
-}
 
 @MISC{ref:RooUnfold,
      AUTHOR       = "{Adye, T. et. al.}",
@@ -994,4 +1004,36 @@ SLACcitation = "%%CITATION = HEP-EX 0509008;%%"
 } 
 
 
+
+%% ------------- L1 EMULATOR --------------- %%
+@article{emulator,
+  author = "V. M. Ghete for the CMS Collaboration",
+  title = "The CMS L1 Trigger Emulation Software", 
+  journal = "CMS CR-2009/123", 
+  year = "2009",
+}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%           EVENT SELECTION
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% ----------- the official analysis, for WP's at least --------------- %%
+
+@article{CMSWZ,
+  author = "CMS Collaboration",
+  title = "Measurement of the W and Z inclusive production cross sections at sqrts=7 TeV with the CMS experiment at the LHC", 
+  journal = "CMS-PAS-EWK-10-005",
+  year = "2011",
+}
+
+%% -------------- elec sel variables ----------- %%
 
