@@ -1,5 +1,115 @@
 \chapter{Results}
+\label{res}
+
 \section{Cross Section Measurement}
-Cross section calculation 
+\label{res:xsec}
+%Cross section calculation: the table of numbers, 
+%and the formula
+
+As explained in Section~\ref{over:xsec}, 
+the interaction cross section is calculated from the formula 
+\[
+\sigma \times \mathcal{BR} 
+= \frac{\left( n_{total} - n_{background }\right)}{\mathcal{ L } \times \epsilon \times A }
+\]
+in which $n_{total}$, $n_{background}$, $\mathcal{ L }$, $\epsilon$, and $A$  
+have been measured experimentally.  
+The measured values for these quantities 
+are given in Table~\ref{TableXsecNumbers}. 
+
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Quantities used to calculate cross section.}
+    \label{TableXsecNumbers}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | c | }
+      \hline
+      Quantity & Value \\ \hline \hline
+      Luminosity $\mathcal{L}$ & 36.1 pb$^{-1}$ \\ \hline
+      $n_{total}$ & 8453 \\ \hline
+      $n_{background}$ & 19 \\ \hline
+      Efficiency $\epsilon$ & 0.610 \\ \hline
+      Acceptance $A$ & 0.387 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
+
+Plugging the values into the formula gives 
+990 pb for the cross section.  
+%
+The sources of error in the measurement 
+(see Section~\ref{anMeth:SystsSummary}) 
+add a relative uncertainty of 4.8\%, 
+corresponding to 48 pb, for a final result of 
+\[
+\sigma(p \bar{p} \rightarrow Z/\gamma *) \times \mathrm{BR}(Z \rightarrow e^+ e^- )
+= 990 \pm 40 \mathrm{(lumi)} \pm 11 \mathrm{(stat)} \pm 17 \mathrm{(theory)} \pm 17 \mathrm{(syst)} \mathrm{pb} 
+\]
+
+
+
 \section{Comparison to Theory}
-\section{Comparison to Previous Experiments}
+\label{res:theory}
+
+To facilitate comparison of the cross section 
+with theory, 
+the CMS collaboration prepared a ``standard'' 
+theory value with FEWZ 
+(see Section~\ref{sim:MCGensOther}), 
+using the appropriate detector boundaries 
+for the acceptance.  
+The corresponding value obtained was 
+972 $\pm$ 40 pb.  
+The experimental value, 990 $\pm$ 48 pb, 
+agrees with the theoretical value within 
+the errors on both values 
+(the difference is 1.9\% relative 
+to the theoretical value).  
+
+%number from FEWZ, errors.  how experimental number compares within errors
+
+\section{Comparison to Other Experiments}
+\label{res:prev}
+
+%official CMS number, 
+
+The official CMS vector boson cross section analysis 
+\cite{CMSWZ}  
+calculated a value of 992 pb.  
+The official CMS analysis was very similar 
+to this one, 
+so it is expected that the numbers should 
+agree very closely.  
+The difference between them comes to 0.2\%.  
+
+The ATLAS also performed an analysis 
+of the vector boson production cross sections 
+\cite{ATLASZ}. 
+The selection criteria were slightly different 
+from those used in CMS: 
+the $\eta$ range used was 
+$|\eta| < 1.37, 1.52 < |\eta| < 2.47$, 
+the electrons were required to have a 
+transverse energy of 20 GeV instead of 25, 
+and the invariant mass range was 66 to 116 GeV 
+instead of 60 to 120 Gev.  
+Nevertheless, the analyses are comparable.  
+The \Zee cross section obtained by ATLAS is 
+\[
+\sigma(p \bar{p} \rightarrow Z/\gamma *) \times \mathrm{BR}(Z \rightarrow e^+ e^- )
+= 972 \pm 33 \mathrm{(lumi)} \pm 10 \mathrm{(stat)} \pm 38 \mathrm{(theory)} \pm 34 \mathrm{(syst)} \mathrm{pb} 
+\]
+This compares well with the number obtained 
+in this analysis, 
+as well as with the official CMS result.  
+
+%tevatron numbers??  doesn't really add anything
+
+ADD FUN PLOTS, like move inv mass here?? 
+also Z quantity plots. 
+and do I have electron distributions somewhere? 
+YES, they're in evSel.  along with Z distro plots.  
+Those are really sort of results, I should put them there! 
