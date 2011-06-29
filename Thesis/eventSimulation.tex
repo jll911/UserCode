@@ -833,6 +833,107 @@ for the CMS analysis
 because of this treatment of NNLO QCD corrections.  
 
 
+\subsection{Generated Samples}
+\label{sim:MCSamples}
+
+The full list of Monte Carlo generated samples 
+is given in Table~\ref{TableMCSamples}.  
+
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Primary datasets used in this analysis.}
+    \label{TableMCSamples}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | c | c | c | c | c | }
+      \hline
+      Sample & Generator & $n_{events}$ & $\sigma$ (pb) & $\epsilon$ & Scale factor for 36.1\pb \\ \hline \hline
+      \Zee & POWHEG & 1998990 & 1666. & 1. & 3.01 $\times 10^{-2}$ \\ \hline  % 0.0300864937
+      QCD BCtoE 20-30 & PYTHIA & 2243439 & 235500000. & 0.00056 & 2.12 \\ \hline  % 2.12212946
+      QCD BCtoE 30-80 & PYTHIA & 1995502 & 59300000. & 0.00230 & 2.47 \\ \hline  % 2.46738866
+      QCD BCtoE 80-170 & PYTHIA & 1043390 & 906000. & 0.0104 & 0.326 \\ \hline  % 0.326003354
+      QCD EM 20-30 & PYTHIA & 36920242 & 235500000. & 0.0104 & 2.39 \\ \hline  % 2.39478712
+      QCD EM 30-80 & PYTHIA & 71834019 & 59300000. & 0.065 & 1.94 \\ \hline  % 1.93706898
+      QCD EM 80-170 & PYTHIA & 8073559 & 906000. & 0.155 & 0.628 \\ \hline  % 0.627916759
+      $t\bar{t}$ & PYTHIA & 1099550 & 94.3 & 1. & 3.10 $\times 10^{-3}$ \\ \hline  % 0.0030960211
+      \Ztautau & PYTHIA & 2057446 & 1666. & 1. & 2.92 $\times 10^{-2}$ \\ \hline  % 0.0292316785
+      \Wenu & PYTHIA & 4856474 & 6153. & 1. & 4.57 $\times 10^{-2}$ \\ \hline  % 0.045737566
+      \Wtaunu & PYTHIA & 5207750 & 7899. & 1. & 5.48 $\times 10^{-2}$ \\ \hline  % 0.0547556814
+      WW & PYTHIA & 110000 & 2.9 & 1. & 9.52 $\times 10^{-4}$ \\ \hline  % 0.000951727273
+      WZ & PYTHIA & 110000 & 0.34 & 1. & 1.12 $\times 10^{-4}$ \\ \hline  % 0.000111581818
+      ZZ & PYTHIA & 2113368 & 4.297 & 1. & 7.34 $\times 10^{-5}$ \\ \hline  % 0.0000734002313
+    \end{tabular}
+  \end{center}
+\end{table}
+
+The table also gives the values by which each 
+of the samples were scaled in order to be combined.  
+Each sample was generated to be a specific size, 
+that is, a specific number of events.  
+These sizes do not correlate to the same amount 
+of real data, though.  
+The sample for a common process may correspond 
+to a relatively small amount of data, 
+while that for a rare process may be equivalent 
+to a very large amount of data, %.  
+i.e. because of its rarity, a large amount 
+of data is required in order to see it.  
+These differences are taken into account by 
+determining a scale factor for each sample 
+according to its size and its cross section 
+(which correlates to probability of the interaction).  
+This scale factor is used to scale each sample 
+to a given luminosity.  
+The scale factor must also take into account 
+any inefficiency in the generation process.  
+For example, if the sample was generated such that 
+at least one electron had an energy higher than 10 GeV, 
+all the events whose highest-energy electron was 
+lower than 10 GeV will be discarded.  
+They still count towards the overall cross section, 
+though, so they are taken into account by 
+an efficiency number, 
+essentially the fraction of events that are kept 
+in the filtering process.  
+The formula for the scale factor $k$ is 
+\[
+k = \frac{ \mathcal{L} \times \sigma \times \epsilon_{filter} }{n_{events}}
+\]
+After multiplying each sample by its scale factor, 
+samples and event numbers can be added together.  
+
+The QCD samples are broken into smaller 
+sections for easier generation: 
+three bins were used, 
+given in terms of the interaction energy.  
+They are also the only samples here 
+to need an efficiency factor. 
+Since much of what is produced by QCD 
+will get cut out by the 
+event selection requirements, 
+it is useful to pare down the samples 
+from the start, 
+so they do not take up unnecessary space.  
+The QCD samples have filters applied to 
+select only events which may be background 
+to an analysis using electrons and photons.  
+The ``BCtoE'' samples include 
+events with electrons 
+from the decays of bound states of $b$ and $c$ 
+quarks.  
+The ``EM'' samples are 
+``electromagnetic-enriched,'' 
+meaning the generation process applied 
+a filter to include electrons and photons, 
+as well as objects that look like 
+electrons and photons.  
+This second group also requires that 
+each event not pass the BCtoE filter, 
+so that the two samples are mutually exclusive 
+and can be combined without 
+double-counting.  
+
+
 \section{Detector Simulation}
 \label{sim:Detector}
 %\subsection{GEANT Detector Model/Modeling of Particle Interactions in Detector Material}
