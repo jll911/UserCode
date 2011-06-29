@@ -533,9 +533,10 @@ These programs will be detailed in the following sections.
 CMS makes use of one of the standard 
 Monte Carlo event generation workhorses, 
 a program known as PYTHIA 
-\cite{PYTHIA6.4}, 
-which was used to generate the background 
-samples used in this analysis.  
+\cite{PYTHIA6.4}. 
+PYTHIA was used to generate the background 
+samples used in this analysis, 
+with the CTEQ6L1 PDF set \cite{CTEQ6L1}.  
 PYTHIA is a general-purpose event generator 
 using the parton-shower approach to corrections.  
 It encompasses most of the steps necessary to generate 
@@ -705,7 +706,8 @@ in the set may be implemented by the user.
 
 POWHEG was used to generate the 
 hard process for each event 
-of the \Zee signal sample; 
+of the \Zee signal sample, 
+using the CT10 PDF set \cite{CT10}; 
 this part of the interaction was then 
 fed through PYTHIA 
 (by the modular procedure previously described) 
@@ -718,7 +720,7 @@ in terms of how much they may contaminate
 the signal sample.  
 Slight variations in their distributions 
 due to missing higher-order corrections are 
-therefore not relevant.  
+therefore not as relevant.  
 
 % don't really need anything else?  
 % not from experimentalist point of view!(?)
@@ -815,7 +817,8 @@ The TAUOLA package was only necessary for the
 The theoretical prediction for the cross section value 
 was obtained with FEWZ \cite{FEWZ2}, 
 a cross section integration program 
-specifially dealing with production of the W and Z.  
+specifially dealing with production of the W and Z, 
+using the MSTW PDF set \cite{MSTW}.  
 Previously, all calculations of the cross section 
 had been done at next-to-leading order (NLO) in QCD, 
 which entails several percent uncertainty.  

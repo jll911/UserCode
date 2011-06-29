@@ -617,6 +617,17 @@ using the energies and positions of the individual ECAL crystals, \sieie,
 and this quantity is required to be below the thresholds listed in Table \ref{TableEidCuts}.  
 (The $ \phi $ direction is not examined because bremsstrahlung from the electron 
 can cause a significant spread of the energy in $ \phi $.)  
+The definition of \sieie is given in terms of the energies and $\eta$ positions of the  %% REF TALK BY SAM HARPER???
+individual crystals $i$ (inclusing the seed crystal), 
+as well as the energy and average position of the 
+$5 \times 5$ cluster of crystals: 
+\[
+\sigma_{i \eta i \eta} = \sqrt{ \frac{ \sum_i{(\eta_i \times 0.0175 + \eta_{seed} - \eta_{5 \times 5}^{avg})}}{\sum_i{w_i}} }
+\]
+where each crystal's weight $w_i$ is given by 
+\[
+w_i = 4.2 + \ln{ \frac{E_i}{E_{5 \times 5}} }
+\]
 The \sieie distribution for electrons after all previous cuts is shown in 
 Fig.~\ref{fig:sieieElecIdVars}.  
 In addition, an electron is expected to deposit most of its energy in the 
