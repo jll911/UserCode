@@ -223,8 +223,8 @@
 % Load the Latex2e ``book'' class to get the basic definitions:
 %\ifkompakt\LoadClass[twoside,\ptoption]{book}\else\LoadClass[oneside,\ptoption]{book}\fi
 % switch these between two lines to get oneside or twoside document, default is to use 'twoside'
-%\LoadClass[oneside,\ptoption]{book}
-\LoadClass[twoside,\ptoption]{book}
+\LoadClass[oneside,\ptoption]{book}
+%\LoadClass[twoside,\ptoption]{book}
 
 % This style file defines AASTeX V5.0-like citation commands
 %\RequirePackage{natbib}% 
