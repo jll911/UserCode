@@ -11,183 +11,70 @@ in the analysis were selected.
 The endpoint of that chapter was a set of 
 \Zee candidate events: 
 events that had two well-reconstructed electrons 
-with an invariant mass between 60 and 120 GeV.  % NEED TO EXPLAIN INV MASS BEFORE THIS
-This chapter explains the rest of the process 
-needed to obtain the result, the final cross section.  
-This includes assembling all the necessary components % SECTION TITLE! referring to assembling the components
-of the calculation, 
+with an invariant mass between 60 and 120 GeV.  
+%% This chapter explains the rest of the process 
+%% needed to obtain the result, the final cross section.  
+%% This includes assembling all the necessary components % SECTION TITLE! referring to assembling the components
+%% of the calculation, 
+This chapter explains the remaining ingredients 
+in the process of extracting the cross section.  
+This includes in particular estimating the number 
+of background events, 
 as well as determining the uncertainty 
 inherent in each component 
 and combining the uncertainties into one overall value.  
 
-%recap of invariant mass?
 
-\section{Invariant Mass Spectrum} % DON'T REALLY NEED ALL EXPLANATORY STUFF HERE, IF IN INTRO CH???
-\label{anMeth:invmass}
-As explained in Section~\ref{theory:Zprod}, % it's done in introductory material
-the invariant mass of a set of decay-product particles is 
-%CONCEPTUAL EXPLANATION.
-essentially the mass of the original particle that decayed. 
-%to form the end-products.  
-It is defined mathematically by %as 
-\[
-M_{inv}^2 = \left( \sum E \right)^2 - \left\| \sum \mathbf{p} \right\|^2
-\]
-where $ \mathbf{p} $ is the momentum 
-and $ E $ the energy for a given particle; 
-$ \sum $ denotes the sum over all particles 
--- a vector sum in the case of momentum, 
-while $\left\| \mathbf{p} \right\|$ denotes the momentum's magnitude.  
-In our case, for a two-particle system, this can be written as 
-\[
-M_{inv} = \sqrt{ \left(E_1 + E_2\right)^2 - \left\|\mathbf{p}_1 + \mathbf{p}_2\right\|^2 }
-\]
-The invariant mass distribution within the mass window 
-for the electron pairs 
-in the events surviving all selection cuts is shown in 
-Fig.~\ref{fig:InvMass}.  
-An explanation of how the different simulation 
-samples were combined can be 
-found in Section~\ref{sim:MCSamples}.  
-To combine data with Monte Carlo samples, 
-the ratio of their efficiencies was taken as 
-the scale factor.  
-The peak around the Z mass (91 GeV) is clearly visible 
-in both the Monte Carlo (solid) and data (points) distributions.  
-The background contributions estimated from Monte Carlo simulation 
-are shown as the colored (grayscale) areas.  
-A slight shift in the peak position along the x-axis is 
-evident, due to slight miscalibrations of 
-the calorimeter response to given energies.  
-This difference is accounted for in the 
-systematic uncertainty due to the electron energy scale 
-(see Section~\ref{anMeth:SystsOtherEleEScale}).  
-The selected events are also divided into categories according 
-to which part of the detector, barrel or endcap, 
-each of their electron legs were located, 
-and the resulting invariant mass spectra are 
-shown in Fig.~\ref{fig:InvMassEtaDiv}.  
-Agreement in each case is good to within the 
-uncertainty.  
-
-%ALSO TALK ABOUT HOW PLOTS SCALED??!!  
-%somewhere, like in event selection? 
-%I guess also in this section (different chapter)
-
-%yield plot first, since this is what the rest is based on.  
-
-%%Figures: Electron-pair invariant mass for trigger objects/ID only/ID+isolation, Fig. \ref{fig:InvMassAfterEachStep}
-%Figures: Electron-pair invariant mass after full selection, Fig. \ref{fig:InvMass}
-
- \begin{figure}[htb]
-  \begin{center}
-    \includegraphics[width=360pt]{Figures/invMass-04Apr11.png}
-  \end{center}
-  \caption[Electron-pair invariant mass after full selection]
-  {Electron-pair invariant mass after full selection.
-    The peak around the Z mass (91 GeV) is clearly visible
-    in both the Monte Carlo (solid) and data (points) distributions.
-    The background contributions estimated from Monte Carlo simulation
-    are shown as the colored (grayscale) areas.
-    A slight shift in the peak position along the x-axis is
-    evident, due to slight miscalibrations of
-    the calorimeter response to given energies.
-    This difference is accounted for in the
-    systematic uncertainty due to the electron energy scale.
-  }
-  \label{fig:InvMass}
- \end{figure}
-
-% Also add plots for OS and SS??  Had them at one point!  
-% WELL, last OS plot I have does not show good data/MC agreement
-
-%% Figures: Same-sign dielectron invariant mass for electrons passing all selection steps, Fig. \ref{fig:SameSignInvMass}
-
-%%  \begin{figure}[htb]
-%%   \begin{center}
-%%     \includegraphics[width=360pt]{CMS-BW.pdf}
-%%   \end{center}
-%%   \caption[Same-sign dielectron invariant mass for electrons passing all selection steps]{Same-sign dielectron invariant mass for electrons passing all selection steps.}
-%%   \label{fig:SameSignInvMass}
-%%  \end{figure}
-
-%Ooh, I do also have inv mass by eta plots
-
- \begin{figure}[htb]
-  \begin{center}
-%    \includegraphics[width=360pt]{Figures/invMass-04Apr11.png}
-    \subfloat[Barrel-barrel]{\label{fig:InvMassEtaDivBarrelBarrel}\includegraphics[width=180pt]{Figures/invMassEtaDiv-barrel-barrel-19May11.png}}
-    \subfloat[Barrel-endcap]{\label{fig:InvMassEtaDivBarrelEndcap}\includegraphics[width=180pt]{Figures/invMassEtaDiv-barrel-endcap-19May11.png}}
-    \subfloat[Endcap-endcap]{\label{fig:InvMassEtaDivEndcapEndcap}\includegraphics[width=180pt]{Figures/invMassEtaDiv-endcap-endcap-19May11.png}}
-  \end{center}
-  \caption[Electron-pair invariant mass by $\eta$]{
-    Electron-pair invariant mass by $\eta$ after full selection.
-    Each combination of electron $\eta$-positions is 
-    distributed separately: 
-    both electrons in the barrel 
-    %(Fig.~\ref{fig:InvMassEtaDivBarrelBarrel}), 
-    \subref{fig:InvMassEtaDivBarrelBarrel}, 
-    one electron each in the barrel and the endcap 
-    %(Fig.~\ref{fig:InvMassEtaDivBarrelEndcap}),
-    \subref{fig:InvMassEtaDivBarrelEndcap},
-    and both electrons in the endcap 
-    %(Fig.~\ref{fig:InvMassEtaDivEndcapEndcap}).
-    \subref{fig:InvMassEtaDivEndcapEndcap}.
-    In each case the agreement between data and Monte Carlo simulation is good.  
-  }
-  \label{fig:InvMassEtaDiv}
- \end{figure}
-
-\section{Cross-Section Extraction}
-\label{anMeth:xsec}
-The formula to calculate the cross section from 
-Section~\ref{over:xsec} is
-\[
-%\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ \Zee } }{  \mathcal{ L } \times \epsilon }
-\sigma_{ Z } \times \textrm{ BR }_{ Zee } = 
-\frac{ n_{signal} }{  \mathcal{ L } \times \epsilon \times A}
-\]
-where $\mathcal{ L }$ is the luminosity, 
-$n_{signal} = n_{total} - n_{background}$ is 
-the number of signal events, 
-derived from the total number of selected events 
-and the estimated number of background events, 
-and 
-\[
-%\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } 
-\epsilon = \epsilon_{ reco } \times \epsilon_{ sel } \times \epsilon_{ trig }
-\]
-is the event selection efficiency, 
-composed of the efficiencies of the individual steps: 
-%where the abbreviations refer to %acceptance, 
-reconstruction, selection, and trigger, respectively.  
-%Essentially it means that. %FIXME or just do in overview?
-%Most of the required numbers have been dealt with 
-%in other chapters.  % remove?
-Many of the elements of these formulas have been 
-determined in previous sections: 
-the event selection efficiency $\epsilon$ was 
-calculated as 0.610 
-in Section~\ref{evSel:eff}, 
-and the acceptance as 0.387 
-in Section~\ref{evSel:acc}.  
-The luminosity is known to be 36.1 \pb 
-(Section~\ref{exp:lumi}). 
-The remaining component to be determined 
-is the number of signal events, 
-which is obtained from the total 
-number of selected events 
-and the estimated number of background 
-events.  
-The total number of selected events is 
-the number of events in the 
-invariant mass histogram, 
-Fig.~\ref{fig:InvMass}: 
-this is \nevents{} events.  
-The final element, estimated number 
-of background events, 
-will be calculated in 
-Section~\ref{anMeth:BGSub}.  
+%% \section{Cross-Section Extraction}
+%% \label{anMeth:xsec}
+%% The formula to calculate the cross section from 
+%% Section~\ref{over:xsec} is
+%% \[
+%% %\sigma_{ Z } \times \textrm{ BR }_{ Zee } = \frac{ n_{ \Zee } }{  \mathcal{ L } \times \epsilon }
+%% \sigma_{ Z } \times \textrm{ BR }_{ Zee } = 
+%% \frac{ n_{signal} }{  \mathcal{ L } \times \epsilon \times A}
+%% \]
+%% where $\mathcal{ L }$ is the luminosity, 
+%% $n_{signal} = n_{total} - n_{background}$ is 
+%% the number of signal events, 
+%% derived from the total number of selected events 
+%% and the estimated number of background events, 
+%% and 
+%% \[
+%% %\epsilon = \epsilon_{ acc } \times \epsilon_{ trig } 
+%% \epsilon = \epsilon_{ reco } \times \epsilon_{ sel } \times \epsilon_{ trig }
+%% \]
+%% is the event selection efficiency, 
+%% composed of the efficiencies of the individual steps: 
+%% %where the abbreviations refer to %acceptance, 
+%% reconstruction, selection, and trigger, respectively.  
+%% %Essentially it means that. %FIXME or just do in overview?
+%% %Most of the required numbers have been dealt with 
+%% %in other chapters.  % remove?
+%% Many of the elements of these formulas have been 
+%% determined in previous sections: 
+%% the event selection efficiency $\epsilon$ was 
+%% calculated as 0.610 
+%% in Section~\ref{evSel:eff}, 
+%% and the acceptance as 0.387 
+%% in Section~\ref{evSel:acc}.  
+%% The luminosity is known to be 36.1 \pb 
+%% (Section~\ref{exp:lumi}). 
+%% The remaining component to be determined 
+%% is the number of signal events, 
+%% which is obtained from the total 
+%% number of selected events 
+%% and the estimated number of background 
+%% events.  
+%% The total number of selected events is 
+%% the number of events in the 
+%% invariant mass histogram, 
+%% Fig.~\ref{fig:InvMass}: 
+%% this is \nevents{} events.  
+%% The final element, estimated number 
+%% of background events, 
+%% will be calculated in 
+%% Section~\ref{anMeth:BGSub}.  
 
 
 %Explain formula in detail here?  
@@ -227,7 +114,10 @@ Section~\ref{anMeth:BGSub}.
 %\section{Comparison of Monte Carlo and Data}
 \section{Background Subtraction}
 \label{anMeth:BGSub}
-It is expected that some number of non-signal events %, 
+One of the ingredients in the cross section formula 
+(see Section~\ref{over:xsec}) 
+is the number of signal events.  
+However, it is expected that some number of non-signal events %, 
 %or background events, 
 will look enough like signal events to pass the full selection.  
 These background events need to be accounted for 
