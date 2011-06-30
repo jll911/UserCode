@@ -1,43 +1,69 @@
-%  ========================================================================
-%  Copyright (c) 2006-2007 The University of Washington
-%
-%  Licensed under the Apache License, Version 2.0 (the "License");
-%  you may not use this file except in compliance with the License.
-%  You may obtain a copy of the License at
-%
-%      http://www.apache.org/licenses/LICENSE-2.0
-%
-%  Unless required by applicable law or agreed to in writing, software
-%  distributed under the License is distributed on an "AS IS" BASIS,
-%  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-%  See the License for the specific language governing permissions and
-%  limitations under the License.
-%  ========================================================================
+%%%%% FORMAT THE PAPER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass[draft,10pt]{thesis}
+\documentclass[final,12pt]{thesis}
+%\documentclass[compact,10pt]{thesis}
+%\documentclass[final,10pt,sflabels]{thesis}
+        % Wisconsin thesis requires a single-sided printout, and the page numbers
+        % should always at the up right corner ('oneside'), see thesis.cls
+        % Curly brackets: Specify the "thesis" class file (thesis.cls).
+        %   It assumes the existence of a few other style (*.sty) files.  
+        %   See the thesis.cls file for details.
+        % Square brackets, specify the options you want to use.
+        %   Allowed options are 10pt, 11pt, 12pt, draft, & final.
+        %   See the "thesis.cls" file for descriptions.
+
+% NOTE: If you want your figure captions, table captions, and bibliography
+% items single-spaced (this is permissible for UW theses!), you can use
+% the "\fixspacing" command in each of these environments.  This command
+% will choose the appropriate spacing, whether you use the "final" or
+% "draft" modes.  See the "thesis.cls" class file for details.
+% CLARIFICATION: The \fixspacing command has to go inside EACH of your
+%     \tablenotetext blocks to be effective
+
+%\usepackage{lscape}     % Specify this package for landscape-style tables.
+% You can use this by wrapping your table in a \begin{landscape}--
+% \end{landscape} environment.  Note that the rotated table will
+% probably *not* show up in Xdvi, but *will* show up in the PostScript
+% version (e.g., can be seen with gv).
 
 
-%    Printed in twoside style now that that's allowed 
-\documentclass [11pt, twoside] {uwthesis}
 
-\usepackage{graphicx}  % Used for figure
-\usepackage{subfig}  % Subfloats!
-\usepackage{rotating}    % Provides sidewaysfigure
+\usepackage{xspace}
+%\usepackage{longtable}   % Specify this package for multipage tables
+
+%\usepackage[final]{graphicx}    % Use the LaTeX2e graphics package
+\usepackage{graphicx}    % Use the LaTeX2e graphics package
+
+\usepackage{subfig}   % Specify this package to create multipart figures
+% with multiple files combined in a single numbered figure 
+% i.e., Fig. 1(a), Fig. 1(b), etc.
+
+\usepackage{amsmath,amssymb}  % Load the package for extended mathematical symbol set
 \usepackage{amsfonts} % Provides \mathcal
-\usepackage{amsmath} % Provides \text
-\usepackage{xspace}    % Provides \xspace
+%\usepackage{axodraw}  % Necessary for using the ZEUS psfigadd command
+%\usepackage{placeins}
+%\usepackage{caption2}
+%\usepackage{epsfig}
+%\usepackage{wrapfig}
+\usepackage{rotating} % Provides sidewaysfigure
+%\usepackage{mcite}
+%\usepackage{amscd}
+%\usepackage{array}
+%\usepackage{multirow}
+%\usepackage{supertabular}
+%\usepackage{dcolumn}
+\usepackage{xspace}
+%\usepackage{color}
+\usepackage{calc}
+\usepackage{ifthen}
+%\usepackage{cite} % NEED THESE???
+%\usepackage{notoccite} % too
 
 \usepackage{tikz} % feynman diagrams!
 \usetikzlibrary{trees}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{decorations.markings}
-
-% The following line would print the thesis in a postscript font 
-% \usepackage{newcent}
-
-%\setcounter{tocdepth}{1}  % Print the chapter and sections to the toc
-\setcounter{tocdepth}{3}  
- 
-
-% ==========   Local defs and mods
 
 \newcommand{\pb}{ pb\textsuperscript{-1} }
 \newcommand{\lunits}{$cm^{-2} s^{-1}$ }
@@ -89,149 +115,150 @@
 }
 
 
-\begin{document}
- 
-% ==========   Preliminary pages
-%
 
-\prelimpages
- 
-%%
-%% ----- title page
-%%
-%%\Title{Direct Photon Plus Jet Events at $\sqrt{s}=$7 TeV\\
-%%  using the Compact Muon Solenoid\\
-%%  at the Large Hadron Collider}
-%\Title{Blah}
-%\Author{Jessica L. Leonard}
-%\Year{2011}
-%\Program{Physics}
-%\Degree{Doctor of Philosophy\\(PHYSICS)}
-%% \titlepage  
-
-%% --- sample stuff only -----
-%% unusual footnote not found in a real thesis
-%\Degreetext{A dissertation submitted in partial fulfillment of\\
-%  the requirements for the degree of}
-%\titlepage
-%\setcounter{footnote}{0}
-%% --- end-of-sample-stuff ---
- 
-%%
-%% ----- signature page
-%%
-
-%\Chair{Susan Coppersmith}{Professor}{Physics}
-
-%\Signature{Wesley Smith}
-%\Signature{Sridhara Dasu}
-%\Signature{foo}
-%\Signature{bar}
-%\Signature{Unknown}
-%\signaturepage
+% Line numbers for drafts, thanks to Carlos P.d.l.H. from AMANDA.
+% To use this feature, say \linenumbers right after \begin{document}.
+% Be sure to remove before printing out the final version!
+%                                       --Katherine Rawlins, Oct. 2001
+%\usepackage[displaymath,mathlines]{lineno}
 
 
-%% ========== Abstract
-%\setcounter{page}{-1}
-%\abstract{%
-%%The Large Hadron Collider outside Geneva, Switzerland collides protons at a 
-%%center of mass energy of 7 TeV, which began in the spring of 2010. One of several detectors there is the Compact Muon Solenoid (CMS), which was designed to be a "general purpose" detector for the detection of many kinds of particles to aid both in the understanding of physics within the "Standard Model" as well as new physics.\\
-%%Among the products of proton collisions are jets and photons.  Jets are cone-like deposits of energy in the detector which arise from the hadronization of a quark or gluon. Photons which arise directly from the scattering of quarks or gluons are direct photons and are useful for new physics searches, measurement of the protons gluon parton distribution function, as well as for calibration of the jet energy scale.\\
-%%This dissertation describes studies of events where the final state includes one high-energy direct photon and one jet.
-%blah
-%}
- 
-%
-% ----- contents & etc.
-%
-\tableofcontents
-\listoffigures
-\listoftables
- 
-%
-% ----- glossary 
-%
-%\chapter*{Glossary}      % starred form omits the `chapter x'
-%\addcontentsline{toc}{chapter}{Glossary}
-%\thispagestyle{plain}
-%
-%\begin{glossary}
+%\nofiles       
+        % Uncomment to prevent the creation of new *.toc *.lot, and *.lof 
+        %   files.  Do this if you need to edit these files for the final
+        %   version of the paper.  For example, if you have multi-page 
+        %   figures or tables but you want the lists of figures & tables
+        %   to have only one line for these, you will need to delete the
+        %   extra lines in the *.lof and *.lot files and re-run LaTeX.
 
-%\item[ce] Compute Elements are networked computers used for running software in parallel.
-%\item[cms] the Compact Muon Solenoid detects particles which result from the collision of protons.
-%\item[ecal] an Electromagnetic Calorimeter detects energy from photons and electrons.
-%\item[gct] the Global Calorimeter Trigger.
-%\item[hcal] a Hadronic Calorimeter detects the energy from hadrons such as protons and neutrons.
-%\item[lhc] the Large Hadron Collider is a particle accelerator which collides protons north of Geneva, Switzerland.
-%\item[osg] the Open Science Grid is a worldwide grid of technological resources which facilitates distributed computing for scientific research.
-%\item[rct] the Regional Calorimeter Trigger.
-%\item[se] Storage Elements are servers that based on Storage Resource Manager
-%\item[tev]  a Tera-Electron Volt is $10^{12}$ electron volts and is approximately equivalent to 1,000 proton masses.
-%%\item[tevatron]  the Tevatron is a particle accelerator which collides protons west of Chicago, Illinois.
-%\item[vo] A Virtual Organization a set of individuals or institutions that use a common computer grid to solve problems and have a set of resource-sharing rules and conditions.
+%\graphicspath{{figs/}}  % Specifies a subdirectory containing graphics files
+                        % Multiple directories possible, each with inner {}
+                        %   within the outer {}; e.g., {{figs/}{~/plots}}
 
-%\end{glossary}
- 
-%
-% ----- acknowledgments
-%
-%\acknowledgments{% \vskip2pc
-%  % {\narrower\noindent
-%  The author wishes to express sincere appreciation to
-%  Sridhara Dasu.
-%  % \par}
-%}
-%
-% end of the preliminary pages
- 
- 
- 
-%
-% ==========      Text pages
-%
 
-\textpages
+   % Use \includeonly{} if you are just working on one \include{}'d
+   % section.  This prevents LaTeX from re-processing the unneeded
+   % chapters, but preserves references and page/fig/table numbers.
+   % Try it.  You'll like it. 
+   % Default is to compile entire document.
+%\includeonly{detector.tex}
+
+%\input{define}          % Read in list of user-defined LaTeX commands
+%\include{citations}
+%\include{zeus_def}
+
+\begin{document}        % BEGIN THE DOCUMENT TEXT
+
+%  The cool linenumbers feature... comment it out for the final version
+%\linenumbers
 
 
 
-% ========== Chapters
+%%%%% BEGIN TITLE/CONTENTS PAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\mytitle{
+Z boson cross section measurement using CMS at the LHC
+}
+\myauthor{Jessica Lynn Leonard}
+\myyear{2011}
+
+% These aren't really needed except for the UMI abstract
+\adviser{Wesley H. Smith}
+\adviserrank{Professor}
+
+\ttlpage                % This command produces the title page.  Nifty!
+\cpypage                % This produces the copyright page.  Also nifty!
+                        % Reminder: it costs money to retain copyright
+                        
+% The following three lines are for UMI abstract only
+                        % Reminder: UMI abstract is required by gradschool but it is NOT a part of your thesis
+%\begin{umiabstract}
+%\input{umiabstract}    % *.tex file for UMI abstract page
+%\end{umiabstract}      % Need to use \input rather than \include to avoid
+                        %  implicit \clearpage's.  You shouldn't have any
+                        %  cross-references between abstract and text, so
+                        %  \input should be OK.
+
+\frontmatter            % Choose roman-type numbers; reset page numbers to 1.
+
+\pagestyle{thesis}      % Set the page style to "thesis" 
+                        %   (page numbers at the top right)
+
+%%%%% BEGIN ABSTRACT ETC. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \include{abstract}      % *.tex file for abstract
+%% %\include{sponsor}      % *.tex file for "sponsorship" page
+%% %\include{dedicate}     % *.tex file for dedication
+%% %\include{quotes}       % *.tex file for quotations
+%% \include{acknowledge}   % *.tex file for acknowledgements
+
+\tableofcontents        % *.toc file with table of contents
+\listoffigures          % *.lof file with list of figures   % SWITCHED
+\listoftables           % *.lot file with list of tables    % THESE TWO
+     % Note that the \listoftables does not play well with the
+     % deluxetable environment.  You will probably have to do some
+     % hand-tweaking of the master.lot file if you have multi-page
+     % tables. 
+\clearpage
+\pagebreak              % Enforce the start of a new page
+
+
+%\prelimpages % from the UWash template -- what does it do?
+
+
+
+%%%%% BEGIN TEXT OF PAPER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+
+%\setfoot{\small \itshape \centerline{ DRAFT \today }} 
+
+% This is a hand-tweak by Dolan to fix his odd landscape tables in
+% compact style.  REMOVE THIS for your thesis!
+%\ifkompakt\renewcommand\arraystretch{1.1}\else\fi
+
+%\textpages  % UWash thesis template has this, what is it?
+
+%\include{chapter_1_intro}                % *.tex file for the Introduction
+%\include{chapter_2_evolution}                % *.tex file for the Introduction
+%\include{chapter_3_detector}      
+%\include{chapter_4_LO_MC}
+%\include{chapter_5_NLO}
+%\include{chapter_6_reconstruction}
+%\include{chapter_7_selection}
+%\include{chapter_8_analysis}   
+%\include{chapter_9_results}
+%\include{chapter_10_conclusion}    % *.tex file for the Conclusion
 
 \include{overview}
-
 \include{introduction}
-
 \include{experiment}
-
 \include{eventSimulation}
-
 \include{eventReconstruction}
-
 \include{eventSelection}
-
 \include{analysisMethod}
-
 \include{results}
-
 \include{conclusion}
 
+%\addtocontents{toc}{\protect\vspace{0.5cm}}
+%\appendix               % Resets chapter numbering to A, B, C... for appendices
+%\raggedbottom\sloppy    % UWash thesis template has this
+%\include{data_tables}
+%\include{systematics}
+
+%\include{bib}          % *.tex file for the Bibliography, or instead, use Latex4ZEUS!
+\fixspacing
+%\bibliography{bibliography,l4z_zeus,l4z_articles,l4z_conferences,l4z_misc,l4z_preprints,l4z_h1,l4z_temporary,syn}  % .bib files for the BibTex references
+\bibliography{citations}
+%\bibliographystyle{l4z_default}
+\bibliographystyle{ieeetr}   % or below
+%\bibliographystyle{unsrt}   % for using BibTex with references ordered as they appear
+
+% See the thesis.cls file for the steps to convert AASTeX papers
+% into thesis chapters
 
 
+%%%%% BEGIN APPENDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% ==========   Bibliography
-% \nocite{*}   % nocite{*} causes all items in the database to be included in the references, regardless of whether or not they are cited in the paper
-%\bibliographystyle{plain}
-\bibliographystyle{ieeetr}
-%\bibliographystyle{naturemag}
-\bibliography{uwthesis}
-
-% ==========   Appendices
-%
-\appendix
-\raggedbottom\sloppy
-  
-%\chapter{Extra}
-
-
-\end{document}
+\end{document}          % END THE DOCUMENT TEXT
