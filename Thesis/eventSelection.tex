@@ -82,9 +82,10 @@ one trigger tower. % and sends it,
 %compressed, to the RCT.  
 In addition, for each tower the ECAL TPG calculates a ``fine grain veto'' bit: 
 if most of the tower's energy is deposited in a 2x5 strip of crystals, 
-then the energy pattern is considered inconsistent with that of an electron
+then the energy pattern is considered consistent with that of an electron
 or photon, 
-and the veto bit is set.  
+and the veto bit is not set.  
+Otherwise, the veto bit is set.  
 % HOW EXACTLY IS SPIKE-KILLING DONE -- FG or zeroed?
 Similarly, the HCAL also combines energy deposits into trigger towers; 
 however, the HCAL fine grain structure bit is not used in electron-finding.  
@@ -184,7 +185,7 @@ complexity than the implementation at the offline level,
 where no such constraint exists.  
 In particular, while offline-reconstructed electrons 
 include tracker-driven electrons, 
-those reconstructed at the HLT are ECAL-drive only, 
+those reconstructed at the HLT are ECAL-driven only, 
 and the supercluster reconstruction algorithm uses 
 a lower number of steps in the search process.  
 Also, the size of the windows in which to search for 
