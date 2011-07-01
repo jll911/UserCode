@@ -51,21 +51,26 @@ The information coming directly from the ECAL
 is read out in terms of each cell's electronics response.  
 The ECAL reconstruction algorithms translate this into 
 an energy value, which is then calibrated 
-according to the the cell energy as well as its 
+according to the cell's energy %as well as its 
+and 
 $\eta$-position.  
 The algorithms also calculate quantities 
 relevant to the quality of the deposit, 
 in particular whether or not the deposit happened 
 at a time consistent with the LHC 
-bunch collisions, i.e. if it was ``out of time''.  
+bunch collisions, i.e. if it was ``in time'' or ``out of time''.  
 %bunch collisions, i.e. if it was ``in time''.  
 This information is especially useful in 
 identifying apparent energy deposits that have 
-been found to come from the electronics themselves; 
+been found to come from the 
+%electronics themselves; 
+signal-conversion electronics theselves (the transducers); % Wesley
 these fake deposits were discovered during 
 commissioning and are known as ``ECAL spikes''.  
 Since the spikes can imitate energy deposits from 
-actual decay products, 
+actual 
+%decay products, 
+particles, % Wesley
 they must be removed from the information used 
 to reconstruct electrons and other particles.  
 They can be distinguished from real particle deposits 
@@ -95,11 +100,13 @@ reconstruction.
 A track is a sequence of hits in the tracker, 
 reconstructed to trace the trajectory of a passing 
 particle.  
-The Kalman Filter algorithm used by default for CMS tracks, 
-but not good at catching abrupt changes in 
+The Kalman Filter algorithm is used by default for CMS tracks, 
+but is not good at catching abrupt changes in the 
 electron trajectory due to bremsstrahlung.  
-Therefore, GSF algorithm used for electrons -- 
-able to find those hits in unexpected directions.  
+Therefore, the Gaussian Sum Filter algorithm 
+is used for electrons, 
+because it is able to find 
+those hits in unexpected directions.  
 
 \subsubsection{Kalman Filter}
 \label{evReco:KF}
@@ -441,7 +448,7 @@ is then run on these tracks,
 in an attempt to recover the 
 bremsstrahlung-induced changes in track direction. 
 This reduced version of the GSF algorithm runs 
-must faster than that with the default parameters, 
+much faster than that with the default parameters, 
 but the performance is slightly reduced.  
 Finally, a multi-variate analysis (MVA) using 
 boosted decision trees 
@@ -495,6 +502,8 @@ is saved for further analysis.
 % cms note 2007/021
 The region where the beams overlap and protons may interact, 
 the ``luminous region'', is called the beam spot.  
+Typically this area is a few centimeters long, 
+with a width of 20-50 microns.  % Wesley
 The beam spot location can be used as an estimate 
 for the initial position of tracks measured in the detector, 
 and is therefore useful in track-seeding.  
@@ -516,11 +525,17 @@ This distribution is then fit with a sine curve
 parametrized in the beam spot's actual 
 $x$- and $y$-positions, 
 and these values are extracted.  
+Initially, one beam spot position was calculated    % Wesley (I think this is what he wanted)
+for a full run.  
+The calculation switched to using smaller run segments 
+called ``luminosity sections'' (LS) 
+in order to account for changes in the beam spot position 
+during a run.  
 
 \section{Primary Vertex Reconstruction} % ? probably
 \label{evReco:PV}
 % few twikis with some info (most don't have much):
-% https://twiki.cern.ch/twiki/bin/view/MCSPublic/WorkBookVertexReco
+% https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookVertexReco
 % https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideVertexReco
 % https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookOfflinePrimaryVertexFinding
 % http://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideOfflinePrimaryVertexProduction has like the most info
