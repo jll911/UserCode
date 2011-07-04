@@ -39,8 +39,8 @@ Each beam consists of a series of proton bunches,
 with a maximum of 2835 ``buckets'' in the beam to be filled by bunches.  
 The bunch structure is such that the nominal bunch crossing rate is 40 MHz.  
 
-The proton beams are accelerated from injection energy by a 
-radio frequency (RF) chamber, 
+The proton beams are accelerated from injection energy by %a 
+radio frequency (RF) cavities, %chamber, % Wesley
 which provides an energy boost with each circulation of the beam
 until the collision energy is achieved.  
 The beams are steered around the ring by 8-Tesla magnetic fields produced in 
@@ -128,19 +128,25 @@ and cathode strip chambers.
  \end{figure}
 
 The various parts of the CMS detector work together to differentiate
-the end-products of proton interactions.  
-As the end-product particles traverse their outward trajectory,
+the final particles produced in proton interactions.  
+As 
+%the end-product 
+these % I think; Wesley
+particles traverse their outward trajectory,
 they pass through the different subdetectors in turn.
-Figure \ref{fig:CMSParticles} shows how end-product particles 
+Figure \ref{fig:CMSParticles} shows how 
+%end-product 
+final % Wesley
+particles 
 interact with the subsystems of the CMS detector.  
 The innermost subdetector is the tracker, 
 which reconstructs a particle's track through it
 from a set of points where it detected an interaction.  
-The tracker only registers particles with an electric charge;%, 
+The tracker only registers particles with an electric charge; %, 
 %such as electrons or muons;
 neutral particles pass through undetected.  
 The electromagnetic calorimeter detects particles that interact
-primarily electromagnetically.%, 
+primarily electromagnetically. %, 
 %such as electrons and photons.
 %Since pions, which are hadrons, can interact in the ECAL like eg particles, 
 %have ES in endcap BUT PUT THIS IN ECAL SECTION
@@ -261,7 +267,10 @@ the measurements from each of the layers.
 
 \subsubsection{Pixels}
 \label{exp:pixels}
-The silicon pixel detector has a very fine accuracy
+The silicon pixel detector 
+%has 
+requires % Wesley
+a very fine accuracy
 due to the high density of tracks near the interaction point.  
 It consists of 65 million readout channels 
 arranged on modules in several layers around the interaction point.
@@ -270,7 +279,7 @@ radii of 4, 7, and 11 cm,
 while each endcap has two disks, at 6 and 15 cm from the
 interaction point. 
 Each module consists of a rectangular array of 100 $\mu$m x 150 $\mu$m pixels, 
-with a resolution of ~15 $\mu$m.  
+with a resolution of \~15 $\mu$m.  
 The pixels on each module are read out by a dedicated chip attached 
 to the module. 
 The chip contains readout unit cells, one corresponding to each pixel,
@@ -298,8 +307,8 @@ so the granularity does not need to be as fine.
 %don't need to have quite as minute accuracy here, since particles are already on their way out.
 %detection principle same as for pixels.
 Each strip is between about 12 and 16 cm long,
-with a resolution ranging from ~15 $\mu$m in the inner barrel
-to ~50 $\mu$m in the outer tracker.  
+with a resolution ranging from \~15 $\mu$m in the inner barrel
+to \~50 $\mu$m in the outer tracker.  
 The strips are arranged in modules of 6 inches in length, 
 with the geometry of each module dependent 
 on its position in the tracker.  
@@ -332,7 +341,8 @@ as well as the azimuthal.
 \label{exp:cal}
 The general purpose of a calorimeter 
 is to measure energy passing through it.  
-CMS measures the energy of decay products 
+CMS measures %the energy of decay products 
+particles' energies 
 with a scintillating electromagnetic calorimeter (ECAL),
 situated just outside the tracker,
 and a sampling hadronic calorimeter (HCAL),
@@ -344,7 +354,7 @@ to an uncertainty in the energy measurement.
 
 \subsubsection{ECAL}
 \label{exp:ECAL}
-The ECAL is made up of ~76,000 lead tungstate crystals,
+The ECAL is made up of \~76,000 lead tungstate crystals,
 arranged in a cylindrical barrel and disk-shaped endcap geometry.  
 The barrel is divided into 18 sections in $\phi$ and 
 two in $\eta$, called supermodules.  
@@ -356,9 +366,9 @@ The dimensions were chosen such that the width
 of each crystal is approximately the characteristic size of 
 an electromagnetic shower within it 
 (Moliere radius of 2.19 cm),
-and the length is ~25 times the radiation length 
+and the length is \~25 times the radiation length 
 of the material (0.89 cm for lead tungstate).  
-The crystals are oriented with the long axis
+In the barrel, the crystals are oriented with the long axis
 directed towards the interaction point.  
 However, to avoid particles being lost in the cracks 
 between the crystals,
@@ -467,9 +477,9 @@ relatively low muon rates in this area,
 in addition to a uniform magnetic field in the 
 return yoke.  
 Four stations of chambers are interspersed 
-with the iron frame to form
+within the iron frame to form % within instead of with -- Wesley
 concentric cylinders around the beam pipe, 
-with a total of ~172,000 detection wires.  
+with a total of \~172,000 detection wires.  
 Orthogonal positioning of the wires 
 within each chamber provides measurement of 
 both azimuthal and longitudinal position.  
@@ -549,7 +559,7 @@ Overall, the muon system has a momentum resolution
 of 9\% for relatively moderate-$p_T$, low-$\eta$ muons, 
 and ranging from 15\% to 40\% for very-high-$p_T$ muons.  
 When combined with the information from the inner tracker, 
-however, this resolution improves to ~1\% and 5\%, respectively.  
+however, this resolution improves to \~1\% and 5\%, respectively.  
 
 \subsection{Trigger}
 \label{exp:trigger}
@@ -565,7 +575,7 @@ The Level-1 Trigger uses hardware-implemented algorithms to
 reduce the event rate from the LHC collision frequency of 40 MHz 
 to a maximum of 100 kHz; 
 this must be done quickly since the initial event rate is high. 
-The High-Level Trigger reduces the rate further to ~200 Hz, %(OR 100??)
+The High-Level Trigger reduces the rate further to \~200 Hz, %(OR 100??)
 using a computer farm to process each event in more detail; 
 having a lower input rate, it can afford more processing time per event.  
 
@@ -606,7 +616,10 @@ The trigger system must combine all the pieces of information
 according to which bunch crossing they originate from.   
 This is complicated by the fact that the time it takes particles 
 to reach the outer edge of the muon system 
-is about that of the bunch crossing interval.  
+is 
+%about 
+more than % Wesley
+that of the bunch crossing interval.  
 In addition, the cable lengths between the subdetectors 
 and the trigger subsystems and within the trigger are 
 all different, 
@@ -663,7 +676,7 @@ is shown in Fig.~\ref{fig:RCTStructure}.
 The information from the calorimeters arrives at the level of trigger towers, 
 a larger granularity than that sent to the full readout.  
 Each ECAL tower corresponds to an HCAL tower behind it.  
-For each ECAL+HCAL tower, the RCT uses lookuptables to 
+For each ECAL+HCAL tower, the RCT uses memory lookup tables (LUTs) to 
 calculate the total energy sum 
 as well as the ratio of HCAL energy to ECAL energy.  
 If that ratio is higher than a certain value, 
@@ -778,11 +791,14 @@ whether to accept or reject an event at the Level-1.
 The High-Level Trigger (HLT) \cite{hlt-0512077} 
 is implemented on a computer farm in the 
 CMS above-ground control room building.  
-It serves to reduce the L1 output event rate from ~100 kHz to a rate suitable 
+It serves to reduce the L1 output event rate from \~100 kHz to a rate suitable 
 for transfer and storage to disk, around 200 Hz.  
 An event must pass the HLT to be analyzed offline.  
 The input rate at this stage is lower than that at the Level-1, 
-so more time can be afforded to spend on the decision, 
+so more time can be 
+%afforded to spend 
+spent % Wesley
+on the decision, 
 and more detailed reconstruction can be done.  
 The HLT uses versions of the standard offline physics-object reconstruction algorithms 
 optimized for fast performance.  
