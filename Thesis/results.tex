@@ -9,7 +9,10 @@ Now, the relevant distributions will be presented
 as a cross-check, 
 and the components will be assembled into a 
 final result: the \Zee cross section.  
-The result should also be compared with 
+The result 
+%should 
+will % Wesley
+also be compared with 
 a theoretical value and with other 
 analyses' results to check its validity.  
 
@@ -18,12 +21,33 @@ analyses' results to check its validity.
 
 The spectra of the electron kinematic variables after the full 
 event selection, including the invariant mass cut, 
+of both data and Monte Carlo samples 
 are shown in Figure~\ref{fig:RecoSpectraAfterEid}: 
-electron \pt, $\eta$, and $\phi$.  
+electron transverse momentum \pt, 
+pseudorapidity $\eta$, and 
+azimuthal angle $\phi$.  
+These basic distributions could indicate problems with the data.  
+Large shape differences in the electron \pT plot can 
+be a sign of unexpected background in the data sample; 
+the $\eta$ and $\phi$ distributions can indicate issues with 
+reconstruction algorithms or detector alignment.  
+For example, a problem specific to the calorimeter endcaps 
+might show up in the $\eta$ distribution. 
+Similarly, a non-uniform $\phi$ distribution would 
+indicate a problem, since the physics interactions 
+are expected to be symmetric about the beam axis.  
+Each plot in Figure~\ref{fig:RecoSpectraAfterEid} also 
+displays a ratio plot, showing the ratio of data to Monte Carlo 
+event numbers in each bin; 
+these give a quantitative measure of disagreement.  
 In general the data distributions agree fairly well with the 
 Monte Carlo distributions, 
 especially in bins with many events (small relative error bars).  
 %This suggests that the generated signal
+This agreement demonstrates that 
+the Monte Carlo accurately models the data, i.e. that 
+the effects of the cuts on 
+the data sample are understood.  
 
 %Figure~\ref{fig:RecoSpectraAfterEid} shows the electron \pt, $\eta$, and $\phi$ spectra 
 %after the full electron selection.  
@@ -40,10 +64,18 @@ especially in bins with many events (small relative error bars).
   \end{center}
 %  \caption[Reconstructed electron/photon Pt, eta, phi spectra after ID]{Reconstructed electron/photon Pt, eta, phi spectra after ID.}
    \caption[\fixspacing Reconstructed electron \pt, $\eta$, $\phi$ spectra after full selection]{
-   \fixspacing Spectra of reconstructed electron kinematic quantities after all electron selection cuts. 
-   The plots show distributions for electron \pt, $\eta$, and $\phi$ respectively.  
-   The agreement between real data and the simulated sample is good, demonstrating 
-   that the effects of the cuts on the data are understood.  
+   \fixspacing Spectra of reconstructed electron kinematic quantities after all event selection cuts. 
+   The plots show distributions for 
+   \subref{fig:ElectronEtAfterCuts} electron transverse momentum \pt, 
+   \subref{fig:ElectronEtaAfterCuts} electron pseudorapidity $\eta$, and 
+   \subref{fig:ElectronPhiAfterCuts} electron azimuthal angle $\phi$. % respectively.  
+   Each plot shows the data (black points with error bars) superimposed over the Monte Carlo 
+   distributions (colored/shaded areas with varied line styles).  
+   The signal Monte Carlo sample is shown by the solid black line against the white background.  
+   Most of the background has been cut out by the event selection.  
+   Below each plot is the ratio of the data to Monte Carlo event numbers for each bin.  
+%   The agreement between real data and the simulated sample is good, demonstrating 
+%   that the effects of the cuts on the data are understood.  
   }
   \label{fig:RecoSpectraAfterEid}
  \end{figure}
@@ -86,12 +118,17 @@ the ratio of the data and Monte Carlo selection efficiencies,
 0.933 (taken from Table~\ref{TableEfficiencies}), 
 was used as the scale factor.  
 The peak around the Z mass (91 GeV) is clearly visible 
-in both the Monte Carlo (solid) and data (points) distributions.  
+in both the Monte Carlo (lines) and data (points) distributions.  
 The background contributions estimated from Monte Carlo simulation 
 are shown as the colored (grayscale) areas.  
 A slight shift in the peak position along the x-axis is 
 evident, due to slight miscalibrations of 
 the calorimeter response to given energies.  
+The transparency of the ECAL crystals changed over time 
+due to radiation, 
+and the corrections for this transparency loss 
+were not fully developed at the time of the 
+data reprocessing.  % is this okay for Wesley?  
 This difference is accounted for in the 
 systematic uncertainty due to the electron energy scale 
 (see Section~\ref{anMeth:SystsOtherEleEScale}).  
@@ -102,6 +139,9 @@ and the resulting invariant mass spectra are
 shown in Fig.~\ref{fig:InvMassEtaDiv}.  
 Agreement in each case is good to within the 
 uncertainty.  
+The agreement in the invariant mass plots supports 
+the use of this set of candidate events in 
+the cross section calculation.  
 
 %ALSO TALK ABOUT HOW PLOTS SCALED??!!  
 %somewhere, like in event selection? 
@@ -119,14 +159,15 @@ uncertainty.
   \caption[\fixspacing Electron-pair invariant mass after full selection]
   {\fixspacing Electron-pair invariant mass after full selection.
     The peak around the Z mass (91 GeV) is clearly visible
-    in both the Monte Carlo (solid) and data (points) distributions.
+    in both the Monte Carlo signal (solid line) 
+    and data (points) distributions.
     The background contributions estimated from Monte Carlo simulation
     are shown as the colored (grayscale) areas.
-    A slight shift in the peak position along the x-axis is
-    evident, due to slight miscalibrations of
-    the calorimeter response to given energies.
-    This difference is accounted for in the
-    systematic uncertainty due to the electron energy scale.
+%    A slight shift in the peak position along the x-axis is
+%    evident, due to slight miscalibrations of
+%    the calorimeter response to given energies.
+%    This difference is accounted for in the
+%    systematic uncertainty due to the electron energy scale.
   }
   \label{fig:InvMass}
  \end{figure}
@@ -153,7 +194,11 @@ uncertainty.
     and both electrons in the endcap 
     %(Fig.~\ref{fig:InvMassEtaDivEndcapEndcap}).
     \subref{fig:InvMassEtaDivEndcapEndcap}.
-    In each case the agreement between data and Monte Carlo simulation is good.  
+    Each plot shows the data (black points with error bars) superimposed over the Monte Carlo 
+    distributions (colored/shaded areas with varied line styles).  
+    The signal Monte Carlo sample is shown by the solid black line against the white background.  
+    Most of the background has been cut out by the event selection.  
+%    In each case the agreement between data and Monte Carlo simulation is good.  
   }
   \label{fig:InvMassEtaDiv}
  \end{figure}
@@ -211,7 +256,15 @@ it can safely be ignored and the general agreement accepted.
     \subfloat[Azimuthal Angle]{\label{fig:ZPhi}\includegraphics[width=180pt]{Figures/Zphi-18May11-revised-04Jul11.png}}
   \end{center}
   \caption[\fixspacing Kinematic quantities of Z candidates after full selection]{
-  \fixspacing Kinematic quantities of Z candidates after full event selection.
+    \fixspacing Kinematic quantities of Z candidates after full event selection: 
+    \subref{fig:ZPt} Z transverse momentum \pt, 
+    \subref{fig:ZRap} Z rapidity, and 
+    \subref{fig:ZPhi} Z azimuthal angle $\phi$.
+    Each plot shows the data (black points with error bars) superimposed over the Monte Carlo 
+    distributions (colored/shaded areas with varied line styles).  
+    The signal Monte Carlo sample is shown by the solid black line against the white background.  
+    Most of the background has been cut out by the event selection.  
+    Below each plot is the ratio of the data to Monte Carlo event numbers for each bin.  
   }
   \label{fig:Zquantities}
  \end{figure}
