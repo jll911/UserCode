@@ -232,12 +232,14 @@ This method is only useful to determine the
 background from QCD; 
 its technique relies on ``background'' electrons 
 being qualitatively different from 
-``good electrons'' 
+%``good electrons'' 
+``signal'' electrons % Wesley
 (measured by the variable being used), 
 but electrons from interactions similar 
 to the signal interaction, 
 such as \Wenu, 
-are also ``good electrons.''  
+% are also ``good electrons.''  
+are also high-quality or ``signal'' electrons. % Wesley
 Objects arising from QCD interactions that are 
 identified as ``electrons'' are more likely 
 clusters of hadronic particles 
@@ -259,6 +261,16 @@ Several new working points, based on WP80
 were defined to select 
 the signal-like and background-like template samples, 
 as well as the data distribution used in the comparison.  
+Specific cut values for each working point 
+are given in 
+Table~\ref{TableWPs}, % shows the cut values for 
+%WP80 and 
+as well as 
+how each of the working points used 
+in the template method is modified with 
+respect to WP80.  
+Cut values changed with respect to WP80 
+are displayed in italics.  
 
 The first working point, used to select the data, 
 is called ``Semi-Tight'' and is identical to WP80 
@@ -290,7 +302,7 @@ the values for
 \dphiin in both the barrel and the endcap, 
 $H/E$ in the barrel, 
 and \detain in the endcap 
-were modified.  
+were tightened.  % modified
 To select the signal template sample, 
 each event was required to have two electrons 
 passing the Tight working point, 
@@ -323,19 +335,21 @@ have the same sign in order to reject signal.
 %highlight changed values?  HA, with italics
 %(or tables of just changed values?)
 
-Table~\ref{TableWPs} shows the cut values for 
-WP80 and how each of the working points used 
-in the template method is modified with 
-respect to WP80.  
-Cut values changed with respect to WP80 
-are displayed in italics.  
+%Table~\ref{TableWPs} shows the cut values for 
+%WP80 and how each of the working points used 
+%in the template method is modified with 
+%respect to WP80.  
+%Cut values changed with respect to WP80 
+%are displayed in italics.  
 
 
 % WP'S
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing 
+    \caption[Summary of the standard working point and 
+      the working points used in the template method.]
+    {\fixspacing 
       Summary of the standard working point as well as 
       the working point definitions used 
       in the template method.
@@ -363,7 +377,7 @@ are displayed in italics.
       \dphiin         & 0.06  & 0.03  & 0.06  & 0.03  & \textit{0.03} & \textit{0.02} & \textit{0.3} & \textit{0.15}  \\ \hline % 
       \detain         & 0.004 & 0.007 & 0.004 & 0.007 & 0.004 & \textit{0.005} & \textit{0.02} & \textit{0.035}  \\ \hline % 
       $H/E$           & 0.04  & 0.025 & 0.04  & 0.025 & \textit{0.025} & 0.025 & \textit{0.2} & \textit{0.125}  \\ \hline % 
-      Supercluster \Et & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{25} & \multicolumn{2}{|c|}{\textit{20}}  \\ \hline % 
+      Supercluster \Et & \multicolumn{2}{|c|}{25 GeV} & \multicolumn{2}{|c|}{25 GeV} & \multicolumn{2}{|c|}{25 GeV} & \multicolumn{2}{|c|}{\textit{20 GeV}}  \\ \hline % 
     \end{tabular}
   \end{center}
 \end{table}
@@ -539,8 +553,8 @@ the cut threshold would be lower than over the
 entire spectrum, 
 since more of the background distribution 
 was above the cut threshold than the data distribution.  
-The calculated values therefore agree with the 
-expectation in that sense.  
+%The calculated values therefore agree with the 
+%expectation in that sense.  % Wesley
 
 The signal and background fractions of the data sample 
 determined both from the full isolation spectrum and 
@@ -581,7 +595,9 @@ is 0.2\%.  % RELATIVE UNCERTAINTY NOT DEFINED YET
 \label{anMeth:BGSubSideband}
 
 An additional method of estimating background was 
-attempted, to cross-check the other two.  
+%attempted, 
+used, % Wesley
+to cross-check the other two.  
 This method involved fitting the invariant mass 
 peak with a lineshape to model the signal plus 
 one to model the background, 
