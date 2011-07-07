@@ -51,15 +51,17 @@ which are used as the basis for the offline selections.
 Since the LHC began taking data the event rate has changed by several orders of magnitude,  
 %In order to keep up with the changing rate, 
 and the trigger menus have evolved accordingly to deal with the changes.  
-Initially, the collision rate was so low that minimum bias triggers ran unprescaled.  
-However, it soon increased to the point where the minimum bias trigger rate became too high
-and had to be prescaled, and photon triggers were used instead.  
+Initially, the collision rate was so low that minimum bias triggers ran unprescaled, 
+so they were used to take the first analysis data.  
+However, the collision rate soon increased to the point where the minimum bias trigger rate became too high
+and had to be prescaled, and photon triggers were instead used %instead % , 
+to specifically capture events with electron-like objects.  % 
 Eventually the photon trigger rate at the desired threshold also became too high,
 necessitating the extra constraints of the electron trigger at the same threshold.  
 The rate for that trigger also increased, so to avoid prescaling the rate or increasing the threshold,
 tighter selection criteria were applied to the objects that fired the trigger.  
-These criteria are looser than those applied in the course of analysis and so are not expected
-to seriously affect the trigger efficiency.  
+These criteria are looser than those applied in the course of this analysis and so are not expected
+to seriously affect the trigger efficiency for the analysis sample.  
 
 
 %% TALK ABOUT SOMEWHERE PREVIOUSLY: <strike>TRIGGER MENUS + PRESCALES,</strike> *MINIMUM BIAS*
@@ -70,10 +72,10 @@ to seriously affect the trigger efficiency.
 %Description of egamma algorithm, along with diagrams.  
 %The electron-reconstruction algorithm for the Level-1 trigger is implemented in the Regional Calorimeter Trigger (see detector section).
 Reconstructing and triggering on an electron with the Level-1 Trigger 
-involves information from the calorimeters, 
+involves information from the calorimeters, processed by 
 Regional Calorimeter Trigger, Global Calorimeter Trigger, and 
 Global Trigger.  
-Electrons and photons are indistinguishable in the L1 and are therefore 
+Electrons and photons are indistinguishable in the L1 trigger and are therefore 
 treated the same, as ``$e/\gamma$'' objects.  
 
 The ECAL trigger primitive generation system (TPG) combines the energy deposits 
@@ -186,11 +188,13 @@ where no such constraint exists.
 In particular, while offline-reconstructed electrons 
 include tracker-driven electrons, 
 those reconstructed at the HLT are ECAL-driven only, 
-and the supercluster reconstruction algorithm uses 
+and the supercluster reconstruction algorithm 
+(Section~\ref{evReco:SC}) uses 
 a lower number of steps in the search process.  
 Also, the size of the windows in which to search for 
 hits in the pixel-matching part of the 
-reconstruction is larger than that used offline.  
+reconstruction (Section~\ref{evReco:pixMatch}) 
+is larger than that used offline.  
 
 %% However, these algorithms are used in different ways at the HLT 
 %% because of differences in performance considerations.  
@@ -208,27 +212,6 @@ reconstruction is larger than that used offline.
 %% YES, just the things that are used in the relevant paths.  
 %% have short mentions also of e.g. eid vars and give reference to future section
 
-
-%Table of triggers used
-\begin{table}[htbp]
-%  \centering
-  \begin{center}
-    \caption{\fixspacing Trigger paths used to select data.}
-    \label{TableTriggerPaths}
-%    \begin{tabular}[]{ | l | c | c | }
-    \begin{tabular}[]{ | l | }
-      \hline
-      Trigger  \\ \hline \hline
-      HLT\_Photon15\_Cleaned\_L1R  \\ \hline
-      HLT\_Ele15\_LW\_L1R  \\ \hline
-      HLT\_Ele15\_SW\_L1R  \\ \hline
-      HLT\_Ele15\_SW\_CaloEleId\_L1R  \\ \hline
-      HLT\_Ele17\_SW\_CaloEleId\_L1R  \\ \hline
-      HLT\_Ele17\_SW\_TightEleId\_L1R  \\ \hline
-      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R  \\ \hline
-    \end{tabular}
-  \end{center}
-\end{table}
 
 %% things common to all paths used: L1 match, SC reco, spike, et cut
 
@@ -248,12 +231,38 @@ clusters of energy deposits are identified,
 and clusters having too narrow a spatial distribution are 
 rejected as being spikes.  
 %........???????
-The trigger paths used in this analysis, shown in Table~\ref{TableTriggerPaths} 
+The trigger paths used in this analysis, 
+shown in chronological order in Table~\ref{TableTriggerPaths}, 
 all required (at least) one 
 $e/\gamma$ or electron candidate above a certain energy threshold, 
 with possible other criteria applied to the candidate as well.%, 
 %depending on the path.  
 
+%Table of triggers used
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{\fixspacing Trigger paths used to select data, 
+    in chronological order of use. 
+    See text for explanation of path names.  
+    }
+    \label{TableTriggerPaths}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | }
+      \hline
+      Trigger  \\ \hline \hline
+      HLT\_Photon15\_Cleaned\_L1R  \\ \hline
+      HLT\_Ele15\_LW\_L1R  \\ \hline
+      HLT\_Ele15\_SW\_L1R  \\ \hline
+      HLT\_Ele15\_SW\_CaloEleId\_L1R  \\ \hline
+      HLT\_Ele17\_SW\_CaloEleId\_L1R  \\ \hline
+      HLT\_Ele17\_SW\_TightEleId\_L1R  \\ \hline
+      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R  \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+The paths are named according to the following considerations.  
 Initially, the LHC collision rate was low enough that loose 
 requirements and low thresholds could be used without 
 overwhelming the system.  
@@ -261,19 +270,31 @@ The first trigger used did not require any matches to
 hits in the pixel part of the tracker, 
 in contrast to all subsequent trigger paths used -- 
 without tracking requirements, it was by definition a 
-photon trigger.  
-In addition, after a few menu iterations 
-the energy threshold applied to the candidate 
+``Photon'' trigger, 
+as opposed to the ``Electron (Ele)'' triggers.  
+The designation ``Cleaned'' means that a spike-cleaning 
+algorithm was in place, as well.  
+%In addition, 
+After a few menu iterations 
+the energy threshold applied to the candidate, 
+designated by the number in the path name,  
 increased from 15 GeV to 17 GeV.  
 The size of the window used to search for potential pixel 
-matches also decreased (from ``large-window'' to ``startup-window'').%, 
+matches also decreased, from ``large-window'' ($LW$) 
+to ``startup-window'' ($SW$). %, 
 %and various further criteria were applied to 
-Later, various further criteria were applied to 
-the shape of the total energy deposit (\sieie, $H/E$) and 
-to the quality of the match between the energy cluster and the track 
+Later, further criteria were applied to 
+the shape of the total energy deposit (\sieie, $H/E$); %and 
+since this information comes only from the calorimeter, 
+paths with such constraints have ``Calo'' in their name.  
+Later paths included additional criteria, 
+on the quality of the match between the energy cluster and the track 
 that make up the electron (\detain, \dphiin), 
-as well as to the amount of energy surrounding 
-the electron candidate (isolations).  
+and were designated as ``Tight'' or ``Tighter'' according 
+to the stringency of their constraints.  
+Finally, constraints were added for the amount of energy surrounding 
+the electron candidate, or ``isolations'' 
+designated by ``Isol'' in the path name.  
 These further criteria are described in more detail in 
 Section~\ref{evSel:elec}; 
 %Sections~\ref{evSel:eid}~and~\ref{evSel:isol}; 
@@ -417,7 +438,7 @@ each event be ``good'':
 that is, within 24 cm of the nominal interaction point 
 in the longitudinal direction
 and 2 cm in the transverse direction, 
-and having a minimum of 4 degrees of freedom,
+and having a minimum of 4 degrees of freedom (called NDOF),
 which is a measure of the quality of the vertex fit.  %EXPLAIN WHAT THIS MEANS MORE?
 More detailed selections were made on the event contents, 
 which will be discussed in the following sections.  
@@ -431,7 +452,8 @@ events.
 \subsection{Electron Selection}
 \label{evSel:elec}
 The electron selection starts with the full set of objects reconstructed as electrons, 
-i.e. ECAL energy deposits with nearby tracks.  
+%i.e. ECAL energy deposits with nearby tracks.  
+i.e. ECAL energy deposits (superclusters, see Section~\ref{evReco:SC}) matched with nearby tracks.  
 The objects in this collection are not necessarily real electrons 
 %but energy deposits consistent with those from electrons at a low-level.  
 but are consistent with the electron signature at a low level.  
@@ -459,32 +481,51 @@ A deciding factor in the switch was the fact that the evolving trigger paths eve
 tighter than those used in the offline (WP95) analysis.  
 This analysis uses the WP80 set of cuts for the complete dataset.  
 
-The selection cuts are displayed in the following cuts applied only to simulated data.  
+%The selection cuts are displayed in the following cuts applied only to simulated data.  
+The plots in the following sections showing the distributions and cut values 
+only display simulated data.  
 The QCD Monte Carlo sample has effective electron isolation cuts already applied, 
 so until the corresponding selection cuts are applied to data, 
 the data does not agree with the Monte Carlo distributions.  
 However, after all cuts have been applied the agreement is good; 
 this will be demonstrated in a later section.  
+All results plots include the data distributions.  
 
 %ETA AND ET CUTS!!!
 
 \subsubsection{Conversion Rejection}
 \label{evSel:convRej}
-The conversion rejection step of the electron selection aims to eliminate photons that have converted into electron pairs.  
-Several variables have been chosen to distinguish between conversions and prompt electrons, focusing on the track properties.  
+The conversion rejection step of the electron selection aims 
+to eliminate photons that have converted into electron pairs.  
+Several variables have been chosen to distinguish between 
+conversions and prompt electrons, focusing on the track properties.  
 Since prompt electrons are expected to hit the first layer of the tracker, 
-any electron-associated track that is missing initial hits can be rejected as a conversion that occurred within the tracker.  
-The looser requirements of the 95 percent efficient working point allow an electron to have one missing hit;
+any electron-associated track that is missing initial hits 
+can be rejected as a conversion that occurred within the tracker.  
+The looser requirements of the 95 percent efficient working point 
+allow an electron to have one missing hit;
 tighter working points such as WP80 require zero missing hits.  
-Fig. \ref{fig:MissHitsConvRejVars} shows the number of missing hits for each electron.  
-In addition, the conversion rejection algorithm searches for candidate electron-pair partner tracks, 
+Figure~\ref{fig:MissHitsConvRejVars} shows the number 
+of missing hits for each electron.  
+In addition, the conversion rejection algorithm searches 
+for candidate electron-pair partner tracks, 
 i.e. track pairs that appear to come from the same point.  
-Every electron track is compared to all opposite-charge tracks within a dR cone of 0.3, and two values are calculated: 
-a measure of the difference in the angles in the r-z plane between the two tracks (\dCotTheta, Fig. \ref{fig:DCotConvRejVars}), 
-and the distance of closest approach between the two tracks in the x-y plane ($dist$, Fig. \ref{fig:DistConvRejVars}).  
-Electron pairs from conversions are expected to have low values for both quantities, 
-since both electron tracks begin at the point of conversion and initially have the same direction as the converting photon.  
+Every electron track is compared to all opposite-charge tracks 
+within a dR cone of 0.3, and two values are calculated: 
+a measure of the difference in the angles in the r-z plane 
+between the two tracks (\dCotTheta, Figure~\ref{fig:DCotConvRejVars}), 
+and the distance of closest approach between the two tracks 
+in the x-y plane ($dist$, Figure~\ref{fig:DistConvRejVars}).  
+Electron pairs from conversions are expected 
+to have low values for both quantities, 
+since both electron tracks begin at the point of conversion 
+and initially have the same direction as the converting photon.  
 The WP80 requirements apply a threshold at 0.02 for both quantities.  
+The selection is such that an electron candidate 
+that fails both the missing hits cut 
+and one of the other cuts ise rejected as a conversion.  
+This way a single anomalous measurement does not 
+result in a true electron being rejected.  
 %The 95-percent efficient working point is looser than the other working points in that it does not apply cuts on these quantities.  
 %The other working points reject electrons having a value of less than 0.02 for both.  
 %If an electron track corresponds to a track pair having values below that threshold for both variables, 
@@ -496,7 +537,17 @@ The WP80 requirements apply a threshold at 0.02 for both quantities.
     \subfloat[$\Delta\cot\theta$]{\label{fig:DCotConvRejVars}\includegraphics[width=180pt]{Figures/dCotTheta-14Apr11-revised-04Jul11.png}}
     \subfloat[Dist]{\label{fig:DistConvRejVars}\includegraphics[width=180pt]{Figures/dist-14Apr11-revised-04Jul11.png}}
   \end{center}
-  \caption[\fixspacing Conversion rejection variables after previous cuts]{\fixspacing Conversion rejection variables after previous cuts.}
+  \caption[\fixspacing Conversion rejection variables after \Et cut]
+  {\fixspacing Conversion rejection variables after \Et cut: 
+  \subref{fig:MissHitsConvRejVars} the number of missing hits in the tracker, 
+  \subref{fig:DCotConvRejVars} the value of $\Delta\cot\theta$ 
+  between the electron track and any partner track, and 
+  \subref{fig:DistConvRejVars} $dist$, 
+  the distance of closest approach between the two tracks. 
+  The solid line against the white background shows the signal sample; 
+  the shaded areas with varied linestyles show the backgrounds. 
+  The vertical line shows where the cut was made.  
+  }
   \label{fig:ConvRejVars}
  \end{figure}
 
@@ -511,13 +562,13 @@ We want to select those real electrons that are most likely to be prompt decay p
 not those that come from some secondary interaction with many other end products.  
 Therefore we apply a set of cuts requiring little detector activity 
 in the area immediately surrounding the reconstructed electron.  
-The so-called isolation cuts look at the energy deposits 
+These so-called isolation cuts look at the energy deposits 
 in the electromagnetic and hadronic calorimeters separately,
 as well as the total \pt of neighboring tracks, 
 within specified \DR cones around the electron-associated deposit/track.  
 These energies are divided by the \pt of the electron itself to arrive at a relative value,
 which allows for higher-energy particles that may deposit more energy in the surrounding area.  
-The thresholds for each of the three types of isolation is set separately for barrel and endcap, 
+The thresholds for each of the three types of isolation are set separately for barrel and endcap, 
 as given in Table \ref{TableEisoCuts}.  
 Plots of the separate isolation distributions for both barrel and endcap 
 are shown after previously-applied selection cuts in 
@@ -535,7 +586,12 @@ Fig.~\ref{fig:hcalElecIsoVars} for HCAL isolation.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing Thresholds for WP80 relative isolation.}
+    \caption[WP80 thresholds for relative isolation]
+    {\fixspacing WP80 thresholds for relative isolation.
+    The value of each type of isolation (ECAL, HCAL, track) 
+    is divided by the electron's \pt, and the result is 
+    required to be below the threshold.  
+    }
     \label{TableEisoCuts}
     \begin{tabular}[]{ | l | c | c | }
       \hline
@@ -557,7 +613,18 @@ Fig.~\ref{fig:hcalElecIsoVars} for HCAL isolation.
     \subfloat[Barrel]{\label{fig:trkBarrelElecIsoVars}\includegraphics[width=180pt]{Figures/trkIso-barrel-14Apr11-revised-04Jul11.png}}
     \subfloat[Endcap]{\label{fig:trkEndcapElecIsoVars}\includegraphics[width=180pt]{Figures/trkIso-endcap-14Apr11-revised-04Jul11.png}}
   \end{center}
-  \caption[\fixspacing Electron tracker isolation variables before respective cuts]{\fixspacing Electron tracker isolation variables before respective cuts.}
+%  \caption[\fixspacing Electron tracker isolation variables before respective cuts]
+%  {\fixspacing Electron tracker isolation variables before respective cuts.}
+  \caption[\fixspacing Electron tracker isolation variables after \Et and conversion rejection cuts]
+  {\fixspacing Electron tracker isolation variables after \Et and conversion rejection cuts, for %. 
+  \subref{fig:trkBarrelElecIsoVars} barrel and 
+  \subref{fig:trkEndcapElecIsoVars} endcap.  
+  Relative tracker isolation is equal to the sum of the \pt of tracks 
+  in a cone around the electron, divided by the electron's \pt.  
+  The solid line against the white background shows the signal sample; 
+  the shaded areas with varied linestyles show the backgrounds. 
+  The vertical line shows where the cut was made.  
+  }
   \label{fig:trkElecIsoVars}
  \end{figure}
 
@@ -568,7 +635,17 @@ Fig.~\ref{fig:hcalElecIsoVars} for HCAL isolation.
     \subfloat[Barrel]{\label{fig:ecalBarrelElecIsoVars}\includegraphics[width=180pt]{Figures/ecalIso-barrel-14Apr11-revised-04Jul11.png}}
     \subfloat[Endcap]{\label{fig:ecalEndcapElecIsoVars}\includegraphics[width=180pt]{Figures/ecalIso-endcap-14Apr11-revised-04Jul11.png}}
   \end{center}
-  \caption[\fixspacing Electron ECAL isolation variables before respective cuts]{\fixspacing Electron ECAL isolation variables before respective cuts.}
+%  \caption[\fixspacing Electron ECAL isolation variables before respective cuts]{
+%  \fixspacing Electron ECAL isolation variables before respective cuts.
+  \caption[\fixspacing Electron ECAL isolation variables after \Et, conversion rejection, and tracker isolation cuts]{
+  \fixspacing Electron ECAL isolation variables after \Et, 
+  conversion rejection, and tracker isolation cuts.
+  Relative ECAL isolation is equal to the sum of the \Et of ECAL deposits 
+  in a cone around the electron, divided by the electron's \pt.
+  The solid line against the white background shows the signal sample;
+  the shaded areas with varied linestyles show the backgrounds.
+  The vertical line shows where the cut was made.
+  } 
   \label{fig:ecalElecIsoVars}
  \end{figure}
 
@@ -579,7 +656,17 @@ Fig.~\ref{fig:hcalElecIsoVars} for HCAL isolation.
     \subfloat[Barrel]{\label{fig:hcalBarrelElecIsoVars}\includegraphics[width=180pt]{Figures/hcalIso-barrel-14Apr11-revised-04Jul11.png}}
     \subfloat[Endcap]{\label{fig:hcalEndcapElecIsoVars}\includegraphics[width=180pt]{Figures/hcalIso-endcap-14Apr11-revised-04Jul11.png}}
   \end{center}
-  \caption[\fixspacing Electron HCAL isolation variables before respective cuts]{\fixspacing Electron HCAL isolation variables before respective cuts.}
+%  \caption[\fixspacing Electron HCAL isolation variables before respective cuts]{
+%  \fixspacing Electron HCAL isolation variables before respective cuts.
+  \caption[\fixspacing Electron HCAL isolation variables after \Et, conversion rejection, and tracker and ECAL isolation cuts]{
+  \fixspacing Electron HCAL isolation variables after \Et, 
+  conversion rejection, and tracker and ECAL isolation cuts.
+  Relative HCAL isolation is equal to the sum of the \Et of HCAL deposits 
+  in a cone around the electron, divided by the electron's \pt.
+  The solid line against the white background shows the signal sample;
+  the shaded areas with varied linestyles show the backgrounds.
+  The vertical line shows where the cut was made.
+  }
   \label{fig:hcalElecIsoVars}
  \end{figure}
 
@@ -616,7 +703,7 @@ The electron's energy deposit is also expected to be narrow relative to that of 
 A measure of the width in the $ \eta $ direction is therefore calculated 
 using the energies and positions of the individual ECAL crystals, \sieie,
 and this quantity is required to be below the thresholds listed in Table \ref{TableEidCuts}.  
-(The $ \phi $ direction is not examined because bremsstrahlung from the electron 
+(The $ \phi $ direction is not examined because bremsstrahlung from the bending electron 
 can cause a significant spread of the energy in $ \phi $.)  
 The definition of \sieie is given in terms of the energies and $\eta$ positions of the  %% REF TALK BY SAM HARPER???
 individual crystals $i$ (inclusing the seed crystal), 
@@ -645,7 +732,13 @@ all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing WP80 electron identification cuts.}
+    \caption[WP80 thresholds for electron identification variables]
+    {\fixspacing WP80 thresholds for electron identification variables. 
+    Each variable for a given electron 
+    is required to be below the stated threshold 
+    according to the electron's location in the detector. 
+    Definitions of the variables are given in the text.  
+    }
     \label{TableEidCuts}
     \begin{tabular}[]{ | l | c | c | }
       \hline
@@ -668,8 +761,8 @@ all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.
   %%  \begin{center}
   \subfloat[Barrel]{\label{fig:dEtaInBarrelElecIdVars}\includegraphics[width=180pt]{Figures/detain-barrel-14Apr11-revised-04Jul11.png}}
   \subfloat[Endcap]{\label{fig:dEtaInEndcapElecIdVars}\includegraphics[width=180pt]{Figures/detain-endcap-14Apr11-revised-04Jul11.png}}
-  \caption[\fixspacing \detain electron identification variables after previous cuts]{
-    \fixspacing \detain electron identification variables after previous cuts. 
+  \caption[\fixspacing \detain electron identification variables after \Et, conversion rejection, and isolation cuts]{
+    \fixspacing \detain electron identification variables after \Et, conversion rejection, and isolation cuts. 
     A low \detain indicates a good match between an electron candidate's 
     supercluster and track.  
     Values shown for \subref{fig:dEtaInBarrelElecIdVars} barrel and 
@@ -685,8 +778,10 @@ all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.
     \subfloat[Barrel]{\label{fig:dPhiInBarrelElecIdVars}\includegraphics[width=180pt]{Figures/dphiin-barrel-14Apr11-revised-04Jul11.png}}
     \subfloat[Endcap]{\label{fig:dPhiInEndcapElecIdVars}\includegraphics[width=180pt]{Figures/dphiin-endcap-14Apr11-revised-04Jul11.png}}
   \end{center}
-    \caption[\fixspacing \dphiin electron identification variables after previous cuts]{
-      \fixspacing \dphiin electron identification variables after previous cuts.  
+    \caption[\fixspacing \dphiin electron identification variables after \Et, 
+    conversion rejection, isolation, and \detain cuts]{
+      \fixspacing \dphiin electron identification variables after \Et,
+      conversion rejection, isolation, and \detain cuts.  
       A low \dphiin indicates a good match between the electron candidate's 
       supercluster and track.  
       Values shown for \subref{fig:dPhiInBarrelElecIdVars} barrel and 
@@ -702,8 +797,10 @@ all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.
     \subfloat[Barrel]{\label{fig:sieieBarrelElecIdVars}\includegraphics[width=180pt]{Figures/sieie-barrel-15Apr11-revised-04Jul11.png}}
     \subfloat[Endcap]{\label{fig:sieieEndcapElecIdVars}\includegraphics[width=180pt]{Figures/sieie-endcap-14Apr11-revised-04Jul11.png}}
   \end{center}
-    \caption[\fixspacing \sieie electron identification variables after previous cuts]{
-      \fixspacing \sieie electron identification variables after previous cuts.  
+    \caption[\fixspacing \sieie electron identification variables after \Et,
+    conversion rejection, isolation, \detain, and \dphiin cuts]{
+      \fixspacing \sieie electron identification variables after \Et,
+      conversion rejection, isolation, \detain, and \dphiin cuts.  
       \sieie is a measure of the spread of the electron candidate's energy deposite in $\eta$.  
       A true electron is expected to be relatively narrow in $\eta$.  
       Values shown for \subref{fig:sieieBarrelElecIdVars} barrel and 
@@ -719,8 +816,10 @@ all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.
     \subfloat[Barrel]{\label{fig:hOeBarrelElecIdVars}\includegraphics[width=180pt]{Figures/hoe-barrel-15Apr11-revised-04Jul11.png}}
     \subfloat[Endcap]{\label{fig:hOeEndcapElecIdVars}\includegraphics[width=180pt]{Figures/hoe-endcap-14Apr11-revised-04Jul11.png}}
   \end{center}
-    \caption[\fixspacing H/E electron identification variables after previous cuts]{
-      \fixspacing H/E electron identification variables after previous cuts.  
+    \caption[\fixspacing H/E electron identification variables after \Et,
+    conversion rejection, isolation, \detain, \dphiin, and \sieie cuts]{
+      \fixspacing H/E electron identification variables after \Et,
+      conversion rejection, isolation, \detain, \dphiin, and \sieie cuts.  
       H/E is the ratio of the electron candidate's energy deposited 
       in HCAL to that deposited in ECAL.  
       A true electron is expected to deposit relatively little energy in the HCAL.  
@@ -817,7 +916,7 @@ energy of the particle.
 
 In this analysis, the signal was defined to be those \Zee events 
 whose invariant mass was between 60 and 120 GeV; 
-this captures the Z peak around 90 GeV.  
+this captures the Z peak around 91 GeV.  
 The acceptance was defined as the fraction of those signal events 
 whose electron end products fall into the $\eta$ region used for the 
 analysis, 
@@ -831,7 +930,11 @@ These values can also be found in Table~\ref{TableAccCuts}.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing Criteria for determining acceptance.}
+    \caption[Criteria for determining acceptance of \Zee events]
+    {\fixspacing Criteria for determining acceptance of \Zee events.
+    Acceptance is defined as the fraction of signal events 
+    (within the mass window) 
+    whose two electrons pass the requirements in the table.}
     \label{TableAccCuts}
     \begin{tabular}[]{ | l | c | }
       \hline
@@ -855,10 +958,13 @@ a sample large enough that statistical uncertainties become
 small enough to ignore.  
 Since the simulated sample is expected to model real data well enough, 
 this number is taken as the true acceptance for real data.  
-However, the information used to generate the simulated sample 
-is only a theoretical model; 
-there are many ways in which it may actually differ slightly from 
-what is used in the generation.  
+However, 
+%the information used to generate the simulated sample 
+%is only a theoretical model; 
+%there are many ways in which it 
+the model used in simulation may actually differ slightly from 
+physical reality.  
+%what is used in the generation.  
 These possible differences are taken into account in the 
 uncertainty calculated for the acceptance, 
 % OR JUST DO IT HERE??????
@@ -878,7 +984,7 @@ not resulted in the formation of a supercluster.
 % what about test-beam data??  I guess doesn't 
 % take into account brem or pileup or non-isolation 
 % or any of that stuff that could affect it
-Therefore this is also determined from simulated data.  
+Therefore this was also determined from simulated data.  % Wesley: test beam data, but I didn't use that
 Effectively it is combined with the acceptance 
 by applying an additional requirement on the acceptance: 
 the simulated event should have two electrons 
@@ -904,7 +1010,11 @@ These values can also be found in Table~\ref{TableAccValues}.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing Acceptance values.}
+    \caption[Acceptance values for \Zee events]
+    {\fixspacing Acceptance values for \Zee events. 
+    Acceptance is defined as the fraction of signal events 
+    whose electrons can reasonably be expected to be seen by the detector. 
+    The criteria are give in Table~\ref{TableAccCuts}}
     \label{TableAccValues}
     \begin{tabular}[]{ | l | c | c | }
       \hline
@@ -1053,7 +1163,7 @@ The full event selection efficiency was calculated to be
 
 \begin{table}[htbp]
   \begin{center}
-    \caption{\fixspacing Efficiencies of electron selection steps.}
+    \caption{\fixspacing Individual efficiencies of electron selection steps.}
     \label{TableEfficiencies}
     \begin{tabular}[]{ | l | l | l | l | l | l | }
       \hline
@@ -1066,7 +1176,7 @@ The full event selection efficiency was calculated to be
       %Iso to Id & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
       Identification & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
       %Id to HLT & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline
-      Trigger & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline
+      Trigger & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline \hline
       Full Event selection & 0.654 & 0.665 & 0.621 +/- 0.005 & 0.933 +/- 0.007 & 0.610 +/- 0.005 \\ \hline
     \end{tabular}
   \end{center}
@@ -1083,7 +1193,10 @@ The full event selection efficiency was calculated to be
 
 \begin{table}[htbp]
   \begin{center}
-    \caption[\fixspacing Efficiencies of data trigger paths]{\fixspacing Efficiencies of all the triggers used in data as determined with the tag-and-probe method.}
+    \caption[\fixspacing Efficiencies of data trigger paths]
+    {\fixspacing Efficiencies of all the triggers used in data 
+    as determined with the tag-and-probe method. 
+    A description of the fit is given in the text.}
     \label{TableTriggerEfficiencies}
     \begin{tabular}[]{ | l | l | l | }
       \hline
