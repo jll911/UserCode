@@ -462,16 +462,16 @@ plugged into the same machinery and treated the same way.
 	    parton distribution functions. 
 	    The ``hard subprocess'' refers to the main 
 	    physics interaction.  
-	    The participant particles in the main interaction 
-	    are then ``evolved'' through the showering process, 
-	    which includes emissions of photons or gluons 
-	    by the initial or final particles, 
-	    as well as ``branchings'' of final particles. % INCLUDED IN FORMER?? 
-	    Any resulting quarks and gluons are 
-	    formed into ``colorless'' hadrons, 
-	    which may then decay into other particles. 
-	    These final particles are the ones seen 
-	    in the detector.  
+%	    The participant particles in the main interaction 
+%	    are then ``evolved'' through the showering process, 
+%	    which includes emissions of photons or gluons 
+%	    by the initial or final particles, 
+%	    as well as ``branchings'' of final particles. % INCLUDED IN FORMER?? 
+%	    Any resulting quarks and gluons are 
+%	    formed into ``colorless'' hadrons, 
+%	    which may then decay into other particles. 
+%	    These final particles are the ones seen 
+%	    in the detector.    % commented per Wesley
 	  }
   \label{fig:MCsteps}
  \end{figure}
@@ -536,7 +536,7 @@ These programs will be detailed in the following sections.
 
 CMS makes use of one of the standard 
 Monte Carlo event generation workhorses, 
-a program known as PYTHIA 
+a program known as PYTHIA (v6.4) 
 \cite{PYTHIA6.4}. 
 PYTHIA was used to generate the background 
 samples used in this analysis, 
@@ -581,6 +581,7 @@ the method of dealing with hadronization
 %jets and the QCD processes that form them 
 is relevant here.  
 PYTHIA by default uses the Lund string model 
+\cite{LundString} 
 %(shown schematically in Fig.~\ref{fig:MClund})
 (illustrated in Fig.~\ref{fig:MClund})
 to evolve 
@@ -662,7 +663,7 @@ already-existing distributions from previous
 experiments.  
 This analysis uses samples generated 
 according to the default tune used in CMS, 
-Tune Z2.  
+Tune Z2 \cite{TuneZ2}.  
 However, differences between the tunes 
 are very slight and affect 
 final results very little; 
@@ -683,7 +684,7 @@ in the systematic errors
 %% http://arxiv.org/abs/0805.4802
 
 POWHEG (for ``POsitive Weight Hardest Emission Generator'') 
-\cite{powheg} 
+\cite{powheg} % VERSION??  I don't think it's actually 1.0, I think that's for the powheg box
 is a method for making next-to-leading order (NLO) 
 corrections within a parton shower framework.  
 At low energies, the showering algorithms implemented 
@@ -977,7 +978,7 @@ of the detector and its response.
 %GEANT the giant
 
 The CMS collaboration uses the software package 
-GEANT4 \cite{GEANT4} to model the detector 
+GEANT4 (v9.3) \cite{GEANT4} to model the detector 
 within the framework of CMSSW, 
 the CMS-specific analysis software 
 (see Section~\ref{over:software}).  
