@@ -1009,33 +1009,56 @@ and these are given here.
 
 %QCD resummation and NNLO corrections % LOOKUP resummation
 
-The Monte Carlo simulated data sample used in the analysis 
-does not include corrections from resummation or 
+The POWHEG \cite{powheg} Monte Carlo simulated data sample used in the analysis 
+(see Section~\ref{sim:MCGensPowheg}) 
+does not include corrections from either resummation or 
 NNLO QCD corrections.  
-There are tools that account for these corrections, 
-however, 
-namely the ResBos event generator \cite{resbos}, 
-so this generator was used to 
-calculate the uncertainty due to the missing corrections.  
+Resummation is a method for dealing with 
+the tendency of the cross section 
+to become infinite at low transverse momentum 
+when calculating cross sections up to a given order.  
+NNLO corrections include QCD diagrams at next-to-next-to-leading 
+order and can affect the event distributions, 
+but POWHEG only calculates the cross section 
+fully to next-to-leading order (NLO).  
+%There are tools that account for these corrections, 
+There are tools that can make these additional calculations, 
+%however, 
+%namely the ResBos event generator \cite{resbos}, 
+in particular the ResBos event generator \cite{resbos}. %, 
+%To account for these corrections, 
+%so this generator was used to 
+%the ResBos event generator \cite{resbos} was used to 
+ResBos was used to 
+calculate the uncertainty due to these missing corrections.  
 
 
 %higher order (>NNLO) QCD corrections
 
-Since calculations are generally done up to a fixed order 
+%Since 
+Cross section calculations using matrix elements 
+are generally done up to a fixed order 
 and depend on the renormalization and factorization scales, % LOOKUP
-varying these scales can estimate the uncertainty due 
-to the missing higher-order calculations.  
+energy scales that act as cutoffs for what 
+treatments can be used.  
+Varying these scales can estimate the uncertainty due 
+to the missing higher-order %calculations.  
+corrections. 
 The scales were therefore varied each way by a factor of two 
 and the maximum difference in results was taken, 
-using FEWZ to calculate the cross section.  % ADD FEWZ THING TO SIM CH
+using FEWZ \cite{FEWZ2} to calculate the cross section.  % ADD FEWZ THING TO SIM CH
 
 
 %PDF -- put to front, in its own section -- others all in same section?
 
 There are several well-known
 parton distribution function (PDF) sets
-in existence,
-and the output of simulations
+%in existence,
+(Section~\ref{theory:pdf}), 
+which describe the structure of the proton 
+and therefore affect how the proton constituents 
+may form a Z.  
+The output of simulations
 using these PDFs vary slightly from one another.
 Three different PDF sets were used: 
 CT10 \cite{CT10}, MSTW2008 \cite{MSTW}, and NNPDF2.0 \cite{NNPDF}.  
@@ -1050,18 +1073,24 @@ over the PDFs.
 
 %NLO EWK corrections (missing full EWK, uncertainty in FSR; ISR found to be insignificant)
 
-The Monte Carlo simulation sample used for the analysis 
+The POWHEG Monte Carlo simulation sample used for the analysis 
 also does not fully account for next-to-leading-order (NLO) 
-electroweak corrections.  
+electroweak corrections, 
+in particular loop diagrams.  
 In addition, the existing corrections, 
-namely final-state radiation, 
-may not be completely accurate.  
+namely final-state radiation (FSR), 
+%may not be completely accurate.  
+can be modeled in different ways 
+which can lead to different results.  
 To deal with these sources of uncertainty, 
 a separate generator, HORACE \cite{horace1} \cite{horace2}, 
-was used to make the full set of corrections.  
-The output was then compared with the 
-standard simulation sample to estimate 
-the uncertainty due to the missing corrections.  
+was used to make the full set of loop-diagram corrections.  
+Additionally, the HORACE output using only FSR corrections 
+was compared with the 
+standard simulation sample 
+(already including FSR) to estimate 
+%the uncertainty due to the missing corrections.  
+the uncertainty due to the FSR modeling.  
 
 % WHY NOT JUST USE THESE BETTER GENERATORS FOR FULL SAMPLE IN THE FIRST PLACE???
 
@@ -1072,6 +1101,9 @@ the uncertainty due to the missing corrections.
 The uncertainty due to the PDF set used 
 was found to be 0.9\%, 
 while the rest of the sources 
+(resummation, NNLO corrections, higher-order QCD corrections, 
+parton distribution functions, 
+final-state radiation, and NLO electroweak corrections) 
 contributed a total of 1.4\%, 
 for a combined value of 1.7\% relative uncertainty.  
 
