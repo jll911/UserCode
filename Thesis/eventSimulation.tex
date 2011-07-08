@@ -241,14 +241,14 @@ Therefore they can only be used to calculate
 a few select quantities; 
 they can't be used to predict distributions.  
 
-The second type of program are called ``event generators''.  
+The second set of programs are called ``event generators''.  
 They also use the matrix element to calculate 
 the differential cross section element % REAL NAME ?
 with the equation given above.  
 However, instead of using $d\sigma$ as an event weight, 
-it ``unweights'' the events to obtain the physical 
+they ``unweight'' the events to obtain the physical 
 distributions.  
-It does this through the so-called acceptance-rejection method: 
+They do this through the so-called acceptance-rejection method: 
 first the maximum possible value of $d\sigma$ is calculated, 
 $d\sigma_{max}$. 
 Each event's individual $d\sigma$ value, 
@@ -278,17 +278,31 @@ sufficient to make very accurate calculations.
 In general, there are significant contributions from 
 the higher-order diagrams  
 (diagrams with more legs and loops, 
-but still representing the same final arrangement of particles). 
+but still representing the same final arrangement of particles; 
+see Section~\ref{theory:HigherOrderDiagrams} 
+for more detail on higher-order 
+diagrams and calculations). % REF TO EXPLANATION OF PERT SERIES IN THEORY CHAPTER
 These corrections must be taken into account.  
-In addition, the matrix elements and Feynman diagrams 
-for these calculations only consider bare quarks, 
-that is, quarks extracted from the framework of 
-hadrons such as the proton.  
-These bare quarks cannot exist in reality, 
-so a method of accounting for the quarks' 
-presence inside hadrons must also be used.  
-There have been two different paths taken to deal % path = tack? track?...
-with the above issues.  
+Corrections from both QED (photons and electrons) 
+and QCD (quarks and gluons) affect the outcome.  
+However, due to the strength of the strong force 
+(i.e. the high value of the QCD coupling constant), 
+QCD has the greater effect %. 
+%and calls for .  % what? more effort? more detailed methods?  
+and therefore drives the development 
+of calculation methods, 
+although some of the same methods can also be applied to QED.  
+%In addition, the matrix elements and Feynman diagrams   % Wesley: bare quark stuff is low-p stuff, NOT perturbative
+%for these calculations only consider bare quarks, 
+%that is, quarks extracted from the framework of 
+%hadrons such as the proton.  
+%These bare quarks cannot exist in reality, 
+%so a method of accounting for the quarks' 
+%presence inside hadrons must also be used.  
+%There have been two different paths taken to deal % path = tack? track?...
+%with the above issues.  
+There are two complementary approaches commonly in use 
+to deal with the corrections.  
 In the first, the ``matrix element'' method, 
 higher-order diagrams are explicity included in 
 the matrix element calculation.  
@@ -305,49 +319,57 @@ but at the moment there exist satisfactory solutions
 only for next-to-leading-order diagrams 
 (or NLO, explained in 
 Section~\ref{theory:HigherOrderDiagrams}).  
-%only for diagrams one step higher 
-%than the basic tree-level diagram
-The matrix element method does not explicitly 
-take care of the bare-quark problem; %, though.  
-this can be handled in multiple ways.  
-%Programs who do not deal with the interactions of 
-Some cross section integrators deal with the interactions of % is it only cross section integrators??
-quarks inside hadrons using Feyman's factorization theorem. 
-Programs which do not deal with them in this way 
-can be interfaced with programs following the 
-second of the two paths to higher-order corrections, %.  
-%The second path is called 
+%%only for diagrams one step higher 
+%%than the basic tree-level diagram
+%The matrix element method does not explicitly 
+%take care of the bare-quark problem; %, though.  
+%this can be handled in multiple ways.  
+%%Programs who do not deal with the interactions of 
+%Some cross section integrators deal with the interactions of % is it only cross section integrators??
+%quarks inside hadrons using Feyman's factorization theorem. 
+%Programs which do not deal with them in this way 
+%can be interfaced with programs following the 
+%second of the two paths to higher-order corrections, %.  
+%%The second path is called 
+%the ``parton shower'' method, 
+%which is the method used by many event generators 
+%(as opposed to cross section integrators).  
+%In the parton shower method, 
+%instead of including diagrams representing 
+%higher orders and quarks-within-hadrons 
+%into the matrix element calculation, 
+%%this part of the interaction is taken care of 
+%corrections are handled 
+%by a separate 
+%%routine.  
+%method.  
+%This routine takes the 
+In the second of the two approaches, 
 the ``parton shower'' method, 
-which is the method used by many event generators 
-(as opposed to cross section integrators).  
-In the parton shower method, 
-instead of including diagrams representing 
-higher orders and quarks-within-hadrons 
-into the matrix element calculation, 
-%this part of the interaction is taken care of 
-corrections are handled 
-by a separate 
-%routine.  
-method.  
-This routine takes the 
-particles involved in the 
+the particles involved in the 
 basic tree-level interaction 
-and 
+%and 
 %decays 
 %``evolves'' them, 
 %through radiation, 
-causes them to radiate 
+%causes them to radiate 
+are made to radiate 
 according to 
 probabilities and rules coded into the program.  
 The process is iterative, 
 repeating for any quarks or gluons that 
 branch off at any point.  
-In this way the parton shower method 
-is more flexible than the matrix element method -- 
-it can deal with many branchings and legs. 
-However, it is also less precise formally, 
-since it avoids the use of the matrix elements 
-from the Feynman diagrams.  
+%In this way the parton shower method 
+%is more flexible than the matrix element method -- 
+%it can deal with many branchings and legs. 
+%However, it is also less precise formally, 
+%since it avoids the use of the matrix elements 
+%from the Feynman diagrams.  
+The matrix element and parton shower methods 
+can be used as complements; 
+in particular, the parton shower method 
+can take output from the matrix element method 
+and apply the radiation process.  
 
 %where do the PDFs fit in?  just to parton shower method?? 
 %no, it looks like PDFs have to enter in both 
@@ -429,8 +451,11 @@ hadronization is dealt with here.
 %(maybe put in pythia section?  
 %can't remember if it's pythia-specific)
 In addition, 
+%for initial- or final-state radiation 
+%due to photon radiation (QED), 
 %it simplifies things to treat 
 %electrons and photons in the final state as ``partons'', 
+for radiation due to QED, 
 electrons and photons in the final state 
 can be treated as ``partons'', 
 in the same category as the quarks and gluons, 
@@ -442,7 +467,8 @@ and subject to ``showers'' of
 photons and electrons. 
 %Therefore different sorts of processes can be 
 This lets these two very different processes be 
-plugged into the same machinery and treated the same way.  
+plugged into the same parton shower machinery 
+and treated the same way.  
 
 %all this stuff on QCD isn't directly relevant for my 
 %stuff, should maybe concentrate more on mine... 

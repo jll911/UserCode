@@ -195,7 +195,7 @@ In two-quark states, a color and its anti-color ``combine'' to make a colorless 
 Three-quark states are also colorless, but through a different combination: 
 the three quarks are colored red, green, and blue 
 (or the corresponding anticolors), which ``combine'' (like colored light) to form 
-a state with no color
+a state with no color. 
 In practice, antiparticles are often called by their particle names; 
 since it is known that a neutral Z must decay to one positive and one negative 
 particle, no distinction is made between ``positron'' and ``electron'' -- 
@@ -350,8 +350,10 @@ form new bound states.
 
 Since quarks do not exist in an isolated state 
 outside hadrons, 
-any interaction between them must also take 
-into account the structure of thosee hadrons, 
+any interaction between them must 
+%also % Sridhara
+take 
+into account the structure of those hadrons, 
 in this case protons.  
 The quark structure of protons is given 
 by a set of functions called 
@@ -655,8 +657,8 @@ transformation happens.
 Essentially, squaring the matrix element gives the 
 relative probability of that particular transformation.  
 
-This is used in particle physics as such: 
-a transformation from an initial state, 
+%This is used in particle physics as such: % Sridhara
+A transformation from an initial state, 
 in our case two quarks from colliding protons, 
 to a final state, 
 an electron and a positron, 
@@ -1198,9 +1200,25 @@ diagrams make noticeable contributions
 to the overall result, 
 and therefore they should be taken into 
 account as far as possible.  
+In mathematical terms, 
+any measurable quantity can be written as 
+a series expansion in terms of the coupling constant $\alpha$, 
+as long as $\alpha$ is small (much less than 1): 
+\[
+T(\alpha) = T_0 \alpha^0 + T_1 \alpha^1 + T_2 \alpha^2 + \ldots
+\]
+This treats each successively-higher power of $\alpha$ 
+as a successively-smaller correction 
+to the overall value of the measurable quantity.  
+This means that a reasonable approximation of the value 
+can be calculated by using only the first 
+few terms in the series.  
+The ``order'' of a calculation is given by 
+the highest power of $\alpha$ taken into account.  
+
 Commonly a particle in the initial or final state 
 will radiate a photon or a gluon, 
-creating another vertex.  
+creating another vertex in the diagram.  
 These particles will also produce a signature 
 in the detector 
 (the gluon after branching to quarks, 
@@ -1213,11 +1231,13 @@ These radiative processes are called
 Calculating the contributions from 
 successively higher-order diagrams 
 can be difficult, %though, 
-and many specialized programs exist.  
-(See Chapter~\ref{sim}.)  
+and many specialized programs exist %.  
+(see Chapter~\ref{sim}.)  
 The simplest Feynman diagram is called 
 ``leading order'' (LO), 
-and the successively higher levels are 
+and the successively higher levels, 
+i.e. the higher powers of $\alpha$ 
+in the series expansion, are 
 ``next-to-leading order'' (NLO) and 
 ``next-to-next-to-leading order'' (NNLO).  
 This analysis uses a theoretical 
