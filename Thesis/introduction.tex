@@ -1,13 +1,17 @@
 %\chapter{Theory Introduction}  % should probably change this name
 %\chapter{Introduction to Theory Background} \footnote
-\chapter[Introduction to Theory Background]{Introduction to Theory Background \protect\footnote{Much of the material for this chapter was taken from \cite{HM}.}}
+%\chapter[Introduction to Theory Background]{Introduction to Theory Background \protect\footnote{Much of the material for this chapter was taken from \cite{HM}.}}
+\chapter[Theory of Z Production]{Introduction to Theory Background \protect\footnote{Much of the material for this chapter was taken from \cite{HM}.}}
 \label{theory}
 
 Any physics analysis must be based on a 
 solid understanding of the 
 underlying theory and mathematics.  
 This chapter's aim is to introduce 
-the background for a Z production 
+the 
+%background 
+context % Wesley
+for a Z production 
 cross section analysis.  
 
 % \cite{HM}  HALZEN AND MARTIN REFERENCE FOOTNOTE
@@ -131,7 +135,10 @@ and their corresponding neutrinos,
 the electron neutrino, muon neutrino, and $\tau$ neutrino, 
 which are chargeless.  
 Until recently it was believed that all the neutrinos are massless.  
-However, recent experiments indicate 
+However, recent 
+%experiments 
+results 
+indicate 
 that neutrinos do have a small mass 
 \cite{neutrinoMixing}.  
 
@@ -391,8 +398,8 @@ flavors, not just $u$ and $d$.
 PDFs cannot be calculated from first 
 principles and must be measured by fits 
 to experimental data.  
-There are several independent sets of PDFs 
-in distribution.  
+%There are several independent sets of PDFs 
+%in distribution.  
 The simulated signal sample used in this analysis 
 were generated with the CT10 PDF set \cite{CT10}, 
 while the theoretical cross section calculation 
@@ -405,7 +412,9 @@ However, there is still some uncertainty,
 %in the PDFs, 
 and precision measurements of Z production 
 at the LHC can %help %contribute to better PDF sets.  
-improve the community's knowledge of PDFs.  
+improve the 
+%community's 
+knowledge of PDFs.  
 
 
 
@@ -415,7 +424,9 @@ improve the community's knowledge of PDFs.
 %\section{ewk: SU(2)xU(1)}
 \subsection{Electroweak Physics}
 \label{theory:EWK}
-The forces here have been given in terms 
+The forces 
+%here 
+have been given in terms 
 of mathematical groups.  
 However, the individual groups by themselves 
 do not necessarily represent the reality of particles.  
@@ -1415,8 +1426,8 @@ given in Table~\ref{TableWeakNumbers}.
       Particle & $Q$ (e) & $T_3$  \\ \hline \hline
       $u,c,t$ & $+\frac{2}{3}$ & $+\frac{1}{2}$ \\ \hline
       $d,s,b$ & $-\frac{1}{3}$ & $-\frac{1}{2}$ \\ \hline
-      $e,\mu,\tau$ & $-1$ & $+\frac{1}{2}$ \\ \hline
-      $\nu_e, \nu_{\mu}, \nu_{\tau}$ & $0$ & $-\frac{1}{2}$ \\ \hline
+      $e,\mu,\tau$ & $-1$ & $-\frac{1}{2}$ \\ \hline
+      $\nu_e, \nu_{\mu}, \nu_{\tau}$ & $0$ & $+\frac{1}{2}$ \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -1577,50 +1588,6 @@ positron or proton-antiproton colliders.
 The LHC marks the first opportunity to study 
 Z production in proton-proton collisions.  % NO RHIC STUFF, I THINK
 
-\subsection{Tevatron}
-\label{theory:tevatraon}
-
-The Tevatron at Fermilab collides protons and antiprotons 
-at a center-of-momentum energy of 1.96 TeV.  
-The two general-purpose detectors, CDF and D0, 
-have each produced a Z cross section measurement
-\cite{Z-CDF}, 
-\cite{Z-D0}.  
-CDF measured a cross section of 255 pb, while D0 measured 265 pb.  
-These results are also shown in 
-Table~\ref{TableTevatron}.  
-However, the Z cross section for proton-antiproton collisions 
-is expected to be higher than that for proton-proton collisions, 
-due to the makeup of the 
-colliding particles.  
-Since a Z can form from a quark and an antiquark, 
-but not two quarks, the chances of a favorable 
-interaction are higher with proton-antiproton pairs.  
-In the proton-proton case, the antiquark must come from the sea, 
-while both may be valence quarks in proton-antiproton interactions.  
-The exact difference depends on the parton 
-distribution functions, 
-which in turn depend on the interaction energy.  
-
-\begin{table}[htbp]
-%  \centering
-  \begin{center}
-    \caption{Proton-antiproton Z production cross sections, measured by Tevatron experiments.}
-    \label{TableTevatron}
-%    \begin{tabular}[]{ | l | c | c | }
-    \begin{tabular}[]{ | l | l | }
-      \hline
-      Experiment & $\sigma \times BR(Z \rightarrow ll)$ (pb) \\ \hline \hline
-%      CDF & 254.9 +- 3.3 stat +- 2.6 syst +- 15.2 lumi \\ \hline
-      CDF & 254.9 $\pm$ 3.3 (stat) $\pm$ 2.6 (syst) $\pm$ 15.2 (lumi) \\ \hline
-%      D0 & 264.9 +- 3.9 (stat) +/- 3.5 (sys) +/- 5.1 (pdf) +- 17.2 (lumi) pb\\ \hline
-      D0 & 264.9 $\pm$ 3.9 (stat) $\pm$ 3.5 (sys) $\pm$ 17.2 (lumi) \\ \hline
-    \end{tabular}
-  \end{center}
-\end{table}
-
-
-
 \subsection{LEP}
 \label{theory:lep}
 The Large Electron-Positron Collider (LEP), 
@@ -1632,7 +1599,8 @@ OPAL, DELPHI, L3, and ALEPH, performed studies of
 the Z production 
 when the center-of-momentum energy 
 was scanned across the Z mass, 
-from 88 to 94 GeV (the Z mass being \~91 GeV)
+from 88 to 94 GeV (the Z mass being % \~91 GeV)
+91 GeV)
 \cite{Z-PoleLep}.  
 Interactions between beams of point particles 
 is different from that of protons in that there is no 
@@ -1681,6 +1649,52 @@ are shown in Table~\ref{TableLep}.
       L3 & 41.535$\pm$0.054 & 20.815$\pm$0.089 & 20.861$\pm$0.097 & 20.79$\pm$0.13 & - \\ \hline
       OPAL & 41.501$\pm$0.055 & 20.901$\pm$0.084 & 20.811$\pm$0.058 & 20.832$\pm$0.091 & - \\ \hline
       Combined & 41.541$\pm$0.037 & 20.804$\pm$0.050 & 20.785$\pm$0.033 & 20.764$\pm$0.045 & 20.767$\pm$0.025\\ \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
+
+\subsection{Tevatron}
+\label{theory:tevatraon}
+
+The Tevatron at Fermilab collides protons and antiprotons 
+at a center-of-momentum energy of 1.96 TeV.  
+The two general-purpose detectors, CDF and D0, 
+have each produced a Z cross section measurement
+\cite{Z-CDF}, 
+\cite{Z-D0}.  
+CDF measured a cross section of 255 $\pm$ 16 pb, 
+while D0 measured 265 $\pm$ 18 pb.  
+These results are also shown in 
+Table~\ref{TableTevatron}.  
+However, the Z cross section for proton-antiproton collisions 
+is expected to be higher than that for proton-proton collisions, 
+due to the makeup of the 
+colliding particles.  
+Since a Z can form from a quark and an antiquark, 
+but not two quarks, the chances of a favorable 
+interaction are higher with proton-antiproton pairs.  
+In the proton-proton case, the antiquark must come from the sea 
+(see Section~\ref{theory:pdf}, 
+while both may be valence quarks in proton-antiproton interactions.  
+The exact difference depends on the parton 
+distribution functions, 
+which in turn depend on the interaction energy.  
+
+\begin{table}[htbp]
+%  \centering
+  \begin{center}
+    \caption{Proton-antiproton Z production cross sections, measured by Tevatron experiments.}
+    \label{TableTevatron}
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | l | }
+      \hline
+      Experiment & $\sigma \times BR(Z \rightarrow ll)$ (pb) \\ \hline \hline
+%      CDF & 254.9 +- 3.3 stat +- 2.6 syst +- 15.2 lumi \\ \hline
+      CDF & 254.9 $\pm$ 3.3 (stat) $\pm$ 2.6 (syst) $\pm$ 15.2 (lumi) \\ \hline
+%      D0 & 264.9 +- 3.9 (stat) +/- 3.5 (sys) +/- 5.1 (pdf) +- 17.2 (lumi) pb\\ \hline
+      D0 & 264.9 $\pm$ 3.9 (stat) $\pm$ 3.5 (sys) $\pm$ 17.2 (lumi) \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
