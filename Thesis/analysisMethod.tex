@@ -428,15 +428,16 @@ Fig.~\ref{fig:TemplateShapes}.
 Each curve independently integrates to 1
 and shows the fraction of events of the given type
 with relative tracker isolation in each bin.
-The difference in shape between signal (solid, black) 
-and background (dotted, red)
-is clear:
-the background has a much higher fraction of events
-with higher values of isolation,
-while the data has a much higher fraction of events
-with lower values.
-The lowest bin contains 90\% of signal compared with
-around 65\% of background.
+%The difference in shape between signal (solid, black) 
+%and background (dotted, red)
+%is clear:
+The background (dotted, red) has a much higher fraction of events 
+with higher values of isolation 
+than the signal (solid, black), 
+which has a much higher fraction of events 
+with lower values.  
+The lowest bin contains 90\% of the signal template compared with 
+around 65\% of the background template. 
 These features enable the template method in general 
 and the TFractionFitter in particular 
 to fit the shape of the templates to the 
@@ -465,19 +466,19 @@ of templates.
     with relative tracker isolation in each bin.  
     The solid (black) curve represents signal 
     and the dotted (red) shows background.  
-    The difference in shape between the two categories 
-    is clear: 
-    the background has a much higher fraction of events 
-    with higher values of isolation, 
-    while the data has a much higher fraction of events 
-    with lower values.  
-    The lowest bin contains 90\% of signal compared with 
-    around 65\% of background.  
-    This difference is exploited 
-    in the template method 
-    to determine the 
-    signal vs. background composition of a given 
-    data sample.  
+%    The difference in shape between the two categories 
+%    is clear: 
+%    the background has a much higher fraction of events 
+%    with higher values of isolation, 
+%    while the data has a much higher fraction of events 
+%    with lower values.  
+%    The lowest bin contains 90\% of signal compared with 
+%    around 65\% of background.  
+%    This difference is exploited 
+%    in the template method 
+%    to determine the 
+%    signal vs. background composition of a given 
+%    data sample.  
   }
   \label{fig:TemplateShapes}
  \end{figure}
@@ -496,9 +497,9 @@ of templates.
     using a combination of the signal 
     and background templates, 
     is shown as the asterisks (red).  
-    The fit agrees very well to the data; 
-    small deviations are visible but 
-    are contained within the data error bars.  
+%    The fit agrees very well to the data; 
+%    small deviations are visible but 
+%    are contained within the data error bars.  
   }
   \label{fig:TFractionFit}
  \end{figure}
@@ -598,10 +599,11 @@ An additional method of estimating background was
 %attempted, 
 used, % Wesley
 to cross-check the other two.  
-This method involved fitting the invariant mass 
+This standard sideband subtraction method 
+involved fitting the invariant mass 
 peak with a lineshape to model the signal plus 
-one to model the background, 
-in the standard sideband subtraction method.  
+one to model the background. %, 
+%in the standard sideband subtraction method.  
 This is similar to the template method used in 
 the previous section, 
 in that a distribution is fitted to a composition 
@@ -611,9 +613,9 @@ uses a different variable distribution,
 the invariant mass peak, 
 as well as a different set of components 
 with which to fit the distribution.  
-Getting the same results with such 
-different methods adds strength to 
-the claim that the results are accurate.  
+%Getting the same results with such 
+%different methods adds strength to 
+%the claim that the results are accurate.  
 The name ``sideband subtraction'' refers 
 to taking the distribution in 
 the areas away from the peak, the ``sidebands'', 
@@ -631,7 +633,8 @@ to leave only the signal contribution.
 The data invariant mass spectrum is fitted with 
 the same lineshapes used to determine the efficiency 
 with the tag-and-probe method (see Section~\ref{evSel:eff}).  
-That is, the data is fit with the \Zee spectrum 
+%That is, 
+The data is fit with the \Zee spectrum 
 shape taken from the generator-level, 
 convolved with a Crystal Ball function 
 times a Gaussian function, 
@@ -673,11 +676,11 @@ on the logarithmic-scale plot.
     Fig.~\subref{fig:ZFitLog} 
     shows the 
     same plot in logarithmic scale.  
-    The peak is fit with a combination of 
-    lineshapes representing the signal, 
-    the generator-level lineshape convolved with 
-    a Crystal Ball function convolved with a Gaussian, 
-    and a Gaussian lineshape representing the background.  
+%    The peak is fit with a combination of 
+%    lineshapes representing the signal, 
+%    the generator-level lineshape convolved with 
+%    a Crystal Ball function convolved with a Gaussian, 
+%    and a Gaussian lineshape representing the background.  
     The total composition of lineshapes is shown as the 
     solid line.  
     The background contribution is shown as a dotted line, 
@@ -739,34 +742,41 @@ The three methods of background estimation
 detailed in the previous sections have yielded 
 roughly consistent results, 
 summarized in Table~\ref{TableBGSub}.  
-It is interesting that both of the methods 
+%It is interesting that 
+Both of the methods 
 that looked at data arrived at a total 
 of 0 background events.  
 The template method only gives an estimate for 
 QCD events, 
 but the estimate from invariant mass fit 
 applies to all sources of background.  
-These values of zero inherently look suspicious; 
-a value of 0 anywhere in a fit 
-means that something 
-has hit its limit in the optimization 
-algorithm.  
-However, investigations into the two methods 
-have yielded nothing inherently faulty.  
-With the template method in particular 
-it took many iterations of the criteria 
+%These values of zero inherently look suspicious; 
+%a value of 0 anywhere in a fit 
+%means that something 
+%has hit its limit in the optimization 
+%algorithm.  
+%However, investigations into the two methods 
+%have yielded nothing inherently faulty.  
+The template method in particular 
+took many iterations of the criteria 
 to obtain a ``background-like'' sample 
 large enough to work with, 
-supporting the idea that the selection 
+%supporting the idea 
+indicating 
+that the selection 
 cuts are very effective at eliminating background.  
-In addition, more than one independent 
-method of analysis is giving the same result.  
-Furthermore, the errors on both of those numbers 
+%In addition, more than one 
+Both independent 
+methods of analysis give the same result.  
+Furthermore, the errors on the results from 
+both methods 
 are approximately the value of the background 
-predicted by Monte Carlo simulation.  
-Therefore, the actual background number 
-could be 0 or 19 or somewhere in between 
-and still be basically consistent with 
+predicted by the Monte Carlo simulation.  
+Therefore, the actual background %number 
+%could be 0 or 19 or somewhere in between 
+is between 0 and 19 events 
+%and still be basically consistent with 
+and consistent with 
 all three methods.  
 For the purposes of this analysis, 
 the most conservative values obtained 
@@ -899,7 +909,7 @@ of events divided by the total number of events:
 Where $x$ is the quantity being measured and 
 $N$ is the total number of events used.  
 In our case, the statistical error on the final 
-result is given by 
+result of 8453 events is given by 
 \[
 %\frac{\sqrt{8453}}{8453}
 \frac{\sqrt{\nevents{}}}{\nevents{}} = 1.1\% % sqrt(8453)/8453 = 0.0108766
@@ -1153,14 +1163,17 @@ it is quite possible that the numbers
 derived from simulation are not fully 
 accurate.  
 This must be accounted for as a systematic 
-uncertainty.  
-This accounting is done by 
-redoing the calculation using samples 
+uncertainty, %.  
+%This accounting is done 
+by redoing the calculation using samples 
 from different Monte Carlo generators.  
 In addition to the standard POWHEG generator 
 sample, 
 two samples generated by PYTHIA were used, 
-Tune Z2 and Tune D6T.  
+differing in their treatment of the underlying event
+(see Section~\ref{over:anatomy}): 
+Tune Z2 \cite{TuneZ2} 
+and Tune D6T \cite{TuneD6T}.  
 % Table of sample information??
 The ``Monte Carlo true'' and ``Monte Carlo tag and probe'' 
 efficiencies were evaluated with each sample.  
@@ -1220,7 +1233,8 @@ of 0.2\%.
 A summary of the uncertainties on the final 
 cross section resulting from various sources 
 is shown in Table~\ref{TableSystsSummary}.  
-The luminosity contributes 4\% of uncertainty, 
+The luminosity measurement 
+contributes 4\% of uncertainty, 
 statistics 1.1\%, 
 theoretical systematics 1.7\%, 
 and experimental systematics a total of 1.7\%.  
@@ -1229,7 +1243,7 @@ and experimental systematics a total of 1.7\%.
 \begin{table}[htbp]
   \begin{center}
     \caption[\fixspacing Summary of uncertainties]{
-      \fixspacing Summary of relative uncertainties from sources 
+      \fixspacing Summary of relative uncertainties from all sources 
       including luminosity, theoretical uncertainties, 
       and experimental uncertainties.  
     }
