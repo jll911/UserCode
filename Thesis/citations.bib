@@ -3,10 +3,16 @@
 %% really aren't somehow, 
 %% especially when you're trying to 
 %% comment out an entry or an element 
-%% of an entry
+%% of an entry.
+%% Found some documentation that says 
+%% anything outside of a valid bibtex 
+%% entry is a comment, 
+%% anything inside is NOT A COMMENT.  
+%% can comment a whole entry by 
+%% removing the '@' symbol
 
 %% HOW TO DO BIBTEX
-%% pdflatex Thesis.tex
+%% pdflatex Thesis[.tex]
 %% bibtex Thesis          // NOTE LACK OF FILE SUFFIX
 %% pdflatex ... until it catches all the references 
 
@@ -1180,3 +1186,48 @@ SLACcitation = "%%CITATION = HEP-EX 0509008;%%"
 }
 
 
+
+%% --------- discovery of top quark -------------- %%
+
+5.^ a b F. Abe et al. (CDF Collaboration) (1995). "Observation of Top Quark Production in pp Collisions with the Collider Detector at Fermilab". Physical Review Letters 74 (14): 2626.2631. Bibcode 1995PhRvL..74.2626A. doi:10.1103/PhysRevLett.74.2626. PMID 10057978. 
+@article{topCDF,
+  author = "F. Abe and others", 
+  collaboration = "{CDF Collaboration}",
+  title = "Observation of Top Quark Production in pp Collisions with the Collider Detector at Fermilab", 
+  year = "1995", 
+  journal = "Physical Review Letters",
+  volume = "74",
+  number = "14",
+  pages = "2626-2631",
+  doi = "10.1103/PhysRevLett.74.2626",
+}
+
+6.^ a b S. Abachi et al. (D0 Collaboration) (1995). "Search for High Mass Top Quark Production in $p\bar{p}$ Collisions at $\sqrt{s}$ = 1.8 {TeV}".  Physical Review Letters 74 (13): 2422.2426. Bibcode 1995PhRvL..74.2422A. doi:10.1103/PhysRevLett.74.2422
+@article{topD0,
+  author = "S. Abachi and others",
+  collaboration = "{D0 Collaboration}",
+  title = "Search for High Mass Top Quark Production in $p\bar{p}$ Collisions at $\sqrt{s}$ = 1.8 {TeV}",
+  year = "1995",
+  journal = "Physical Review Letters",
+  volume = "74",
+  number = "13",
+  pages = "2422-2426",
+  doi = "10.1103/PhysRevLett.74.2422",
+}
+
+
+
+%% ---------------- neutrino mass --------------- %%
+
+@article{neutrinoMixing,
+  author = "Y. Fukuda and others", 
+  collaboration = "The Super-Kamiokande Collaboration",
+  title = "Evidence for oscillation of atmospheric neutrinos",
+  journal = "Phys.Rev.Lett",
+  year = "1998",
+  volume = "81",
+  pages = "1562-1567",
+  doi = "10.1103/PhysRevLett.81.1562",
+  eprint = "arXiv:hep-ex/9807003v2",
+}
+  
