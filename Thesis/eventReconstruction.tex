@@ -185,6 +185,40 @@ of the track-fitting for electrons.
 %PICTURE? trk-gsf-QoverP.png shows charge-to-momentum
 % ratio for KF and GSF -- but figure out 
 % WHAT Q/P ACTUALLY TELLS YOU
+Figure~\ref{fig:elecGsfKfDeltaPhi} shows the 
+$\phi$-position difference $\Delta\phi$
+between generated electrons 
+and the reconstructed electrons, using 
+the KF (dotted, red) and GSF (solid, blue) 
+track-reconstruction algorithms.  
+(The black, dot-dashed line is a version of the 
+KF algorithm optimized for the HLT.)  
+\ref{fig:elecGsfKfDeltaPhi10GeV} shows the results 
+for 10-GeV electrons, while 
+\ref{fig:elecGsfKfDeltaPhi30GeV} shows results for 
+30-GeV electrons.  
+In both cases, the GSF algorithm performs better 
+than the KF algorithm: 
+the distributions for GSF are more peaked around zero, 
+showing that there is less of a difference 
+between the true and reconstructed values of $\Delta\phi$. 
+
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[10-GeV electrons]{\label{fig:elecGsfKfDeltaPhi10GeV}\includegraphics[width=180pt]{Figures/elec-gsf-kf-deltaPhi-10GeV.png}}
+    \subfloat[30-GeV electrons]{\label{fig:elecGsfKfDeltaPhi30GeV}\includegraphics[width=180pt]{Figures/elec-gsf-kf-deltaPhi-30GeV.png}}
+  \end{center}
+  \caption[\fixspacing The $\phi$ difference between Monte Carlo generated electrons and reconstructed tracks]
+	  {\fixspacing The $\phi$ difference between Monte Carlo generated electrons and reconstructed tracks 
+	    for different tracking algorithms: 
+	    electron GSF tracks (solid, blue), 
+	    KF tracks (dotted, red), 
+	    and a version of the KF algorithm used at the HLT (dot-dashed, black).  
+	    \subref{fig:elecGsfKfDeltaPhi10GeV} shows results for 10-GeV electrons, 
+	    while \subref{fig:elecGsfKfDeltaPhi30GeV} displays 30-GeV electrons.  
+	  }
+  \label{fig:elecGsfKfDeltaPhi}
+ \end{figure}
 
 \section{Electron Reconstruction}
 \label{evReco:elec}
@@ -513,12 +547,66 @@ completing the electron reconstruction.
 As mentioned previously, 
 the electron reconstruction uses the 
 GSF algorithm to reconstruct tracks.  
+The track reconstruction efficiency is shown 
+in Figure~\ref{fig:elecTrackEff} 
+as functions of \pt (\ref{fig:elecTrackEffPt}) 
+and $\eta$ (\ref{fig:elecTrackEffEta}). 
+The plot vs. \pt shows curves for 
+barrel and endcaps together (solid) 
+and the barrel only (dashed).  
+The efficiency drops for very low-\pt electrons 
+and when including the endcap. 
+The efficiency vs $\eta$ dips slightly 
+around $\eta = 1.5$, 
+due to the overlap between the barrel and endcap, 
+and also decreases towards 2.5, 
+the boundary of the tracker.  
 The electron kinematics are 
 assigned to be a weighted combination 
 of those of the constituent supercluster 
 and track, 
 and the final electron collection 
 is saved for further analysis.  
+Figure~\ref{fig:elecEnergyResolution} 
+shows the electron energy resolution 
+on measurements from the ECAL (downward-pointing triangles), 
+the tracker (upward-pointing triangles), 
+and both measurements combined (circles).  
+The ECAL has much better resolution at higher energy, 
+while the tracker is better at lower energies.  
+Combining the two gives better performance than 
+either alone, especially around the region of 15 GeV.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[Efficiency vs. \pt]{\label{fig:elecTrackEffPt}\includegraphics[width=180pt]{Figures/elec-track-reco-eff-pt.png}}
+    \subfloat[Efficiency vs $\eta$]{\label{fig:elecTrackEffEta}\includegraphics[width=180pt]{Figures/elec-track-reco-eff-eta.png}}
+  \end{center}
+  \caption[\fixspacing Electron (GSF) track reconstruction efficiencies]
+	  {\fixspacing Electron (GSF) track reconstruction efficiencies 
+	    \subref{fig:elecTrackEffPt} vs. \pt and 
+	    \subref{fig:elecTrackEffEta} vs. $\eta$. 
+	    In \subref{fig:elecTrackEffPt}, 
+	    the solid line shows the efficiency 
+	    for the barrel and the endcaps together, 
+	    while the dashed line shows the efficiency 
+	    for the barrel only.  
+	  }
+  \label{fig:elecTrackEff}
+ \end{figure}
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=240pt]{Figures/elec-energy-resolution-combined.png}
+  \end{center}
+  \caption[\fixspacing Electron energy resolution from ECAL, tracker, and combined]
+	  {\fixspacing Electron energy resolution using different subdetectors' measurements: 
+%	    Measurements from ECAL (downward-pointing triangles) 
+	    ECAL (downward-pointing triangles), tracker (upward-pointing triangles), 
+	    and the two measurements combined (circles). 
+	  }
+  \label{fig:elecEnergyResolution}
+ \end{figure}
 
 %%%%%%%\subsection{Z Reconstruction}
 
