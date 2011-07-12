@@ -282,7 +282,9 @@ which are then separately combined into superclusters.
 %http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterAlgos/src/HybridClusterAlgo.cc?revision=1.61&view=markup
 
 
-The hybrid algorithm starts with a list of all 
+The hybrid algorithm, 
+shown in Figure~\ref{fig:HybridSuperCluster}, 
+starts with a list of all 
 ECAL crystals with an energy greater than a threshold; 
 these crystals are considered seeds.  
 Beginning with the highest seed crystal, 
@@ -314,7 +316,20 @@ with its seed considered to be the highest-energy
 basic cluster 
 and its position given by the energy-weighted positions 
 of the constituent clusters.  
-%PICTURE
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=360pt]{Figures/elec-SC-hybrid-algo.png}
+  \end{center}
+  \caption[\fixspacing Illustration of the ``Hybrid'' supercluster algorithm]
+	  {\fixspacing Illustration of the ``Hybrid'' supercluster algorithm. 
+	    Dominoes with energy above a given threshold are constructed 
+	    along the $\phi$ direction in both directions out from the seed crystal.  
+	  }
+  \label{fig:HybridSuperCluster}
+ \end{figure}
+
+
 
 %Multi5x5:
 %``multi5x5SuperClustersWithPreshower''
@@ -326,7 +341,9 @@ of the constituent clusters.
 %http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterProducers/src/Multi5x5SuperClusterProducer.cc?revision=1.2&view=markup
 %http://cmssw.cvs.cern.ch/cgi-bin/cmssw.cgi/CMSSW/RecoEcal/EgammaClusterAlgos/src/Multi5x5BremRecoveryClusterAlgo.cc?revision=1.8&view=markup SCORE
 
-The multi5x5 algorithm first creates a collection 
+The multi5x5 algorithm, 
+shown in Figure~\ref{fig:Multi5x5SuperCluster}, 
+first creates a collection 
 of basic clusters from seeds, 
 which are ECAL crystals with an energy higher than 
 a given threshold.  
@@ -346,6 +363,20 @@ leaving out clusters that have already been used to
 form another supercluster. 
 The position of the supercluster is given by the 
 energy-weighted position of the individual clusters.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=360pt]{Figures/elec-SC-multi5x5-algo.png}
+  \end{center}
+  \caption[\fixspacing Illustration of the ``Multi5x5'' supercluster algorithm]
+	  {\fixspacing Illustration of the ``Multi5x5'' supercluster algorithm.
+	    Clusters seeded by seed crystals are grouped into 
+	    superclusters.  
+	  }
+  \label{fig:Multi5x5SuperCluster}
+ \end{figure}
+
+
 
 %also preshower cluster info in endcap... how?
 %what kind of energy corrections done? 
