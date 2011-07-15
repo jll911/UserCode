@@ -1125,6 +1125,89 @@ analogous way, using (1 - efficiency) instead.
 From this pair of fits the total number of events as well as 
 the efficiency can be extracted simultaneously.  
 
+Several lineshapes were combined in this fit.  
+The base signal lineshape was taken directly from a generator-level 
+histogram of the \Zee invariant mass spectrum.  
+This represents the true form of the invariant mass shape.  
+This distribution was used together with a Gaussian distribution 
+multiplied by a Crystal Ball function.  
+The Gaussian has the general form 
+\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]
+and takes into account the ``smearing'' effects 
+of the detector resolution: 
+the measured values of a quantity form a distribution 
+around the ``true'' value.  
+The Crystal Ball (named after the Crystal Ball collaboration) has the form
+\[
+f(x) = N \times 
+\begin{cases}
+e^{-\frac{(x-\mu)^2}{2\sigma^2}} & \text{for} \frac{x-\mu}{\sigma} > -\alpha \\
+A \times \left(B - \frac{x-\mu}{\sigma} \right)^{-n} & \text{for} \frac{x-\mu}{\sigma} \leq -\alpha
+\end{cases}
+\]
+where
+\[
+A = \left( \frac{}{} \right) e^{\left( -\frac{|\alpha|^2}{2} \right)}
+\]
+\[
+B = \frac{n}{|\alpha|} - |\alpha|
+\]
+The Crystal Ball functionis used to model processes where energy may be lost 
+in the measurement.  
+Together they factor in the changes to the invariant mass 
+spectrum due to detector limitations.  
+The two shapes were combined by a process called convolution; 
+the convolution of two distributions $f(x)$ and $g(x)$ is calculated by 
+\[
+(f * g)(x) = \int_{-\infty}^{\infty} f(y) g(x - y) dy
+\]
+Convolving the distributions of two independent random variables 
+gives the proper combined distribution, 
+as opposed to addition or multiplication.  
+The background was represented by an exponential lineshape, of the form 
+\[
+f(x) = 
+\begin{cases}
+\lambda e^{-\lambda x} & \text{for} x \geq 0 \\
+0 & \text{for} x < 0
+\end{cases}
+\]
+%This was simply added to the combined signal lineshape
+The parameters and relative weights of the different lineshapes 
+were varied to get the combination that best fit 
+the actual data distribution.  
+An example of the result of this fit is shown in 
+Figure~\ref{fig:TPExample}, 
+for the isolation selection step in the barrel. 
+Figure~\ref{fig:TPExamplePass} shows passing probes only, 
+Figure~\ref{fig:TPExampleFail} shows failing probes only, 
+and Figure~\ref{fig:TPExampleAll} shows the fit for all probes.  
+Black points are data, the solid line is the signal lineshape, 
+and the dotted line is the background lineshape.  
+In the ``passing probes'' and ``all probes'' plot, 
+the contribution from background is very small.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[Passing Probes]{\label{fig:TPExamplePass}\includegraphics[width=180pt]{Figures/GsfToIso-barrel-pass-nolabel-13Jul11.png}}
+    \subfloat[Failing Probes]{\label{fig:TPExampleFail}\includegraphics[width=180pt]{Figures/GsfToIso-barrel-fail-nolabel-13Jul11.png}}
+    \subfloat[All Probes]{\label{fig:TPExampleAll}\includegraphics[width=180pt]{Figures/GsfToIso-barrel-all-nolabel-13Jul11.png}}
+  \end{center}
+  \caption[\fixspacing Example of tag-and-probe fits]
+  {\fixspacing Example of tag-and-probe fits, 
+  for the isolation selection step in the barrel: 
+  \subref{fig:TPExamplePass} shows passing probes only,
+  \subref{fig:TPExampleFail} shows failing probes only,
+  and \subref{fig:TPExampleAll} shows the fit for all probes.
+  Black points are data, the solid line is the signal lineshape,
+  and the dotted line is the background lineshape.
+  }
+  \label{fig:TPExample}
+ \end{figure}
+
+
 However, the tag-and-probe may possibly introduce a bias 
 into the calculation, 
 in particular if observing one leg makes it more likely that 
