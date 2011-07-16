@@ -124,12 +124,50 @@ for example, ``two $e/\gamma$ objects with energy above 10 GeV''
 or ``one $e/\gamma$ object with energy above 17 GeV''.  
 For this analysis, the L1 trigger used only required one $e/\gamma$ 
 object, above a threshold which changed from 5 GeV to 8 GeV 
-as the luminosity increased.  
+as the luminosity increased (\texttt{L1\_EG5} and \texttt{L1\_EG8}).  
 A low threshold is used at the Level-1 Trigger 
 to avoid interfering with the performance 
 of the higher thresholds used in the High-Level Trigger.  
+Efficiency distributions as a function of 
+reconstructed supercluster \Et for the 5 and 8 GeV triggers 
+are shown in Figure~\ref{fig:L1Effs}, 
+using early collision data.  
+The efficiency is defined as the fraction of reconstructed electrons 
+with \Et in a given bin that caused the given trigger to fire.  
+The distributions are divided into barrel-only and endcap-only plots.  
+In each case, a high efficiency is not reached until 
+the supercluster \Et is several GeV above the Level-1 threshold.  
+However, the HLT paths seeded by these triggers require 
+a higher value of \Et, 
+such that the Level-1 efficiency has already reached the maximum value 
+and therefore does not cause a problem.  
 
-% PUT THE PICTURE!!!!
+% PUT THE PICTURE!!!!   ...?
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[\texttt{L1\_EG5}, barrel]{\label{fig:L1Effs5Barrel}\includegraphics[width=180pt]{Figures/eff_num_ETA_BARREL__SEED_BOTH__TRIG_MATCHED__VS_ELEC_SC_ET__L1_EG5_revised.png}}
+    \subfloat[\texttt{L1\_EG5}, endcap]{\label{fig:L1Effs5Endcap}\includegraphics[width=180pt]{Figures/eff_num_ETA_ENDCAP__SEED_BOTH__TRIG_MATCHED__VS_ELEC_SC_ET__L1_EG5_revised.png}}
+    \subfloat[\texttt{L1\_EG8}, barrel]{\label{fig:L1Effs8Barrel}\includegraphics[width=180pt]{Figures/eff_num_ETA_BARREL__SEED_BOTH__TRIG_MATCHED__VS_ELEC_SC_ET__L1_EG8_revised.png}}
+    \subfloat[\texttt{L1\_EG8}, endcap]{\label{fig:L1Effs8Endcap}\includegraphics[width=180pt]{Figures/eff_num_ETA_ENDCAP__SEED_BOTH__TRIG_MATCHED__VS_ELEC_SC_ET__L1_EG8_revised.png}}
+  \end{center}
+  \caption[\fixspacing Efficiency as a function of
+  reconstructed supercluster \Et for Level-1 triggers]
+  {\fixspacing Efficiency distributions as a function of
+  reconstructed supercluster \Et for the Level-1 5 and 8 GeV triggers
+  using early collision data.
+  The efficiency is defined as the fraction of reconstructed electrons
+  with \Et in a given bin that caused the given trigger to fire.
+  \subref{fig:L1Effs5Barrel} and \subref{fig:L1Effs5Endcap} show barrel and endcap respectively for 
+  \texttt{L1\_EG5}, 
+  and \subref{fig:L1Effs8Barrel} and \subref{fig:L1Effs8Endcap} show barrel and endcap for
+  \texttt{L1\_EG8}. 
+  In each case, a high efficiency is not reached until
+  the supercluster \Et is several GeV above the Level-1 threshold.
+  }
+  \label{fig:L1Effs}
+ \end{figure}
+
+
 
 
 %% \subsubsection{Performance}
@@ -261,16 +299,16 @@ with possible other criteria applied to the candidate as well.%,
     }
     \label{TableTriggerPaths}
 %    \begin{tabular}[]{ | l | c | c | }
-    \begin{tabular}[]{ | l | }
+    \begin{tabular}[]{ | l | c | }
       \hline
-      Trigger  \\ \hline \hline
-      HLT\_Photon15\_Cleaned\_L1R  \\ \hline
-      HLT\_Ele15\_LW\_L1R  \\ \hline
-      HLT\_Ele15\_SW\_L1R  \\ \hline
-      HLT\_Ele15\_SW\_CaloEleId\_L1R  \\ \hline
-      HLT\_Ele17\_SW\_CaloEleId\_L1R  \\ \hline
-      HLT\_Ele17\_SW\_TightEleId\_L1R  \\ \hline
-      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R  \\ \hline
+      Trigger & L1 Seed \\ \hline \hline
+      HLT\_Photon15\_Cleaned\_L1R & L1\_EG5 \\ \hline
+      HLT\_Ele15\_LW\_L1R & L1\_EG8 \\ \hline
+      HLT\_Ele15\_SW\_L1R & L1\_EG8 \\ \hline
+      HLT\_Ele15\_SW\_CaloEleId\_L1R & L1\_EG8 \\ \hline
+      HLT\_Ele17\_SW\_CaloEleId\_L1R & L1\_EG8 \\ \hline
+      HLT\_Ele17\_SW\_TightEleId\_L1R & L1\_EG8 \\ \hline
+      HLT\_Ele17\_SW\_TighterEleIdIsol\_L1R & L1\_EG8 \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -314,6 +352,36 @@ Section~\ref{evSel:elec};
 in the current section it is sufficient to say that they 
 were added in steps to the trigger paths to gradually tighten the 
 selection.  
+Efficiency distributions for an early trigger are shown 
+in Figure~\ref{fig:HLTEffs}.  
+In this case, the efficiency is defined as the fraction of reconstructed electrons
+with \Et in a given bin that caused the given trigger to fire.
+However, the efficiencies for the triggers used in this analysis 
+were determined using the tag-and-probe method, detailed in 
+Section~\ref{evSel:eff}.  
+The results for each of the triggers are also 
+given in that section.  
+
+ \begin{figure}[htb]
+  \begin{center}
+    \subfloat[Barrel]{\label{fig:HLTEffsPhot15Barrel}\includegraphics[width=180pt]{Figures/eff_num_ETA_BARREL__SEED_BOTH__TRIG_MATCHED__VS_ELEC_SC_ET__HLT_PHOT15_revised.png}}
+    \subfloat[Endcap]{\label{fig:HLTEffsPhot15Endcap}\includegraphics[width=180pt]{Figures/eff_num_ETA_ENDCAP__SEED_BOTH__TRIG_MATCHED__VS_ELEC_SC_ET__HLT_PHOT15_revised.png}}
+  \end{center}
+  \caption[\fixspacing Efficiency as a function of
+  reconstructed supercluster \Et for an early HLT trigger]
+  {\fixspacing Efficiency distributions as a function of
+  reconstructed supercluster \Et for an early HLT trigger 
+  using collision data, \texttt{HLT\_Phot15\_L1R}.
+  The efficiency is defined as the fraction of reconstructed electrons
+  with \Et in a given bin that caused the given trigger to fire.
+  \subref{fig:HLTEffsPhot15Barrel} and \subref{fig:HLTEffsPhot15Endcap} 
+  show barrel and endcap respectively. 
+  The empty bin in \subref{fig:HLTEffsPhot15Endcap} 
+  is due to lack of events in that bin.  
+  }
+  \label{fig:HLTEffs}
+ \end{figure}
+
 
 
 %% Basically the same as reco algo's, but with fewer steps and stuff to save time.  
