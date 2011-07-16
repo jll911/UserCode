@@ -79,12 +79,15 @@ the proton by $uud$ and the neutron by $udd$.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing Masses and charges of the Standard Model particles.}
+    \caption[Masses and charges of the Standard Model particles]
+	{\fixspacing Masses and charges of the Standard Model particles, 
+	  as well as forces they are subject to.}
     \label{TableSMParticles}
 %    \begin{tabular}[]{ | l | c | c | }
     \begin{tabular}[]{ | c | c | c | c | c | c | }
       \hline
-      Particle & Mass (GeV) & Charge (e) & Weak force & EM force & Strong force \\ \hline \hline
+%      Particle & Mass (GeV) & Charge (e) & Weak force & EM force & Strong force \\ \hline \hline
+      Particle & Mass (GeV) & Charge (e) & Weak & EM & Strong \\ \hline \hline
       \multicolumn{6}{|l|}{Quarks} \\ \hline 
       up, $u$ & $2.5 \times 10^{-3}$ & $+\frac{2}{3}$ & Yes & Yes & Yes \\ \hline
       down, $d$ & $5.0 \times 10^{-3}$ & $-\frac{1}{3}$ & Yes & Yes & Yes \\ \hline
@@ -602,9 +605,9 @@ of the decay products.
 %\section{kinematics like s}
 It is also useful to define variables 
 characterizing the collision itself.  
-The quantity $s$ is the square of the center-of-momentum 
+The quantity $s$ is the square of the center\hyp{}of\hyp{}momentum 
 energy of the colliding proton system.  
-(Therefore $\sqrt{s}$ is the center-of-momentum 
+(Therefore $\sqrt{s}$ is the center\hyp{}of\hyp{}momentum 
 energy itself.)  
 It is obtained by adding together the four-momenta 
 of the colliding protons, designated $1$ and $2$: %.  
@@ -618,7 +621,7 @@ Since $x$ the fraction of the proton's momentum that is carried
 by the quark (see Section~\ref{theory:pdf}), %is defined $x$, so that 
 the 
 quark's momentum is then $xp$.  
-We can then define a center-of-momentum energy, 
+We can then define a center\hyp{}of\hyp{}momentum energy, 
 $\hat{s}$ (or $Q^2$), 
 for the quark-quark system, 
 the interacting part of the proton system: 
@@ -631,7 +634,7 @@ This can be approximated in terms of the original
 \[
 \hat{s} \simeq x_1 x_2 s
 \]
-In a center-of-momentum frame, $\hat{s}$ is equal 
+In a center\hyp{}of\hyp{}momentum frame, $\hat{s}$ is equal 
 to the invariant mass of the quark pair, 
 and therefore, the mass of the Z that is produced.  
 
@@ -875,7 +878,7 @@ part in this interaction is a ``virtual'' photon --
 %it cannot be observed by itself.  
 it cannot be directly observed.  
 The reason for this is that there is always a 
-center-of-momentum reference 
+center\hyp{}of\hyp{}momentum reference 
 frame for the two particles colliding to form the photon.  
 In other words, there is always some way that you, 
 the observer, can be moving, 
@@ -1313,7 +1316,7 @@ contribute the element $d \sigma$ to the overall
 interaction cross section.  
 Therefore, to get the full cross section, one must integrate 
 over the full phase space.  
-%Doing this in the center-of-momentum frame results 
+%Doing this in the center\hyp{}of\hyp{}momentum frame results 
 %in the formula for the differential cross section 
 For an interaction with two initial particles and 
 two final particles 
@@ -1326,7 +1329,7 @@ this can be integrated partially to
 = \frac{1}{64 \pi^2 s} \frac{p_f}{p_i} \left| \mathcal{M} \right| ^2
 \]
 where $p_i$ and $p_f$ are the momenta of the initial and final particles 
-(in the center-of-momentum frame with two particles, 
+(in the center\hyp{}of\hyp{}momentum frame with two particles, 
 the initial and final momenta each have the same magnitude).  
 Here $d \Omega$ is the solid angle element; 
 the formula cannot be further integrated without knowing the 
@@ -1388,8 +1391,8 @@ and $e_{C}$ and $\bar{e_{D}}$ are the final electrons) is given by
 = &\frac{1}{3} 
 \times \frac{1}{256 \pi s} 
 \times \frac{s^2}{(s - m_Z^2)^2 + s \Gamma^2} \\
-&\times \left[(L^2 + R^2) (L'^2 + R'^2) (1 + \cos^2 \theta)
-+ (L^2 - R^2) (L'^2 - R'^2) 2 \cos \theta \right]
+&\times \left[(L^2 + R^2) (L'^2 + R'^2) (1 + \cos^2 \theta) \right.\\
+&\qquad \left. {} + (L^2 - R^2) (L'^2 - R'^2) 2 \cos \theta \right]
 %\]
 \end{align*}
 $\Gamma$ is the \Zee decay's 
@@ -1617,11 +1620,11 @@ Z production in proton-proton collisions.  % NO RHIC STUFF, I THINK
 The Large Electron-Positron Collider (LEP), 
 formerly housed in the LHC tunnel, 
 collided electrons and positrons at a 
-series of center-of-momentum energies.  
+series of center\hyp{}of\hyp{}momentum energies.  
 The four associated experiments, 
 OPAL, DELPHI, L3, and ALEPH, performed studies of 
 the Z production 
-when the center-of-momentum energy 
+when the center\hyp{}of\hyp{}momentum energy 
 was scanned across the Z mass, 
 from 88 to 94 GeV (the Z mass being % \~91 GeV)
 91 GeV)
@@ -1664,15 +1667,22 @@ are shown in Table~\ref{TableLep}.
 	    }
     \label{TableLep}
 %    \begin{tabular}[]{ | l | c | c | }
-    \begin{tabular}[]{ | l | c | c | c | c | c |}
+%    \begin{tabular}[]{ | l | c | c | c | c | c |}
+    \begin{tabular}[]{ | l | c | c | c | c |}
       \hline
 %      & & \multicolumn{3}{ | c | }{}\\ %\hline \hline
-      Experiment & $\sigma_{had}^0 $ (pb) & $R_e^0$ & $R_{\mu}^0$ & $R_{\tau}^0$ & $R_l^0$ \\ \hline \hline
-      ALEPH & 41.558$\pm$0.057 & 20.690$\pm$0.075 & 20.801$\pm$0.056 & 20.708$\pm$0.062 & - \\ \hline
-      DELPHI & 41.578$\pm$0.069 & 20.88$\pm$0.12 & 20.650$\pm$0.076 & 20.84$\pm$0.13 & - \\ \hline
-      L3 & 41.535$\pm$0.054 & 20.815$\pm$0.089 & 20.861$\pm$0.097 & 20.79$\pm$0.13 & - \\ \hline
-      OPAL & 41.501$\pm$0.055 & 20.901$\pm$0.084 & 20.811$\pm$0.058 & 20.832$\pm$0.091 & - \\ \hline
-      Combined & 41.541$\pm$0.037 & 20.804$\pm$0.050 & 20.785$\pm$0.033 & 20.764$\pm$0.045 & 20.767$\pm$0.025\\ \hline
+%%       Experiment & $\sigma_{had}^0 $ (pb) & $R_e^0$ & $R_{\mu}^0$ & $R_{\tau}^0$ & $R_l^0$ \\ \hline \hline
+%%       ALEPH & 41.558$\pm$0.057 & 20.690$\pm$0.075 & 20.801$\pm$0.056 & 20.708$\pm$0.062 & - \\ \hline
+%%       DELPHI & 41.578$\pm$0.069 & 20.88$\pm$0.12 & 20.650$\pm$0.076 & 20.84$\pm$0.13 & - \\ \hline
+%%       L3 & 41.535$\pm$0.054 & 20.815$\pm$0.089 & 20.861$\pm$0.097 & 20.79$\pm$0.13 & - \\ \hline
+%%       OPAL & 41.501$\pm$0.055 & 20.901$\pm$0.084 & 20.811$\pm$0.058 & 20.832$\pm$0.091 & - \\ \hline
+%%       Combined & 41.541$\pm$0.037 & 20.804$\pm$0.050 & 20.785$\pm$0.033 & 20.764$\pm$0.045 & 20.767$\pm$0.025\\ \hline
+      Experiment & $\sigma_{had}^0 $ (pb) & $R_e^0$ & $R_{\mu}^0$ & $R_{\tau}^0$ \\ \hline \hline
+      ALEPH & 41.558$\pm$0.057 & 20.690$\pm$0.075 & 20.801$\pm$0.056 & 20.708$\pm$0.062 \\ \hline
+      DELPHI & 41.578$\pm$0.069 & 20.88$\pm$0.12 & 20.650$\pm$0.076 & 20.84$\pm$0.13 \\ \hline
+      L3 & 41.535$\pm$0.054 & 20.815$\pm$0.089 & 20.861$\pm$0.097 & 20.79$\pm$0.13 \\ \hline
+      OPAL & 41.501$\pm$0.055 & 20.901$\pm$0.084 & 20.811$\pm$0.058 & 20.832$\pm$0.091 \\ \hline
+      Combined & 41.541$\pm$0.037 & 20.804$\pm$0.050 & 20.785$\pm$0.033 & 20.764$\pm$0.045 \\ \hline
     \end{tabular}
   \end{center}
 \end{table}
@@ -1683,7 +1693,9 @@ are shown in Table~\ref{TableLep}.
 \label{theory:tevatraon}
 
 The Tevatron at Fermilab collides protons and antiprotons 
-at a center-of-momentum energy of 1.96 TeV.  
+at a 
+center\hyp{}of\hyp{}momentum 
+energy of 1.96 TeV.  
 The two general-purpose detectors, CDF and D0, 
 have each produced a Z cross section measurement
 \cite{Z-CDF}, 

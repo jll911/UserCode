@@ -885,12 +885,15 @@ The first line is signal; the rest are background.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing Monte Carlo samples used in this analysis.}
+    \caption[\fixspacing Monte Carlo samples used in this analysis]
+	{\fixspacing Monte Carlo samples used in this analysis. 
+	The first line is signal; the rest are background. 
+	The scale factor is calculated with 36.1\pb.}
     \label{TableMCSamples}
 %    \begin{tabular}[]{ | l | c | c | }
     \begin{tabular}[]{ | l | c | c | c | c | c | }
       \hline
-      Sample & Generator & $n_{events}$ & $\sigma$ (pb) & $\epsilon$ & Scale factor for 36.1\pb \\ \hline \hline
+      Sample & Generator & $n_{events}$ & $\sigma$ (pb) & $\epsilon$ & Scale factor \\ \hline \hline
       \Zee & POWHEG & 1998990 & 1666. & 1. & 3.01 $\times 10^{-2}$ \\ \hline  % 0.0300864937
       QCD BCtoE 20-30 & PYTHIA & 2243439 & 235500000. & 0.00056 & 2.12 \\ \hline  % 2.12212946
       QCD BCtoE 30-80 & PYTHIA & 1995502 & 59300000. & 0.00230 & 2.47 \\ \hline  % 2.46738866

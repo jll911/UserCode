@@ -919,7 +919,7 @@ all previous selection steps in Figure~\ref{fig:hOeElecIdVars}.
 
 
 
-\subsubsection{Matching Offline-Reconstructed Objects to Trigger Objects}
+\subsubsection{Matching Offline-Reconstructed Objects to Trigger \mbox{Objects}}
 \label{evSel:matching}
 In order to ensure that the offline-reconstructed objects being examined were also reconstructed by the trigger, 
 each offline object is compared with the list of trigger objects firing a given path.  %%% L1 also, or something?!
@@ -1089,7 +1089,7 @@ is referred to as
 
 The pure kinematic acceptance for this analysis
 was determined 
-with the POWHEG-generated Monte Carlo sample 
+with the POW\-HEG\hyp{}generated Monte Carlo sample 
 to be 
 \AVal{} %0.423 %BLAH1
 and the ECAL acceptance was likewise calculated as 
@@ -1339,21 +1339,27 @@ The full event selection efficiency was calculated to be
 
 \begin{table}[htbp]
   \begin{center}
-    \caption{\fixspacing Individual efficiencies of electron selection steps.}
+    \caption[\fixspacing Individual efficiencies of electron selection steps]
+    {\fixspacing Individual efficiencies of electron selection steps: 
+    reconstruction, isolation, identification, trigger, 
+    and the overall event selection efficiency.}
     \label{TableEfficiencies}
     \begin{tabular}[]{ | l | l | l | l | l | l | }
       \hline
 %      STUFF \\ \hline
       Step & True MC & MC T\&P & Data T\&P & Ratio & Efficiency \\ \hline \hline
-      %SC to Gsf & 0.965 & 0.972 & 0.971 +/- 0.002 & 0.999 +/- 0.002 & 0.964 +/- 0.002 \\ \hline
-      Reconstruction & 0.965 & 0.972 & 0.971 +/- 0.002 & 0.999 +/- 0.002 & 0.964 +/- 0.002 \\ \hline
-      %Gsf to Iso & 0.926 & 0.927 & 0.910 +/- 0.003 & 0.976 +/- 0.003 & 0.905 +/- 0.003 \\ \hline
-      Isolation & 0.926 & 0.927 & 0.910 +/- 0.003 & 0.976 +/- 0.003 & 0.905 +/- 0.003 \\ \hline
-      %Iso to Id & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
-      Identification & 0.906 & 0.907 & 0.897 +/- 0.003 & 0.989 +/- 0.003 & 0.896 +/- 0.003 \\ \hline
-      %Id to HLT & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline
-      Trigger & 0.959 & 0.941 & 0.972 +/- 0.001 & 1.032 +/- 0.001 & 0.991 +/- 0.001 \\ \hline \hline
-      Overall & 0.654 & 0.665 & 0.621 +/- 0.005 & 0.933 +/- 0.007 & 0.610 +/- 0.005 \\ \hline % Full Event Selection
+      %SC to Gsf & 0.965 & 0.972 & 0.971 $\pm$ 0.002 & 0.999 $\pm$ 0.002 & 0.964 $\pm$ 0.002 \\ \hline
+%      Reconstruction & 0.965 & 0.972 & 0.971 $\pm$ 0.002 & 0.999 $\pm$ 0.002 & 0.964 $\pm$ 0.002 \\ \hline
+      Reco & 0.965 & 0.972 & 0.971 $\pm$ 0.002 & 0.999 $\pm$ 0.002 & 0.964 $\pm$ 0.002 \\ \hline
+      %Gsf to Iso & 0.926 & 0.927 & 0.910 $\pm$ 0.003 & 0.976 $\pm$ 0.003 & 0.905 $\pm$ 0.003 \\ \hline
+%      Isolation & 0.926 & 0.927 & 0.910 $\pm$ 0.003 & 0.976 $\pm$ 0.003 & 0.905 $\pm$ 0.003 \\ \hline
+      Iso & 0.926 & 0.927 & 0.910 $\pm$ 0.003 & 0.976 $\pm$ 0.003 & 0.905 $\pm$ 0.003 \\ \hline
+      %Iso to Id & 0.906 & 0.907 & 0.897 $\pm$ 0.003 & 0.989 $\pm$ 0.003 & 0.896 $\pm$ 0.003 \\ \hline
+%      Identification & 0.906 & 0.907 & 0.897 $\pm$ 0.003 & 0.989 $\pm$ 0.003 & 0.896 $\pm$ 0.003 \\ \hline
+      ID & 0.906 & 0.907 & 0.897 $\pm$ 0.003 & 0.989 $\pm$ 0.003 & 0.896 $\pm$ 0.003 \\ \hline
+      %Id to HLT & 0.959 & 0.941 & 0.972 $\pm$ 0.001 & 1.032 $\pm$ 0.001 & 0.991 $\pm$ 0.001 \\ \hline
+      Trigger & 0.959 & 0.941 & 0.972 $\pm$ 0.001 & 1.032 $\pm$ 0.001 & 0.991 $\pm$ 0.001 \\ \hline \hline
+      Overall & 0.654 & 0.665 & 0.621 $\pm$ 0.005 & 0.933 $\pm$ 0.007 & 0.610 $\pm$ 0.005 \\ \hline % Full Event Selection
     \end{tabular}
   \end{center}
 \end{table}
