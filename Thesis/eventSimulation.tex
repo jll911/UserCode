@@ -167,13 +167,13 @@ aids in debugging --
 the results of the algorithm are reproducible, 
 which cannot happen with truly random numbers.)  
 
-%put why called ``monte carlo'', 
+%put why called ``monte carlo,'' 
 %also connect ``event simulation'' terminology 
 %with ``generator'' and the multiple types thereof.
 %like, ``simulation'' broken down into several steps, 
 %one of which is the generation of the main 
 %physics process itself (aka ``hard physics process'')
-%HOW the events are actually ``generated'', 
+%HOW the events are actually ``generated,'' 
 %like the whole random number business. 
 %It uses a random number generator , 
 %to determine ``in a probabilistic way'' -- 
@@ -198,8 +198,8 @@ which cannot happen with truly random numbers.)
 %   * event generators
 
 There are two sorts of programs that can be called 
-%``Monte Carlo generators''.  
-``Monte Carlo event simulators''.  
+%``Monte Carlo generators.''  
+``Monte Carlo event simulators.''  
 They both use the matrix elements derived from 
 the Feynman diagrams of the physics interactions of interest 
 (explained in Section~\ref{theory:feynman}), % THAT MEANS EXPLAIN ALL THIS STUFF IN PREVIOUS CHAPTER
@@ -222,7 +222,7 @@ The first type of Monte Carlo program outputs
 a single quantity or set of quantities characteristic 
 of the given process, 
 such as the cross section.  
-These programs are called ``cross section integrators''.  
+These programs are called ``cross section integrators.''  
 They calculate 
 $d\sigma$ for each of a uniform distribution of 
 phase space values (i.e. uniform increments 
@@ -231,7 +231,7 @@ The value of $d\sigma$ represents each event's ``weight'';
 the total cross section $\sigma$ is then obtained 
 by integrating over the full collection of $d\sigma$ values.  
 The final result is a value for the cross section; 
-hence the name ``cross section integrator''.  
+hence the name ``cross section integrator.''  
 However, since the events themselves are distributed 
 uniformly in $\cos\theta$ and $\phi$, 
 their characteristics 
@@ -243,7 +243,7 @@ Therefore they can only be used to calculate
 a few select quantities; 
 they can't be used to predict distributions.  
 
-The second set of programs are called ``event generators''.  
+The second set of programs are called ``event generators.''  
 They also use the matrix element to calculate 
 the differential cross section element % REAL NAME ?
 with the equation given above.  
@@ -395,7 +395,7 @@ The philosophy of parton-shower generators
 in particular 
 is that the entire process of simulating 
 a physics event can be done in a modular fashion.  
-Fig.~\ref{fig:MCsteps} 
+Figure~\ref{fig:MCsteps} 
 shows the typical steps necessary to simulate an event.  
 The incoming protons are modeled in terms of the 
 parton distribution functions (Section~\ref{theory:pdf}).  
@@ -456,10 +456,10 @@ In addition,
 %for initial- or final-state radiation 
 %due to photon radiation (QED), 
 %it simplifies things to treat 
-%electrons and photons in the final state as ``partons'', 
+%electrons and photons in the final state as ``partons,'' 
 for radiation due to QED, 
 electrons and photons in the final state 
-can be treated as ``partons'', 
+can be treated as ``partons,'' 
 in the same category as the quarks and gluons, 
 to simplify the description.  
 Even though they are not constituents of the proton, 
@@ -615,15 +615,15 @@ the method of dealing with hadronization
 is relevant here.  
 PYTHIA by default uses the Lund string model 
 \cite{LundString} 
-%(shown schematically in Fig.~\ref{fig:MClund})
-(illustrated in Fig.~\ref{fig:MClund})
+%(shown schematically in Figure~\ref{fig:MClund})
+(illustrated in Figure~\ref{fig:MClund})
 to evolve 
 quarks and gluons through the process of hadronization 
 and formation into jets. %, 
 Conceptually, an interaction's final state may have 
 quarks 
 %and/or gluons 
-``flying off in different directions''.  
+``flying off in different directions.''  
 However, quarks cannot exist alone: %.  % and gluons?
 they must always exist with other quarks, 
 held together by the strong force.  
@@ -648,7 +648,7 @@ These strings are always stretched between two quarks.
 Enough energy on the part of the quarks will 
 ``break'' the string and 
 create a new quark-antiquark pair, 
-which then fills the need for ``quark partners'', 
+which then fills the need for ``quark partners,'' 
 as illustrated in Fig~\ref{fig:MClundB}.  
 The process continues until the quarks 
 do not have enough energy to overcome 

@@ -7,8 +7,8 @@ Most analyses, including this one, are only interested in particle
 interactions that happen relatively rarely during proton collisions.  
 Therefore, methods have been developed to sort through all the 
 events and select the interesting ones for further study.  
-This selection takes place both ``online'', in real time as the 
-detector is running, and ``offline'', after the previously-selected data has 
+This selection takes place both ``online,'' in real time as the 
+detector is running, and ``offline,'' after the previously-selected data has 
 been stored.  
 %The selection done online is primarily for the purpose of reducing 
 %the volume of data enough to store it
@@ -114,14 +114,14 @@ A candidate is additionally considered ``isolated'' if,
 out of the eight towers directly surrounding it, 
 there are five contiguous towers forming an L-shape whose 
 energies are low and who pass the fine grain and HCAL/ECAL ratio veto.  
-Otherwise, the candidate is ``non-isolated''.  
+Otherwise, the candidate is ``non-isolated.''  
 The RCT sends the collections of isolated and non-isolated candidates to the 
 Global Calorimeter Trigger, 
 which sends the highest-energy ones to the final step, the Global Trigger.  
 The Global Trigger then applies the criteria determining whether or not 
 this event passes the current set of trigger paths,
 for example, ``two $e/\gamma$ objects with energy above 10 GeV'' 
-or ``one $e/\gamma$ object with energy above 17 GeV''.  
+or ``one $e/\gamma$ object with energy above 17 GeV.''  
 For this analysis, the L1 trigger used only required one $e/\gamma$ 
 object, above a threshold which changed from 5 GeV to 8 GeV 
 as the luminosity increased (\texttt{L1\_EG5} and \texttt{L1\_EG8}).  
@@ -293,7 +293,8 @@ with possible other criteria applied to the candidate as well.%,
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{\fixspacing Trigger paths used to select data, 
+    \caption[Trigger paths used to select data]
+    {\fixspacing Trigger paths used to select data, 
     in chronological order of use. 
     See text for explanation of path names.  
     }
@@ -658,9 +659,9 @@ causing the electron energy to be more spread out.
 The thresholds are given in Table \ref{TableEisoCuts}.  
 Plots of the separate isolation distributions for both barrel and endcap 
 are shown after previously-applied selection cuts in 
-Fig.~\ref{fig:trkElecIsoVars} for track isolation, 
-Fig.~\ref{fig:ecalElecIsoVars} for ECAL isolation, and 
-Fig.~\ref{fig:hcalElecIsoVars} for HCAL isolation.  
+Figure~\ref{fig:trkElecIsoVars} for track isolation, 
+Figure~\ref{fig:ecalElecIsoVars} for ECAL isolation, and 
+Figure~\ref{fig:hcalElecIsoVars} for HCAL isolation.  
 
 %Conditions to require that electrons found are isolated, i.e. not contained in a jet with other particles.  
 %We want (``prompt''?) electrons that come directly from the Z, 
@@ -782,8 +783,8 @@ It is expected that a supercluster and track from the same electron will be clos
 so upper limits on these quantities are defined as in Table \ref{TableEidCuts}.  
 Distributions of electron \detain and \dphiin, 
 each plotted after the previous selection step,% (conversion rejection),
-are shown in Fig.~\ref{fig:dEtaInElecIdVars} and 
-Fig.~\ref{fig:dPhiInElecIdVars}.  
+are shown in Figure~\ref{fig:dEtaInElecIdVars} and 
+Figure~\ref{fig:dPhiInElecIdVars}.  
 
 The electron's energy deposit is also expected to be narrow relative to that of a jet.
 A measure of the width in the $ \eta $ direction is therefore calculated 
@@ -803,14 +804,14 @@ where each crystal's weight $w_i$ is given by
 w_i = 4.2 + \ln{ \frac{E_i}{E_{5 \times 5}} }
 \]
 The \sieie distribution for electrons after all previous cuts is shown in 
-Fig.~\ref{fig:sieieElecIdVars}.  
+Figure~\ref{fig:sieieElecIdVars}.  
 In addition, an electron is expected to deposit most of its energy in the 
 electromagnetic portion of the calorimeter.  
 A large hadronic energy deposit is more likely to come from a jet, 
 so a limit on the ratio of the energy deposit in the electromagnetic calorimeter 
 to that in the hadronic calorimeter, $ H/E $, is applied (values given in the table).  
 The distribution of $H/E$ for electron candidates is plotted after 
-all previous selection steps in Fig.~\ref{fig:hOeElecIdVars}.  
+all previous selection steps in Figure~\ref{fig:hOeElecIdVars}.  
 
 
 %%%% EID CUTS
@@ -1368,7 +1369,7 @@ The full event selection efficiency was calculated to be
 
 \begin{table}[htbp]
   \begin{center}
-    \caption[\fixspacing Efficiencies of data trigger paths]
+    \caption[\fixspacing Efficiencies of trigger paths used in data]
     {\fixspacing Efficiencies of all the triggers used in data 
     as determined with the tag-and-probe method. 
     A description of the fit is given in the text.}
