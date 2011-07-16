@@ -1,7 +1,7 @@
 %\chapter{Theory Introduction}  % should probably change this name
 %\chapter{Introduction to Theory Background} \footnote
 %\chapter[Introduction to Theory Background]{Introduction to Theory Background \protect\footnote{Much of the material for this chapter was taken from \cite{HM}.}}
-\chapter[Theory of Z Boson Production]{Introduction to Theory Background \protect\footnote{Much of the material for this chapter was taken from \cite{HM}.}}
+\chapter[Theory of Z Boson Production]{Theory of Z Boson Production \protect\footnote{Much of the material for this chapter was taken from \cite{HM}.}}
 \label{theory}
 
 Any physics analysis must be based on a 
@@ -34,13 +34,14 @@ which make up matter,
 and bosons, which transmit forces.  
 Quarks and leptons are collectively called fermions; 
 %because they have spin-$\frac{1}{2}$   % HAVE TO EXPLAIN SPIN AND ALL THAT???
-two fermions cannot exist in the same state as each other.  
+two fermions cannot exist in the exact same state. % as each other.  
 Bosons do not have this constraint; 
 many bosons can be in the same state.  
 The particles are shown in Figure~\ref{fig:StandardModel}, 
 with more detailed information given in 
 Table~\ref{TableSMParticles}. 
-The first three columns show the first three generations 
+The first three columns of the figure 
+show the first three generations 
 of the quarks and leptons, 
 while the last column shows the bosons.  
 Each fermion generation contains two quarks, 
@@ -79,7 +80,7 @@ the proton by $uud$ and the neutron by $udd$.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption[Masses and charges of the Standard Model particles]
+    \caption[\fixspacing Masses and charges of the Standard Model particles]
 	{\fixspacing Masses and charges of the Standard Model particles, 
 	  as well as forces they are subject to.}
     \label{TableSMParticles}
@@ -117,7 +118,8 @@ the proton by $uud$ and the neutron by $udd$.
 %\section{quarks}
 There are six ``flavors'' of quarks, 
 often represented by their first letters: 
-up, down, charm, strange, top, and bottom.  
+up ($u$), down ($d$), charm ($c$), 
+strange ($s$), top ($t$), and bottom ($b$).  
 The first quark in each pair has charge $+\frac{2}{3}$, 
 %(in terms of the electron charge), 
 while the second has charge $-\frac{1}{3}$.  
@@ -267,7 +269,7 @@ is equal to its complex conjugate transpose.
 In other words, if you flip the matrix's elements 
 about its diagonal and replace each imaginary unit $i$ 
 with $-i$, then multiply it by the original matrix, 
-the result is the identity matrix.   % EXPLAIN IDENTITY MATRIX??
+the result is the identity matrix $I$.   % EXPLAIN IDENTITY MATRIX??
 
 \subsubsection{Electromagnetic Force}
 %\subsubsection{EM: U(1)}
@@ -369,7 +371,8 @@ These functions represent the probability
 of finding a given quark flavor $i$ inside 
 the proton with a given momentum.  
 The quark's momentum itself is not used; 
-rather, the fraction of the proton's 
+rather, the functions depend on 
+the fraction of the proton's 
 momentum that the quark carries, or $x$. 
 Since no quark can have momentum greater 
 than that of the proton itself, 
@@ -408,7 +411,7 @@ principles and must be measured by fits
 to experimental data.  
 %There are several independent sets of PDFs 
 %in distribution.  
-The simulated signal sample used in this analysis 
+The simulated signal samples used in this analysis 
 were generated with the CT10 PDF set \cite{CT10}, 
 while the theoretical cross section calculation 
 used the MSTW set \cite{MSTW}.  
@@ -453,12 +456,12 @@ allows for the collective four force-carrying bosons
 (photon, positively- and negatively-charged W's, and Z) 
 to be described as compositions of the same underlying states.  
 The elecroweak interaction has its own set of quantum 
-numbers: ``weak isospin,'' and ``hypercharge,'' 
-which combines weak isospin with electric charge.  
+numbers: ``weak isospin,'' and ``hypercharge;'' 
+hypercharge combines weak isospin with electric charge.  
 $T_3$ is the third component of the weak isospin 
-and relates how to the fermions are arranged 
+and relates to how the fermions are arranged 
 within the standard model generations 
-(refer to Figure~\ref{fig:StandardModel}).  
+(refer back to Figure~\ref{fig:StandardModel}).  
 Each generation consists of two pairs, 
 one pair of quarks and one pair of leptons.  
 The placement of each particle within its pair 
@@ -488,11 +491,18 @@ this aspect of the Standard Model is inaccurate.)
 \subsubsection{Spontaneous Symmetry Breaking}
 \label{theory:SpontSymmBreak}
 The fact that the three weak bosons are massive, though, 
-comes from applying ``spontaneous symmetry breaking.''  
-This method uses the fact that the groups mentioned 
+comes from 
+applying 
+a process called 
+``spontaneous symmetry breaking.''  
+This 
+%theoretical 
+method 
+%theoretical treatment 
+uses the fact that the groups mentioned 
 above have underlying symmetries: 
 that is, they contain parameters that do not affect the 
-physical description in any way.  
+physical description of the forces in any way.  
 They are symmetric with respect to variations in these parameters.  
 However, the values of these parameters can be chosen 
 in a strategic way and the result manipulated % TALK ABOUT FIELD THEORY AT ALL?? this is all lagrangians and mass terms
@@ -617,7 +627,7 @@ s = (p_1 + p_2)^2
 However, since only a single quark participates 
 in the interaction, not the full proton, 
 the energy of the interaction must be reduced.  
-Since $x$ the fraction of the proton's momentum that is carried 
+Since $x$ is the fraction of the proton's momentum that is carried 
 by the quark (see Section~\ref{theory:pdf}), %is defined $x$, so that 
 the 
 quark's momentum is then $xp$.  
@@ -636,7 +646,7 @@ This can be approximated in terms of the original
 \]
 In a center\hyp{}of\hyp{}momentum frame, $\hat{s}$ is equal 
 to the invariant mass of the quark pair, 
-and therefore, the mass of the Z that is produced.  
+and therefore the mass of the Z that is produced.  
 
 
 
@@ -652,7 +662,7 @@ Matrices are often used to represent transitions
 from one quantum mechanical state to another.  
 This can be broadened to the full interaction.  
 Such a matrix acts on the set of initial states 
-and result in the set of final states.  
+and results in the set of final states.  
 Each element in the matrix, mapping an initial state 
 to a final state, 
 gives the amplitude with which the % ONLY IN SCATTERING???  make sure this is right context 
@@ -681,7 +691,7 @@ show interactions between the given particles.
 The matrix element corresponding to this transformation 
 can be written down 
 by attributing factors to the various elements 
-of the Feynman diagram: 
+of the Feynman diagram, 
 the particle lines and the vertices.  
 In this way, the diagrams are not just useful 
 conceptual pictures 
@@ -757,7 +767,7 @@ a photon replaces the Z boson
 as the link between the quarks and the electrons.  
 This is known as the Drell-Yan process.
 Both cases are illustrated in 
-Figure~\ref{fig:ZeeFeynmanDiagramZ}. 
+Figure~\ref{fig:ZeeFeynmanDiagramCompare}. 
 Because these diagrams have the exact same 
 initial and final states, 
 they ``interfere'' with each other.  
@@ -918,7 +928,7 @@ they are ``off the mass shell.''
 %\section{Z can be offshell like photon, that's why it's a distribution with a peak with a width}
 The Z boson, while it has a defined mass, 
 %DECAY WIDTH ETC ETC ETC 
-can be ``off-shell'' in the same way as the photon.  
+can be ``off-shell'' in the same way as the virtual photon.  
 That is, in general the 
 %reconstructed 
 mass 
@@ -1214,7 +1224,9 @@ T(\alpha) = T_0 \alpha^0 + T_1 \alpha^1 + T_2 \alpha^2 + \ldots
 This treats each successively-higher power of $\alpha$ 
 as a successively-smaller correction 
 to the overall value of the measurable quantity.  
-This means that a reasonable approximation of the value 
+%This means that 
+Therefore, 
+a reasonable approximation of the value 
 can be calculated by using only the first 
 few terms in the series.  
 The ``order'' of a calculation is given by 
@@ -1246,7 +1258,7 @@ in the series expansion, are
 ``next-to-next-to-leading order'' (NNLO).  
 This analysis uses a theoretical 
 cross section calculation that 
-was done in NNLO, 
+was done at NNLO, 
 which gives a result accurate to 
 around 1\%.  
 
@@ -1309,7 +1321,8 @@ d \sigma = \frac{ \left| \mathcal{M} \right| ^2 }{F} d Q
 In this formula, $\mathcal{M}$ is the amplitude 
 (or matrix element) governing the probability of 
 transitioning from the initial state to the final state, 
-$F$ is the particle flux, and $d Q$ is the 
+$F$ is the particle flux (total number of initial particles per unit time), 
+and $d Q$ is the 
 phase space element.  
 An initial state within the phase space element $d Q$ will 
 contribute the element $d \sigma$ to the overall 
@@ -1330,7 +1343,8 @@ this can be integrated partially to
 \]
 where $p_i$ and $p_f$ are the momenta of the initial and final particles 
 (in the center\hyp{}of\hyp{}momentum frame with two particles, 
-the initial and final momenta each have the same magnitude).  
+%the initial and final momenta each have the same magnitude).  
+the two particles' momenta have the same magnitude).  
 Here $d \Omega$ is the solid angle element; 
 the formula cannot be further integrated without knowing the 
 (angular-dependent) form of $ \left| \mathcal{M} \right| ^2 $.  
@@ -1444,7 +1458,7 @@ given in Table~\ref{TableWeakNumbers}.
 \begin{table}[htbp]
 %  \centering
   \begin{center}
-    \caption{Charge and third component of weak isospin for 
+    \caption{\fixspacing Charge and third component of weak isospin for 
       left-handed Standard Model fermions.}
     \label{TableWeakNumbers}
 %    \begin{tabular}[]{ | l | c | c | }
@@ -1552,15 +1566,18 @@ in terms of the one given by the quark-level diagram:
 %% \sum_q \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2)
 %% \frac{d \hat{\sigma} }{d Q^2}
 %% \]
-\[
-\frac{d \sigma}{d Q^2}(pp \rightarrow e^+ e^- )
+%\[
+\begin{align*}
+%\frac{d \sigma}{d Q^2}(pp \rightarrow e^+ e^- )
+\frac{d \sigma}{d Q^2}(pp \rightarrow Z \rightarrow e^+ e^- )
 = \left( \frac{1}{3} \right) \left( \frac{1}{3} \right) 3 
-\sum_q \int dx_1 \int dx_2 f_q (x_1) f_{\bar{q}} (x_2)
+\sum_q \int dx_1 \int dx_2 & f_q (x_1) f_{\bar{q}} (x_2) \\
 %\frac{d \hat{\sigma} }{d Q^2}
 %\frac{d \sigma }{d Q^2}(\qqZee)
-\frac{d \sigma }{d Q^2}
+&\times \frac{d \sigma }{d Q^2}
 ( q \bar{q} \rightarrow Z \rightarrow e^+ e^- )
-\]
+%\]
+\end{align*}
 Here $q$ is the sum over the possible quark flavors 
 and $f_q(x)$ are the parton distribution functions 
 (see Section~\ref{theory:pdf}) for each quark flavor.  
@@ -1630,10 +1647,12 @@ from 88 to 94 GeV (the Z mass being % \~91 GeV)
 91 GeV)
 \cite{Z-PoleLep}.  
 Interactions between beams of point particles 
-is different from that of protons in that there is no 
+is different from that of protons in that there are no 
 remnants and hence no leftover energy -- 
+aside from initial-state and final-state radiation, 
 all the energy goes into the interaction.  
-This means that the invariant mass, 
+This means that in the case with no ISR or FSR, 
+the invariant mass, 
 the Z mass, is exactly the beams' energy.  
 The beam energy was therefore scanned 
 to measure the Z production at different 
@@ -1662,8 +1681,8 @@ are shown in Table~\ref{TableLep}.
 	      $\sigma_{had}^0$ is the cross section for hadronic 
 	      final states, measured at the Z peak. 
 	      $R_X^0$ shows the ratio of Z decays into hadrons 
-	      to decays into lepton flavor X, 
-	      while $R_l^0$ gives the averaged result for all leptons.  
+	      to decays into lepton flavor X. %, 
+%	      while $R_l^0$ gives the averaged result for all leptons.  
 	    }
     \label{TableLep}
 %    \begin{tabular}[]{ | l | c | c | }
@@ -1712,7 +1731,7 @@ Since a Z can form from a quark and an antiquark,
 but not two quarks, the chances of a favorable 
 interaction are higher with proton-antiproton pairs.  
 In the proton-proton case, the antiquark must come from the sea 
-(see Section~\ref{theory:pdf}, 
+(see Section~\ref{theory:pdf}), 
 while both may be valence quarks in proton-antiproton interactions.  
 The exact difference depends on the parton 
 distribution functions, 
