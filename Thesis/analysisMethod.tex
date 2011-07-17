@@ -117,7 +117,8 @@ and combining the uncertainties into one overall value.
 One of the ingredients in the cross section formula 
 (see Section~\ref{over:xsec}) 
 is the number of signal events.  
-However, it is expected that some number of non-signal events %, 
+However, it is expected that some number of non-signal 
+(background) events %, 
 %or background events, 
 will look enough like signal events to pass the full selection.  
 These background events need to be accounted for 
@@ -161,8 +162,10 @@ the full selection.
 The numbers of passing events for the simulated background 
 samples used are shown in Table~\ref{TableBackgroundMC}, 
 with a total of 18.5 events.  
-The accuracy of this method may be questionable due to 
-unaccounted differences between the simulation and real data, however.  
+The statistical error on this number is 4.3 events.  
+%T
+However, the accuracy of this method may be questionable due to 
+unaccounted differences between the simulation and real data. %, however.  
 In particular, 
 the detector may not be correctly modeled in the simulation, 
 causing slight differences in event numbers 
@@ -204,9 +207,11 @@ to confirm the accuracy of each method.
 
 \subsection{Template Method}
 \label{anMeth:BGSubTemplate}
-The template method is a data-driven method 
-to estimate the background contribution 
-in a selected sample.  
+The template method is a 
+data-driven 
+method 
+of estimating the background contribution 
+in a selected data sample.  
 In general, it uses modified cuts 
 to select data events that are especially 
 likely to be signal or background; 
@@ -803,14 +808,21 @@ and an error of 17 events from the template method.
       different methods used in this analysis.  
       All three methods give roughly consistent results.  
       In general the most conservative values have been used.  
+      The error on the number of events from Monte Carlo 
+      includes only the statistical error.  
     }
     \label{TableBGSub}
-    \begin{tabular}[]{ | l | c | c | }
+%    \begin{tabular}[]{ | l | c | c | }
+    \begin{tabular}[]{ | l | c | }
       \hline
-      Method & Background events & Error (events)  \\ \hline \hline
-      Monte Carlo & 18.5 & N/A \\ \hline 
-      Template Method & 0 & 16.8 \\ \hline 
-      Sideband Subtraction & 0 & 14 \\ \hline 
+%%       Method & Background events & Error (events)  \\ \hline \hline
+%%       Monte Carlo & 18.5 & N/A \\ \hline 
+%%       Template Method & 0 & 16.8 \\ \hline 
+%%       Sideband Subtraction & 0 & 14 \\ \hline 
+      Method & Background events \\ \hline \hline
+      Monte Carlo & 18.5 $\pm$ 4.3 (stat) \\ \hline 
+      Template Method & 0 $\pm$ 16.8 \\ \hline 
+      Sideband Subtraction & 0 $\pm$ 14 \\ \hline 
     \end{tabular}
   \end{center}
 \end{table}
@@ -985,7 +997,7 @@ The luminosity is measured by the forward hadronic calorimeter (HF)
 as explained in Section~\ref{exp:lumi}.  
 For the 2010 dataset, 
 the luminosity measurement has an accepted 
-relative uncertainty value of 4\%.  % REFERENCE
+relative uncertainty value of 4\% \cite{LumiPublicResults2010}.  
 
 \subsection{Systematic Uncertainties from Theory}
 \label{anMeth:SystsTheory}
@@ -1171,7 +1183,7 @@ Uncertainties of 2\% and 3\% % do I need a reference?  not public,
 % https://hypernews.cern.ch/HyperNews/CMS/get/egamma/911/1/1/2.html
 for the ECAL barrel and endcap respectively 
 %were given as conservative values.  
-were used as conservative values.  
+were used as conservative values \cite{CMS-PAS-EGM-10-003}.  
 The electron energy was then multiplied 
 by 1.02 or 1.03 for the upper-end calculation, 
 and 0.98 or 0.97 for the lower-end calculation, 
