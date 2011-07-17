@@ -58,13 +58,14 @@ The algorithms also calculate quantities
 relevant to the quality of the deposit, 
 in particular whether or not the deposit happened 
 at a time consistent with the LHC 
-bunch collisions, i.e. if it was ``in time'' or ``out of time.''  
+bunch collisions, i.e. if it was ``in time'' 
+as opposed to ``out of time.''  
 %bunch collisions, i.e. if it was ``in time.''  
 This information is especially useful in 
 identifying apparent energy deposits that have 
-been found to come from the 
+been found to come from particles  
 %electronics themselves; 
-signal-conversion electronics theselves (the transducers); % Wesley
+the signal-conversion electronics theselves (the transducers); % Wesley
 these fake deposits were discovered during 
 commissioning and are known as ``ECAL spikes.''  
 Since the spikes can imitate energy deposits from 
@@ -101,7 +102,7 @@ A track is a sequence of hits in the tracker,
 reconstructed to trace the trajectory of a passing 
 particle.  
 The Kalman Filter algorithm is used by default for CMS tracks, 
-but is not good at catching abrupt changes in the 
+but it is not good at catching abrupt changes in the 
 electron trajectory due to bremsstrahlung.  
 Therefore, the Gaussian Sum Filter algorithm 
 is used for electrons, 
@@ -154,7 +155,7 @@ defined by two trajectories sharing more than
 half of each of their hits,
 the track candidate with fewer hits 
 (or, in the case of the same number of hits, 
-the track with the worse fit)
+the track with the worst fit)
 is discarded.  
 
 \subsubsection{Gaussian Sum Filter}
@@ -193,9 +194,9 @@ the KF (dotted, red) and GSF (solid, blue)
 track-reconstruction algorithms.  
 (The black, dot-dashed line is a version of the 
 KF algorithm optimized for the HLT.)  
-\ref{fig:elecGsfKfDeltaPhi10GeV} shows the results 
+Figure \ref{fig:elecGsfKfDeltaPhi10GeV} shows the results 
 for 10-GeV electrons, while 
-\ref{fig:elecGsfKfDeltaPhi30GeV} shows results for 
+Figure \ref{fig:elecGsfKfDeltaPhi30GeV} shows results for 
 30-GeV electrons.  
 In both cases, the GSF algorithm performs better 
 than the KF algorithm: 
@@ -263,7 +264,7 @@ The ECAL-driven electron reconstruction method
 starts with an energy deposit (or ``supercluster'') 
 in the ECAL 
 and searches for hits in the 
-pixel system that matches the 
+pixel system that match the 
 position of the calorimeter deposit.  
 
 \subsubsection{Superclusters}
@@ -279,7 +280,8 @@ in a 5x5 square of ECAL crystals,
 as shown in Figure~\ref{fig:BasicCluster}.  
 However, an electron passing through the tracker material 
 in a strong magnetic field produces 
-bremsstrahlung and electrons from converted photons, 
+bremsstrahlung and electrons from photons 
+that have pair-produced (or ``converted''), 
 causing the original electron's energy to 
 have spread out in $\phi$ once it reaches the calorimeter.  
 The process of creating a supercluster gathers these 
@@ -336,7 +338,7 @@ steps in both the positive and negative directions
 (currently 17 steps).  
 As other seeds are encountered in this process, 
 they are removed from the list of available seeds.  
-Each domino with a higher energy than its two neighbors 
+Each domino with an  energy higher than that of its two neighbors 
 is considered as the seed for a basic cluster, 
 and the collection of dominos formed by the search 
 process is the basis for the supercluster.  
@@ -489,7 +491,8 @@ of the KF algorithm.
 The method first tries to follow each track 
 all the way to the calorimeter and search 
 for nearby energy clusters.  
-All clusters with an acceptable E/p ratio 
+All clusters with an acceptable 
+energy/momentum ($E/p$) ratio 
 with respect to the track are tested, 
 and the cluster closest in $\eta$-$\phi$ 
 space to the track is the one chosen. 
@@ -549,8 +552,8 @@ the electron reconstruction uses the
 GSF algorithm to reconstruct tracks.  
 The track reconstruction efficiency is shown 
 in Figure~\ref{fig:elecTrackEff} 
-as functions of \pt (\ref{fig:elecTrackEffPt}) 
-and $\eta$ (\ref{fig:elecTrackEffEta}). 
+as functions of \pt (Figure~\ref{fig:elecTrackEffPt}) 
+and $\eta$ (Figure~\ref{fig:elecTrackEffEta}). 
 The plot vs. \pt shows curves for 
 barrel and endcaps together (solid) 
 and the barrel only (dashed).  
@@ -561,7 +564,9 @@ around $\eta = 1.5$,
 due to the overlap between the barrel and endcap, 
 and also decreases towards 2.5, 
 the boundary of the tracker.  
-The electron kinematics are 
+
+%The electron kinematics are 
+The kinematics of the reconstructed electron are 
 assigned to be a weighted combination 
 of those of the constituent supercluster 
 and track, 
@@ -625,8 +630,8 @@ the ``luminous region,'' is called the beam spot.
 Typically this area is a few centimeters long, 
 with a width of 20-50 microns.  % Wesley
 The beam spot location can be used as an estimate 
-for the initial position of tracks measured in the detector, 
-and is therefore useful in track-seeding.  
+for the initial position of tracks measured in the detector; 
+it is therefore useful in track-seeding.  
 Its position %and width %how? necessary?
 %in all three dimensions %how is it done for z?
 can be determined from measurements of tracks in the 
@@ -677,10 +682,11 @@ relative to the nominal interaction point,
 the very center of the detector (0,0,0).  
 However, if the interaction producing the electron 
 actually takes place at a different point, 
-the electron's actual $\eta$ position will be 
+the electron's true $\eta$ position will be 
 different relative to the interaction.  
 Therefore the position of the primary vertex 
-should be taken into account when calculating $\eta$.  
+should be taken into account when calculating 
+the electron's $\eta$ value.  
 
 % GENERAL PROCESS FOR VERTICES, BUT PV SIMPLE CASE!(?)
 %The process of reconstructing the primary vertex consists 
@@ -698,8 +704,8 @@ should be taken into account when calculating $\eta$.
 %looks like it's already in ``pv-finding'' algo
 %as described in that cms note
 
-The process of the reconstructing the primary vertex 
-\cite{CMS-NOTE-2006-026}, 
+The process of reconstructing the primary vertex 
+\cite{CMS-NOTE-2006-026} 
 \cite{CMS-NOTE-2006-029} 
 involves creating primary vertex candidates
 from the tracks in the event,
@@ -732,7 +738,7 @@ a ``fake'' primary vertex is added at the position
 of the beam spot.  
 Since more than one interaction per event is possible 
 but generally only one is of interest (the ``primary'' interaction), 
-multiple candidates are ordered according to transverse energy of 
+multiple candidates are ordered according to the transverse energy of 
 their constituent tracks, 
 and the highest of these is taken to be the primary vertex.  
 

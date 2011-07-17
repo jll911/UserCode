@@ -13,7 +13,10 @@ been stored.
 %The selection done online is primarily for the purpose of reducing 
 %the volume of data enough to store it
 The online selection serves primarily for reducing the 
-volume of data enough to feasibly store it, and so it is done centrally. 
+volume of data 
+%enough to feasibly store it, 
+enough that it can be stored, 
+and so it is done centrally. 
 In addition, the online selection is fairly general, 
 while the offline selection is much more detailed and specific to individual 
 analyses, and hence it is mostly done by the user of the data.  
@@ -57,12 +60,13 @@ However, the collision rate soon increased to the point where the minimum bias t
 and had to be prescaled, 
 and 
 %photon 
-electromagnetic object (EM) % Sridhara
+electromagnetic object %(EM) % Sridhara % COMMENTED
 triggers were instead used %instead % , 
 to specifically capture events with electron-like objects.  % 
 Eventually the 
 %photon 
-EM % Sridhara again
+%EM % Sridhara again % COMMENTED in favor of
+electromagnetic 
 trigger rate at the desired threshold also became too high,
 necessitating the extra constraints of the electron trigger at the same threshold.  
 The rate for that trigger also increased, so to avoid prescaling the rate or increasing the threshold,
@@ -80,11 +84,14 @@ to seriously affect the trigger efficiency for the analysis sample.
 %The electron-reconstruction algorithm for the Level-1 trigger is implemented in the Regional Calorimeter Trigger (see detector section).
 Reconstructing and triggering on an electron with the Level-1 Trigger 
 involves information from the calorimeters, processed by 
-Regional Calorimeter Trigger, Global Calorimeter Trigger, and 
+the Regional Calorimeter Trigger, Global Calorimeter Trigger, and 
 Global Trigger.  
 Electrons and photons are indistinguishable in the L1 trigger and are therefore 
-treated the same, as ``$e/\gamma$'' objects.  
+treated the same, as ``$e/\gamma$'' (or EG) objects.  
 
+The RCT processing was described in detail in 
+Section~\ref{exp:RCT}; 
+this section provides details on the full-chain processing of $e/\gamma$ triggers.  
 The ECAL trigger primitive generation system (TPG) combines the energy deposits 
 from a 5x5 square of ECAL crystals into a single energy value corresponding to 
 one trigger tower. % and sends it, 
@@ -100,7 +107,8 @@ Similarly, the HCAL also combines energy deposits into trigger towers;
 however, the HCAL fine grain structure bit is not used in electron-finding.  
 The information from the ECAL and HCAL is compressed and sent to the 
 Regional Calorimeter Trigger.  
-The RCT does the main job of electron finding using several algorithms.  
+The RCT does the main job of electron-finding using several algorithms, 
+detailed in Section~\ref{exp:RCT} and recapped here.  
 The decompressed ECAL energy of each trigger tower is examined and 
 compared to that of its four adjacent neighbors.  
 If the energy of the tower is greater than that of its neighbors, 
@@ -117,7 +125,7 @@ energies are low and who pass the fine grain and HCAL/ECAL ratio veto.
 Otherwise, the candidate is ``non-isolated.''  
 The RCT sends the collections of isolated and non-isolated candidates to the 
 Global Calorimeter Trigger, 
-which sends the highest-energy ones to the final step, the Global Trigger.  
+which sends the highest-energy ones to the final step of the L1, the Global Trigger.  
 The Global Trigger then applies the criteria determining whether or not 
 this event passes the current set of trigger paths,
 for example, ``two $e/\gamma$ objects with energy above 10 GeV'' 
@@ -236,8 +244,9 @@ performance in the shortest time,
 which in practice means fewer steps and less 
 complexity than the implementation at the offline level, 
 where no such constraint exists.  
-In particular, while offline-reconstructed electrons 
-include tracker-driven electrons, 
+In particular, while the offline-reconstructed 
+electron collection 
+includes tracker-driven electrons, 
 those reconstructed at the HLT are ECAL-driven only, 
 and the supercluster reconstruction algorithm 
 (Section~\ref{evReco:SC}) uses 
@@ -245,7 +254,8 @@ a lower number of steps in the search process.
 Also, the size of the windows in which to search for 
 hits in the pixel-matching part of the 
 reconstruction (Section~\ref{evReco:pixMatch}) 
-is larger than that used offline.  
+is larger than that used offline, 
+to guarantee a high efficiency.  
 
 %% However, these algorithms are used in different ways at the HLT 
 %% because of differences in performance considerations.  
@@ -356,7 +366,15 @@ selection.
 Efficiency distributions for an early trigger are shown 
 in Figure~\ref{fig:HLTEffs}.  
 In this case, the efficiency is defined as the fraction of reconstructed electrons
-with \Et in a given bin that caused the given trigger to fire.
+with \Et in a given bin that caused the given trigger to fire. 
+Figure~\ref{fig:HLTEffsPhot15Barrel} shows the efficiency for 
+the barrel, 
+while Figure~\ref{fig:HLTEffsPhot15Endcap} is for the endcap 
+(the empty bin is due to lack of statistics).  
+The trigger reaches maximum efficiency well below the energy 
+threshold used in the offline analysis, 
+so the inefficiency at the ``turn-on'' does not affect the offline analysis.  
+
 However, the efficiencies for the triggers used in this analysis 
 were determined using the tag-and-probe method, detailed in 
 Section~\ref{evSel:eff}.  
@@ -475,7 +493,7 @@ given in that section.
 \subsection{Primary Datasets}
 \label{evSel:PD}
 The final step done centrally is the grouping of events passing similar 
-HLT bits into primary datasets for storage.  
+HLT paths into primary datasets for storage.  
 For example, in early running, all events passing a minimum-bias trigger 
 were put into the MinimumBias dataset.  
 Once the event rate increased and physics triggers fired more often, 
@@ -509,24 +527,36 @@ Table~\ref{TableDatasets}.
 %Dataset (trig requirements), good vertex selection, etc
 The offline selection consists of any criteria applied to the data 
 after it has already been stored, 
-i.e. criteria applied to an already-existing primary dataset.  
+i.e.\ criteria applied to an already-existing primary dataset.  
 This analysis uses data from two consecutive primary datasets: 
 the EG dataset gathered during earlier data-taking 
 (Run2010A, from run 135821 to run 144114), 
 and the Electron dataset from later data-taking 
 (the Run2010B era, runs 146240 to 149711).  
-In addition, it was required that the primary vertex of 
+In addition, it 
+%was 
+is 
+required that the primary vertex of 
 each event be ``good'': 
 that is, within 24 cm of the nominal interaction point 
 in the longitudinal direction
 and 2 cm in the transverse direction, 
 and having a minimum of 4 degrees of freedom (called NDOF),
 which is a measure of the quality of the vertex fit.  %EXPLAIN WHAT THIS MEANS MORE?
-More detailed selections were made on the event contents, 
+More detailed selections 
+%were made on 
+are applied to 
+the event contents, 
 which will be discussed in the following sections.  
-The electrons in these events were required to pass 
+The electrons in these events 
+%were 
+are 
+required to pass 
 a series of criteria to determine ``good'' electrons.  
-Finally, specific selections were made to the 
+Finally, specific selections 
+%were 
+are 
+made on the 
 characteristics of the event as a whole 
 in order to get the final collection of \Zee candidate 
 events.  
@@ -535,7 +565,7 @@ events.
 \label{evSel:elec}
 The electron selection starts with the full set of objects reconstructed as electrons, 
 %i.e. ECAL energy deposits with nearby tracks.  
-i.e. ECAL energy deposits (superclusters, see Section~\ref{evReco:SC}) matched with nearby tracks.  
+i.e.\ ECAL energy deposits (superclusters, see Section~\ref{evReco:SC}) matched with nearby tracks.  
 The objects in this collection are not necessarily real electrons 
 %but energy deposits consistent with those from electrons at a low-level.  
 but are consistent with the electron signature at a low level.  
@@ -544,15 +574,18 @@ In order to select the reconstructed objects most likely to be real electrons fr
 sets of further conditions are applied.  
 %First electrons are matched to trigger objects passing an egamma trigger with a Level-1 threshold of 5 GeV.  
 First the electrons are required to be within the $\eta$ region of ECAL in which 
-they can be fully measured, in the barrel, $0. < |\eta| < 1.4442$, 
+they can be fully measured, in the barrel, $0 < |\eta| < 1.4442$, 
 and in the endcap, $1.566 < |\eta| < 2.5$.  
 A 25-GeV cut on the supercluster transverse energy is applied,
 followed by a set of cuts designed to reject electrons from photon conversions.  
 Another set of cuts aims to distinguish real electrons from other energy deposits which may mimic electrons, 
-and finally a set of cuts to make sure the electron is isolated, i.e. not part of a jet unrelated to the Z.  
+and finally a set of cuts to make sure the electron is isolated, 
+i.e.\ not part of a jet unrelated to the Z.  
 
 %All the different wp's for different purposes and efficiencies.  WP95 looser than trigger cuts by the end!  put other reasons too for wp80
-The CMS vector boson analysis team created several different electron selections of varying tightness of cuts,
+The CMS vector boson analysis team created several different electron selections of varying 
+%tightness of cuts,
+cut tightness,
 based on a given efficiency of the cuts \cite{CMSWZ}.  % ref to iterative algo stuff?
 A tighter selection in general results in a purer sample of true electrons, but throws away many more
 real electrons than a looser selection.  
@@ -580,11 +613,13 @@ All results plots include the data distributions.
 The conversion rejection step of the electron selection aims 
 to eliminate photons that have converted into electron pairs.  
 Several variables have been chosen to distinguish between 
-conversions and prompt electrons, focusing on the track properties.  
+conversions and prompt electrons 
+(electrons from the interaction of interest), 
+focusing on the track properties.  
 Since prompt electrons are expected to hit the first layer of the tracker, 
 any electron-associated track that is missing initial hits 
 can be rejected as a conversion that occurred within the tracker.  
-The looser requirements of the 95 percent efficient working point 
+The looser requirements of the 95\%-efficient working point 
 allow an electron to have one missing hit;
 tighter working points such as WP80 require zero missing hits.  
 Figure~\ref{fig:MissHitsConvRejVars} shows the number 
@@ -593,7 +628,7 @@ In addition, the conversion rejection algorithm searches
 for candidate electron-pair partner tracks, 
 i.e. track pairs that appear to come from the same point.  
 Every electron track is compared to all opposite-charge tracks 
-within a dR cone of 0.3, and two values are calculated: 
+within a $\Delta R$ cone of 0.3, and two values are calculated: 
 a measure of the difference in the angles in the r-z plane 
 between the two tracks (\dCotTheta, Figure~\ref{fig:DCotConvRejVars}), 
 and the distance of closest approach between the two tracks 
@@ -605,7 +640,7 @@ and initially have the same direction as the converting photon.
 The WP80 requirements apply a threshold at 0.02 for both quantities.  
 The selection is such that an electron candidate 
 that fails both the missing hits cut 
-and one of the other cuts ise rejected as a conversion.  
+and one of the other cuts is rejected as a conversion.  
 This way a single anomalous measurement does not 
 result in a true electron being rejected.  
 %The 95-percent efficient working point is looser than the other working points in that it does not apply cuts on these quantities.  
@@ -643,9 +678,14 @@ result in a true electron being rejected.
 The electrons from a Z decay are not expected to end up 
 close to many other particles in the detector, 
 since they are not produced as part of a jet.  
-We want to select those real electrons that are most likely to be prompt decay products,
+%We want 
+The object is to select those real electrons that are most likely to be prompt decay products,
 not those that come from some secondary interaction with many other end products.  
-Therefore we apply a set of cuts requiring little detector activity 
+Therefore 
+%we apply 
+a set of cuts 
+is applied 
+requiring little detector activity 
 in the area immediately surrounding the reconstructed electron.  
 These so-called isolation cuts look at the energy deposits 
 in the electromagnetic and hadronic calorimeters separately,
@@ -658,7 +698,10 @@ because there is more material in front of the endcap,
 causing the electron energy to be more spread out.  
 The thresholds are given in Table \ref{TableEisoCuts}.  
 Plots of the separate isolation distributions for both barrel and endcap 
-are shown after previously-applied selection cuts in 
+are shown after 
+%previously-applied selection 
+the conversion rejection 
+cuts in 
 Figure~\ref{fig:trkElecIsoVars} for track isolation, 
 Figure~\ref{fig:ecalElecIsoVars} for ECAL isolation, and 
 Figure~\ref{fig:hcalElecIsoVars} for HCAL isolation.  
@@ -782,7 +825,11 @@ with the differences being labeled \detain and \dphiin, respectively.
 It is expected that a supercluster and track from the same electron will be close together, 
 so upper limits on these quantities are defined as in Table \ref{TableEidCuts}.  
 Distributions of electron \detain and \dphiin, 
-each plotted after the previous selection step,% (conversion rejection),
+each plotted after 
+all the 
+previous selection 
+%conversion and electron isolation 
+steps, % (conversion rejection),
 are shown in Figure~\ref{fig:dEtaInElecIdVars} and 
 Figure~\ref{fig:dPhiInElecIdVars}.  
 
@@ -983,6 +1030,7 @@ this defines a window around the Z mass peak at about 91 GeV.
 
 The acceptance %(abbreviated $A$) 
 ($A$) % Sridhara
+(see Section~\ref{over:xsec}) 
 is the factor representing the fraction of events 
 theoretically able to be detected with the given experiment.  
 It includes considerations related to a particle's kinematic quantities 
@@ -1106,7 +1154,7 @@ These values can also be found in Table~\ref{TableAccValues}.
     {\fixspacing Acceptance values for \Zee events. 
     Acceptance is defined as the fraction of signal events 
     whose electrons can reasonably be expected to be seen by the detector. 
-    The criteria are give in Table~\ref{TableAccCuts}}
+    The criteria are give in Table~\ref{TableAccCuts}.}
     \label{TableAccValues}
     \begin{tabular}[]{ | l | c | c | }
       \hline
@@ -1147,8 +1195,8 @@ However, the simulation may not correctly model some
 aspect of the real data, which would cause a discrepancy 
 with the real-data efficiency 
 and a corresponding inaccuracy in the final result.  
-Therefore it is desirable to use so-called ``data-driven''  %% FIXME ADD REF TO OTHER SECTION
-methods, % of determining efficiency, 
+Therefore it is desirable to use so-called ``data-driven''  
+methods (see also Section~\ref{over:tools}), % of determining efficiency, 
 determining the efficiency as closely as possible 
 using only the data itself.  
 Because the truth information does not exist in real data, 
@@ -1186,8 +1234,8 @@ be performed by fitting the invariant mass spectra of the
 tag-probe pairs for both passing and failing probes to a 
 lineshape representing both the signal and the background.  
 Then the distribution of passing probes can be represented as 
-the signal lineshape multiplied by the efficiency and the
-total number of signal events added to the background lineshape 
+the signal lineshape, multiplied by the efficiency and the
+total number of signal events, added to the background lineshape, 
 multiplied by the number of passing background events.  
 The failing probe distribution can be represented in the 
 analogous way, using (1 - efficiency) instead.  
@@ -1196,8 +1244,8 @@ the efficiency can be extracted simultaneously.
 
 Several lineshapes were combined in this fit.  
 The base signal lineshape was taken directly from a generator-level 
-histogram of the \Zee invariant mass spectrum.  
-This represents the true form of the invariant mass shape.  
+histogram of the \Zee invariant mass spectrum, %.  
+which represents the true form of the invariant mass shape.  
 This distribution was used together with a Gaussian distribution 
 multiplied by a Crystal Ball function.  
 The Gaussian has the general form 
@@ -1212,18 +1260,19 @@ The Crystal Ball (named after the Crystal Ball collaboration) has the form
 \[
 f(x) = N \times 
 \begin{cases}
-e^{-\frac{(x-\mu)^2}{2\sigma^2}} & \text{for} \frac{x-\mu}{\sigma} > -\alpha \\
-A \times \left(B - \frac{x-\mu}{\sigma} \right)^{-n} & \text{for} \frac{x-\mu}{\sigma} \leq -\alpha
+e^{-\frac{(x-\mu)^2}{2\sigma^2}} & \text{for } \frac{x-\mu}{\sigma} > -\alpha \\
+A \times \left(B - \frac{x-\mu}{\sigma} \right)^{-n} & \text{for } \frac{x-\mu}{\sigma} \leq -\alpha
 \end{cases}
 \]
 where
 \[
-A = \left( \frac{}{} \right) e^{\left( -\frac{|\alpha|^2}{2} \right)}
+A = \left( \frac{n}{|\alpha|} \right)^n e^{\left( -\frac{|\alpha|^2}{2} \right)}
 \]
 \[
 B = \frac{n}{|\alpha|} - |\alpha|
 \]
-The Crystal Ball functionis used to model processes where energy may be lost 
+The Crystal Ball function is used to 
+model processes where energy may be lost 
 in the measurement.  
 Together they factor in the changes to the invariant mass 
 spectrum due to detector limitations.  
@@ -1239,8 +1288,8 @@ The background was represented by an exponential lineshape, of the form
 \[
 f(x) = 
 \begin{cases}
-\lambda e^{-\lambda x} & \text{for} x \geq 0 \\
-0 & \text{for} x < 0
+\lambda e^{-\lambda x} & \text{for } x \geq 0 \\
+0 & \text{for } x < 0
 \end{cases}
 \]
 %This was simply added to the combined signal lineshape
@@ -1302,7 +1351,7 @@ Section~\ref{anMeth:SystsOtherMCEff}.
 
 The event selection efficiency in this analysis is determined 
 by first obtaining the efficiencies of the individual 
-selection steps given above.%, using the tag-and-probe method.  
+selection steps given above. %, using the tag-and-probe method.  
 This also includes the initial step of reconstructing 
 the electron objects from superclusters.  
 Since each selection step is applied one after the other, 
@@ -1335,7 +1384,7 @@ from the individual step efficiencies is therefore
 The efficiencies are given for each selection step in Table~\ref{TableEfficiencies} %.   %FIXME ALSO DO FOR BARREL/ENDCAP
 and for all the triggers used in data individually in Table~\ref{TableTriggerEfficiencies}.  
 The full event selection efficiency was calculated to be 
-61.0 +/- 0.5\%.  
+61.0 $\pm$ 0.5\%.  
 
 \begin{table}[htbp]
   \begin{center}
