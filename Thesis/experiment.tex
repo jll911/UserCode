@@ -923,6 +923,33 @@ which is also proportional to the luminosity.
 The information from both of these methods is combined into one 
 luminosity value.  
 
+%Absolute c
+Calibration of the luminosity measurement is 
+done by Van der Meer scans \cite{VdMScans}, named after their pioneer 
+Simon van der Meer. %, ? add?  % REFERENCE
+The luminosity depends on the cross-sectional distribution 
+of the protons in the beam.  
+The distribution functions are taken to be independent 
+in the $x$ and $y$ directions, 
+and so can be represented as products of two separate functions, 
+$f(x,y) = f_x(x) f_y(y)$. 
+The Van der Meer scans measure these distributions 
+by changing the beams' relative position in small steps, 
+in both the $x$ and $y$ directions.  
+The interaction rate at each measurement step is recorded 
+using the CMS detector, 
+and the data points are fit using the sum of two Gaussian 
+distributions: 
+one for the core peak, and one to model the tails 
+of the distribution.  
+The beam-shape parameters used in the calibration are 
+extracted from these fits.  
+The calibration calculation also factors in 
+the orbit frequency and number of colliding bunches, 
+as well as the beam intensities, 
+which are measured using 
+Fast Beam Current Transformers \cite{FBCT}. % REFERENCE
+
 Figure~\ref{fig:LuminosityVsTime} shows the total integrated luminosity at CMS 
 as a function of time for the 2010 running period \cite{LumiPublicResults2010}.  
 The amount of data validated for physics analysis was 
