@@ -403,11 +403,12 @@ The ``hard subprocess'' refers to the main
 physics interaction.  
 Not shown in the diagram are other interactions 
 involving different parts of the protons 
-or other protons in the same bunch; 
-these interactions, known as the ``underlying event,''  
-are often not as interesting 
-%physics-wise % Wesley
-because they are typically not as energetic.  
+or other protons in the same bunch, 
+the ``underlying event'' 
+(see Section~\ref{over:anatomy}).   
+%are often not as interesting 
+%%physics-wise % Wesley
+%because they are typically not as energetic.  
 The participant particles in the main interaction 
 are then ``evolved'' through the showering process, 
 which includes emissions of photons or gluons 
@@ -442,12 +443,16 @@ and the detector's response (Section~\ref{sim:Detector}).
 %from ISR and FSR
 The process of hadronization is not directly 
 relevant to this analysis, 
-since it does not require hadrons to 
+since the analysis does not require hadrons to 
 exist in the final state.  
 However, since initial- or final-state radiation 
 may cause jets incidental to the main interaction 
 that nevertheless affect its kinematics, 
-hadronization is dealt with here.  
+hadronization is 
+%dealt with 
+%mentioned 
+included 
+here.  
 %CAN TREAT ELECTRONS ETC AS ``PARTONS'' AND 
 %INCLUDE QED IN SHOWERING -- makes framework easier 
 %(maybe put in pythia section?  
@@ -581,7 +586,7 @@ an event:
 the parton distribution functions 
 that describe the colliding protons, 
 the main physics interaction process, 
-the non-interacting remnants (underlying event)
+the non-interacting remnants (underlying event), 
 and how the end products shower, 
 hadronize, and decay.  
 Over its long history PYTHIA has built up 
@@ -608,7 +613,8 @@ including the ones in the following sections.
 This analysis does not directly deal with 
 quarks or jets; 
 however, since jets can be present in the final state 
-and can play a role in the kinematics of the \Zee 
+and can play a role in the kinematics of the %\Zee 
+$pp \rightarrow Z$ 
 interaction, 
 the method of dealing with hadronization 
 %jets and the QCD processes that form them 
@@ -700,7 +706,7 @@ Tune Z2 \cite{TuneZ2}.
 However, differences between the tunes 
 are very slight and affect 
 final results very little; 
-these affects are accounted for 
+these effects are accounted for 
 in the systematic errors 
 (Section~\ref{anMeth:SystsOther}).  
 
@@ -815,8 +821,8 @@ on the kinematic distributions of the decayed
 particles, 
 CMS decided to use a separate package, TAUOLA 
 \cite{TAUOLA}, 
-to decay tau particles in the samples 
-that included taus.  
+to decay $\tau$ particles in the samples 
+that included at least one $\tau$ per event.  
 %While TAUOLA implements non-standard interactions, % NEED THIS?????
 %this is not made use of here.  
 %Only standard decays are used.  
@@ -855,7 +861,7 @@ The TAUOLA package was only necessary for the
 The theoretical prediction for the cross section value 
 was obtained with FEWZ \cite{FEWZ2}, 
 a cross section integration program 
-specifially dealing with production of the W and Z, 
+specifically dealing with production of the W and Z, 
 using the MSTW PDF set \cite{MSTW}.  
 Previously, all calculations of the cross section 
 had been done at next-to-leading order (NLO) in QCD, 
@@ -921,7 +927,7 @@ of real data, though.
 The sample for a common process may correspond 
 to a relatively small amount of data, 
 while that for a rare process may be equivalent 
-to a very large amount of data, %.  
+to a very large amount of data; %.  
 i.e. because of its rarity, a large amount 
 of data is required in order to see it.  
 These differences are taken into account by 
@@ -961,7 +967,7 @@ it is useful to pare down the samples
 from the start, 
 so they do not take up unnecessary space.  
 The QCD samples have filters applied to 
-select only events which may be background 
+select only events which could be background 
 to an analysis using electrons and photons.  
 The ``BCtoE'' samples include 
 events with electrons 
@@ -985,10 +991,11 @@ double-counting.
 %\subsection{GEANT Detector Model/Modeling of Particle Interactions in Detector Material}
 
 After the generation of the main physics process, 
-and the parton showering and hadronization and decays, 
+%and the parton showering and hadronization and decays, 
+parton showering, hadronization, and decays, 
 the role of the detector itself must be taken into account.  
 %The final, end-state, decayed particles interact with 
-The end-state, decayed particles interact with 
+The final-state particles interact with 
 the detector, which causes signals representing 
 the particle's position and energy to be recorded as data.  
 These must be properly modeled to know, for example, 
@@ -1039,8 +1046,9 @@ For example, the detection of particles
 in the electromagnetic calorimeter 
 depends on those particles causing 
 a shower of other particles upon 
-interacting with the material of the 
-calorimeter; 
+interacting with the %material of the 
+%calorimeter; 
+calorimeter material; 
 this must be modeled.  
 Finally, GEANT4 also provides 
 the ability to model the response of 
@@ -1066,7 +1074,7 @@ for a given luminosity
 before the experiment actually runs 
 with that luminosity.  
 In particular, 
-this permitted the estimation of rates
+this has permitted the estimation of rates
 long before the detector was fully constructed, 
 greatly aiding the experiment's 
 physics planning.  

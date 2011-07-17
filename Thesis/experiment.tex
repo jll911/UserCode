@@ -53,7 +53,7 @@ The LHC began colliding proton beams in March 2010,
 quickly reaching its 2010 center-of-mass operating energy of 7 TeV
 (3.5 TeV per proton beam).  
 At this energy it delivered over 47 pb$^{-1}$ of collisions, 
-with a maximum instantaneous luminosity of over 2*10$^{32}$ cm$^{-2}$s$^{-1}$.  
+with a maximum instantaneous luminosity of over $2\times10^{32}$ cm$^{-2}$s$^{-1}$.  
 The LHC maximum design energy is 14 TeV (7 TeV per beam), 
 and its design luminosity is 10$^{34}$ cm$^{-2}$s$^{-1}$.  
 
@@ -120,7 +120,7 @@ and cathode strip chambers.
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=360pt]{Figures/CMSParticles.png}
+    \includegraphics[width=270pt]{Figures/CMSParticles.png}
   \end{center}
   \caption[\fixspacing Detection of particles in the CMS detector]
 	  {\fixspacing Detection of particles in the CMS detector.}
@@ -178,8 +178,11 @@ the inner subdetectors.
 Since the muon system is outside the solenoid, 
 the magnetic field points in the opposite direction,
 and hence the muon trajectories bend in the other direction
-from what they had inside the solenoid.  
-The last category of end-product, neutrinos, 
+%from what they had inside the solenoid.  
+from their paths inside the solenoid.  
+The last category of 
+%end-product 
+final particles, neutrinos, 
 generally cannot be detected.
 However, their direction and energy in the radial plane 
 can be reconstructed 
@@ -187,7 +190,10 @@ by summing the energy of all the particles in the event.
 Because the initial protons have zero momentum in the radial plane, 
 and momentum is always conserved, 
 any significant ``missing'' component to the final energy
-can be taken to be due to a neutrino.  
+can be taken 
+%to be due to 
+as the signature of 
+a neutrino.  
 
 A CMS event display from 2010 running can be seen in Figure~\ref{fig:EventDisplay}.  
 
@@ -241,7 +247,9 @@ The yoke consists of three concentric cylinders divided into the same
 \subsection{Tracker}
 \label{exp:tracker}
 The purpose of the tracker is to detect the 
-tracks from end-product particles;
+tracks from 
+%end-product 
+final-state particles;
 only those which are charged can be detected in the tracker.  
 The CMS tracker contains 75 million channels
 and is specifically designed to get good performance 
@@ -319,9 +327,9 @@ with the geometry of each module dependent
 on its position in the tracker.  
 The strip tracker consists of four different parts: 
 the tracker inner barrel (TIB) with four layers of strips reaching to a radius of 50 cm, 
-the tracker inner endcap disks (TID) with three layers to +-90 cm in $z$, 
+the tracker inner endcap disks (TID) with three layers to $\pm$90 cm in $z$, 
 the tracker outer barrel (TOB) with six layers to 1.16 m radially, 
-and the tracker outer endcap (TEC) with nine layers, extending to +-2.8 m in $z$. 
+and the tracker outer endcap (TEC) with nine layers, extending to $\pm$2.8 m in $z$. 
 Several of the layers are double-sided: 
 they contain two sets of silicon modules.  
 The two sets of modules are arranged in a stereo
@@ -335,7 +343,7 @@ as well as the azimuthal.
  \begin{figure}[htb]
   \begin{center}
 %    \includegraphics[width=360pt]{Figures/tracker-Barrel.png}
-    \includegraphics[width=360pt]{Figures/tracker-schematic.png}
+    \includegraphics[width=240pt]{Figures/tracker-schematic.png}
   \end{center}
   \caption[\fixspacing Diagram of layers in tracker barrel]
 	  {\fixspacing Diagram of layers in tracker barrel.}
@@ -359,6 +367,32 @@ to an uncertainty in the energy measurement.
 
 \subsubsection{ECAL}
 \label{exp:ECAL}
+The electromagnetic calorimeter takes advantage 
+of the fact that an electron moving 
+relativistically in a dense material 
+loses energy by radiating photons, a process 
+known as bremsstrahlung.  
+A photon in the same situation produce an electron-positron pair.  
+Therefore, an electron or photon in the ECAL 
+will produce more electrons and photons, 
+each of which also have a high energy; 
+the bremsstrahlung and pair-production continue 
+in a cascade 
+until the electrons and photons do not have enough 
+energy to create new particles.  
+This cascade is known as an electromagnetic shower.  
+Showers have different spatial extents in different materials; 
+the characteristic lengths are called ``radiation length'' 
+for the direction of the original particle's motion, 
+and ``Moli\`ere radius'' for the plane transverse 
+to that motion.  
+The definition of radiation length is the mean distance 
+over which an electron's energy decreases to $1/e$ 
+of its original value through bremsstrahlung, 
+so a shower takes place over many radiation lengths. 
+The Moli\`ere radius, on the other hand,  
+contains about 90\% of the shower energy.  
+
 The ECAL is made up of 
 %\~76,000 lead tungstate crystals,
 76,000 lead tungstate crystals,
@@ -372,7 +406,7 @@ and 3 cm x 3 cm wide and 22 cm long in the endcap.
 The dimensions were chosen such that the width 
 of each crystal is approximately the characteristic size of 
 an electromagnetic shower within it 
-(Moliere radius of 2.19 cm),
+(Moli\`ere radius of 2.19 cm),
 and the length is 
 %\~25 times the radiation length 
 25 times the radiation length 
@@ -415,7 +449,7 @@ which is too close to the interaction point.
 %ORRRR: not important because not in detector paper, and
 %couldn't find it in tdr? (which is confusing in any case)
 The hadronic calorimeter surrounds the ECAL and 
-covers $|\eta| < 3$ in the barrel and endcap (HB/HE) 
+covers $|\eta| < 3$ in the barrel (HB) and endcap (HE) 
 and up to $|\eta| < 5$ in the forward calorimeter (HF),
 both within the magnet coil.
 Additionally, the outer calorimeter (HO) is situated 
@@ -437,7 +471,8 @@ some being lost in the metal,
 so the energy measurement is scaled using 
 experimentally-determined factors.  
 The depth of the HCAL 
-in terms of interaction length 
+in terms of interaction lengths 
+($\lambda_I$, the hadronic equivalent of radiation length) 
 varies between 5.82 $\lambda_I$ at $\eta = 0$ and 
 10.6 $\lambda_I$ at the edge of HB and throughout 
 the endcap, 
@@ -503,7 +538,7 @@ to ensure full coverage.
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[]{Figures/muon-DT-concept.png}
+    \includegraphics[width=180pt]{Figures/muon-DT-concept.png}
   \end{center}
   \caption[\fixspacing Conceptual diagram of drift tube chambers]
 	  {\fixspacing Conceptual diagram of drift tube chambers.}
@@ -529,7 +564,7 @@ at each station.
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[]{Figures/muon-CSC-structure.png}
+    \includegraphics[width=180pt]{Figures/muon-CSC-structure.png}
   \end{center}
   \caption[\fixspacing Diagram of cathode strip chamber]
 	  {\fixspacing Diagram of cathode strip chamber, 
@@ -548,7 +583,7 @@ Six layers of RPCs are interspersed with the
 drift tubes in the barrel, 
 while three layers are used in the endcap 
 with the CSCs.  
-Again, overlapping chambers ensures full coverage.  
+Again, overlapping chambers ensure full coverage.  
 Each chamber consists of two or three double-gap 
 modules, each of which has a single readout module 
 between two thin gas chambers.  
@@ -559,7 +594,7 @@ Figure \ref{fig:RPClayers} shows a diagram of the structure.
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=360pt]{Figures/muon-RPClayers.jpg}
+    \includegraphics[width=270pt]{Figures/muon-RPClayers.jpg}
   \end{center}
   \caption[\fixspacing Diagram of resistive plate chamber]
 	  {\fixspacing Diagram of resistive plate chamber.}
@@ -588,7 +623,7 @@ The Level-1 Trigger uses hardware-implemented algorithms to
 reduce the event rate from the LHC collision frequency of 40 MHz 
 to a maximum of 100 kHz; 
 this must be done quickly since the initial event rate is high. 
-The High-Level Trigger reduces the rate further to \~200 Hz, %(OR 100??)
+The High-Level Trigger reduces the rate further to about 200 Hz, %(OR 100??)
 using a computer farm to process each event in more detail; 
 having a lower input rate, it can afford more processing time per event.  
 
@@ -626,7 +661,7 @@ and makes a single decision based on the set of criteria implemented.
 %(Ooh boy, go back to RT2010 stuff!)  
 
 The trigger system must combine all the pieces of information 
-according to which bunch crossing they originate from.   
+according to the bunch crossing they originate in.   
 This is complicated by the fact that the time it takes particles 
 to reach the outer edge of the muon system 
 is 
@@ -697,7 +732,8 @@ too much energy has been deposited in the HCAL tower for it to
 contain a probable electron or photon.  
 The electron/photon candidates are constructed starting from 
 towers whose energy deposit is higher than any of their 
-four immediate neighbors.  
+four immediate neighbors, 
+as illustrated in Figure~\ref{fig:RctEgAlgo}.  
 This primary tower must not have the ECAL fine grain bit set; 
 this fine grain bit indicates a structure in the energy deposit 
 inconsistent with an electron or photon.  
@@ -714,14 +750,13 @@ deposits below a configurable threshold (the ``quiet'' threshold),
 and these towers' fine grain bits are not set, 
 then the candidate is isolated.  
 Otherwise, it is non-isolated.  
-The algorithm is illustrated in Figure~\ref{fig:RctEgAlgo}.  
 Each crate sorts the isolated and non-isolated candidates found 
 according to energy, 
 and the four highest-energy of each type are kept and passed on.  
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=240pt]{Figures/RCT-EG-algo.png} 
+    \includegraphics[width=180pt]{Figures/RCT-EG-algo.png} 
   \end{center}
   \caption[\fixspacing Diagram of the RCT electron/photon algorithm]{
     \fixspacing Diagram of the RCT electron/photon algorithm. 
@@ -743,7 +778,7 @@ The RCT also calculates the total energy sums
 of square regions of the calorimeter, 
 4 trigger towers to a side.  
 The topology of the energy deposits in each region 
-is examined to determined whether or not the 
+is examined to determine whether or not the 
 deposit is consistent with that from 
 a $\tau$ particle that has decayed hadronically, 
 i.e. decayed into a jet of hadrons.  
@@ -752,22 +787,25 @@ are considered.
 If the deposits in the region make up a 
 single, small, contiguous area as shown in 
 Figure~\ref{fig:RctTauAlgo},
-then they are consistent with a tau.  
+then they are consistent with a $\tau$.  
 In this case the $\tau$ veto bit associated 
 with the region is set to false; 
 in all other cases, it is set to true.  
 In addition, the HCAL sends a bit for each 
-HCAL tower indicating whether the deposit 
+HCAL tower indicating whether the energy deposit 
 is consistent with a minimum ionizing particle 
-(MIP) or muon.  % ADD QUIET!!!!!
+(MIP), or muon.  
 If any individual tower's MIP bit is true, 
 then the overall MIP bit associated with the region 
 is also set to true.  
 Otherwise it is set to false.  
+A ``quiet'' bit is also set to true if 
+any region's energy is below a configurable 
+threshold.  
 
  \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=400pt]{Figures/RCT-tau-algo.png} 
+    \includegraphics[width=360pt]{Figures/RCT-tau-algo.png} 
   \end{center}
   \caption[\fixspacing Diagram of the RCT $\tau$ algorithm]{
     \fixspacing Diagram of the RCT $\tau$ algorithm. 
@@ -784,7 +822,7 @@ Otherwise it is set to false.
 Finally, the RCT sends the regional energy sums 
 and the list of possible 
 electrons or photons, 
-along with the associated bits (MIP, $\tau$), % ADD QUIET!!!
+along with the associated bits (MIP, $\tau$ veto, quiet), 
 to the 
 Global Calorimeter Trigger (GCT) level.  
 The GCT groups the regional energy sums into jets 
@@ -834,7 +872,7 @@ When an event fulfills all the criteria for a given path,
 that path ``fires'' and the event is accepted.  
 Some paths may fire at a higher rate than desired, 
 so a prescaling factor is implemented: 
-only a fraction of events firing that path is kept.  
+only a fraction of events firing that path are kept.  
 For example, a path with a prescale of 5 only 
 has 1/5 of its passing events actually saved.  
 In this way, events passing a certain path can still 
@@ -868,7 +906,7 @@ commissioned successfully throughout the 2010 running conditions.
 %How the luminosity is measured (definition? or that done earlier in general particle physics section? recap here?)
 %What's actually used: HF?? that's in the detector paper, but not much else.  go to twiki, I guess (and that HN thread)
 
-CMS measures luminosity with the forward calorimeter, which sits 
+CMS measures luminosity with the forward calorimeter (HF), which sits 
 between $|\eta|$ of 3 and 5, close to the beam pipe.  
 Two different methods of measurement are used.  
 The first method counts the number of occupied towers in the HF 
@@ -886,7 +924,7 @@ Figure~\ref{fig:LuminosityVsTime} shows the total integrated luminosity at CMS
 as a function of time for the 2010 running period \cite{LumiPublicResults2010}.  
 The amount of data validated for physics analysis was 
 %36.1 $pb^{-1}$.  
-36.1 \pb.  
+36.1\pb.  
 
  \begin{figure}[htb]
   \begin{center}
