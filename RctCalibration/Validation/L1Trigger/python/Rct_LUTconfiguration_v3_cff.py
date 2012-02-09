@@ -2,22 +2,18 @@
 # Eeg_EHSums, physics LUTs (new: CRAFTPhysicsV1 for HCAL), includes HF AND EE
 
 import FWCore.ParameterSet.Config as cms
-#from L1Trigger.Configuration.L1Config_cff import * # BEAUTIFY CANCELLED
-from L1TriggerConfig.RCTConfigProducers.L1RCTConfig_cff import * # BEAUTIFY
-from L1TriggerConfig.L1ScalesProducers.L1CaloScalesConfig_cff import *
 
-#from CalibCalorimetry.CaloTPG.CaloTPGTranscoder_cfi import *
-#from CalibCalorimetry.EcalTPGTools.ecalTPGScale_cff import *
-#from L1TriggerConfig.L1ScalesProducers.L1CaloInputScalesConfig_cff import *
+from L1TriggerConfig.RCTConfigProducers.L1RCTConfig_cff import * 
+from L1TriggerConfig.L1ScalesProducers.L1CaloScalesConfig_cff import *
 
 RCTConfigProducers.eGammaLSB = 0.5
 RCTConfigProducers.jetMETLSB = 0.5
 RCTConfigProducers.eMinForFGCut = 6. ## FG cut not used, this serves
 RCTConfigProducers.eMaxForFGCut = 999. ## to disable it.
 RCTConfigProducers.hOeCut = 0.05 ##  Now using H/E!
-RCTConfigProducers.eMinForHoECut = 2. ## 
+RCTConfigProducers.eMinForHoECut = 1. ## 
 RCTConfigProducers.eMaxForHoECut = 30. ## 
-RCTConfigProducers.hMinForHoECut = 2. ##
+RCTConfigProducers.hMinForHoECut = 1. ##
 RCTConfigProducers.eActivityCut = 4. ## Activity bits for tau calc
 RCTConfigProducers.hActivityCut = 4. ##
 RCTConfigProducers.eicIsolationThreshold = 7 ## Using it now!

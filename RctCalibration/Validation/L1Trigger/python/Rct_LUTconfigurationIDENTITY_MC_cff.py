@@ -2,11 +2,9 @@
 # Eeg_EHSums, physics LUTs (new: CRAFTPhysicsV1 for HCAL), includes HF AND EE
 
 import FWCore.ParameterSet.Config as cms
-from L1Trigger.Configuration.L1Config_cff import *
-#from CalibCalorimetry.CaloTPG.CaloTPGTranscoder_cfi import *
-#from CalibCalorimetry.EcalTPGTools.ecalTPGScale_cff import *
+
 from L1TriggerConfig.RCTConfigProducers.L1RCTConfig_cff import *
-#from L1TriggerConfig.L1ScalesProducers.L1CaloInputScalesConfig_cff import *
+from L1TriggerConfig.L1ScalesProducers.L1CaloScalesConfig_cff import *
 
 RCTConfigProducers.eGammaLSB = 0.5
 RCTConfigProducers.jetMETLSB = 0.5
@@ -36,7 +34,6 @@ l1CaloScales.L1CaloEmThresholds = cms.vdouble(
 
 # The following vectors determine paths used
 # Eeg
-# correction factors based on EG2 corrections coming from home-made Z sample & highest electron
 
 RCTConfigProducers.eGammaECalScaleFactors = [ 1., 1., 1., 1., 1., 
                                               1., 1., 1., 1., 1., 

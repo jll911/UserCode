@@ -2,10 +2,9 @@
 # Eeg_EHSums, physics LUTs (new: CRAFTPhysicsV1 for HCAL), includes HF AND EE
 
 import FWCore.ParameterSet.Config as cms
-from L1Trigger.Configuration.L1Config_cff import *
-#from CalibCalorimetry.CaloTPG.CaloTPGTranscoder_cfi import *
-#from CalibCalorimetry.EcalTPGTools.ecalTPGScale_cff import *
+
 from L1TriggerConfig.RCTConfigProducers.L1RCTConfig_cff import *
+from L1TriggerConfig.L1ScalesProducers.L1CaloScalesConfig_cff import *
 
 RCTConfigProducers.eGammaLSB = 0.5
 RCTConfigProducers.jetMETLSB = 0.5
