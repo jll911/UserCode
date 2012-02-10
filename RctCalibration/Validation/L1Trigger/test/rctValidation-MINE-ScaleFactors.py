@@ -165,7 +165,7 @@ process.gsf8 = cms.EDAnalyzer('RctValidation',
                 binsEt = cms.untracked.int32(60),
                 gammaThreshold = cms.untracked.double(8.),
                 #outputFileName = cms.untracked.string('output-RctVal-MINE-24Nov11.root')
-                outputFileName = cms.untracked.string(PREFIXHISTS + FILENAME)
+                outputFileName = cms.untracked.string(PREFIXHISTS + FILEROOT)
 )
 
 process.gsf12          = process.gsf8.clone()

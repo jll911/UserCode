@@ -281,7 +281,7 @@ process.load("Configuration.StandardSequences.Reconstruction_cff")
 
 process.TFileService = cms.Service("TFileService",
                                    #fileName = cms.string("RctEmTree-24Nov11.root"),
-                                   fileName = cms.string(PREFIXTREE + FILENAME),
+                                   fileName = cms.string(PREFIXTREE + FILEROOT),
                                    closeFileFast = cms.untracked.bool(True)
                                    )
 
