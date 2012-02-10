@@ -204,17 +204,6 @@ process.gsf20new.rctEGamma = cms.InputTag('rctEmulDigis')
 
 
 
-# process.rctEmulDigis = cms.EDProducer("L1RCTProducer",
-#                                       #    hcalDigis = cms.VInputTag(cms.InputTag("simHcalTriggerPrimitiveDigis")),#MC
-#                                       hcalDigis = cms.VInputTag(cms.InputTag("hcalDigis")),                    #Data
-#                                       useDebugTpgScales = cms.bool(False),
-#                                       useEcal = cms.bool(True),
-#                                       useHcal = cms.bool(True),
-#                                       #    ecalDigis = cms.VInputTag(cms.InputTag("simEcalTriggerPrimitiveDigis")),  #MC
-#                                       ecalDigis = cms.VInputTag(cms.InputTag("ecalDigis:EcalTriggerPrimitives")), #Data
-#                                       BunchCrossings = cms.vint32(0)
-#                                       )
-
 from L1Trigger.RegionalCaloTrigger.rctDigis_cfi import rctDigis
 process.rctEmulDigis = rctDigis
 process.rctEmulDigis.hcalDigis = cms.VInputTag(cms.InputTag("hcalDigis"))
