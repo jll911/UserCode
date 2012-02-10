@@ -625,7 +625,7 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	  }
 
 	//	math::PtEtaPhiMLorentzVector j_p4 = j->p4();
-	std::cout << " electron energy " << j_pt <<std::endl;
+	//std::cout << " electron energy " << j_pt <<std::endl;
 	if(j_pt < 1) 
 	  continue;
 		
