@@ -22,12 +22,11 @@ options.register ('isTest',
                   "Specify if a test run")
 options.parseArguments()
 
-PREFIXTREE = "RctEmTree-"
-PREFIXHISTS = "RctValHists-"
+
+PREFIXHISTS = "RctValHists-Effs-"
 SUFFIX = ".root"
 
 if options.isTest == True:
-    PREFIXTREE = "TEST-" + PREFIXTREE
     PREFIXHISTS = "TEST-" + PREFIXHISTS
     print "Running in test mode!"
 
@@ -39,7 +38,7 @@ process = cms.Process("RCTVAL")
 process.load("Configuration.StandardSequences.RawToDigi_Data_cff") # for data
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing
+process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing, 44X
 
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(50000) )
@@ -49,7 +48,6 @@ if options.isTest == True:
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
 
-    ## CURRENTLY AVAILABLE AT WISCONSIN
     ## Run2011BDoubleElectron Z electron skim: /hdfs/store/data/Run2011B/DoubleElectron/RAW-RECO/ZElectron-PromptSkim-v1/0000/
     '/store/data/Run2011B/DoubleElectron/RAW-RECO/ZElectron-PromptSkim-v1/0000/00142CEE-F6ED-E011-9E48-0024E86E8DA7.root',
     '/store/data/Run2011B/DoubleElectron/RAW-RECO/ZElectron-PromptSkim-v1/0000/002D23D0-01EC-E011-9E56-001D096B0DB4.root',
@@ -106,6 +104,7 @@ process.source = cms.Source("PoolSource",
 
 #process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange(process.myLumisToProcess.lumisToProcess)
  
+
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 #process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
@@ -114,11 +113,6 @@ process.load("Configuration.StandardSequences.Geometry_cff")
 process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
-process.TFileService = cms.Service("TFileService",
-                                   #fileName = cms.string("RctEmTree-24Nov11.root"),
-                                   fileName = cms.string(PREFIXTREE + FILENAME),
-                                   closeFileFast = cms.untracked.bool(True)
-                                   )
 
 process.load("DQMServices.Core.DQM_cfg")
 process.load("DQMServices.Components.DQMEnvironment_cfi")
@@ -225,23 +219,11 @@ process.rctemul = cms.Sequence(
     cms.SequencePlaceholder("rctEmulDigis")
     )
 
-process.rctAnalyzer = cms.EDAnalyzer("L1RCTTestAnalyzer",
-                                     #hcalDigisLabel = cms.InputTag("hcalTriggerPrimitiveDigis"),
-                                     hcalDigisLabel = cms.InputTag("hcalDigis"),
-                                     showEmCands = cms.untracked.bool(True),
-                                     ecalDigisLabel = cms.InputTag("ecalDigis:EcalTriggerPrimitives"),
-                                     #rctDigisLabel = cms.InputTag("rctDigis"),
-                                     rctDigisLabel = cms.InputTag("rctEmulDigis"),
-                                     #showRegionSums = cms.untracked.bool(True)
-                                     showRegionSums = cms.untracked.bool(False)
-                                     )
-
 process.p1 = cms.Path(process.RawToDigi*
                       process.selectedElectronsPlateau*
                       process.simpleEleId70relIso*
                       process.electronsWp70*
                       process.rctemul*
-                      process.rctAnalyzer*
                       process.gsf8new*
                       process.gsf12new*
                       process.gsf15new*

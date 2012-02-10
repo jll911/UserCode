@@ -22,12 +22,10 @@ options.register ('isTest',
                   "Specify if a test run")
 options.parseArguments()
 
-PREFIXTREE = "RctEmTree-"
-PREFIXHISTS = "RctValHists-"
+PREFIXHISTS = "RctValHists-scaleFactors-"
 SUFFIX = ".root"
 
 if options.isTest == True:
-    PREFIXTREE = "TEST-" + PREFIXTREE
     PREFIXHISTS = "TEST-" + PREFIXHISTS
     print "Running in test mode!"
 
@@ -39,17 +37,16 @@ process = cms.Process("RCTVAL")
 process.load("Configuration.StandardSequences.RawToDigi_Data_cff") # for data
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing
+process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing, 44X
 
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(50000) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(200000) )
 if options.isTest == True:
     process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
-    
+
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
 
-    ## CURRENTLY AVAILABLE AT WISCONSIN
     ## Run2011BDoubleElectron Z electron skim: /hdfs/store/data/Run2011B/DoubleElectron/RAW-RECO/ZElectron-PromptSkim-v1/0000/
     '/store/data/Run2011B/DoubleElectron/RAW-RECO/ZElectron-PromptSkim-v1/0000/00142CEE-F6ED-E011-9E48-0024E86E8DA7.root',
     '/store/data/Run2011B/DoubleElectron/RAW-RECO/ZElectron-PromptSkim-v1/0000/002D23D0-01EC-E011-9E56-001D096B0DB4.root',
@@ -114,24 +111,19 @@ process.load("Configuration.StandardSequences.Geometry_cff")
 process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
-process.TFileService = cms.Service("TFileService",
-                                   #fileName = cms.string("RctEmTree-24Nov11.root"),
-                                   fileName = cms.string(PREFIXTREE + FILENAME),
-                                   closeFileFast = cms.untracked.bool(True)
-                                   )
-
 process.load("DQMServices.Core.DQM_cfg")
 process.load("DQMServices.Components.DQMEnvironment_cfi")
 
-process.load("Validation.L1Trigger.Rct_LUTconfiguration_v3_cff")
+process.load("Validation.L1Trigger.Rct_LUTconfigurationIDENTITY_MC_cff") 
 
 # electron selector
 process.load("ElectroWeakAnalysis.WENu.simpleEleIdSequence_cff") 
-process.simpleEleId70relIso.src = cms.InputTag("selectedElectronsPlateau")
+process.simpleEleId70relIso.src = cms.InputTag("selectedElectronsTurnOn20")
 
 # select a subset of the GsfElectron collection based on the quality stored in a ValueMap
 process.electronsWp70 = cms.EDProducer("BtagGsfElectronSelector",
-                                       input     = cms.InputTag( "selectedElectronsPlateau" ),
+                                       #input     = cms.InputTag( "selectedElectronsPlateau" ),
+                                       input     = cms.InputTag( "selectedElectronsTurnOn20" ),
                                        #input     = cms.InputTag( 'gsfElectrons' ),
                                        selection = cms.InputTag('simpleEleId70relIso'),
                                        cut       = cms.double(6.5) ### 7 == passing all conv rej, iso, id cuts
@@ -142,6 +134,13 @@ process.selectedElectronsPlateau = cms.EDFilter("GsfElectronSelector",
                                                 #   cut = cms.string('pt>10&&pt<25'),
                                                 cut = cms.string('pt>5&&pt<50'),
                                                 filter = cms.bool(True)
+)    
+
+process.selectedElectronsTurnOn20 = cms.EDFilter("GsfElectronSelector",
+                                                 src = cms.InputTag("gsfElectrons"),
+                                                 #   cut = cms.string('pt>10&&pt<25'),
+                                                 cut = cms.string('pt>18&&pt<30'),
+                                                 filter = cms.bool(True)
 )    
 
 #Reconfigure Environment and saver
@@ -225,23 +224,11 @@ process.rctemul = cms.Sequence(
     cms.SequencePlaceholder("rctEmulDigis")
     )
 
-process.rctAnalyzer = cms.EDAnalyzer("L1RCTTestAnalyzer",
-                                     #hcalDigisLabel = cms.InputTag("hcalTriggerPrimitiveDigis"),
-                                     hcalDigisLabel = cms.InputTag("hcalDigis"),
-                                     showEmCands = cms.untracked.bool(True),
-                                     ecalDigisLabel = cms.InputTag("ecalDigis:EcalTriggerPrimitives"),
-                                     #rctDigisLabel = cms.InputTag("rctDigis"),
-                                     rctDigisLabel = cms.InputTag("rctEmulDigis"),
-                                     #showRegionSums = cms.untracked.bool(True)
-                                     showRegionSums = cms.untracked.bool(False)
-                                     )
-
 process.p1 = cms.Path(process.RawToDigi*
-                      process.selectedElectronsPlateau*
+                      process.selectedElectronsTurnOn20*
                       process.simpleEleId70relIso*
                       process.electronsWp70*
                       process.rctemul*
-                      process.rctAnalyzer*
                       process.gsf8new*
                       process.gsf12new*
                       process.gsf15new*
