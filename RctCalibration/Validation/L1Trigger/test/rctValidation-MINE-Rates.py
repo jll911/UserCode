@@ -331,7 +331,7 @@ process.load("Validation.L1Trigger.Rct_LUTconfiguration_v3_cff")
 #                 binsEt = cms.untracked.int32(60),
 #                 gammaThreshold = cms.untracked.double(8.),
 #                 #outputFileName = cms.untracked.string('output-RctVal-MINE-24Nov11.root')
-#                 outputFileName = cms.untracked.string(PREFIXHISTS + FILENAME)
+#                 outputFileName = cms.untracked.string(PREFIXHISTS + FILEROOT)
 # )
 
 # process.gsf12          = process.gsf8.clone()
@@ -375,16 +375,21 @@ process.load("Validation.L1Trigger.Rct_LUTconfiguration_v3_cff")
 
 
 
-process.rctEmulDigis = cms.EDProducer("L1RCTProducer",
-                                      #    hcalDigis = cms.VInputTag(cms.InputTag("simHcalTriggerPrimitiveDigis")),#MC
-                                      hcalDigis = cms.VInputTag(cms.InputTag("hcalDigis")),                    #Data
-                                      useDebugTpgScales = cms.bool(False),
-                                      useEcal = cms.bool(True),
-                                      useHcal = cms.bool(True),
-                                      #    ecalDigis = cms.VInputTag(cms.InputTag("simEcalTriggerPrimitiveDigis")),  #MC
-                                      ecalDigis = cms.VInputTag(cms.InputTag("ecalDigis:EcalTriggerPrimitives")), #Data
-                                      BunchCrossings = cms.vint32(0)
-                                      )
+# process.rctEmulDigis = cms.EDProducer("L1RCTProducer",
+#                                       #    hcalDigis = cms.VInputTag(cms.InputTag("simHcalTriggerPrimitiveDigis")),#MC
+#                                       hcalDigis = cms.VInputTag(cms.InputTag("hcalDigis")),                    #Data
+#                                       useDebugTpgScales = cms.bool(False),
+#                                       useEcal = cms.bool(True),
+#                                       useHcal = cms.bool(True),
+#                                       #    ecalDigis = cms.VInputTag(cms.InputTag("simEcalTriggerPrimitiveDigis")),  #MC
+#                                       ecalDigis = cms.VInputTag(cms.InputTag("ecalDigis:EcalTriggerPrimitives")), #Data
+#                                       BunchCrossings = cms.vint32(0)
+#                                       )
+
+from L1Trigger.RegionalCaloTrigger.rctDigis_cfi import rctDigis
+process.rctEmulDigis = rctDigis
+process.rctEmulDigis.hcalDigis = cms.VInputTag(cms.InputTag("hcalDigis"))
+process.rctEmulDigis.ecalDigis = cms.VInputTag(cms.InputTag("ecalDigis:EcalTriggerPrimitives"))
 
 process.rctemul = cms.Sequence(
     cms.SequencePlaceholder("rctEmulDigis")
@@ -393,7 +398,8 @@ process.rctemul = cms.Sequence(
 process.rctAnalyzer = cms.EDAnalyzer("L1RCTTestAnalyzer",
                                      #hcalDigisLabel = cms.InputTag("hcalTriggerPrimitiveDigis"),
                                      hcalDigisLabel = cms.InputTag("hcalDigis"),
-                                     showEmCands = cms.untracked.bool(True),
+                                     #showEmCands = cms.untracked.bool(True),
+                                     showEmCands = cms.untracked.bool(False),
                                      ecalDigisLabel = cms.InputTag("ecalDigis:EcalTriggerPrimitives"),
                                      #rctDigisLabel = cms.InputTag("rctDigis"),
                                      rctDigisLabel = cms.InputTag("rctEmulDigis"),
