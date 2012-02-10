@@ -285,106 +285,7 @@ process.TFileService = cms.Service("TFileService",
                                    closeFileFast = cms.untracked.bool(True)
                                    )
 
-# process.load("DQMServices.Core.DQM_cfg")
-# process.load("DQMServices.Components.DQMEnvironment_cfi")
-
 process.load("Validation.L1Trigger.Rct_LUTconfiguration_v3_cff") 
-
-# # electron selector
-# process.load("ElectroWeakAnalysis.WENu.simpleEleIdSequence_cff") 
-# process.simpleEleId70relIso.src = cms.InputTag("selectedElectronsPlateau")
-
-# # select a subset of the GsfElectron collection based on the quality stored in a ValueMap
-# process.electronsWp70 = cms.EDProducer("BtagGsfElectronSelector",
-#                                        input     = cms.InputTag( "selectedElectronsPlateau" ),
-#                                        #input     = cms.InputTag( 'gsfElectrons' ),
-#                                        selection = cms.InputTag('simpleEleId70relIso'),
-#                                        cut       = cms.double(6.5) ### 7 == passing all conv rej, iso, id cuts
-#                                        )
-
-# process.selectedElectronsPlateau = cms.EDFilter("GsfElectronSelector",
-#                                                 src = cms.InputTag("gsfElectrons"),
-#                                                 #   cut = cms.string('pt>10&&pt<25'),
-#                                                 cut = cms.string('pt>5&&pt<50'),
-#                                                 filter = cms.bool(True)
-# )    
-
-# #Reconfigure Environment and saver
-# process.DQM.debug = cms.untracked.bool(True)
-# process.dqmSaver.saveByRun = cms.untracked.int32(-1)
-# process.dqmSaver.saveAtJobEnd = cms.untracked.bool(True)
-# process.dqmSaver.workflow = cms.untracked.string('/A/N/C')
-# process.dqmSaver.forceRunNumber = cms.untracked.int32(555)
-# process.DQMStore.verbose=0
-
-
-# process.gsf8 = cms.EDAnalyzer('RctValidation',
-#                 ecalTPGs = cms.InputTag("ecalDigis:EcalTriggerPrimitives"),
-#                 hcalTPGs = cms.InputTag("hcalDigis"),
-#                 rctEGamma = cms.InputTag('gctDigis'),
-#                 gctEGamma = cms.VInputTag(cms.InputTag('gctDigis','isoEm'),
-#                                           cms.InputTag('gctDigis','nonIsoEm')
-#                 ),                          
-#                 genEGamma = cms.InputTag("electronsWp70"),
-#                 directory = cms.string("L1T/ALL/GSF8base"),
-#                 maxEt = cms.untracked.double(60),
-#                 binsEt = cms.untracked.int32(60),
-#                 gammaThreshold = cms.untracked.double(8.),
-#                 #outputFileName = cms.untracked.string('output-RctVal-MINE-24Nov11.root')
-#                 outputFileName = cms.untracked.string(PREFIXHISTS + FILEROOT)
-# )
-
-# process.gsf12          = process.gsf8.clone()
-# process.gsf12.directory = cms.string("L1T/ALL/GSF12base")
-# process.gsf12.gammaThreshold = cms.untracked.double(12.)
-
-# process.gsf15          = process.gsf12.clone()
-# process.gsf15.directory = cms.string("L1T/ALL/GSF15base")
-# process.gsf15.gammaThreshold = cms.untracked.double(15.)
-
-# process.gsf18          = process.gsf12.clone()
-# process.gsf18.directory = cms.string("L1T/ALL/GSF18base")
-# process.gsf18.gammaThreshold = cms.untracked.double(18.)
-
-# process.gsf20          = process.gsf8.clone()
-# process.gsf20.directory = cms.string("L1T/ALL/GSF20base")
-# process.gsf20.gammaThreshold = cms.untracked.double(20.)
-
-
-
-
-# process.gsf8new          = process.gsf8.clone()
-# process.gsf8new.directory = cms.string("L1T/ALL/GSF8new")
-# process.gsf8new.rctEGamma = cms.InputTag('rctEmulDigis')
-
-# process.gsf12new          = process.gsf12.clone()
-# process.gsf12new.directory = cms.string("L1T/ALL/GSF12new")
-# process.gsf12new.rctEGamma = cms.InputTag('rctEmulDigis')
-
-# process.gsf15new       = process.gsf15.clone()
-# process.gsf15new.directory = cms.string("L1T/ALL/GSF15new")
-# process.gsf15new.rctEGamma = cms.InputTag('rctEmulDigis')
-
-# process.gsf18new       = process.gsf18.clone()
-# process.gsf18new.directory = cms.string("L1T/ALL/GSF18new")
-# process.gsf18new.rctEGamma = cms.InputTag('rctEmulDigis')
-
-# process.gsf20new       = process.gsf20.clone()
-# process.gsf20new.directory = cms.string("L1T/ALL/GSF20new")
-# process.gsf20new.rctEGamma = cms.InputTag('rctEmulDigis')
-
-
-
-# process.rctEmulDigis = cms.EDProducer("L1RCTProducer",
-#                                       #    hcalDigis = cms.VInputTag(cms.InputTag("simHcalTriggerPrimitiveDigis")),#MC
-#                                       hcalDigis = cms.VInputTag(cms.InputTag("hcalDigis")),                    #Data
-#                                       useDebugTpgScales = cms.bool(False),
-#                                       useEcal = cms.bool(True),
-#                                       useHcal = cms.bool(True),
-#                                       #    ecalDigis = cms.VInputTag(cms.InputTag("simEcalTriggerPrimitiveDigis")),  #MC
-#                                       ecalDigis = cms.VInputTag(cms.InputTag("ecalDigis:EcalTriggerPrimitives")), #Data
-#                                       BunchCrossings = cms.vint32(0)
-#                                       )
 
 from L1Trigger.RegionalCaloTrigger.rctDigis_cfi import rctDigis
 process.rctEmulDigis = rctDigis
@@ -409,25 +310,10 @@ process.rctAnalyzer = cms.EDAnalyzer("L1RCTTestAnalyzer",
 
 
 process.p1 = cms.Path(process.RawToDigi*
-#                      process.selectedElectronsPlateau*
-#                      process.simpleEleId70relIso*
-##                      process.simpleEleId95relIso*
-#                      process.electronsWp70*
-##                      process.electronsWp95*
                       process.rctemul*
-                      process.rctAnalyzer#*
-##                      process.selectedElectrons*
-#                      process.gsf8new*
-#                      process.gsf12new*
-#                      process.gsf15new*
-#                      process.gsf18new*
-#                      process.gsf20new
+                      process.rctAnalyzer
 )
 
-
-
-
-# process.e = cms.EndPath(process.dqmSaver)
 
 process.schedule = cms.Schedule(process.p1)
 
