@@ -69,19 +69,35 @@ RctValidation::RctValidation( const edm::ParameterSet& iConfig ) :
 
 
       refPt     = store->book1D("refPt" ,"ref e/#gamma P_{T}",binsEt_,0.,maxEt_);
-      refPtNum  = store->book1D("refPtNum" ,"ref e/#gamma P_{T}",binsEt_,0.,maxEt_);
-      refPtDen  = store->book1D("refPtDen" ,"ref e/#gamma P_{T}",binsEt_,0.,maxEt_);
-      refPtEff  = store->book1D("refPtEff" ,"efficiency",binsEt_,0.,maxEt_);
-      refPtIsoNum  = store->book1D("refPtIsoNum" ,"ref e/#gamma P_{T}",binsEt_,0.,maxEt_);
-      refPtIsoDen  = store->book1D("refPtIsoDen" ,"ref e/#gamma P_{T}",binsEt_,0.,maxEt_);
-      refPtIsoEff  = store->book1D("refPtIsoEff" ,"iso efficiency",binsEt_,0.,maxEt_);
+      refPtNum  = store->book1D("refPtNum" ,"ref e/#gamma P_{T} numerator",binsEt_,0.,maxEt_);
+      refPtDen  = store->book1D("refPtDen" ,"ref e/#gamma P_{T} denominator",binsEt_,0.,maxEt_);
+      refPtEff  = store->book1D("refPtEff" ,"efficiency wrt ref e/#gamma P_{T}",binsEt_,0.,maxEt_);
+      refPtIsoNum  = store->book1D("refPtIsoNum" ,"ref e/#gamma P_{T} numerator",binsEt_,0.,maxEt_);
+      refPtIsoDen  = store->book1D("refPtIsoDen" ,"ref e/#gamma P_{T} denominator",binsEt_,0.,maxEt_);
+      refPtIsoEff  = store->book1D("refPtIsoEff" ,"iso efficiency wrt ref e/#gamma P_{T}",binsEt_,0.,maxEt_);
       //		refPt->setResetMe(false );
       refPtBarrel     = store->book1D("refPtBarrel" ,"ref e/#gamma P_{T} (barrel)",binsEt_,0.,maxEt_);
       refPtEndcap     = store->book1D("refPtEndcap" ,"ref e/#gamma P_{T} (endcap)",binsEt_,0.,maxEt_);
       refEt     = store->book1D("refEt" ,"ref e/#gamma E_{T}",binsEt_,0.,maxEt_);
+
       refEta    = store->book1D("refEta","ref e/#gamma #eta",binsEta_,-3,3);
+      refEtaNum  = store->book1D("refEtaNum" ,"ref e/#gamma #eta",binsEta_,-3,3);
+      refEtaDen  = store->book1D("refEtaDen" ,"ref e/#gamma #eta",binsEta_,-3,3);
+      refEtaEff  = store->book1D("refEtaEff" ,"efficiency wrt #eta",binsEta_,-3,3);
+      refEtaIsoNum  = store->book1D("refEtaIsoNum" ,"ref e/#gamma #eta",binsEta_,-3,3);
+      refEtaIsoDen  = store->book1D("refEtaIsoDen" ,"ref e/#gamma #eta",binsEta_,-3,3);
+      refEtaIsoEff  = store->book1D("refEtaIsoEff" ,"iso efficiency wrt #eta",binsEta_,-3,3);
+
       refPhi    = store->book1D("refPhi","ref e/#gamma #phi",binsPhi_,-3.145,3.145);
       refEtaPhi = store->book2D("refEtaPhi","ref e/#gamma #eta #phi",binsEta_,-3,3,binsPhi_,-3.145,3.145);
+
+      refNVtx    = store->book1D("refNVtx","ref e/#gamma nVtx",30,0.,30.);
+      refNVtxNum  = store->book1D("refNVtxNum" ,"ref e/#gamma nVtx",30,0.,30.);
+      refNVtxDen  = store->book1D("refNVtxDen" ,"ref e/#gamma nVtx",30,0.,30.);
+      refNVtxEff  = store->book1D("refNVtxEff" ,"efficiency wrt nVtx",30,0.,30.);
+      refNVtxIsoNum  = store->book1D("refNVtxIsoNum" ,"ref e/#gamma nVtx",30,0.,30.);
+      refNVtxIsoDen  = store->book1D("refNVtxIsoDen" ,"ref e/#gamma nVtx",30,0.,30.);
+      refNVtxIsoEff  = store->book1D("refNVtxIsoEff" ,"iso efficiency wrt nVtx",30,0.,30.);
 
       // CAN YOU DO THIS BEFORE THEY'RE FILLED??
       refPt->getTH1F()->Sumw2();
@@ -368,11 +384,21 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
   if(!gotECALTPs)
     printf("NO ECAL TPs found\n");
 
-  //get ECAL TPGs
+  //get HCAL TPGs
   edm::Handle<HcalTrigPrimDigiCollection> hcalTPGs;
   bool gotHCALTPs = iEvent.getByLabel(hcalTPGs_,hcalTPGs);
   if(!gotHCALTPs)
     printf("NO HCAL TPs found\n");
+
+  // Get primary vertex collection
+  edm::Handle<std::vector<reco::Vertex> > theVertices;
+  //  bool gotPV = iEvent.getByLabel(verticesTag_,theVertices);
+  bool gotPV = iEvent.getByLabel("offlinePrimaryVertices",theVertices);
+  if(!gotPV)
+    printf("No PVs found\n");
+  double nVertices = 0;
+  if (!theVertices.failedToGet())
+    nVertices = theVertices->size();
 
   //Get Egammas from RCT
   double highestEG = 0;
@@ -587,9 +613,13 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	math::XYZTLorentzVector j_p4 = j->p4();
 
 	refPtDen->Fill(j_pt);
+	refEtaDen->Fill(j_eta);
+	refNVtxDen->Fill(nVertices);
 	//if(j_iso)
 	//{
 	refPtIsoDen->Fill(j_pt);
+	refEtaIsoDen->Fill(j_eta);
+	refNVtxIsoDen->Fill(nVertices);
 	//}
 
 	// SEE IF THERE ARE ANY L1 MATCHES
@@ -618,14 +648,18 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	if (refIsMatched)
 	  {
 	    refPtNum->Fill(j_pt);	    
+	    refEtaNum->Fill(j_eta);	    
+	    refNVtxNum->Fill(nVertices);	    
 	    if(l1IsIsolated)
 	      {
 		refPtIsoNum->Fill(j_pt);
+		refEtaIsoNum->Fill(j_eta);
+		refNVtxIsoNum->Fill(nVertices);
 	      }
 	  }
 
 	//	math::PtEtaPhiMLorentzVector j_p4 = j->p4();
-	//std::cout << " electron energy " << j_pt <<std::endl;
+	std::cout << " electron energy " << j_pt <<std::endl;
 	if(j_pt < 1) 
 	  continue;
 		
@@ -713,11 +747,11 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 		}	     
 	    }
 	if(rctNearReference.size()==0)
-	  //	  std::cout << "no L1 egamma found"
+	  std::cout << "no L1 egamma found"
 // 		    << " for ref: Et = " << j_et 
 // 		    << "  eta = " << j_eta
 // 		    << "  phi = " << j_phi
-//		    << std::endl;
+		    << std::endl;
 	if(rctNearReference.size()>0) 
 	  {
 	    //		  std::cout << "testing 3a" << std::endl;
@@ -1282,6 +1316,22 @@ void RctValidation::endJob(){
   TH1F * h_refPtIsoNum = refPtIsoNum->getTH1F();
   TH1F * h_refPtIsoDen = refPtIsoDen->getTH1F();
   refPtIsoEff->getTH1F()->Divide(h_refPtIsoNum,h_refPtIsoDen,1.,1.,"B"); // ideally use TGraphAsymmErrors::Divide() BUT MonitorElement is TH1F...?  Can do a TGAE ME? nope, it doesn't look like it.  
+
+//   refEtaEff = refEtaNum->Divide(refEtaDen);
+  TH1F * h_refEtaNum = refEtaNum->getTH1F();
+  TH1F * h_refEtaDen = refEtaDen->getTH1F();
+  refEtaEff->getTH1F()->Divide(h_refEtaNum,h_refEtaDen,1.,1.,"B"); // ideally use TGraphAsymmErrors::Divide() BUT MonitorElement is TH1F...?  Can do a TGAE ME? nope, it doesn't look like it.  
+  TH1F * h_refEtaIsoNum = refEtaIsoNum->getTH1F();
+  TH1F * h_refEtaIsoDen = refEtaIsoDen->getTH1F();
+  refEtaIsoEff->getTH1F()->Divide(h_refEtaIsoNum,h_refEtaIsoDen,1.,1.,"B"); // ideally use TGraphAsymmErrors::Divide() BUT MonitorElement is TH1F...?  Can do a TGAE ME? nope, it doesn't look like it.  
+
+//   refNVtxEff = refNVtxNum->Divide(refNVtxDen);
+  TH1F * h_refNVtxNum = refNVtxNum->getTH1F();
+  TH1F * h_refNVtxDen = refNVtxDen->getTH1F();
+  refNVtxEff->getTH1F()->Divide(h_refNVtxNum,h_refNVtxDen,1.,1.,"B"); // ideally use TGraphAsymmErrors::Divide() BUT MonitorElement is TH1F...?  Can do a TGAE ME? nope, it doesn't look like it.  
+  TH1F * h_refNVtxIsoNum = refNVtxIsoNum->getTH1F();
+  TH1F * h_refNVtxIsoDen = refNVtxIsoDen->getTH1F();
+  refNVtxIsoEff->getTH1F()->Divide(h_refNVtxIsoNum,h_refNVtxIsoDen,1.,1.,"B"); // ideally use TGraphAsymmErrors::Divide() BUT MonitorElement is TH1F...?  Can do a TGAE ME? nope, it doesn't look like it.  
 
   if (  outfile_.size() != 0  &&store ) store->save(outfile_);
   return;

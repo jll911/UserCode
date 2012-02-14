@@ -45,6 +45,8 @@ bachtis@hep.wisc.edu
 #include "CondFormats/L1TObjects/interface/L1CaloHcalScale.h"
 #include "CondFormats/DataRecord/interface/L1CaloHcalScaleRcd.h"
 
+#include "DataFormats/VertexReco/interface/Vertex.h"
+#include "DataFormats/VertexReco/interface/VertexFwd.h"
 
 #include "DataFormats/EcalDigi/interface/EcalDigiCollections.h"
 #include "DataFormats/HcalDigi/interface/HcalDigiCollections.h"
@@ -89,6 +91,8 @@ private:
   edm::InputTag refEGammas_;
   //  edm::InputTag refJetSums_;
 
+  //  edm::Handle<std::vector<reco::Vertex> > theVertices;
+  //  edm::InputTag verticesTag_;
 
 
   const L1CaloGeometry* caloGeom;
@@ -142,8 +146,23 @@ private:
   MonitorElement* refPtEndcap;
 	
   MonitorElement* refEta;
+  MonitorElement* refEtaNum;
+  MonitorElement* refEtaDen;
+  MonitorElement* refEtaEff;
+  MonitorElement* refEtaIsoNum;
+  MonitorElement* refEtaIsoDen;
+  MonitorElement* refEtaIsoEff;
+
   MonitorElement* refPhi;
   MonitorElement* refEtaPhi;
+
+  MonitorElement* refNVtx;
+  MonitorElement* refNVtxNum;
+  MonitorElement* refNVtxDen;
+  MonitorElement* refNVtxEff;
+  MonitorElement* refNVtxIsoNum;
+  MonitorElement* refNVtxIsoDen;
+  MonitorElement* refNVtxIsoEff;
 
   MonitorElement* tpgEffEt;
   MonitorElement* tpgEffPt;
