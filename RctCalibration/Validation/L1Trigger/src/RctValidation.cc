@@ -659,7 +659,7 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	  }
 
 	//	math::PtEtaPhiMLorentzVector j_p4 = j->p4();
-	std::cout << " electron energy " << j_pt <<std::endl;
+	//	std::cout << " electron energy " << j_pt <<std::endl;
 	if(j_pt < 1) 
 	  continue;
 		
@@ -747,11 +747,11 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 		}	     
 	    }
 	if(rctNearReference.size()==0)
-	  std::cout << "no L1 egamma found"
+	  //	  std::cout << "no L1 egamma found"
 // 		    << " for ref: Et = " << j_et 
 // 		    << "  eta = " << j_eta
 // 		    << "  phi = " << j_phi
-		    << std::endl;
+//		    << std::endl;
 	if(rctNearReference.size()>0) 
 	  {
 	    //		  std::cout << "testing 3a" << std::endl;
