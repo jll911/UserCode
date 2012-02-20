@@ -20,6 +20,9 @@ RctValidation::RctValidation( const edm::ParameterSet& iConfig ) :
   //  refJetSums_(iConfig.getParameter<edm::InputTag>("genJetSums")),
   directory_(iConfig.getParameter<std::string>("directory")),  
   outfile_(iConfig.getUntrackedParameter<std::string>("outputFileName")),
+
+  minPtCut_(iConfig.getUntrackedParameter<double>("minPtCut",20.)),
+
   maxEt_(iConfig.getUntrackedParameter<double>("maxEt",100)),
   binsEt_(iConfig.getUntrackedParameter<int>("binsEt",20)),
   binsEta_(iConfig.getUntrackedParameter<int>("binsEta",32)),
@@ -35,9 +38,11 @@ RctValidation::RctValidation( const edm::ParameterSet& iConfig ) :
 
   isolation_(iConfig.getUntrackedParameter<double>("iso",1.5)),
   HEcut_(iConfig.getUntrackedParameter<double>("heCut",0.1)),
-  
+
   matchL1Objects_(iConfig.getUntrackedParameter<bool>("matchL1Objects",true))
 
+
+  
 
 {
   geo = new TriggerTowerGeometry();
@@ -613,13 +618,19 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	math::XYZTLorentzVector j_p4 = j->p4();
 
 	refPtDen->Fill(j_pt);
-	refEtaDen->Fill(j_eta);
-	refNVtxDen->Fill(nVertices);
+	if (j_pt > minPtCut_)
+	  {
+	    refEtaDen->Fill(j_eta);
+	    refNVtxDen->Fill(nVertices);
+	  }
 	//if(j_iso)
 	//{
 	refPtIsoDen->Fill(j_pt);
-	refEtaIsoDen->Fill(j_eta);
-	refNVtxIsoDen->Fill(nVertices);
+	if (j_pt > minPtCut_)
+	  {
+	    refEtaIsoDen->Fill(j_eta);
+	    refNVtxIsoDen->Fill(nVertices);
+	  }
 	//}
 
 	// SEE IF THERE ARE ANY L1 MATCHES
@@ -648,13 +659,19 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	if (refIsMatched)
 	  {
 	    refPtNum->Fill(j_pt);	    
-	    refEtaNum->Fill(j_eta);	    
-	    refNVtxNum->Fill(nVertices);	    
+	    if (j_pt > minPtCut_)
+	      {
+		refEtaNum->Fill(j_eta);	    
+		refNVtxNum->Fill(nVertices);	    
+	      }
 	    if(l1IsIsolated)
 	      {
 		refPtIsoNum->Fill(j_pt);
-		refEtaIsoNum->Fill(j_eta);
-		refNVtxIsoNum->Fill(nVertices);
+		if (j_pt > minPtCut_)
+		  {
+		    refEtaIsoNum->Fill(j_eta);
+		    refNVtxIsoNum->Fill(nVertices);
+		  }
 	      }
 	  }
 
@@ -689,6 +706,7 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	refPt->Fill(j_pt);
 	refEt->Fill(j_et);
 	refEta->Fill(j_eta);
+	refNVtx->Fill(nVertices);
 	refPhi->Fill(j_phi);
 	//		std::cout << "filling reference" << std::endl;
 	if(fabs(j_phi) < barrelBoundary_)

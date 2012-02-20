@@ -106,6 +106,8 @@ private:
   L1RCTParameters*	rctGeo;
 
 
+  double minPtCut_;
+
   double maxEt_;
   int    binsEt_; 
   int    binsEta_;
