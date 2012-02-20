@@ -96,13 +96,13 @@ RctValidation::RctValidation( const edm::ParameterSet& iConfig ) :
       refPhi    = store->book1D("refPhi","ref e/#gamma #phi",binsPhi_,-3.145,3.145);
       refEtaPhi = store->book2D("refEtaPhi","ref e/#gamma #eta #phi",binsEta_,-3,3,binsPhi_,-3.145,3.145);
 
-      refNVtx    = store->book1D("refNVtx","ref e/#gamma nVtx",30,0.,30.);
-      refNVtxNum  = store->book1D("refNVtxNum" ,"ref e/#gamma nVtx",30,0.,30.);
-      refNVtxDen  = store->book1D("refNVtxDen" ,"ref e/#gamma nVtx",30,0.,30.);
-      refNVtxEff  = store->book1D("refNVtxEff" ,"efficiency wrt nVtx",30,0.,30.);
-      refNVtxIsoNum  = store->book1D("refNVtxIsoNum" ,"ref e/#gamma nVtx",30,0.,30.);
-      refNVtxIsoDen  = store->book1D("refNVtxIsoDen" ,"ref e/#gamma nVtx",30,0.,30.);
-      refNVtxIsoEff  = store->book1D("refNVtxIsoEff" ,"iso efficiency wrt nVtx",30,0.,30.);
+      refNVtx    = store->book1D("refNVtx","ref e/#gamma nVtx",50,0.,50.);
+      refNVtxNum  = store->book1D("refNVtxNum" ,"ref e/#gamma nVtx",50,0.,50.);
+      refNVtxDen  = store->book1D("refNVtxDen" ,"ref e/#gamma nVtx",50,0.,50.);
+      refNVtxEff  = store->book1D("refNVtxEff" ,"efficiency wrt nVtx",50,0.,50.);
+      refNVtxIsoNum  = store->book1D("refNVtxIsoNum" ,"ref e/#gamma nVtx",50,0.,50.);
+      refNVtxIsoDen  = store->book1D("refNVtxIsoDen" ,"ref e/#gamma nVtx",50,0.,50.);
+      refNVtxIsoEff  = store->book1D("refNVtxIsoEff" ,"iso efficiency wrt nVtx",50,0.,50.);
 
       // CAN YOU DO THIS BEFORE THEY'RE FILLED??
       refPt->getTH1F()->Sumw2();
