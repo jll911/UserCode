@@ -38,8 +38,8 @@ process = cms.Process("RCTVAL")
 process.load("Configuration.StandardSequences.RawToDigi_Data_cff") # for data
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-#process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing, 44X
-process.GlobalTag.globaltag = cms.string('START44_V10::All') # Fall 11 MC
+process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing, 44X
+#process.GlobalTag.globaltag = cms.string('START44_V10::All') # Fall 11 MC
 
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(50000) )
