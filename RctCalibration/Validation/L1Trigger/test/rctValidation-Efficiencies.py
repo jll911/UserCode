@@ -38,7 +38,8 @@ process = cms.Process("RCTVAL")
 process.load("Configuration.StandardSequences.RawToDigi_Data_cff") # for data
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing, 44X
+#process.GlobalTag.globaltag = cms.string('GR_R_44_V13::All') # 2011 reprocessing, 44X
+process.GlobalTag.globaltag = cms.string('START44_V10::All') # Fall 11 MC
 
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(50000) )
@@ -106,7 +107,7 @@ process.source = cms.Source("PoolSource",
  
 
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
-#process.MessageLogger.cerr.FwkReport.reportEvery = 1000
+process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.load("Configuration.StandardSequences.Services_cff")
 process.load("Configuration.StandardSequences.Geometry_cff")
@@ -161,6 +162,7 @@ process.gsf8 = cms.EDAnalyzer('RctValidation',
                 gammaThreshold = cms.untracked.double(8.),
                 #outputFileName = cms.untracked.string('output-RctVal-MINE-24Nov11.root')
                 outputFileName = cms.untracked.string(PREFIXHISTS + FILEROOT)
+                #outputFileName = cms.untracked.string('RctValHists-Effs.root') # synchronize with filename in crab.cfg if using CRAB
 )
 
 process.gsf12          = process.gsf8.clone()
@@ -209,15 +211,11 @@ process.rctEmulDigis = rctDigis
 process.rctEmulDigis.hcalDigis = cms.VInputTag(cms.InputTag("hcalDigis"))
 process.rctEmulDigis.ecalDigis = cms.VInputTag(cms.InputTag("ecalDigis:EcalTriggerPrimitives"))
 
-process.rctemul = cms.Sequence(
-    cms.SequencePlaceholder("rctEmulDigis")
-    )
-
 process.p1 = cms.Path(process.RawToDigi*
                       process.selectedElectronsPlateau*
                       process.simpleEleId70relIso*
                       process.electronsWp70*
-                      process.rctemul*
+                      process.rctEmulDigis*
                       process.gsf8new*
                       process.gsf12new*
                       process.gsf15new*
