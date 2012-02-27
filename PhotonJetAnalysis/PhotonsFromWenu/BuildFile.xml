@@ -1,0 +1,22 @@
+<use   name="FWCore/Framework"/>
+<use   name="FWCore/ServiceRegistry"/>
+<use   name="DataFormats/EgammaCandidates"/>
+<use   name="DataFormats/METReco"/>
+<use   name="DataFormats/PatCandidates"/>
+<use   name="DataFormats/JetReco"/>
+<use   name="DataFormats/TrackReco"/>
+<use   name="DataFormats/Common"/>
+<use   name="DataFormats/VertexReco"/>
+<use   name="CommonTools/UtilAlgos"/>
+<use   name="DataFormats/HepMCCandidate"/>
+<use   name="HLTrigger/HLTcore"/>
+<use   name="DataFormats/CaloRecHit"/>
+<use   name="RecoEcal/EgammaCoreTools"/>
+<use   name="DataFormats/DetId"/>
+<use   name="CondFormats/JetMETObjects"/>
+<use   name="JetMETCorrections/Objects"/>
+<flags EDM_PLUGIN="1"/>
+<export>
+  <lib name="PhotonJetAnalysisPhotonsFromWenu"/>
+  <use name="PhotonJetAnalysis/PhotonsFromWenu"/>
+</export>
