@@ -430,160 +430,179 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
   double rctEGamma_et = emS->et(rctEGamma.rank());
 
   // now do stuff with that highest-et candidate
-  if ( highestEG > 0 ) {
-    rctEffPtHighest->Fill(highestEG);   
-    if( highestEG>=egammaThreshold_ && !matchL1Objects_){ // if don't require matching of l1 objects?
-      EcalTrigPrimDigiCollection* l1TrigTowers = new EcalTrigPrimDigiCollection();
-      findRegionTowers(rctEGamma,*ecalTPGs,l1TrigTowers); // this is the deal with finding the candidate's trigger towers
-
-      EcalTriggerPrimitiveDigi highestEtTT;
-      int nTowers =0 ;
-      double totalEnergy = 0., highestEtTTet =-1.,highestEtTTHCAL= 0.;
-      bool centralFG = false, centralSpike = false;
-      // go through the trigger towers in the region for that cand
-      for(EcalTrigPrimDigiCollection::const_iterator iTT = l1TrigTowers->begin() ; iTT != l1TrigTowers->end(); ++iTT){
-	//			  std::cout << "loop, high trig tower et " << highestEtTTet <<std::endl;
-	int iTT_ieta = iTT->id().ieta();
-	double et = eS->et(iTT->compressedEt(),abs(iTT_ieta),iTT_ieta/abs(iTT_ieta));	
-	//			  std::cout << "loop, trig tower  compressed et " << iTT->compressedEt(); //<<std::endl;	
-	totalEnergy += et; // sum alllll the towers
-	if(et> 0)
-	  ++nTowers; // only count towers with energy > 0
-	if(et > highestEtTTet ) { // pick highest-et tower yay -- dude, isn't it always the central one??  YES, and this is messing with TPLF ordering for cands made up of two same-energy towers!  Well, this is for the whole region, not the 3x3 around a cand.  But it is still messing with TPLF (maybe doesn't matter)
-	  highestEtTT = *iTT;
-	  highestEtTTet =et;
-	  centralFG = iTT->fineGrain() && et< 30; // WHY IS THIS HARD-CODED. (yes, that's a period.)
-	  centralSpike = (iTT->l1aSpike()==0); // ooh, looks like EcalTrigPrimDigi has a new method
-	}
-      }
-//       int ieta =  highestEtTT.id().ieta();
-//       int iphi = highestEtTT.id().iphi();
-
-
-      // don't look at spike events or fineGrain events  
-      if(!centralSpike) { // wait, this actually only refers to spike events, we're still looking at "fine grain" events
+  if ( highestEG > 0 ) 
+    {
+      rctEffPtHighest->Fill(highestEG);   
+      if( highestEG>=egammaThreshold_ && !matchL1Objects_)
+	{ // if don't require matching of l1 objects?
+	  EcalTrigPrimDigiCollection* l1TrigTowers = new EcalTrigPrimDigiCollection();
+	  findRegionTowers(rctEGamma,*ecalTPGs,l1TrigTowers); // this is the deal with finding the candidate's trigger towers
 	  
-	rctPtNoSpike->Fill(rctEGamma_et);
-	  
- 	int ieta =  highestEtTT.id().ieta();
- 	int iphi = highestEtTT.id().iphi();
-	double energyMaxFGcorner = -1;
-	//    std::cout<< " new part begining";
-	std::vector<double> tpgs3x3 =    find3x3Towers(ieta, iphi, *ecalTPGs, *hcalTPGs); // HERE's where we get the 3x3 around the highest-et cand
-	//    std::cout << " after finding 3x3 towers size " << tpgs3x3.size() <<std::endl;
-	double ecal3x3Tot =0.;
-	double hcal3x3Tot =0.;
-	double highestNeighborEcal = -1;
-	double minELsum = 9999;
-	double highestHEneighbor = 0;
-	// loop through towers in 3x3
-	for(int i = 0; i< 9; ++i){
-
-	  double ecalTTEt= tpgs3x3.at(i);
-	  double hcalTTEt = tpgs3x3.at(i+9);
-	    
-	  // i:
-	  //   | 0 | 1 | 2 |
-	  //   | 3 | 4 | 5 | 
-	  //   | 6 | 7 | 8 |
-
-	  // i/3:                 i/3 - 1:
-	  //   | 0 | 0 | 0 |       |-1 |-1 |-1 |
-	  //   | 1 | 1 | 1 |  ==>  | 0 | 0 | 0 |
-	  //   | 2 | 2 | 2 |       | 1 | 1 | 1 |
-
-	  // i%3:                 i%3 - 1:
-	  //   | 0 | 1 | 2 |       |-1 | 0 | 1 |
-	  //   | 0 | 1 | 2 |  ==>  |-1 | 0 | 1 |
-	  //   | 0 | 1 | 2 |       |-1 | 0 | 1 |
-
-
-	  if(hcalTTEt>0  && ecalTTEt < 30){ // hard-coded again!
-	    dirHCALclosest->Fill((i%3)-1,(i/3)-1); // fills position of given tower (if it has energy), relative to central tower (candidate tower)
-	    dirHCALclosestWeighted->Fill((i%3)-1,(i/3)-1, hcalTTEt); // same, weighted by energy
-	    if(ecalTTEt >2){  // minimum ecal energy for he cut // HARD-CODED
-	      if(highestHEneighbor < (hcalTTEt/ecalTTEt )) // get highest H/E value for any of the towers -- including the central tower?? I THINK THIS IS A BUG, it's different later!
-		highestHEneighbor = hcalTTEt/ecalTTEt ;
-	    }  else{ 
-	      if(hcalTTEt >2) // above noise threshold // HARD-CODED
-		highestHEneighbor = 0.99;  // if ecal < 2 and hcal > 2, make it max value less than 1 as opposed to anything greater than 1
+	  EcalTriggerPrimitiveDigi highestEtTT;
+	  int nTowers =0 ;
+	  double totalEnergy = 0., highestEtTTet =-1.,highestEtTTHCAL= 0.;
+	  bool centralFG = false, centralSpike = false;
+	  // go through the trigger towers in the region for that cand
+	  for(EcalTrigPrimDigiCollection::const_iterator iTT = l1TrigTowers->begin() ; iTT != l1TrigTowers->end(); ++iTT)
+	    {
+	      //			  std::cout << "loop, high trig tower et " << highestEtTTet <<std::endl;
+	      int iTT_ieta = iTT->id().ieta();
+	      double et = eS->et(iTT->compressedEt(),abs(iTT_ieta),iTT_ieta/abs(iTT_ieta));	
+	      //			  std::cout << "loop, trig tower  compressed et " << iTT->compressedEt(); //<<std::endl;	
+	      totalEnergy += et; // sum alllll the towers
+	      if(et> 0)
+		++nTowers; // only count towers with energy > 0
+	      if(et > highestEtTTet ) // pick highest-et tower yay -- dude, isn't it always the central one??  YES, and this is messing with TPLF ordering for cands made up of two same-energy towers!  Well, this is for the whole region, not the 3x3 around a cand.  But it is still messing with TPLF (maybe doesn't matter)
+		{ 
+		  highestEtTT = *iTT;
+		  highestEtTTet =et;
+		  centralFG = iTT->fineGrain() && et< 30; // WHY IS THIS HARD-CODED. (yes, that's a period.)
+		  centralSpike = (iTT->l1aSpike()==0); // ooh, looks like EcalTrigPrimDigi has a new method
+		}
 	    }
-	  }
+	  //       int ieta =  highestEtTT.id().ieta();
+	  //       int iphi = highestEtTT.id().iphi();
+	  
+	  
+	  // don't look at spike events or fineGrain events  
+	  if(!centralSpike) // wait, this actually only refers to spike events, we're still looking at "fine grain" events
+	    { 
 	      
-	  // i%2:
-	  //   | 0 | 1 | 0 |
-	  //   | 1 | 0 | 1 |
-	  //   | 0 | 1 | 0 |
+	      rctPtNoSpike->Fill(rctEGamma_et);
+	      
+	      int ieta =  highestEtTT.id().ieta();
+	      int iphi = highestEtTT.id().iphi();
+	      double energyMaxFGcorner = -1;
+	      //    std::cout<< " new part begining";
+	      std::vector<double> tpgs3x3 =    find3x3Towers(ieta, iphi, *ecalTPGs, *hcalTPGs); // HERE's where we get the 3x3 around the highest-et cand
+	      //    std::cout << " after finding 3x3 towers size " << tpgs3x3.size() <<std::endl;
+	      double ecal3x3Tot =0.;
+	      double hcal3x3Tot =0.;
+	      double highestNeighborEcal = -1;
+	      double minELsum = 9999;
+	      double highestHEneighbor = 0;
+	      // loop through towers in 3x3
+	      for(int i = 0; i< 9; ++i)
+		{
+		  
+		  double ecalTTEt= tpgs3x3.at(i);
+		  double hcalTTEt = tpgs3x3.at(i+9);
+		  
+		  // i:
+		  //   | 0 | 1 | 2 |
+		  //   | 3 | 4 | 5 | 
+		  //   | 6 | 7 | 8 |
+		  
+		  // i/3:                 i/3 - 1:
+		  //   | 0 | 0 | 0 |       |-1 |-1 |-1 |
+		  //   | 1 | 1 | 1 |  ==>  | 0 | 0 | 0 |
+		  //   | 2 | 2 | 2 |       | 1 | 1 | 1 |
+		  
+		  // i%3:                 i%3 - 1:
+		  //   | 0 | 1 | 2 |       |-1 | 0 | 1 |
+		  //   | 0 | 1 | 2 |  ==>  |-1 | 0 | 1 |
+		  //   | 0 | 1 | 2 |       |-1 | 0 | 1 |
+		  
+		  
+		  if(hcalTTEt>0  && ecalTTEt < 30) // hard-coded again!
+		    { 
+		      dirHCALclosest->Fill((i%3)-1,(i/3)-1); // fills position of given tower (if it has energy), relative to central tower (candidate tower)
+		      dirHCALclosestWeighted->Fill((i%3)-1,(i/3)-1, hcalTTEt); // same, weighted by energy
+		      if(ecalTTEt >2)  // minimum ecal energy for he cut // HARD-CODED
+			{
+			  if(highestHEneighbor < (hcalTTEt/ecalTTEt )) // get highest H/E value for any of the towers -- including the central tower?? I THINK THIS IS A BUG, it's different later!
+			    highestHEneighbor = hcalTTEt/ecalTTEt ;
+			}  
+		      else
+			{ 
+			  if(hcalTTEt >2) // above noise threshold // HARD-CODED
+			    highestHEneighbor = 0.99;  // if ecal < 2 and hcal > 2, make it max value less than 1 as opposed to anything greater than 1
+			}
+		    }
+		  
+		  // i%2:
+		  //   | 0 | 1 | 0 |
+		  //   | 1 | 0 | 1 |
+		  //   | 0 | 1 | 0 |
+		  
+		  ecal3x3Tot += ecalTTEt;
+		  hcal3x3Tot += hcalTTEt;
+		  if( i%2 ==1  )   // find neighbors of ecal // only want the direct neighbors?
+		    {
+		      if(ecalTTEt > highestNeighborEcal)
+			highestNeighborEcal = ecalTTEt;
+		    }
 
-	  ecal3x3Tot += ecalTTEt;
-	  hcal3x3Tot += hcalTTEt;
-	  if( i%2 ==1  )  { // find neighbors of ecal // only want the direct neighbors?
-	    if(ecalTTEt > highestNeighborEcal)
-	      highestNeighborEcal = ecalTTEt;
-	  }
-
-	  if(i%2 ==0 && i!=4){ // only want the corners?
-	    double tempELsum = 0;
-	    int cornerEta = i/3;
-	    int cornerPhi = i%3;
-	    for(int j=0; j<3; ++j){
-	      if(tempELsum <  tpgs3x3.at(cornerEta*3 + j)) // what exactly is this looking at? where's the sum? and why isn't it using a whole L at once?
-		tempELsum =   tpgs3x3.at(cornerEta*3 + j);
-	      if(tempELsum <  tpgs3x3.at(j*3 + cornerPhi))
-		tempELsum = tpgs3x3.at(j*3 + cornerPhi);
-	    }
-	    if(tempELsum < minELsum)
-	      minELsum = tempELsum;
-	  }
-	  if(i==4)
-	    highestEtTTHCAL = hcalTTEt; // if central tower, set hcal energy
-	  else
-	    if(tpgs3x3.at(i+18 ) == 1) // else if fine grain set, 
-	      energyMaxFGcorner = ecalTTEt;   // make whatever this variable is equal to the ECAL energy
-	} // end loop through towers in 3x3
+		  if(i%2 ==0 && i!=4) // only want the corners?
+		    {
+		      double tempELsum = 0;
+		      int cornerEta = i/3;
+		      int cornerPhi = i%3;
+		      for(int j=0; j<3; ++j)
+			{
+			  if(tempELsum <  tpgs3x3.at(cornerEta*3 + j)) // what exactly is this looking at? where's the sum? and why isn't it using a whole L at once?
+			    tempELsum =   tpgs3x3.at(cornerEta*3 + j);
+			  if(tempELsum <  tpgs3x3.at(j*3 + cornerPhi))
+			    tempELsum = tpgs3x3.at(j*3 + cornerPhi);
+			}
+		      if(tempELsum < minELsum)
+			minELsum = tempELsum;
+		    }
+		  if(i==4)
+		    highestEtTTHCAL = hcalTTEt; // if central tower, set hcal energy
+		  else
+		    if(tpgs3x3.at(i+18 ) == 1) // else if fine grain set, 
+		      energyMaxFGcorner = ecalTTEt;   // make whatever this variable is equal to the ECAL energy
+		} // end loop through towers in 3x3
 	    
 	  
-	double rctHe =highestEtTTHCAL/highestEtTTet;
-	rctHE->Fill(rctHe);
-	rctHEvL1Et->Fill(rctEGamma_et,rctHe);
-	    
-	rctHEvECALEt->Fill(highestEtTTet,rctHe);
-	rctHEvHCALEt->Fill(highestEtTTHCAL,rctHe);
-	HCALtpgPt->Fill(highestEtTTHCAL);
-	tpgECALsecondtower->Fill(highestNeighborEcal);
-	tpgHCALSurrounding->Fill(hcal3x3Tot); // but not just surrounding towers, also includes central tower! ah, because they don't count hcal for central tower, I guess
-	tpgECALSurrounding->Fill(ecal3x3Tot-highestEtTTet); 
-	regionSum->Fill(hcal3x3Tot+ecal3x3Tot);
-	regionHE->Fill(hcal3x3Tot/ecal3x3Tot);
-	diffSumEgamma->Fill(ecal3x3Tot-highestEtTTet - highestNeighborEcal); // difference between what two quantities here?
-	    
-	regionMaxHE->Fill(highestHEneighbor);
-	if(centralFG) {
-	  rctFGMainTowerEt->Fill(highestEtTTet);
-	} else {
-	  rctPtEGFGcut->Fill(rctEGamma_et);
-	  rctNoFGMainTowerEt->Fill(highestEtTTet);
-	  rctHEafterFG->Fill(rctHe);
-	  if(rctHe < HEcut_){
-	    rctPtEGHEcut->Fill(rctEGamma_et);
+	      double rctHe =highestEtTTHCAL/highestEtTTet;
+	      rctHE->Fill(rctHe);
+	      rctHEvL1Et->Fill(rctEGamma_et,rctHe);
+	      
+	      rctHEvECALEt->Fill(highestEtTTet,rctHe);
+	      rctHEvHCALEt->Fill(highestEtTTHCAL,rctHe);
+	      HCALtpgPt->Fill(highestEtTTHCAL);
+	      tpgECALsecondtower->Fill(highestNeighborEcal);
+	      tpgHCALSurrounding->Fill(hcal3x3Tot); // but not just surrounding towers, also includes central tower! ah, because they don't count hcal for central tower, I guess
+	      tpgECALSurrounding->Fill(ecal3x3Tot-highestEtTTet); 
+	      regionSum->Fill(hcal3x3Tot+ecal3x3Tot);
+	      regionHE->Fill(hcal3x3Tot/ecal3x3Tot);
+	      diffSumEgamma->Fill(ecal3x3Tot-highestEtTTet - highestNeighborEcal); // difference between what two quantities here?
+	      
+	      regionMaxHE->Fill(highestHEneighbor);
+	      if(centralFG) 
+		{
+		  rctFGMainTowerEt->Fill(highestEtTTet);
+		} 
+	      else 
+		{
+		  rctPtEGFGcut->Fill(rctEGamma_et);
+		  rctNoFGMainTowerEt->Fill(highestEtTTet);
+		  rctHEafterFG->Fill(rctHe);
+		  if(rctHe < HEcut_)
+		    {
+		      rctPtEGHEcut->Fill(rctEGamma_et);
 
-	    if(energyMaxFGcorner > 0) 
-	      rctFGneighborEt->Fill(energyMaxFGcorner);
-	    else {
-	      minLSum->Fill(minELsum);
-	      regionMaxHEafterFG->Fill(highestHEneighbor);
-	      if(highestHEneighbor < HEcut_) {
-		rctPtIsoEGHEFGcut->Fill(rctEGamma_et);
-		minLSumHE->Fill(minELsum);
-		if(minELsum < isolation_)
-		  rctPtIsoEGHEFGIsocut->Fill(rctEGamma_et);
-	      }
-	    }
-	  }
-	}
-      } // end if !centralSpike
-    } // end if highestEGet >=egammaThreshold and !matchL1objects
-  } // end if highestEGet > 0
+		      if(energyMaxFGcorner > 0) 
+			rctFGneighborEt->Fill(energyMaxFGcorner);
+		      else 
+			{
+			  minLSum->Fill(minELsum);
+			  regionMaxHEafterFG->Fill(highestHEneighbor);
+			  if(highestHEneighbor < HEcut_) 
+			    {
+			      rctPtIsoEGHEFGcut->Fill(rctEGamma_et);
+			      minLSumHE->Fill(minELsum);
+			      if(minELsum < isolation_)
+				rctPtIsoEGHEFGIsocut->Fill(rctEGamma_et);
+			    }
+			}
+		    }
+		}
+	    } // end if !centralSpike
+	} // end if highestEGet >=egammaThreshold and !matchL1objects
+    } // end if highestEGet > 0
   else	
     std::cout << " no RCT objects found" << std::endl;
 
@@ -684,21 +703,25 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 	std::vector<unsigned int>  refNearReference;	
 	bool higherRefPresent = false;
 	//				for(  edm::View<reco::Candidate> ::const_iterator refCand = genEGamma->begin() ;   refCand != genEGamma->end(); ++refCand ){
-	for(unsigned int refCand=0;refCand<genEGamma->size();++refCand) {  // nested loop through gen cands again
-	  if(genEGamma->at(refCand).pt() == j_pt && ROOT::Math::VectorUtil::DeltaR(genEGamma->at(refCand).p4(),j_p4) == 0)  {
-	    // then they're the same object -- can't you just look at their addresses or something?
-	    continue;
+	for(unsigned int refCand=0;refCand<genEGamma->size();++refCand)   // nested loop through gen cands again
+	  {
+	    if(genEGamma->at(refCand).pt() == j_pt && ROOT::Math::VectorUtil::DeltaR(genEGamma->at(refCand).p4(),j_p4) == 0)  
+	      {
+		// then they're the same object -- can't you just look at their addresses or something?
+		continue;
+	      }
+	    //					if(refCand->pt() > j-pt()  && 
+	    if(genEGamma->at(refCand).pt() > 1)
+	      {		
+		double deltaR = ROOT::Math::VectorUtil::DeltaR(genEGamma->at(refCand).p4(),j_p4);
+		if( deltaR < matchDR_) 
+		  {
+		    refNearReference.push_back(refCand);				
+		    if(genEGamma->at(refCand).pt() > j_pt)
+		      higherRefPresent = true;								
+		  }
+	      }
 	  }
-	  //					if(refCand->pt() > j-pt()  && 
-	  if(genEGamma->at(refCand).pt() > 1){		
-	    double deltaR = ROOT::Math::VectorUtil::DeltaR(genEGamma->at(refCand).p4(),j_p4);
-	    if( deltaR < matchDR_) {
-	      refNearReference.push_back(refCand);				
-	      if(genEGamma->at(refCand).pt() > j_pt)
-		higherRefPresent = true;								
-	    }
-	  }
-	}
 	if(higherRefPresent) // only take those gen cands that have no higher nearby neighbors (defined by matchDR_).  why?
 	  continue;
 		
@@ -764,12 +787,14 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 		    rctNearReference.push_back(*i);
 		}	     
 	    }
-	if(rctNearReference.size()==0)
-	  //	  std::cout << "no L1 egamma found"
-// 		    << " for ref: Et = " << j_et 
-// 		    << "  eta = " << j_eta
-// 		    << "  phi = " << j_phi
-//		    << std::endl;
+	//	if(rctNearReference.size()==0)
+	//	{
+	//	  std::cout << "no L1 egamma found"
+	// 		    << " for ref: Et = " << j_et 
+	// 		    << "  eta = " << j_eta
+	// 		    << "  phi = " << j_phi
+	//		    << std::endl;
+	//      }
 	if(rctNearReference.size()>0) 
 	  {
 	    //		  std::cout << "testing 3a" << std::endl;
@@ -1010,59 +1035,62 @@ RctValidation::analyze(const Event& iEvent, const EventSetup& iSetup )
 		
 	      }
 	      //			std::cout << "testing 5" << std::endl;
-	      if(highestRCT.isolated()) {
+	      if(highestRCT.isolated()) 
+		{
 		
-		rctIsoEffPt->Fill(j_pt);
-		rctIsoEffEt->Fill(j_et);
-		rctIsoEffEta->Fill(j_eta);
-		rctIsoEffPhi->Fill(j_phi);
-		if(j_pt>thresholdForEtaPhi_)
-		  rctIsoEffEtaPhi->Fill(j_eta,j_phi);
-		if(fabs(j_phi) < barrelBoundary_)
-		  rctIsoEffPtBarrel->Fill(j_pt);
-		else if(fabs(j_phi) > endcapBoundary_)
-		  rctIsoEffPtEndcap->Fill(j_pt);
-		
-		
-		// this is all still inside if highestRCT is isolated -- should it be???
-		if( j_pt>=egammaThreshold_ && highestRCT_rank <63 && (j_pt < (1 * emS->et(63) )))  // only for non-saturating
-		  {
-		    
-		    // HERE's finally where we fill all the correction factors
-
-		    double rctEt = highestRCT_et; // why do we keep doing this calculation?
-
-// 		    std::cout << "FILLING CORRECTION FACTORS!" << std::endl;
-// 		    std::cout << "j_pt = " << j_pt
-// 			      << "  highest Et = " << rctEt 
-// 			      << "  highest iEta = " << ieta
-// 			      << "  nTowers = " << nTowers
-// 			      << "  egammaThreshold = " << egammaThreshold_
-// 			      << std::endl;
-
-		    rctEtaCorr->Fill( highestVec.eta(), j_pt/highestVec.pt() ); // okey-dokey, ratio of ref to rct cand.  why need highestVec?? doesn't it already exist in some other form?  like the Et?
-		    rctEtaCorrIEta->Fill( ieta, j_pt/rctEt );
-		    rctEtaCorrAbsIEta->Fill( fabs(ieta), j_pt/rctEt );
-		    if(nTowers ==1 || (nTowers==2 && ieta >=27)){ // so it's NOT just single-tower cands!! well, above 27... why 27??  almost HF, but not quite!  and not even the abs of ieta!?!
-		      rctEtaCorr1Tower->Fill( highestVec.eta(), j_pt/rctEt );
-		      rctEtaCorrIEta1Tower->Fill( ieta, j_pt/rctEt );
-		      rctEtaCorrAbsIEta1Tower->Fill( fabs(ieta), j_pt/rctEt );
-		      rctEtaCorr1TowerEt->Fill( highestVec.eta(), j_et/rctEt );
-		      rctEtaCorrIEta1TowerEt->Fill( ieta, j_et/rctEt );
-		      rctEtaCorrAbsIEta1TowerEt->Fill( fabs(ieta), j_et/rctEt );
+		  rctIsoEffPt->Fill(j_pt);
+		  rctIsoEffEt->Fill(j_et);
+		  rctIsoEffEta->Fill(j_eta);
+		  rctIsoEffPhi->Fill(j_phi);
+		  if(j_pt>thresholdForEtaPhi_)
+		    rctIsoEffEtaPhi->Fill(j_eta,j_phi);
+		  if(fabs(j_phi) < barrelBoundary_)
+		    rctIsoEffPtBarrel->Fill(j_pt);
+		  else if(fabs(j_phi) > endcapBoundary_)
+		    rctIsoEffPtEndcap->Fill(j_pt);
+		  
+		  
+		  // this is all still inside if highestRCT is isolated -- should it be???
+		  if( j_pt>=egammaThreshold_ && highestRCT_rank <63 && (j_pt < (1 * emS->et(63) )))  // only for non-saturating
+		    {
 		      
-		    }
-		    if(nTowers ==2){
-		      rctEtaCorr12Tower->Fill( highestVec.eta(), j_pt/rctEt ); // wait, this isn't 1 or 2 towers, it's 2 towers ONLY...
-		      rctEtaCorrIEta12Tower->Fill( ieta, j_pt/rctEt );
-		      rctEtaCorrAbsIEta12Tower->Fill( fabs(ieta), j_pt/rctEt );
-		      rctEtaCorr12TowerEt->Fill( highestVec.eta(), j_et/rctEt );
-		      rctEtaCorrIEta12TowerEt->Fill( ieta, j_et/rctEt );
-		      rctEtaCorrAbsIEta12TowerEt->Fill( fabs(ieta), j_et/rctEt );
+		      // HERE's finally where we fill all the correction factors
 		      
+		      double rctEt = highestRCT_et; // why do we keep doing this calculation?
+		      
+		      //		      std::cout << "FILLING CORRECTION FACTORS!" << std::endl;
+		      // 		    std::cout << "j_pt = " << j_pt
+		      // 			      << "  highest Et = " << rctEt 
+		      // 			      << "  highest iEta = " << ieta
+		      // 			      << "  nTowers = " << nTowers
+		      // 			      << "  egammaThreshold = " << egammaThreshold_
+		      // 			      << std::endl;
+		      
+		      rctEtaCorr->Fill( highestVec.eta(), j_pt/highestVec.pt() ); // okey-dokey, ratio of ref to rct cand.  why need highestVec?? doesn't it already exist in some other form?  like the Et?
+		      rctEtaCorrIEta->Fill( ieta, j_pt/rctEt );
+		      rctEtaCorrAbsIEta->Fill( fabs(ieta), j_pt/rctEt );
+		      if(nTowers ==1 || (nTowers==2 && ieta >=27)) // so it's NOT just single-tower cands!! well, above 27... why 27??  almost HF, but not quite!  and not even the abs of ieta!?!
+			{
+			  rctEtaCorr1Tower->Fill( highestVec.eta(), j_pt/rctEt );
+			  rctEtaCorrIEta1Tower->Fill( ieta, j_pt/rctEt );
+			  rctEtaCorrAbsIEta1Tower->Fill( fabs(ieta), j_pt/rctEt );
+			  rctEtaCorr1TowerEt->Fill( highestVec.eta(), j_et/rctEt );
+			  rctEtaCorrIEta1TowerEt->Fill( ieta, j_et/rctEt );
+			  rctEtaCorrAbsIEta1TowerEt->Fill( fabs(ieta), j_et/rctEt );
+			  
+			}
+		      if(nTowers ==2)
+			{
+			  rctEtaCorr12Tower->Fill( highestVec.eta(), j_pt/rctEt ); // wait, this isn't 1 or 2 towers, it's 2 towers ONLY...
+			  rctEtaCorrIEta12Tower->Fill( ieta, j_pt/rctEt );
+			  rctEtaCorrAbsIEta12Tower->Fill( fabs(ieta), j_pt/rctEt );
+			  rctEtaCorr12TowerEt->Fill( highestVec.eta(), j_et/rctEt );
+			  rctEtaCorrIEta12TowerEt->Fill( ieta, j_et/rctEt );
+			  rctEtaCorrAbsIEta12TowerEt->Fill( fabs(ieta), j_et/rctEt );
+			  
+			}
 		    }
-		  }
-	      } // end if highestRCT isolated
+		} // end if highestRCT isolated
 	      delete l1TrigTowers;
 	    } // end of if highestRCT Et > threshold
 	  } // end of if rctNearReference.size() > 0
